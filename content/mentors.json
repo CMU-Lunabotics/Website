@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Red Whittaker",
+    "title": "Principal Investigator",
+    "affiliation": "Carnegie Mellon University",
+    "photo": "/images/mentors/red-whittaker.jpg",
+    "bio": "Professor of Robotics at CMU and pioneer in field robotics. Led numerous NASA missions including the Mars rovers.",
+    "expertise": ["Field Robotics", "Space Systems", "Autonomous Navigation"],
+    "links": {
+      "website": "https://www.ri.cmu.edu/people/red-whittaker/",
+      "linkedin": "",
+      "email": "red@andrew.cmu.edu"
+    }
+  },
+  {
+    "name": "Wang Wenshan 王雯珊",
+    "title": "System Scientist",
+    "affiliation": "Carnegie Mellon University",
+    "photo": "/images/mentors/wang-wensha.jpg",
+    "bio": "Research scientist specializing in robotic excavation and lunar surface operations.",
+    "expertise": ["reinforcement learning", "deep neural networks"],
+    "links": {
+      "website": "http://www.wangwenshan.com/",
+      "linkedin": "",
+      "email": "wensha@andrew.cmu.edu"
+    }
+  },
+  {
+    "name": "Zhang Ji",
+    "title": "Research Engineer",
+    "affiliation": "Carnegie Mellon University",
+    "photo": "/images/mentors/zhang-ji.jpg",
+    "bio": "Research engineer focused on autonomous systems and robotic perception for space applications.",
+    "expertise": ["SLAM", "navigation", "planning", "scene understanding"],
+    "links": {
+      "website": "",
+      "linkedin": "",
+      "email": "zhangji@andrew.cmu.edu"
+    }
+  }
+]

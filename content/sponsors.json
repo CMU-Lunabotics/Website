@@ -1,0 +1,37 @@
+{
+  "sponsors": [
+    {
+      "name": "ACME Robotics",
+      "logo": "/images/sponsors/acme.svg",
+      "url": "https://acme.com",
+      "blurb": "Supporting autonomy and sensing.",
+      "whiteOnDark": true
+    },
+    {
+      "name": "TechCorp Industries",
+      "logo": "/images/sponsors/techcorp.svg",
+      "url": "https://techcorp.com",
+      "blurb": "Advanced materials and components.",
+      "whiteOnDark": false
+    },
+    {
+      "name": "Innovation Labs",
+      "logo": "/images/sponsors/innovation-labs.svg",
+      "url": "https://innovationlabs.com",
+      "blurb": "Research and development support.",
+      "whiteOnDark": false
+    },
+    {
+      "name": "Local Engineering Co",
+      "logo": "/images/sponsors/local-eng.svg",
+      "url": "https://localeng.com",
+      "blurb": "Community partnership and support.",
+      "whiteOnDark": false
+    }
+  ],
+  "callToAction": {
+    "headline": "Support CMU MoonMiners",
+    "copy": "Help us push lunar robotics forward. Contact us for our sponsorship prospectus.",
+    "email": "moonminers@andrew.cmu.edu"
+  }
+}

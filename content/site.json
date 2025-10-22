@@ -1,0 +1,19 @@
+{
+  "teamName": "CMU MoonMiners",
+  "tagline": "Autonomous lunar excavation for NASA Lunabotics.",
+  "contactEmail": "moonminers@andrew.cmu.edu",
+  "location": "Carnegie Mellon University, Pittsburgh, PA",
+  "social": {
+    "github": "https://github.com/CMU-Lunabotics",
+    "youtube": "https://youtube.com/@cmu-moonminers",
+    "instagram": "https://instagram.com/cmu_moonminers"
+  },
+  "hero": {
+    "headline": "Digging the Moon, One Bucket at a Time.",
+    "subhead": "Autonomy • Perception • Dust-robust mechanisms",
+    "ctaPrimary": {"label": "Meet the Team", "href": "/team"},
+    "ctaSecondary": {"label": "Our Sponsors", "href": "/sponsors"},
+    "heroImage": "/images/hero/rover-render.jpg",
+    "video": null
+  }
+}
