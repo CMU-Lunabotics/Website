@@ -1,13 +1,13 @@
 [
   {
     "name": "Red Whittaker",
-    "title": "Principal Investigator",
+    "title": "Founders University Research Professor Emeritus",
     "affiliation": "Carnegie Mellon University",
     "photo": "/images/mentors/red-whittaker.jpg",
     "bio": "Professor of Robotics at CMU and pioneer in field robotics. Led numerous NASA missions including the Mars rovers.",
     "expertise": ["Field Robotics", "Space Systems", "Autonomous Navigation"],
     "links": {
-      "website": "https://www.ri.cmu.edu/people/red-whittaker/",
+      "website": "https://frc.ri.cmu.edu/~red/",
       "linkedin": "",
       "email": "red@andrew.cmu.edu"
     }
@@ -27,7 +27,7 @@
   },
   {
     "name": "Zhang Ji",
-    "title": "Research Engineer",
+    "title": "System Scientist",
     "affiliation": "Carnegie Mellon University",
     "photo": "/images/mentors/zhang-ji.jpg",
     "bio": "Research engineer focused on autonomous systems and robotic perception for space applications.",
@@ -36,6 +36,19 @@
       "website": "",
       "linkedin": "",
       "email": "zhangji@andrew.cmu.edu"
+    }
+  },
+  {
+    "name": "Anthony Brogni",
+    "title": "Research Scientist",
+    "affiliation": "Carnegie Mellon University",
+    "photo": "/images/mentors/anthony-brogni.jpg",
+    "bio": "Research scientist specializing in robotic systems and autonomous navigation for space applications.",
+    "expertise": ["Robotic Systems", "Autonomous Navigation", "Space Applications"],
+    "links": {
+      "website": "",
+      "linkedin": "",
+      "email": "anthonyb@andrew.cmu.edu"
     }
   }
 ]

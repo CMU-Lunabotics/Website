@@ -12,7 +12,7 @@
   },
   {
     "name": "Alexander Nelson",
-    "role": "Systems Lead",
+    "role": "System",
     "subteam": "System",
     "year": "2025",
     "email": "alexn@andrew.cmu.edu",
@@ -45,14 +45,14 @@
   },
   {
     "name": "Muan Meurer",
-    "role": "Mechanical",
+    "role": "Team Lead",
     "subteam": "Mechanical",
     "year": "2025",
     "email": "muanm@andrew.cmu.edu",
     "photo": "/images/members/muan-meurer.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Mechanical engineering with focus on lunar environment challenges.",
-    "tags": ["Mechanical", "Lunar", "Environment"]
+    "bio": "Team lead and mechanical engineering with focus on lunar environment challenges.",
+    "tags": ["Team Lead", "Mechanical", "Lunar", "Environment"]
   },
   {
     "name": "Niharika Pant",
@@ -342,7 +342,7 @@
   },
   {
     "name": "Juee Chandrachud",
-    "role": "System Lead",
+    "role": "System",
     "subteam": "System",
     "year": "2025",
     "email": "jueec@andrew.cmu.edu",
