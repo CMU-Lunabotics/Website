@@ -315,7 +315,7 @@
     "email": "bhavagynav@andrew.cmu.edu",
     "photo": "/images/members/bhavagyna-vegunta.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Leading avionics and electrical systems for lunar operations.",
+    "bio": "I’m the Avionics Lead for the CMU Lunabotics team. My background lies in robotics, actuation controls, and embedded systems, with experience in integrating mechanical and electronic subsystems for autonomous systems.",
     "tags": ["Avionics", "Lead", "Electrical"]
   },
   {
@@ -405,17 +405,6 @@
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Software development and team outreach coordination.",
     "tags": ["Software", "Outreach", "Coordination"]
-  },
-  {
-    "name": "May Sonoda",
-    "role": "Avionics, Outreach Lead",
-    "subteam": "Outreach",
-    "year": "2025",
-    "email": "mays@andrew.cmu.edu",
-    "photo": "/images/members/may-sonoda.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Avionics systems and team outreach coordination.",
-    "tags": ["Avionics", "Outreach", "Coordination"]
   },
   {
     "name": "Alex Rodriguez",
