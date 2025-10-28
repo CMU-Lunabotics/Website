@@ -5,11 +5,12 @@ interface SectionProps {
   subtitle?: string;
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
-export function Section({ title, subtitle, children, className }: SectionProps) {
+export function Section({ title, subtitle, children, className, id }: SectionProps) {
   return (
-    <section className={cn('py-16', className)}>
+    <section id={id} className={cn('py-16', className)}>
       <Container>
         {(title || subtitle) && (
           <div className="text-center mb-12">

@@ -6,6 +6,7 @@ export const SiteConfigSchema = z.object({
   tagline: z.string(),
   contactEmail: z.string().email(),
   location: z.string(),
+  logo: z.string(),
   social: z.object({
     github: z.string().url(),
     youtube: z.string().url(),
@@ -65,7 +66,7 @@ export type TeamInfo = z.infer<typeof TeamInfoSchema>;
 export const SponsorSchema = z.object({
   name: z.string(),
   logo: z.string(),
-  url: z.string().url(),
+  url: z.string().url().or(z.literal('#')).optional(),
   blurb: z.string(),
   whiteOnDark: z.boolean(),
 });

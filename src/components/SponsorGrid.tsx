@@ -11,43 +11,50 @@ interface SponsorGridProps {
 
 export function SponsorGrid({ sponsors }: SponsorGridProps) {
   return (
-    <div className="space-y-16">
+    <>
       {/* Sponsors */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {sponsors.sponsors.map((sponsor, index) => (
-          <Card key={index} className="group hover:shadow-lg transition-shadow">
-            <CardContent className="p-6 text-center">
-              <div className="flex justify-center mb-4">
-                <div className="relative h-16 w-16">
-                  <Image
-                    src={sponsor.logo}
-                    alt={`${sponsor.name} logo`}
-                    fill
-                    className={`object-contain ${sponsor.whiteOnDark ? 'dark:invert' : ''}`}
-                    sizes="64px"
-                  />
+      <Section>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {sponsors.sponsors.map((sponsor, index) => (
+            <Card key={index} className="group hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <div className="flex justify-center mb-4">
+                  <div className="relative h-24 w-24">
+                    <Image
+                      src={sponsor.logo}
+                      alt={`${sponsor.name} logo`}
+                      fill
+                      className={`object-contain ${sponsor.whiteOnDark ? 'dark:invert' : ''}`}
+                      sizes="96px"
+                    />
+                  </div>
                 </div>
-              </div>
-              
-              <h3 className="font-semibold text-lg mb-2">{sponsor.name}</h3>
-              
-              {sponsor.blurb && (
-                <p className="text-sm text-muted-foreground mb-4">{sponsor.blurb}</p>
-              )}
-              
-              <a
-                href={sponsor.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
-              >
-                Visit Website
-                <ExternalLink className="ml-1 h-3 w-3" />
-              </a>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+                
+                <h3 className="font-semibold text-lg mb-2">{sponsor.name}</h3>
+                
+                {sponsor.blurb && (
+                  <p className="text-sm text-muted-foreground mb-4">{sponsor.blurb}</p>
+                )}
+                
+                {sponsor.url && sponsor.url !== '#' && (
+                  <a
+                    href={sponsor.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
+                  >
+                    Visit Website
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </a>
+                )}
+                {!sponsor.url && (
+                  <p className="text-sm text-muted-foreground">Individual Sponsor</p>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </Section>
 
       {/* Call to Action */}
       <Section className="bg-muted/50 rounded-2xl">
@@ -64,6 +71,6 @@ export function SponsorGrid({ sponsors }: SponsorGridProps) {
           </Button>
         </div>
       </Section>
-    </div>
+    </>
   );
 }

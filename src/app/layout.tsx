@@ -16,16 +16,21 @@ const newsreader = Newsreader({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cmu-moon-miners.com';
+
 export const metadata: Metadata = {
   title: "CMU MoonMiners - NASA Lunabotics",
   description: "Autonomous lunar excavation for NASA Lunabotics. Building the future of space robotics at Carnegie Mellon University.",
   keywords: ["NASA", "Lunabotics", "CMU", "robotics", "lunar", "excavation", "autonomous"],
   authors: [{ name: "CMU MoonMiners" }],
+  metadataBase: new URL(siteUrl),
   openGraph: {
     title: "CMU MoonMiners - NASA Lunabotics",
     description: "Autonomous lunar excavation for NASA Lunabotics. Building the future of space robotics at Carnegie Mellon University.",
     type: "website",
     locale: "en_US",
+    url: siteUrl,
+    siteName: "CMU MoonMiners",
   },
   twitter: {
     card: "summary_large_image",
@@ -35,6 +40,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: siteUrl,
   },
 };
 
@@ -57,7 +65,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen flex flex-col">
-            <NavBar />
+            <NavBar logoPath={siteConfig.logo} />
             <main className="flex-1">
               {children}
             </main>

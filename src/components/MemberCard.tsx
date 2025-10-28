@@ -29,6 +29,7 @@ export function MemberCard({ member }: MemberCardProps) {
                 fill
                 className="object-cover transition-transform duration-200 group-hover:scale-105"
                 sizes="(min-width: 1024px) 200px, (min-width: 640px) 160px, 120px"
+                priority={false}
               />
             </div>
             <CardContent className="p-4">
@@ -59,12 +60,15 @@ export function MemberCard({ member }: MemberCardProps) {
                 alt={`Portrait of ${member.name}`}
                 fill
                 className="object-cover"
-                sizes="96px"
+                sizes="(min-width: 1024px) 200px, (min-width: 640px) 160px, 120px"
+                priority={false}
               />
             </div>
             <div className="space-y-2">
               <p className="text-lg font-medium">{member.role}</p>
-              <p className="text-sm text-muted-foreground">{member.subteam} • Class of {member.year}</p>
+              <p className="text-sm text-muted-foreground">
+                {member.subteam.split(',').map(s => s.trim()).join(' • ')} • Class of {member.year}
+              </p>
               <div className="flex flex-wrap gap-1">
                 {member.tags.map((tag) => (
                   <Badge key={tag} variant="secondary" className="text-xs">

@@ -1,31 +1,23 @@
 {
   "sponsors": [
     {
-      "name": "ACME Robotics",
-      "logo": "/images/sponsors/acme.svg",
-      "url": "https://acme.com",
-      "blurb": "Supporting autonomy and sensing.",
-      "whiteOnDark": true
-    },
-    {
-      "name": "TechCorp Industries",
-      "logo": "/images/sponsors/techcorp.svg",
-      "url": "https://techcorp.com",
-      "blurb": "Advanced materials and components.",
+      "name": "Synopsys",
+      "logo": "/images/sponsors/synopsys.png",
+      "url": "https://www.synopsys.com",
+      "blurb": "Engineering solutions from silicon to systems.",
       "whiteOnDark": false
     },
     {
-      "name": "Innovation Labs",
-      "logo": "/images/sponsors/innovation-labs.svg",
-      "url": "https://innovationlabs.com",
-      "blurb": "Research and development support.",
+      "name": "Prof. Howie Choset",
+      "logo": "/images/sponsors/choset.jpg",
+      "url": "https://www.cs.cmu.edu/~choset/",
+      "blurb": "Carnegie Mellon University - Biorobotics Laboratory",
       "whiteOnDark": false
     },
     {
-      "name": "Local Engineering Co",
-      "logo": "/images/sponsors/local-eng.svg",
-      "url": "https://localeng.com",
-      "blurb": "Community partnership and support.",
+      "name": "Dr. Clinton W. Kelly III",
+      "logo": "/images/sponsors/person-placeholder.svg",
+      "blurb": "Individual Sponsor",
       "whiteOnDark": false
     }
   ],

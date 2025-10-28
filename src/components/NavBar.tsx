@@ -13,14 +13,18 @@ const navigation = [
   { name: 'Sponsors', href: '/sponsors' },
 ];
 
-export function NavBar() {
+interface NavBarProps {
+  logoPath?: string;
+}
+
+export function NavBar({ logoPath }: NavBarProps) {
   const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <Logo />
+          <Logo logoPath={logoPath || '/images/logo/logo2026.svg'} />
         </Link>
         
         <nav className="hidden md:flex items-center space-x-6">
