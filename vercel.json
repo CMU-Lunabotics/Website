@@ -1,12 +1,4 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "framework": "nextjs",
-  "functions": {
-    "src/app/api/og/route.tsx": {
-      "runtime": "edge"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
