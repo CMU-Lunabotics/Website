@@ -16,17 +16,16 @@ interface UpdateModalProps {
 
 export function UpdateModal({ update, open, onOpenChange }: UpdateModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  if (!update) return null;
-
-  const images = update.images || [];
+  const images = update?.images || [];
   const hasMultipleImages = images.length > 1;
 
   const nextImage = () => {
+    if (images.length === 0) return;
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
   const prevImage = () => {
+    if (images.length === 0) return;
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
@@ -39,7 +38,7 @@ export function UpdateModal({ update, open, onOpenChange }: UpdateModalProps) {
 
   // Keyboard navigation
   useEffect(() => {
-    if (!open || !hasMultipleImages || images.length === 0) return;
+    if (!open || !hasMultipleImages || images.length === 0 || !update) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
@@ -53,7 +52,9 @@ export function UpdateModal({ update, open, onOpenChange }: UpdateModalProps) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [open, hasMultipleImages, images.length]);
+  }, [open, hasMultipleImages, images.length, update]);
+
+  if (!update) return null;
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
