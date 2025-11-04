@@ -19,6 +19,12 @@
       "logo": "/images/sponsors/person-placeholder.svg",
       "blurb": "Individual Sponsor",
       "whiteOnDark": false
+    },
+    {
+      "name": "Prof. Red Whittaker",
+      "logo": "/images/mentors/red-whittaker.jpg",
+      "blurb": "Founders University Research Professor Emeritus, Carnegie Mellon University",
+      "whiteOnDark": false
     }
   ],
   "callToAction": {
