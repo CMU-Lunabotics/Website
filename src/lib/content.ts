@@ -136,3 +136,24 @@ export async function getMentors(): Promise<Mentor[]> {
   const content = await import('../../content/mentors.json');
   return z.array(MentorSchema).parse(content.default);
 }
+
+// Update schema
+export const UpdateSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  date: z.string(),
+  category: z.string(),
+  summary: z.string(),
+  images: z.array(z.string()),
+  content: z.string(),
+  tags: z.array(z.string()),
+  link: z.string().url().or(z.literal('')).optional(),
+  linkLabel: z.string().optional(),
+});
+
+export type Update = z.infer<typeof UpdateSchema>;
+
+export async function getUpdates(): Promise<Update[]> {
+  const content = await import('../../content/updates.json');
+  return z.array(UpdateSchema).parse(content.default);
+}

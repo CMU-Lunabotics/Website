@@ -1,0 +1,24 @@
+[
+  {
+    "id": "pdr-2025",
+    "title": "Preliminary Design Review",
+    "date": "2025-11-1",
+    "category": "Milestone",
+    "summary": "Successfully completed our PDR, showcasing our autonomous excavation system design and dust mitigation strategies.",
+    "images": [
+      "/images/updates/pdr-2025/IMG_1474.jpeg",
+      "/images/updates/pdr-2025/IMG_1475.jpeg",
+      "/images/updates/pdr-2025/IMG_1477.jpeg",
+      "/images/updates/pdr-2025/IMG_1479.jpeg",
+      "/images/updates/pdr-2025/IMG_1484.jpeg",
+      "/images/updates/pdr-2025/IMG_1492.jpeg",
+      "/images/updates/pdr-2025/IMG_1500.jpeg",
+      "/images/updates/pdr-2025/IMG_1508.jpeg"
+    ],
+    "content": "Our team presented comprehensive design documentation to NASA judges, demonstrating our robot's capabilities in autonomous excavation, dust mitigation, and lunar surface operations. The review highlighted our innovative approach to combining perception, autonomy, and mechanical design.",
+    "tags": ["PDR", "NASA", "Design Review"],
+    "link": "https://docs.google.com/presentation/d/1LQTOKPN9KyvwT2FEf5MgXZnrIZqUN0Yoq0HwsuYFaU4/edit?usp=sharing",
+    "linkLabel": "View Presentation Slides"
+  }
+]
+
