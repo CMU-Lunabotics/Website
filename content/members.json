@@ -71,7 +71,7 @@
     "subteam": "Mechanical",
     "year": "2028",
     "email": "ojl@andrew.cmu.edu",
-    "photo": "/images/members/owen-letterman.JPG",
+    "photo": "/images/members/owen-letterman.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Mechanical Engineering and Robotics",
     "tags": ["Mechanical", "Structure", "Mechanical Engineering and Robotics"]
@@ -170,7 +170,7 @@
     "subteam": "Software",
     "year": "2027",
     "email": "jadenlee@andrew.cmu.edu",
-    "photo": "/images/members/jaden-lee.JPG",
+    "photo": "/images/members/jaden-lee.jpg",
     "links": {"linkedin": "https://www.linkedin.com/in/jadenjwlee", "github": "", "website": "", "instagram": ""},
     "bio": "Software Development Autonomy Team",
     "tags": ["Software", "Autonomy", "Electrical and Computer Engineering"]
@@ -291,7 +291,7 @@
     "subteam": "Software",
     "year": "2026",
     "email": "yiwu2@cs.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
+    "photo": "/images/members/yi-wu.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Master of Science - Robotic Systems Development Program",
     "tags": ["Software", "Robotics", "Master of Science - Robotic Systems Development Program"]
