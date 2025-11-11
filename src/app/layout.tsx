@@ -24,6 +24,15 @@ export const metadata: Metadata = {
   keywords: ["NASA", "Lunabotics", "CMU", "robotics", "lunar", "excavation", "autonomous"],
   authors: [{ name: "CMU MoonMiners" }],
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: [
+      { url: '/images/logo/logo20262.png', type: 'image/png' },
+      { url: '/images/logo/logo2026.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/images/logo/logo20262.png', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: "CMU MoonMiners - NASA Lunabotics",
     description: "Autonomous lunar excavation for NASA Lunabotics. Building the future of space robotics at Carnegie Mellon University.",
