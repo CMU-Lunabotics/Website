@@ -13,12 +13,12 @@ export function MentorCard({ mentor }: MentorCardProps) {
   return (
     <Card className="h-full">
       <CardHeader className="text-center">
-        <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+        <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-muted">
           <Image
             src={mentor.photo}
             alt={`Portrait of ${mentor.name}`}
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="96px"
           />
         </div>

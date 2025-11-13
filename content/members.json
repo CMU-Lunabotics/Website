@@ -1,5 +1,82 @@
 [
   {
+    "name": "Bhavagyna Vegunta",
+    "role": "Team Lead - Avionics",
+    "subteam": "Avionics",
+    "year": "2026",
+    "email": "bhavagyna@vegunta.com",
+    "photo": "/images/members/bhavagyna-vegunta.jpg",
+    "links": {"linkedin": "https://www.linkedin.com/in/bhavagyna/", "github": "", "website": "", "instagram": ""},
+    "bio": "I'm the Avionics Lead for the CMU Lunabotics team. My background lies in robotics, actuation controls, and embedded systems, with experience in integrating mechanical and electronic subsystems for autonomous systems.",
+    "tags": ["Avionics", "Lead", "Electrical"]
+  },
+  {
+    "name": "Cordelia Pride",
+    "role": "Avionics",
+    "subteam": "Avionics",
+    "year": "2025",
+    "email": "cordeliap@andrew.cmu.edu",
+    "photo": "/images/members/cordelia-pride.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Avionics systems design for autonomous lunar vehicles.",
+    "tags": ["Avionics", "Autonomous"]
+  },
+  {
+    "name": "Deanna (Dee) Paukstitus",
+    "role": "Avionics",
+    "subteam": "Avionics",
+    "year": "2029",
+    "email": "dpauksti@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Electrical and avionics systems for robotic excavation.",
+    "tags": ["Avionics", "Electrical", "Robotics"]
+  },
+  {
+    "name": "Juee Chandrachud",
+    "role": "Systems Lead",
+    "subteam": "System, Avionics",
+    "year": "2026",
+    "email": "jueechandrachud@gmail.com",
+    "photo": "/images/members/juee-chandrachud.jpg",
+    "links": {"linkedin": "https://www.linkedin.com/in/juee-chandrachud/", "github": "", "website": "https://sites.google.com/view/jueechandrachud/home", "instagram": ""},
+    "bio": "Passionate about leading teams to develop autonomous robotic systems leveraging mechatronics and systems integration.",
+    "tags": ["System"]
+  },
+  {
+    "name": "May Sonoda",
+    "role": "Avionics",
+    "subteam": "Avionics",
+    "year": "2025",
+    "email": "mays@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Avionics systems and team outreach coordination.",
+    "tags": ["Avionics", "Outreach"]
+  },
+  {
+    "name": "Pawan Wadhwani",
+    "role": "Software",
+    "subteam": "Software, Avionics",
+    "year": "2027",
+    "email": "pwadhwan@andrew.cmu.edu",
+    "photo": "/images/members/pawan-wadhwani.jpeg",
+    "links": {"linkedin": "https://www.linkedin.com/in/pawan-wadhwani/", "github": "", "website": "https://pawan-wadhwani.github.io/", "instagram": ""},
+    "bio": "Firmware Development and Avionics",
+    "tags": ["Software", "Firmware", "Avionics", "Masters in Robotic Systems Development"]
+  },
+  {
+    "name": "Ria Hegde",
+    "role": "Avionics",
+    "subteam": "Avionics",
+    "year": "2025",
+    "email": "riah@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Electrical systems design for autonomous lunar operations.",
+    "tags": ["Avionics", "Electrical", "Autonomous"]
+  },
+  {
     "name": "Aaron Chuang",
     "role": "Excavation",
     "subteam": "Mechanical",
@@ -11,6 +88,17 @@
     "tags": ["Mechanical", "Excavation", "Design"]
   },
   {
+    "name": "Abigail Miller",
+    "role": "Structures - Technical Lead",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "abigailm@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Structures technical lead for mechanical systems.",
+    "tags": ["Mechanical", "Structures", "Technical Lead"]
+  },
+  {
     "name": "Alexander Nelson",
     "role": "Systems Lead",
     "subteam": "System, Mechanical",
@@ -19,7 +107,29 @@
     "photo": "/images/members/alexander-nelson.jpg",
     "links": {"linkedin": "https://www.linkedin.com/in/alexander-nelson-318542213?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", "github": "", "website": "", "instagram": ""},
     "bio": "I'm a student and former varsity athlete with extensive hands-on experience in the aerospace Industry and a strong track record in design, fabrication, operations, and systems engineering. My goal in life is to build and lead high-reliability teams in the space industry - where rigorous engineering, safety, and teamwork come together to deliver real-world impact.",
-    "tags": ["System", "Integration", "Architecture", "Mechanical Engineering + Engineering & Public Policy"]
+    "tags": ["System", "Mechanical Engineering + Engineering & Public Policy"]
+  },
+  {
+    "name": "Anderson Ho",
+    "role": "Structures",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "andersonh@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Mechanical engineering focused on structures and design.",
+    "tags": ["Mechanical", "Structures"]
+  },
+  {
+    "name": "Andrew Cho",
+    "role": "Mobility",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "andrewcho@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Mechanical engineering focused on mobility systems.",
+    "tags": ["Mechanical", "Mobility"]
   },
   {
     "name": "Arnav Srikanth",
@@ -33,6 +143,17 @@
     "tags": ["Mechanical", "Dust Mitigation", "Analysis"]
   },
   {
+    "name": "Daniel Downes",
+    "role": "Structures",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "danield@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Mechanical engineering focused on structures.",
+    "tags": ["Mechanical", "Structures"]
+  },
+  {
     "name": "Elihu McMahon",
     "role": "Excavation",
     "subteam": "Mechanical",
@@ -44,15 +165,92 @@
     "tags": ["Mechanical", "Excavation", "Autonomous", "Design"]
   },
   {
+    "name": "Emily Sohn",
+    "role": "Mobility",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "emilys@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Mechanical engineering focused on mobility systems.",
+    "tags": ["Mechanical", "Mobility"]
+  },
+  {
+    "name": "Iris Wang",
+    "role": "Structures",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "irisw@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Mechanical engineering focused on structures.",
+    "tags": ["Mechanical", "Structures"]
+  },
+  {
+    "name": "James Shin",
+    "role": "Excavation - Technical Lead",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "jamess@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Technical lead for excavation systems.",
+    "tags": ["Mechanical", "Excavation", "Technical Lead"]
+  },
+  {
+    "name": "Jason Malik",
+    "role": "Mobility - Technical Lead",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "jasonm@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Technical lead for mobility systems.",
+    "tags": ["Mechanical", "Mobility", "Technical Lead"]
+  },
+  {
+    "name": "Joel Jacob",
+    "role": "Excavation",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "joelj@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Mechanical engineering focused on excavation systems.",
+    "tags": ["Mechanical", "Excavation"]
+  },
+  {
+    "name": "Krishnav Goyal",
+    "role": "Mobility",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "krishnavg@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Mechanical engineering focused on mobility systems.",
+    "tags": ["Mechanical", "Mobility"]
+  },
+  {
+    "name": "Logan Maurer",
+    "role": "FEA - Technical Lead",
+    "subteam": "Mechanical",
+    "year": "2025",
+    "email": "loganm@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Technical lead for finite element analysis.",
+    "tags": ["Mechanical", "FEA", "Technical Lead"]
+  },
+  {
     "name": "Muan Meurer",
-    "role": "Team Lead",
+    "role": "Project Lead",
     "subteam": "Mechanical",
     "year": "2026",
     "email": "mbmeurer@andrew.cmu.edu",
     "photo": "/images/members/muan-meurer.jpg",
     "links": {"linkedin": "linkedin.com/in/muanmeurer/", "github": "", "website": "", "instagram": "https://www.instagram.com/muanmeurer/"},
-    "bio": "I’m so proud to be part of this talented team. The last time I was this focused on how to move dirt around I was still learning not to eat it.",
-    "tags": ["Team Lead", "Mechanical", "Lunar", "Environment"]
+    "bio": "I'm so proud to be part of this talented team. The last time I was this focused on how to move dirt around I was still learning not to eat it.",
+    "tags": ["Project Lead", "Mechanical"]
   },
   {
     "name": "Niharika Pant",
@@ -67,29 +265,18 @@
   },
   {
     "name": "Owen Letterman",
-    "role": "Structure",
+    "role": "Structures",
     "subteam": "Mechanical",
     "year": "2028",
     "email": "ojl@andrew.cmu.edu",
     "photo": "/images/members/owen-letterman.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Mechanical Engineering and Robotics",
-    "tags": ["Mechanical", "Structure", "Mechanical Engineering and Robotics"]
-  },
-  {
-    "name": "Rishabh Srinivas",
-    "role": "Structure Sub Lead",
-    "subteam": "Mechanical",
-    "year": "2025",
-    "email": "rishabhs@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Mechanical design and analysis for dust-resistant systems.",
-    "tags": ["Mechanical", "Structure", "Dust-Resistant", "Analysis"]
+    "tags": ["Mechanical", "Structures", "Mechanical Engineering and Robotics"]
   },
   {
     "name": "Tanvi Lad",
-    "role": "Mechanical Team Lead",
+    "role": "Team Lead - Mechanical",
     "subteam": "Mechanical",
     "year": "2025",
     "email": "tanvil@andrew.cmu.edu",
@@ -99,37 +286,37 @@
     "tags": ["Mechanical", "Lead", "Excavation"]
   },
   {
-    "name": "Victor Soto Castro",
-    "role": "Excavation Sub Lead",
-    "subteam": "Mechanical",
-    "year": "2025",
-    "email": "victors@andrew.cmu.edu",
-    "photo": "/images/members/victor-soto-castro.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Mechanical engineering with expertise in lunar surface operations.",
-    "tags": ["Mechanical", "Excavation", "Lunar", "Operations"]
-  },
-  {
-    "name": "Zach Kushnir",
+    "name": "Venetian Brooks",
     "role": "Excavation",
     "subteam": "Mechanical",
-    "year": "2026",
-    "email": "zkushnir@andrew.cmu.edu",
-    "photo": "/images/members/zachary-kushnir.jpg",
-    "links": {"linkedin": "www.linkedin.com/in/zachkushnir", "github": "", "website": "zacharykushnir.com", "instagram": "@zach0tack"},
-    "bio": "Mechanical Engineering",
-    "tags": ["Mechanical", "Excavation", "Mechanical Engineering"]
+    "year": "2025",
+    "email": "venetianb@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Mechanical engineering focused on excavation systems.",
+    "tags": ["Mechanical", "Excavation"]
   },
   {
-    "name": "Alan Chen",
-    "role": "Technical Lead - Controls",
+    "name": "Max Hu",
+    "role": "Team Lead - Software",
     "subteam": "Software",
     "year": "2026",
-    "email": "jianninc@andrew.cmu.edu",
-    "photo": "/images/members/alan-chen.jpg",
-    "links": {"linkedin": "https://www.linkedin.com/in/jianning-chen-15tka22/", "github": "", "website": "", "instagram": ""},
-    "bio": "Technical lead for controls systems and autonomous navigation.",
-    "tags": ["Software", "Controls", "Navigation", "Electrical and Computer Engineering"]
+    "email": "maxjhu@cmu.edu",
+    "photo": "/images/members/max-hu.jpg",
+    "links": {"linkedin": "https://www.linkedin.com/in/maxhu764", "github": "", "website": "", "instagram": ""},
+    "bio": "Passionate about autonomous robot perception and human-robot interaction.",
+    "tags": ["Software", "Lead", "Autonomy"]
+  },
+  {
+    "name": "Luqman Zaceria",
+    "role": "Autonomy - Technical Lead",
+    "subteam": "Software",
+    "year": "2026",
+    "email": "luqmanzaceria@gmail.com",
+    "photo": "/images/members/luqman-zaceria.jpg",
+    "links": {"linkedin": "https://www.linkedin.com/in/luqman-zaceria/", "github": "", "website": "https://www.luqmanzaceria.com/", "instagram": "https://x.com/luqmanzaceria"},
+    "bio": "Master's in Computer Vision graduate student. Previously Head of AI at Catalyx Space",
+    "tags": ["Software", "Autonomy"]
   },
   {
     "name": "Anoushka Sengupta",
@@ -141,17 +328,6 @@
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Software development for autonomous systems and perception.",
     "tags": ["Software", "Autonomous", "Perception"]
-  },
-  {
-    "name": "Avery Hsu",
-    "role": "Software",
-    "subteam": "Software",
-    "year": "2025",
-    "email": "averyh@andrew.cmu.edu",
-    "photo": "/images/members/avery-hsu.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Software engineering focused on robotic systems integration.",
-    "tags": ["Software", "Robotics", "Integration"]
   },
   {
     "name": "Elizabeth Terveen",
@@ -166,7 +342,7 @@
   },
   {
     "name": "Jaden Lee",
-    "role": "Software Development Autonomy Team",
+    "role": "Software",
     "subteam": "Software",
     "year": "2027",
     "email": "jadenlee@andrew.cmu.edu",
@@ -174,39 +350,6 @@
     "links": {"linkedin": "https://www.linkedin.com/in/jadenjwlee", "github": "", "website": "", "instagram": ""},
     "bio": "Software Development Autonomy Team",
     "tags": ["Software", "Autonomy", "Electrical and Computer Engineering"]
-  },
-  {
-    "name": "Jerry Chen 陳宏騰",
-    "role": "Software, Outreach Lead",
-    "subteam": "Software",
-    "year": "2028",
-    "email": "hongtengc@andrew.cmu.edu",
-    "photo": "/images/members/jerry-chen.jpg",
-    "links": {"linkedin": "https://www.linkedin.com/in/hong-teng-jerry-chen/", "github": "", "website": "", "instagram": "https://www.instagram.com/j3rrychen45/"},
-    "bio": "Passonate about robotics, aerospace, control, and everything in between!",
-    "tags": ["Software", "Outreach", "Coordination"]
-  },
-  {
-    "name": "Jialing Bi 毕嘉玲",
-    "role": "Guidance and Controls / Robotics / AI",
-    "subteam": "Software",
-    "year": "2027",
-    "email": "jialingb@andrew.cmu.edu",
-    "photo": "/images/members/jialing-bi.jpg",
-    "links": {"linkedin": "linkedin.com/in/jialing-bi-432086259", "github": "", "website": "", "instagram": ""},
-    "bio": "Guidance and Controls / Robotics / AI :))",
-    "tags": ["Software", "Guidance", "Controls", "Robotics", "AI", "Mechanical Engineering + AI"]
-  },
-  {
-    "name": "Deng Junting",
-    "role": "Software",
-    "subteam": "Software",
-    "year": "2025",
-    "email": "juntingd@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Software development for robotic perception and control.",
-    "tags": ["Software", "Perception", "Control"]
   },
   {
     "name": "Liza Dahiya",
@@ -220,39 +363,6 @@
     "tags": ["Software", "Autonomous", "Systems"]
   },
   {
-    "name": "Luqman Zaceria",
-    "role": "Technical Lead - Autonomy",
-    "subteam": "Software",
-    "year": "2026",
-    "email": "luqmanzaceria@gmail.com",
-    "photo": "/images/members/luqman-zaceria.jpg",
-    "links": {"linkedin": "https://www.linkedin.com/in/luqman-zaceria/", "github": "", "website": "https://www.luqmanzaceria.com/", "instagram": "https://x.com/luqmanzaceria"},
-    "bio": "Master's in Computer Vision graduate student. Previously Head of AI at Catalyx Space",
-    "tags": ["Software", "Autonomy", "Computer Vision"]
-  },
-  {
-    "name": "Max Hu",
-    "role": "Software Lead",
-    "subteam": "Software",
-    "year": "2026",
-    "email": "maxjhu@cmu.edu",
-    "photo": "/images/members/max-hu.jpg",
-    "links": {"linkedin": "https://www.linkedin.com/in/maxhu764", "github": "", "website": "", "instagram": ""},
-    "bio": "Passionate about autonomous robot perception and human-robot interaction.",
-    "tags": ["Software", "Lead", "Autonomous"]
-  },
-  {
-    "name": "Maya Kundakçı",
-    "role": "Software",
-    "subteam": "Software",
-    "year": "2026",
-    "email": "mkundakc@andrew.cmu.edu",
-    "photo": "/images/members/maya-kundakci.jpg",
-    "links": {"linkedin": "www.linkedin.in/maya-kundakci", "github": "", "website": "", "instagram": ""},
-    "bio": "I am a senior in Mechanical Engineering with a minor in robotics at CMU from Istanbul, Turkey!",
-    "tags": ["Software", "Mechanical", "Robotics"]
-  },
-  {
     "name": "Nanaki Singh",
     "role": "Software",
     "subteam": "Software",
@@ -264,15 +374,48 @@
     "tags": ["Software", "Autonomous", "Excavation"]
   },
   {
-    "name": "Pawan Wadhwani",
-    "role": "Firmware Development and Avionics",
-    "subteam": "Software, Avionics",
+    "name": "Avery Hsu",
+    "role": "Software",
+    "subteam": "Software",
+    "year": "2025",
+    "email": "averyh@andrew.cmu.edu",
+    "photo": "/images/members/avery-hsu.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Software engineering focused on robotic systems integration.",
+    "tags": ["Software", "Robotics"]
+  },
+  {
+    "name": "Alan Chen",
+    "role": "Controls - Technical Lead",
+    "subteam": "Software",
+    "year": "2026",
+    "email": "jianninc@andrew.cmu.edu",
+    "photo": "/images/members/alan-chen.jpg",
+    "links": {"linkedin": "https://www.linkedin.com/in/jianning-chen-15tka22/", "github": "", "website": "", "instagram": ""},
+    "bio": "Technical lead for controls systems and autonomous navigation.",
+    "tags": ["Software", "Controls"]
+  },
+  {
+    "name": "Jerry Chen 陳宏騰",
+    "role": "Outreach Lead",
+    "subteam": "Software",
+    "year": "2028",
+    "email": "hongtengc@andrew.cmu.edu",
+    "photo": "/images/members/jerry-chen.jpg",
+    "links": {"linkedin": "https://www.linkedin.com/in/hong-teng-jerry-chen/", "github": "", "website": "", "instagram": "https://www.instagram.com/j3rrychen45/"},
+    "bio": "Passonate about robotics, aerospace, control, and everything in between!",
+    "tags": ["Software", "Outreach"]
+  },
+  {
+    "name": "Jialing Bi 毕嘉玲",
+    "role": "Software",
+    "subteam": "Software",
     "year": "2027",
-    "email": "pwadhwan@andrew.cmu.edu",
-    "photo": "/images/members/pawan-wadhwani.jpeg",
-    "links": {"linkedin": "https://www.linkedin.com/in/pawan-wadhwani/", "github": "", "website": "https://pawan-wadhwani.github.io/", "instagram": ""},
-    "bio": "Firmware Development and Avionics",
-    "tags": ["Software", "Firmware", "Avionics", "Masters in Robotic Systems Development"]
+    "email": "jialingb@andrew.cmu.edu",
+    "photo": "/images/members/jialing-bi.jpg",
+    "links": {"linkedin": "linkedin.com/in/jialing-bi-432086259", "github": "", "website": "", "instagram": ""},
+    "bio": "Guidance and Controls / Robotics / AI :))",
+    "tags": ["Software", "Guidance", "Controls", "Robotics", "AI", "Mechanical Engineering + AI"]
   },
   {
     "name": "Sophia Deng",
@@ -297,69 +440,14 @@
     "tags": ["Software", "Robotics", "Master of Science - Robotic Systems Development Program"]
   },
   {
-    "name": "Bhavagyna Vegunta",
-    "role": "Avionics Lead",
-    "subteam": "Avionics",
+    "name": "Maya Kundakci",
+    "role": "Software",
+    "subteam": "Software",
     "year": "2026",
-    "email": "bhavagyna@vegunta.com",
-    "photo": "/images/members/bhavagyna-vegunta.jpg",
-    "links": {"linkedin": "https://www.linkedin.com/in/bhavagyna/", "github": "", "website": "", "instagram": ""},
-    "bio": "I'm the Avionics Lead for the CMU Lunabotics team. My background lies in robotics, actuation controls, and embedded systems, with experience in integrating mechanical and electronic subsystems for autonomous systems.",
-    "tags": ["Avionics", "Lead", "Electrical"]
-  },
-  {
-    "name": "Cordelia Pride",
-    "role": "Avionics",
-    "subteam": "Avionics",
-    "year": "2025",
-    "email": "cordeliap@andrew.cmu.edu",
-    "photo": "/images/members/cordelia-pride.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Avionics systems design for autonomous lunar vehicles.",
-    "tags": ["Avionics", "Autonomous", "Lunar"]
-  },
-  {
-    "name": "Deanna Paukstitus",
-    "role": "Avionics",
-    "subteam": "Avionics",
-    "year": "2029",
-    "email": "dpauksti@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Electrical and avionics systems for robotic excavation.",
-    "tags": ["Avionics", "Electrical", "Robotics"]
-  },
-  {
-    "name": "Juee Chandrachud",
-    "role": "System Lead",
-    "subteam": "System, Avionics",
-    "year": "2026",
-    "email": "jueechandrachud@gmail.com",
-    "photo": "/images/members/juee-chandrachud.jpg",
-    "links": {"linkedin": "https://www.linkedin.com/in/juee-chandrachud/", "github": "", "website": "https://sites.google.com/view/jueechandrachud/home", "instagram": ""},
-    "bio": "Passionate about leading teams to develop autonomous robotic systems leveraging mechatronics and systems integration.",
-    "tags": ["System", "Integration", "Architecture"]
-  },
-  {
-    "name": "May Sonoda",
-    "role": "Avionics, Outreach Lead",
-    "subteam": "Avionics",
-    "year": "2025",
-    "email": "mays@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Avionics systems and team outreach coordination.",
-    "tags": ["Avionics", "Outreach", "Coordination"]
-  },
-  {
-    "name": "Ria Hegde",
-    "role": "Avionics",
-    "subteam": "Avionics",
-    "year": "2025",
-    "email": "riah@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Electrical systems design for autonomous lunar operations.",
-    "tags": ["Avionics", "Electrical", "Autonomous"]
+    "email": "mkundakc@andrew.cmu.edu",
+    "photo": "/images/members/maya-kundakci.jpg",
+    "links": {"linkedin": "www.linkedin.in/maya-kundakci", "github": "", "website": "", "instagram": ""},
+    "bio": "I am a senior in Mechanical Engineering with a minor in robotics at CMU from Istanbul, Turkey!",
+    "tags": ["Software", "Mechanical", "Robotics"]
   }
 ]

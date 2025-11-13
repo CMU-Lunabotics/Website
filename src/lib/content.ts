@@ -36,7 +36,7 @@ export const MemberSchema = z.object({
   role: z.string(),
   subteam: z.string(),
   year: z.string(),
-  email: z.string().email(),
+  email: z.union([z.string().email(), z.literal("")]),
   photo: z.string(),
   links: z.object({
     linkedin: z.string(),

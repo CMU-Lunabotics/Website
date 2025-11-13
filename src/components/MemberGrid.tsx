@@ -24,21 +24,10 @@ export function MemberGrid({ members }: MemberGridProps) {
     return ['all', ...unique.sort()];
   }, [members]);
 
-  // Get unique mechanical subteams for filter
+  // Get mechanical subteams for filter - hardcoded list
   const mechanicalSubteams = useMemo(() => {
-    const mechanicalMembers = members.filter(m => 
-      m.subteam.split(',').map(s => s.trim()).includes('Mechanical')
-    );
-    const unique = Array.from(new Set(mechanicalMembers.map(m => m.role)));
-    // Filter out sub-lead roles and keep only main subteams
-    const mainSubteams = unique.filter(role => 
-      role === 'Excavation' || 
-      role === 'Mobility' || 
-      role === 'Structure' ||
-      role === 'Mechanical Team Lead'
-    );
-    return ['all', ...mainSubteams];
-  }, [members]);
+    return ['all', 'Mobility', 'Structures', 'Excavation'];
+  }, []);
 
   // Sort members: leads first, then by photo priority, then alphabetically
   const sortedMembers = useMemo(() => {
@@ -70,7 +59,7 @@ export function MemberGrid({ members }: MemberGridProps) {
 
   // Filter members based on search, subteam, mechanical subteam, and leads only
   const filteredMembers = useMemo(() => {
-    return sortedMembers.filter(member => {
+    const filtered = sortedMembers.filter(member => {
       const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            member.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            member.bio.toLowerCase().includes(searchTerm.toLowerCase());
@@ -78,17 +67,22 @@ export function MemberGrid({ members }: MemberGridProps) {
       const matchesSubteam = selectedSubteam === 'all' || 
         member.subteam.split(',').map(s => s.trim()).includes(selectedSubteam);
       
-      // Check mechanical subteam filter
+      // Check mechanical subteam filter (only applies when Mechanical team is selected)
       const memberSubteams = member.subteam.split(',').map(s => s.trim());
-      const matchesMechanicalSubteam = selectedMechanicalSubteam === 'all' || 
-        (memberSubteams.includes('Mechanical') && (
-          member.role === selectedMechanicalSubteam ||
-          member.role.includes(selectedMechanicalSubteam) ||
-          (selectedMechanicalSubteam === 'Excavation' && member.role.includes('Excavation')) ||
-          (selectedMechanicalSubteam === 'Mobility' && member.role.includes('Mobility')) ||
-          (selectedMechanicalSubteam === 'Structure' && member.role.includes('Structure'))
-        )) ||
-        !memberSubteams.includes('Mechanical');
+      const isMechanicalMember = memberSubteams.includes('Mechanical');
+      
+      // Extract the mechanical subteam from the role
+      const getMechanicalSubteam = (role: string): string | null => {
+        if (role.includes('Excavation')) return 'Excavation';
+        if (role.includes('Mobility')) return 'Mobility';
+        if (role.includes('Structure')) return 'Structures'; // Normalize to plural
+        return null;
+      };
+      
+      // Only filter by mechanical subteam if Mechanical team is selected
+      const matchesMechanicalSubteam = selectedSubteam !== 'Mechanical' || // If not filtering by Mechanical, show all
+        selectedMechanicalSubteam === 'all' || // If "all" is selected, show all mechanical members
+        (isMechanicalMember && getMechanicalSubteam(member.role) === selectedMechanicalSubteam); // Otherwise, match the specific subteam
       
       // Check if member is a lead/tech lead
       const isLead = member.role.toLowerCase().includes('lead') || 
@@ -106,6 +100,17 @@ export function MemberGrid({ members }: MemberGridProps) {
       const matchesLeadsFilter = !showLeadsOnly || isLead;
       
       return matchesSearch && matchesSubteam && matchesMechanicalSubteam && matchesLeadsFilter;
+    });
+    
+    // Remove any duplicates by email (defensive check)
+    const seen = new Set();
+    return filtered.filter(member => {
+      const key = member.email || member.name;
+      if (seen.has(key)) {
+        return false;
+      }
+      seen.add(key);
+      return true;
     });
   }, [sortedMembers, searchTerm, selectedSubteam, selectedMechanicalSubteam, showLeadsOnly]);
 
@@ -194,7 +199,7 @@ export function MemberGrid({ members }: MemberGridProps) {
                     : 'bg-muted text-muted-foreground hover:bg-muted/80'
                 }`}
               >
-                All Mechanical
+                All
               </button>
               {mechanicalSubteams.filter(subteam => subteam !== 'all').map(subteam => (
                 <button
@@ -222,8 +227,8 @@ export function MemberGrid({ members }: MemberGridProps) {
       {/* Members Grid */}
       {filteredMembers.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredMembers.map((member) => (
-            <MemberCard key={member.email} member={member} />
+          {filteredMembers.map((member, index) => (
+            <MemberCard key={`${member.email}-${member.name}-${index}`} member={member} />
           ))}
         </div>
       ) : (
