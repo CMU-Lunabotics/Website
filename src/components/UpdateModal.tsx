@@ -146,21 +146,37 @@ export function UpdateModal({ update, open, onOpenChange }: UpdateModalProps) {
             ))}
           </div>
 
-          {/* Optional Link */}
-          {update.link && update.link.trim() !== '' && (
-            <div className="pt-4 border-t">
-              <Button asChild variant="outline">
-                <a
-                  href={update.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {update.linkLabel || 'View Resource'}
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+          {/* Optional Links */}
+          {(update.links && update.links.length > 0) || (update.link && update.link.trim() !== '') ? (
+            <div className="pt-4 border-t flex flex-wrap gap-3">
+              {/* Legacy single link support */}
+              {update.link && update.link.trim() !== '' && (
+                <Button asChild variant="outline">
+                  <a
+                    href={update.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {update.linkLabel || 'View Resource'}
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              )}
+              {/* Multiple links support */}
+              {update.links && update.links.map((linkItem, index) => (
+                <Button key={index} asChild variant="outline">
+                  <a
+                    href={linkItem.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {linkItem.label}
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              ))}
             </div>
-          )}
+          ) : null}
         </div>
       </DialogContent>
     </Dialog>

@@ -149,6 +149,10 @@ export const UpdateSchema = z.object({
   tags: z.array(z.string()),
   link: z.string().url().or(z.literal('')).optional(),
   linkLabel: z.string().optional(),
+  links: z.array(z.object({
+    url: z.string().url(),
+    label: z.string(),
+  })).optional(),
 });
 
 export type Update = z.infer<typeof UpdateSchema>;

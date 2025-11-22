@@ -29,8 +29,16 @@
     ],
     "content": "Our team presented comprehensive design documentation to NASA judges, demonstrating our robot's capabilities in autonomous excavation, dust mitigation, and lunar surface operations. The review highlighted our innovative approach to combining perception, autonomy, and mechanical design.",
     "tags": ["PDR", "NASA", "Design Review"],
-    "link": "https://docs.google.com/presentation/d/1LQTOKPN9KyvwT2FEf5MgXZnrIZqUN0Yoq0HwsuYFaU4/edit?usp=sharing",
-    "linkLabel": "View Presentation Slides"
+    "links": [
+      {
+        "url": "https://docs.google.com/presentation/d/1LQTOKPN9KyvwT2FEf5MgXZnrIZqUN0Yoq0HwsuYFaU4/edit?usp=sharing",
+        "label": "View Presentation Slides"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=oSWVeF-dxQI",
+        "label": "Watch PDR Online"
+      }
+    ]
   }
 ]
 

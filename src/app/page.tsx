@@ -31,41 +31,8 @@ export default async function Home() {
         heroImage={siteConfig.hero.heroImage}
       />
 
-      {/* Team Pillars */}
-      <Section
-        title="Our Focus Areas"
-        subtitle="Three core pillars driving our lunar excavation research"
-        className="bg-muted/30"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {teamInfo.pillars.map((pillar, index) => (
-            <Card key={index} className="text-center">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-primary">
-                  {pillar.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{pillar.desc}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        
-        {/* Team Photo */}
-        <div className="mt-12 relative aspect-[16/9] rounded-2xl overflow-hidden max-w-4xl mx-auto">
-          <Image
-            src="/images/team/scotty-cmu-lunabotics-2026.png"
-            alt="CMU MoonMiners team with Scotty"
-            fill
-            className="object-contain"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-          />
-        </div>
-      </Section>
-
       {/* What is Lunabotics */}
-      <Section title="What is NASA Lunabotics?">
+      <Section title="What is NASA Lunabotics?" className="pt-32">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="relative aspect-video rounded-lg overflow-hidden">
@@ -117,6 +84,39 @@ export default async function Home() {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
+        </div>
+      </Section>
+
+      {/* Team Pillars */}
+      <Section
+        title="Our Focus Areas"
+        subtitle="Three core pillars driving our lunar excavation research"
+        className="bg-muted/30"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {teamInfo.pillars.map((pillar, index) => (
+            <Card key={index} className="text-center">
+              <CardHeader>
+                <CardTitle className="text-xl font-bold text-primary">
+                  {pillar.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{pillar.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+        
+        {/* Team Photo */}
+        <div className="mt-12 relative aspect-[16/9] rounded-2xl overflow-hidden max-w-4xl mx-auto">
+          <Image
+            src="/images/team/scotty-cmu-lunabotics-2026.png"
+            alt="CMU MoonMiners team with Scotty"
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+          />
         </div>
       </Section>
     </>
