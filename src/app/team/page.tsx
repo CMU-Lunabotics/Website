@@ -26,6 +26,23 @@ export default async function TeamPage() {
         subtitle="Meet the interdisciplinary group building the future of lunar robotics"
       />
 
+      {/* Team Photo Banner */}
+      <div className="relative w-full min-h-screen overflow-hidden">
+        <Image
+          src={teamInfo.teamPhoto}
+          alt="CMU MoonMiners team photo"
+          fill
+          className="object-contain"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
+          <p className="text-sm text-muted-foreground bg-background/80 px-4 py-2 rounded-lg">
+            CMU MoonMiners Team 2025
+          </p>
+        </div>
+      </div>
+
       {/* Quick Navigation */}
       <Section className="py-8">
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -52,25 +69,6 @@ export default async function TeamPage() {
               <ExternalLink className="ml-2 h-4 w-4" />
             </a>
           </Button>
-        </div>
-      </Section>
-
-      {/* Team Photo Banner */}
-      <Section className="py-0">
-        <div className="relative aspect-[3/1] rounded-2xl overflow-hidden">
-          <Image
-            src={teamInfo.teamPhoto}
-            alt="CMU MoonMiners team photo"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-            priority
-          />
-        </div>
-        <div className="mt-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            CMU MoonMiners Team 2025
-          </p>
         </div>
       </Section>
 

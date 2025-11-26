@@ -119,9 +119,13 @@ export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps)
             )}
           </>
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-            No image
-          </div>
+          <Image
+            src="/images/team/team-2025.jpg"
+            alt={`${update.title} - Team Photo`}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         )}
       </div>
       <CardHeader>

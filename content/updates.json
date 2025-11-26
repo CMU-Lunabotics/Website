@@ -5,7 +5,9 @@
     "date": "2026-1-15",
     "category": "Announcement",
     "summary": "CMU Moon Miners has been officially accepted into the 2026 NASA Lunabotics Challenge—one of only 50 teams selected from 73 applicants worldwide.",
-    "images": [],
+    "images": [
+      "/images/team/team-2025.jpg"
+    ],
     "content": "We're excited to share that CMU Moon Miners has been officially accepted into the 2026 NASA Lunabotics Challenge—one of only 50 teams selected from 73 applicants worldwide, alongside programs from institutions such as MIT and Caltech. This marks a major milestone for our young team as we step onto the national stage to design, build, and demonstrate an autonomous lunar excavation and construction robot. The acceptance reflects the strength of our engineering vision, the dedication of our members, and the support of our faculty mentors and sponsors. We can't wait to push further into autonomy, perception, and lunar robotics as we move toward CDR, system integration, and competition day.",
     "tags": ["NASA", "Competition", "Announcement"],
     "link": "https://www.nasa.gov/feature/nasa-lunabotics-challenge",
