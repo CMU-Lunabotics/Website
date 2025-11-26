@@ -93,7 +93,7 @@
     "subteam": "Mechanical",
     "year": "2025",
     "email": "abigailm@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
+    "photo": "/images/members/abbey-miller.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Structures technical lead for mechanical systems.",
     "tags": ["Mechanical", "Structures", "Technical Lead"]
@@ -181,7 +181,7 @@
     "subteam": "Mechanical",
     "year": "2025",
     "email": "irisw@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
+    "photo": "/images/members/iris-wang.JPG",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Mechanical engineering focused on structures.",
     "tags": ["Mechanical", "Structures"]
@@ -192,7 +192,7 @@
     "subteam": "Mechanical",
     "year": "2025",
     "email": "jamess@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
+    "photo": "/images/members/james-shin.jpeg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Technical lead for excavation systems.",
     "tags": ["Mechanical", "Excavation", "Technical Lead"]
@@ -214,7 +214,7 @@
     "subteam": "Mechanical",
     "year": "2025",
     "email": "joelj@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
+    "photo": "/images/members/joel-jacob.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Mechanical engineering focused on excavation systems.",
     "tags": ["Mechanical", "Excavation"]
@@ -225,7 +225,7 @@
     "subteam": "Mechanical",
     "year": "2025",
     "email": "krishnavg@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
+    "photo": "/images/members/krishnav-goyal.jpeg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Mechanical engineering focused on mobility systems.",
     "tags": ["Mechanical", "Mobility"]
@@ -236,7 +236,7 @@
     "subteam": "Mechanical",
     "year": "2025",
     "email": "loganm@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
+    "photo": "/images/members/logan-maurer.png",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Technical lead for finite element analysis.",
     "tags": ["Mechanical", "FEA", "Technical Lead"]
@@ -357,7 +357,7 @@
     "subteam": "Software",
     "year": "2025",
     "email": "lizad@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
+    "photo": "/images/members/liza-dahiya.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Software engineering focused on autonomous systems.",
     "tags": ["Software", "Autonomous", "Systems"]
