@@ -1,10 +1,17 @@
 {
   "sponsors": [
     {
-      "name": "Synopsys",
-      "logo": "/images/sponsors/synopsys.png",
-      "url": "https://www.synopsys.com",
-      "blurb": "Engineering solutions from silicon to systems.",
+      "name": "Shield AI",
+      "logo": "/images/sponsors/shieldAI.png",
+      "url": "https://www.shield.ai",
+      "blurb": "Building the world's best AI pilot.",
+      "whiteOnDark": false
+    },
+    {
+      "name": "SICK",
+      "logo": "/images/sponsors/sick.png",
+      "url": "https://www.sick.com",
+      "blurb": "Sensor solutions for industrial applications.",
       "whiteOnDark": false
     },
     {
