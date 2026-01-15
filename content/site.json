@@ -14,7 +14,7 @@
     "subhead": "Autonomy • Perception • Dust-robust mechanisms",
     "ctaPrimary": {"label": "Meet the Team", "href": "/team"},
     "ctaSecondary": {"label": "Our Sponsors", "href": "/sponsors"},
-    "heroImage": null,
+    "heroImage": "/images/hero/titlepagemoon.jpg",
     "video": null
   }
 }
