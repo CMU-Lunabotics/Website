@@ -37,7 +37,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="relative aspect-video rounded-lg overflow-hidden">
               <Image
-                src="/images/home/regulus.jpg"
+                src="/images/home/atlas.png"
                 alt="Regulus lunar excavation robot"
                 fill
                 className="object-contain"
