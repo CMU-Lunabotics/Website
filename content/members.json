@@ -316,7 +316,7 @@
     "photo": "/images/members/andrew-carnegie.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Undergraduate student in Electrical and Computer Engineering.",
-    "tags": ["Outreach", "Electrical and Computer Engineering", "Undergraduate"]
+    "tags": ["Outreach", "Electrical and Computer Engineering"]
   },
   {
     "name": "Inseo Kim",
@@ -327,7 +327,7 @@
     "photo": "/images/members/andrew-carnegie.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Undergraduate student in Information Systems.",
-    "tags": ["Outreach", "Information Systems", "Undergraduate"]
+    "tags": ["Outreach", "Information Systems"]
   },
   {
     "name": "Elizabeth Li",
@@ -338,7 +338,7 @@
     "photo": "/images/members/andrew-carnegie.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Undergraduate student in Electrical and Computer Engineering.",
-    "tags": ["Outreach", "Electrical and Computer Engineering", "Undergraduate"]
+    "tags": ["Outreach", "Electrical and Computer Engineering"]
   },
   {
     "name": "Yasmin Ahmed",
@@ -349,7 +349,7 @@
     "photo": "/images/members/andrew-carnegie.jpg",
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Undergraduate student in Dietrich College.",
-    "tags": ["Outreach", "Dietrich College", "Undergraduate"]
+    "tags": ["Outreach", "Dietrich College"]
   },
   {
     "name": "Chris Keefe",
