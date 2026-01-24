@@ -33,17 +33,6 @@
     "tags": ["Avionics", "Electrical", "Robotics"]
   },
   {
-    "name": "Juee Chandrachud",
-    "role": "Systems Lead",
-    "subteam": "System, Avionics",
-    "year": "2026",
-    "email": "jueechandrachud@gmail.com",
-    "photo": "/images/members/juee-chandrachud.jpg",
-    "links": {"linkedin": "https://www.linkedin.com/in/juee-chandrachud/", "github": "", "website": "https://sites.google.com/view/jueechandrachud/home", "instagram": ""},
-    "bio": "Passionate about leading teams to develop autonomous robotic systems leveraging mechatronics and systems integration.",
-    "tags": ["System"]
-  },
-  {
     "name": "May Sonoda",
     "role": "Avionics",
     "subteam": "Avionics",
@@ -77,17 +66,6 @@
     "tags": ["Avionics", "Electrical", "Autonomous"]
   },
   {
-    "name": "Aaron Chuang",
-    "role": "Excavation",
-    "subteam": "Mechanical",
-    "year": "2025",
-    "email": "aaronc@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Mechanical engineering focused on excavation systems and mechanisms.",
-    "tags": ["Mechanical", "Excavation", "Design"]
-  },
-  {
     "name": "Abigail Miller",
     "role": "Structures - Technical Lead",
     "subteam": "Mechanical",
@@ -110,17 +88,6 @@
     "tags": ["System", "Mechanical Engineering + Engineering & Public Policy"]
   },
   {
-    "name": "Anderson Ho",
-    "role": "Structures",
-    "subteam": "Mechanical",
-    "year": "2025",
-    "email": "andersonh@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Mechanical engineering focused on structures and design.",
-    "tags": ["Mechanical", "Structures"]
-  },
-  {
     "name": "Andrew Cho",
     "role": "Mobility",
     "subteam": "Mechanical",
@@ -132,17 +99,6 @@
     "tags": ["Mechanical", "Mobility"]
   },
   {
-    "name": "Arnav Srikanth",
-    "role": "Mechanical",
-    "subteam": "Mechanical",
-    "year": "2025",
-    "email": "arnavs@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Mechanical design and analysis for dust mitigation systems.",
-    "tags": ["Mechanical", "Dust Mitigation", "Analysis"]
-  },
-  {
     "name": "Daniel Downes",
     "role": "Structures",
     "subteam": "Mechanical",
@@ -152,28 +108,6 @@
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Mechanical engineering focused on structures.",
     "tags": ["Mechanical", "Structures"]
-  },
-  {
-    "name": "Elihu McMahon",
-    "role": "Excavation",
-    "subteam": "Mechanical",
-    "year": "2025",
-    "email": "elihum@andrew.cmu.edu",
-    "photo": "/images/members/andrew-carnegie.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Mechanical systems design for autonomous excavation.",
-    "tags": ["Mechanical", "Excavation", "Autonomous", "Design"]
-  },
-  {
-    "name": "Emily Sohn",
-    "role": "Mobility",
-    "subteam": "Mechanical",
-    "year": "2025",
-    "email": "emilys@andrew.cmu.edu",
-    "photo": "/images/members/emily-sohn.jpg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Mechanical engineering focused on mobility systems.",
-    "tags": ["Mechanical", "Mobility"]
   },
   {
     "name": "Iris Wang",
@@ -218,28 +152,6 @@
     "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
     "bio": "Mechanical engineering focused on excavation systems.",
     "tags": ["Mechanical", "Excavation"]
-  },
-  {
-    "name": "Krishnav Goyal",
-    "role": "Mobility",
-    "subteam": "Mechanical",
-    "year": "2025",
-    "email": "krishnavg@andrew.cmu.edu",
-    "photo": "/images/members/krishnav-goyal.jpeg",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Mechanical engineering focused on mobility systems.",
-    "tags": ["Mechanical", "Mobility"]
-  },
-  {
-    "name": "Logan Maurer",
-    "role": "FEA - Technical Lead",
-    "subteam": "Mechanical",
-    "year": "2025",
-    "email": "loganm@andrew.cmu.edu",
-    "photo": "/images/members/logan-maurer.png",
-    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
-    "bio": "Technical lead for finite element analysis.",
-    "tags": ["Mechanical", "FEA", "Technical Lead"]
   },
   {
     "name": "Muan Meurer",

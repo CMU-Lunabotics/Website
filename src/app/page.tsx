@@ -108,16 +108,6 @@ export default async function Home() {
           ))}
         </div>
         
-        {/* Team Photo */}
-        <div className="mt-12 relative aspect-[16/9] rounded-2xl overflow-hidden max-w-4xl mx-auto">
-          <Image
-            src="/images/team/scotty-cmu-lunabotics-2026.png"
-            alt="CMU MoonMiners team with Scotty"
-            fill
-            className="object-contain"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-          />
-        </div>
       </Section>
     </>
   );
