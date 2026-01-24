@@ -253,17 +253,6 @@
     "tags": ["Software", "Computer Vision", "AI"]
   },
   {
-    "name": "Jaden Lee",
-    "role": "Software",
-    "subteam": "Software",
-    "year": "2027",
-    "email": "jadenlee@andrew.cmu.edu",
-    "photo": "/images/members/jaden-lee.jpg",
-    "links": {"linkedin": "https://www.linkedin.com/in/jadenjwlee", "github": "", "website": "", "instagram": ""},
-    "bio": "Software Development Autonomy Team",
-    "tags": ["Software", "Autonomy", "Electrical and Computer Engineering"]
-  },
-  {
     "name": "Liza Dahiya",
     "role": "Software",
     "subteam": "Software",
@@ -317,6 +306,61 @@
     "links": {"linkedin": "https://www.linkedin.com/in/hong-teng-jerry-chen/", "github": "", "website": "", "instagram": "https://www.instagram.com/j3rrychen45/"},
     "bio": "Passonate about robotics, aerospace, control, and everything in between!",
     "tags": ["Software", "Outreach"]
+  },
+  {
+    "name": "Mithilya Raj",
+    "role": "Outreach",
+    "subteam": "Software",
+    "year": "2028",
+    "email": "mithilyr@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Undergraduate student in Electrical and Computer Engineering.",
+    "tags": ["Outreach", "Electrical and Computer Engineering", "Undergraduate"]
+  },
+  {
+    "name": "Inseo Kim",
+    "role": "Outreach",
+    "subteam": "Software",
+    "year": "2028",
+    "email": "inseok@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Undergraduate student in Information Systems.",
+    "tags": ["Outreach", "Information Systems", "Undergraduate"]
+  },
+  {
+    "name": "Elizabeth Li",
+    "role": "Outreach",
+    "subteam": "Software",
+    "year": "2028",
+    "email": "ezli@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Undergraduate student in Electrical and Computer Engineering.",
+    "tags": ["Outreach", "Electrical and Computer Engineering", "Undergraduate"]
+  },
+  {
+    "name": "Yasmin Ahmed",
+    "role": "Outreach",
+    "subteam": "Software",
+    "year": "2029",
+    "email": "yasmina@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Undergraduate student in Dietrich College.",
+    "tags": ["Outreach", "Dietrich College", "Undergraduate"]
+  },
+  {
+    "name": "Chris Keefe",
+    "role": "Mechanical",
+    "subteam": "Mechanical",
+    "year": "",
+    "email": "ckeefe@andrew.cmu.edu",
+    "photo": "/images/members/andrew-carnegie.jpg",
+    "links": {"linkedin": "", "github": "", "website": "", "instagram": ""},
+    "bio": "Mechanical Engineering.",
+    "tags": ["Mechanical", "Mechanical Engineering"]
   },
   {
     "name": "Jialing Bi 毕嘉玲",
