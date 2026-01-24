@@ -14,6 +14,19 @@
     "linkLabel": "Learn More About NASA Lunabotics"
   },
   {
+    "id": "cdr-2025",
+    "title": "Critical Design Review",
+    "date": "2025-12-01",
+    "category": "Milestone",
+    "summary": "Completed our Critical Design Review, presenting integrated mechanical, electrical, and software designs for the rover.",
+    "images": [
+      "/images/updates/cdr-2025/page1.jpg",
+      "/images/updates/cdr-2025/page2.jpg"
+    ],
+    "content": "We recently completed our Critical Design Review, a milestone that reflects months of collaboration, late nights, and problem-solving across the team. During the review, we presented our current mechanical, electrical, and software designs and discussed how they come together as an integrated rover system. The feedback we received challenged our assumptions, highlighted areas for improvement, and is actively guiding our next design iterations as we move toward fabrication, integration, and testing.",
+    "tags": ["CDR", "Design Review", "Systems"]
+  },
+  {
     "id": "pdr-2025",
     "title": "Preliminary Design Review",
     "date": "2025-11-1",
