@@ -21,9 +21,10 @@ export function NavBar({ logoPath }: NavBarProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/60 backdrop-blur supports-[backdrop-filter]:bg-white/50">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container max-w-none flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2 pl-4 md:pl-8">
           <Logo logoPath={logoPath || '/images/logo/logo2026.svg'} />
+          <span className="text-sm font-semibold text-black">Moon Miners</span>
         </Link>
         
         <div className="flex items-center space-x-4">

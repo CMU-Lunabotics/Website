@@ -48,8 +48,8 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
 
                   return (
                     <div key={`${sponsor.name}-${idx}`} className={`${styles.tile} flex items-center justify-center`}>
-                      <div className={`w-40 md:w-56 h-40 rounded-lg flex items-center justify-center p-4 bg-white/10`}>
-                        <div className="relative h-40 w-40">
+                      <div className={`w-40 md:w-56 h-40 rounded-lg overflow-hidden bg-white/10 flex items-center justify-center`}>
+                        <div className="relative w-50 h-50">
                           <Image src={sponsor.logo} alt={`${sponsor.name} logo`} fill className="object-contain" sizes="160px" />
                         </div>
                       </div>

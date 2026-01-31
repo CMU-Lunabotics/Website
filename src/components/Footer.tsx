@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Github, Youtube, Instagram, Mail } from 'lucide-react';
 import { Container } from './Container';
+import { Logo } from './Logo';
 
 interface FooterProps {
   siteConfig: {
@@ -18,7 +19,7 @@ export function Footer({ siteConfig }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t bg-gradient-to-b from-muted-basic/50 to-muted/80">
+    <footer className="border-t border-muted bg-gradient-to-b from-white/30 to-white/70">
       <Container>
         <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
