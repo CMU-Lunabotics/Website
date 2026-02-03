@@ -30,7 +30,7 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
 
         <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden">
             <div className={`${styles.marquee}`}>
-              <div className={`${styles.track}`} style={{ ['--duration' as any]: '22s' }}>
+              <div className={styles.track} style={{ '--duration': '22s' } as React.CSSProperties}>
                 {slots.concat(slots).map((sponsor, idx) => {
                   // Fallback slot
                   if (!sponsor) {
