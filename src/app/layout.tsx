@@ -4,6 +4,8 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import { Newsletter } from "@/components/Newsletter";
+import { HomepageBackground } from "@/components/HomepageBackground";
 import { getSiteConfig } from "@/lib/content";
 
 const inter = Inter({
@@ -73,11 +75,18 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen flex flex-col">
+          <div className="min-h-screen flex flex-col relative">
+            <HomepageBackground />
             <NavBar logoPath={siteConfig.logo} />
             <main className="flex-1">
               {children}
             </main>
+
+            {/* Newsletter full-width block attached above footer */}
+            <div className="border-t bg-gradient-to-b from-white/10 to-white/30">
+              <Newsletter />
+            </div>
+
             <Footer siteConfig={siteConfig} />
           </div>
         </ThemeProvider>

@@ -10,10 +10,9 @@
     "instagram": "https://instagram.com/cmu_moonminers"
   },
   "hero": {
-    "headline": "Digging the Moon, One Bucket at a Time.",
-    "subhead": "Autonomy • Perception • Dust-robust mechanisms",
-    "ctaPrimary": {"label": "Meet the Team", "href": "/team"},
-    "ctaSecondary": {"label": "Our Sponsors", "href": "/sponsors"},
+    "headline": "First Footprint.\nEngineered to Lead.",
+    "ctaPrimary": {"label": "Join Us", "href": "/team"},
+    "ctaSecondary": {"label": "Meet the Team", "href": "/team"},
     "heroImage": "/images/hero/titlepagemoon.jpg",
     "video": null
   }

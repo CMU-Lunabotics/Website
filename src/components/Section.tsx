@@ -6,21 +6,23 @@ interface SectionProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
+  titleClassName?: string;
+  subtitleClassName?: string;
 }
 
-export function Section({ title, subtitle, children, className, id }: SectionProps) {
+export function Section({ title, subtitle, children, className, id, titleClassName, subtitleClassName }: SectionProps) {
   return (
     <section id={id} className={cn('py-16', className)}>
       <Container>
         {(title || subtitle) && (
           <div className="text-center mb-12">
             {title && (
-              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              <h2 className={cn('text-3xl font-bold tracking-tight sm:text-4xl', titleClassName)}>
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className={cn('mt-4 text-lg text-muted-foreground max-w-2xl mx-auto', subtitleClassName)}>
                 {subtitle}
               </p>
             )}

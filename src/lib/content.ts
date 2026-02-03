@@ -14,7 +14,7 @@ export const SiteConfigSchema = z.object({
   }),
   hero: z.object({
     headline: z.string(),
-    subhead: z.string(),
+    subhead: z.string().optional(),
     ctaPrimary: z.object({
       label: z.string(),
       href: z.string(),
