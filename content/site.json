@@ -12,7 +12,7 @@
   "hero": {
     "headline": "First Footprint.\nEngineered to Lead.",
     "ctaPrimary": {"label": "Join Us", "href": "/team"},
-    "ctaSecondary": {"label": "Meet the Team", "href": "/sponsors"},
+    "ctaSecondary": {"label": "Meet the Team", "href": "/team"},
     "heroImage": "/images/hero/titlepagemoon.jpg",
     "video": null
   }
