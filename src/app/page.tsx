@@ -7,6 +7,7 @@ import { UpdateCard } from '@/components/UpdateCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { getSiteConfig, getTeamInfo, getUpdates, getSponsors } from '@/lib/content';
+import { getStorageUrl } from '@/lib/supabase';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 
 export default async function Home() {
@@ -29,7 +30,7 @@ export default async function Home() {
       {/* Full-page background for homepage */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/hero/homepage-bg.png"
+          src={getStorageUrl('hero/homepage-bg.png')}
           alt="Homepage background"
           fill
           className="object-cover"
@@ -40,7 +41,7 @@ export default async function Home() {
         {/* Rover artwork overlay (moved closer to center and enlarged) */}
         <div className="hidden lg:block absolute left-[60%] -translate-x-1/2 top-12 w-[700px] h-[700px] pointer-events-none">
           <img
-            src="/images/hero/rover-360.gif"
+            src={getStorageUrl('hero/rover-360.gif')}
             alt=""
             className="w-full h-full object-contain"
             loading="lazy"
@@ -81,7 +82,7 @@ export default async function Home() {
             {/* Rover artwork with moon ellipse (centered) */}
             <div className="relative w-72 h-72 md:w-[577px] md:h-[363px] rounded-full overflow-hidden flex items-center justify-center">
               <Image
-                src="/images/home/moon-ellipse.png"
+                src={getStorageUrl('home/moon-ellipse.png')}
                 alt="Moon ellipse"
                 fill
                 className="object-cover"
@@ -90,7 +91,7 @@ export default async function Home() {
 
               <div className="relative w-[85%] h-[85%] md:w-[92%] md:h-[92%] z-20">
                 <Image
-                  src="/images/hero/rover-clear.png"
+                  src={getStorageUrl('hero/rover-clear.png')}
                   alt="Rover"
                   fill
                   className="object-contain"

@@ -98,7 +98,15 @@ export type Sponsors = z.infer<typeof SponsorsSchema>;
 // Content loader functions
 export async function getSiteConfig(): Promise<SiteConfig> {
   const content = await import('../../content/site.json');
-  return SiteConfigSchema.parse(content.default);
+  const config = content.default;
+  return SiteConfigSchema.parse({
+    ...config,
+    logo: getStorageUrl(config.logo),
+    hero: {
+      ...config.hero,
+      heroImage: getStorageUrl(config.hero.heroImage),
+    },
+  });
 }
 
 export async function getMembers(): Promise<Member[]> {

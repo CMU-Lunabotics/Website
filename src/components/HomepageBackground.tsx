@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { getStorageUrl } from '@/lib/supabase';
 
 export function HomepageBackground() {
   const pathname = usePathname();
@@ -11,7 +12,7 @@ export function HomepageBackground() {
   return (
     <div className="absolute inset-0 -z-10">
       <Image
-        src="/images/hero/homepage-bg.png"
+        src={getStorageUrl('hero/homepage-bg.png')}
         alt="Homepage background"
         fill
         className="object-cover"
@@ -22,7 +23,7 @@ export function HomepageBackground() {
       {/* Rover artwork */}
       <div className="hidden lg:block absolute right-12 top-16 w-[560px] h-[520px] pointer-events-none">
         <Image
-          src="/images/hero/rover-clear.png"
+          src={getStorageUrl('hero/rover-clear.png')}
           alt="Rover render"
           width={560}
           height={520}

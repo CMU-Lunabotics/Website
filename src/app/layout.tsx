@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   icons: {
     icon: [
-      { url: '/images/logo/logo20262.png', type: 'image/png' },
-      { url: '/images/logo/logo2026.svg', type: 'image/svg+xml' },
+      { url: 'https://hypejatlztjwwyyznnwd.supabase.co/storage/v1/object/public/media/logo/logo20262.png', type: 'image/png' },
+      { url: 'https://hypejatlztjwwyyznnwd.supabase.co/storage/v1/object/public/media/logo/logo2026.svg', type: 'image/svg+xml' },
     ],
     apple: [
-      { url: '/images/logo/logo20262.png', type: 'image/png' },
+      { url: 'https://hypejatlztjwwyyznnwd.supabase.co/storage/v1/object/public/media/logo/logo20262.png', type: 'image/png' },
     ],
   },
   openGraph: {
