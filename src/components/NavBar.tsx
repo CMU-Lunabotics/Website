@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/button';
+import { getStorageUrl } from '@/lib/supabase';
 
 const navigation = [
   { name: 'Team', href: '/team' },
@@ -23,7 +24,7 @@ export function NavBar({ logoPath }: NavBarProps) {
     <header className="sticky top-0 z-50 w-full bg-white/60 backdrop-blur supports-[backdrop-filter]:bg-white/50">
       <div className="container max-w-none flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2 pl-4 md:pl-8">
-          <Logo logoPath={logoPath || '/images/logo/logo2026.svg'} />
+          <Logo logoPath={logoPath || getStorageUrl('logo/logo2026.svg')} />
           <span className="text-sm font-semibold text-black">Moon Miners</span>
         </Link>
         

@@ -1,0 +1,59 @@
+[
+  {
+    "id": "nasa-acceptance-2026",
+    "title": "Accepted into 2026 NASA Lunabotics Challenge",
+    "date": "2026-1-15",
+    "category": "Announcement",
+    "summary": "CMU Moon Miners has been officially accepted into the 2026 NASA Lunabotics Challenge—one of only 50 teams selected from 73 applicants worldwide.",
+    "images": [
+      "/images/team/team-2025.jpg"
+    ],
+    "content": "We're excited to share that CMU Moon Miners has been officially accepted into the 2026 NASA Lunabotics Challenge—one of only 50 teams selected from 73 applicants worldwide, alongside programs from institutions such as MIT and Caltech. This marks a major milestone for our young team as we step onto the national stage to design, build, and demonstrate an autonomous lunar excavation and construction robot. The acceptance reflects the strength of our engineering vision, the dedication of our members, and the support of our faculty mentors and sponsors. We can't wait to push further into autonomy, perception, and lunar robotics as we move toward CDR, system integration, and competition day.",
+    "tags": ["NASA", "Competition", "Announcement"],
+    "link": "https://www.nasa.gov/feature/nasa-lunabotics-challenge",
+    "linkLabel": "Learn More About NASA Lunabotics"
+  },
+  {
+    "id": "cdr-2025",
+    "title": "Critical Design Review",
+    "date": "2025-12-01",
+    "category": "Milestone",
+    "summary": "Completed our Critical Design Review, presenting integrated mechanical, electrical, and software designs for the rover.",
+    "images": [
+      "/images/updates/cdr-2025/page1.jpg",
+      "/images/updates/cdr-2025/page2.jpg"
+    ],
+    "content": "We recently completed our Critical Design Review, a milestone that reflects months of collaboration, late nights, and problem-solving across the team. During the review, we presented our current mechanical, electrical, and software designs and discussed how they come together as an integrated rover system. The feedback we received challenged our assumptions, highlighted areas for improvement, and is actively guiding our next design iterations as we move toward fabrication, integration, and testing.",
+    "tags": ["CDR", "Design Review", "Systems"]
+  },
+  {
+    "id": "pdr-2025",
+    "title": "Preliminary Design Review",
+    "date": "2025-11-1",
+    "category": "Milestone",
+    "summary": "Successfully completed our PDR, showcasing our autonomous excavation system design and dust mitigation strategies.",
+    "images": [
+      "/images/updates/pdr-2025/IMG_1474.jpeg",
+      "/images/updates/pdr-2025/IMG_1475.jpeg",
+      "/images/updates/pdr-2025/IMG_1477.jpeg",
+      "/images/updates/pdr-2025/IMG_1479.jpeg",
+      "/images/updates/pdr-2025/IMG_1484.jpeg",
+      "/images/updates/pdr-2025/IMG_1492.jpeg",
+      "/images/updates/pdr-2025/IMG_1500.jpeg",
+      "/images/updates/pdr-2025/IMG_1508.jpeg"
+    ],
+    "content": "Our team presented comprehensive design documentation to NASA judges, demonstrating our robot's capabilities in autonomous excavation, dust mitigation, and lunar surface operations. The review highlighted our innovative approach to combining perception, autonomy, and mechanical design.",
+    "tags": ["PDR", "NASA", "Design Review"],
+    "links": [
+      {
+        "url": "https://docs.google.com/presentation/d/1LQTOKPN9KyvwT2FEf5MgXZnrIZqUN0Yoq0HwsuYFaU4/edit?usp=sharing",
+        "label": "View Presentation Slides"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=oSWVeF-dxQI",
+        "label": "Watch PDR Online"
+      }
+    ]
+  }
+]
+

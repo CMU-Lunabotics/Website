@@ -3,7 +3,7 @@
   "tagline": "Autonomous lunar excavation for NASA Lunabotics.",
   "contactEmail": "moonminers@andrew.cmu.edu",
   "location": "Carnegie Mellon University, Pittsburgh, PA",
-  "logo": "/images/logo/logo20262.png",
+  "logo": "logo/logo20262.png",
   "social": {
     "github": "https://github.com/CMU-Lunabotics",
     "youtube": "https://youtube.com/@cmu-moonminers",
@@ -13,7 +13,7 @@
     "headline": "First Footprint.\nEngineered to Lead.",
     "ctaPrimary": {"label": "Join Us", "href": "/team"},
     "ctaSecondary": {"label": "Meet the Team", "href": "/team"},
-    "heroImage": "/images/hero/titlepagemoon.jpg",
+    "heroImage": "hero/titlepagemoon.jpg",
     "video": null
   }
 }

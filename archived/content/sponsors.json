@@ -1,0 +1,42 @@
+{
+  "sponsors": [
+    {
+      "name": "Shield AI",
+      "logo": "/images/sponsors/shieldAI.png",
+      "url": "https://www.shield.ai",
+      "blurb": "Building the world's best AI pilot.",
+      "whiteOnDark": false
+    },
+    {
+      "name": "SICK",
+      "logo": "/images/sponsors/sick.png",
+      "url": "https://www.sick.com",
+      "blurb": "Sensor solutions for industrial applications.",
+      "whiteOnDark": false
+    },
+    {
+      "name": "Prof. Howie Choset",
+      "logo": "/images/sponsors/choset.jpg",
+      "url": "https://www.cs.cmu.edu/~choset/",
+      "blurb": "Carnegie Mellon University - Biorobotics Laboratory",
+      "whiteOnDark": false
+    },
+    {
+      "name": "Dr. Clinton W. Kelly III",
+      "logo": "/images/sponsors/drkelly.jpg",
+      "blurb": "Individual Sponsor",
+      "whiteOnDark": false
+    },
+    {
+      "name": "Prof. Red Whittaker",
+      "logo": "/images/mentors/red-whittaker.jpg",
+      "blurb": "Founders University Research Professor Emeritus, Carnegie Mellon University",
+      "whiteOnDark": false
+    }
+  ],
+  "callToAction": {
+    "headline": "Support CMU MoonMiners",
+    "copy": "Help us push lunar robotics forward. Contact us for our sponsorship prospectus.",
+    "email": "moonminers@andrew.cmu.edu"
+  }
+}

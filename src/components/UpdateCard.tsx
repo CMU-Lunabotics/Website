@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Update } from '@/lib/content';
 import { UpdateModal } from './UpdateModal';
+import { getStorageUrl } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 
 interface UpdateCardProps {
@@ -111,7 +112,7 @@ export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps)
           </>
         ) : (
           <Image
-            src="/images/team/team-2025.jpg"
+            src={getStorageUrl('team/team-2025.jpg')}
             alt="Default team cover"
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"

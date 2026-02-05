@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { getStorageUrl } from '@/lib/supabase';
 
 interface LogoProps {
   className?: string;
@@ -7,7 +8,7 @@ interface LogoProps {
   logoPath?: string;
 }
 
-export function Logo({ className, size = 'md', logoPath = '/images/logo/logo2026.svg' }: LogoProps) {
+export function Logo({ className, size = 'md', logoPath = getStorageUrl('logo/logo2026.svg') }: LogoProps) {
   const sizeClasses = {
     sm: 'h-8 w-auto',
     md: 'h-10 w-auto',

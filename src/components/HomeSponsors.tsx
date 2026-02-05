@@ -11,14 +11,17 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
   const logos = sponsors.sponsors;
 
   const desiredOrder = [
-    '/images/sponsors/drkelly.jpg',
-    '/images/sponsors/shieldAI.png',
-    '/images/sponsors/sick.png',
-    '/images/sponsors/choset.jpg',
-    '/images/mentors/red-whittaker.jpg',
+    'sponsors/drkelly.jpg',
+    'sponsors/shieldAI.png',
+    'sponsors/sick.png',
+    'sponsors/choset.jpg',
+    'mentors/red-whittaker.jpg',
   ];
 
-  const ordered = desiredOrder.map((path) => logos.find((s) => s.logo === path)).filter(Boolean) as typeof logos;
+  // Extract path suffix for comparison (handles both local /images/ paths and full Supabase URLs)
+  const getPathSuffix = (url: string) => url.replace(/^.*\/images\//, '').replace(/^.*\/media\//, '');
+
+  const ordered = desiredOrder.map((path) => logos.find((s) => getPathSuffix(s.logo) === path)).filter(Boolean) as typeof logos;
   const slots = ordered.slice(0, 5);
 
   return (

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Container } from './Container';
+import { getStorageUrl } from '@/lib/supabase';
 
 interface HeroProps {
   headline: string;
@@ -54,7 +55,7 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
           {/* 3. Rover GIF */}
           <div className="hidden lg:block relative w-[500px] h-[500px]">
              <video
-                src="/images/hero/rover-360.gif"
+                src={getStorageUrl('hero/rover-360.gif')}
                 autoPlay loop muted playsInline
                 className="w-full h-full object-contain"
               />
