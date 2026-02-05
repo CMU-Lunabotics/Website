@@ -2,14 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "hypejatlztjwwyyznnwd.supabase.co",
-        port: "",
-        pathname: "/storage/v1/object/public/**",
-      },
-    ],
+    loader: "custom",
+    loaderFile: "./src/lib/supabase-image-loader.ts",
   },
 };
 
