@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { getStorageUrl } from '@/lib/supabase';
 
 export function SponsorLanding() {
@@ -8,6 +7,7 @@ export function SponsorLanding() {
     <section className="relative w-full overflow-hidden">
       {/* Background Image */}
       <div className="relative w-full h-[483px]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={getStorageUrl('hero/image 6.png')}
           alt="Sponsors hero background"

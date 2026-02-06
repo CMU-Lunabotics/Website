@@ -7,6 +7,7 @@ export function SponsorCTA() {
     <section className="relative w-full">
       {/* Full-bleed background */}
       <div className="relative w-full h-[1223px]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={getStorageUrl('hero/IMG_2424 1.png')}
           alt="Join The Crew background"

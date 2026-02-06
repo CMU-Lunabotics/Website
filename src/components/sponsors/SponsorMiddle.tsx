@@ -1,17 +1,13 @@
 import React from 'react';
-import Image from 'next/image';
 import { getStorageUrl } from '@/lib/supabase';
 
-interface SponsorMiddleProps {
-  // optionally accept sponsors data later
-}
-
-export function SponsorMiddle(_props: SponsorMiddleProps) {
+export function SponsorMiddle() {
   return (
     <section className="relative">
       {/* Combined full-bleed area containing both backgrounds so we can precisely space headings */}
       <div className="w-full relative" style={{ height: '1100px' }}>
         {/* First background (Rectangle 30) */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={getStorageUrl('hero/Rectangle 30.png')}
           alt="Sponsors section background"
@@ -25,6 +21,7 @@ export function SponsorMiddle(_props: SponsorMiddleProps) {
             <h2 className="text-white text-6xl font-semibold mb-8">Current Sponsors</h2>
             <div className="flex items-center justify-center gap-12 mt-4">
               <div className="h-[262px] flex items-end">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={getStorageUrl('sponsors/shieldAI.png')}
                   alt="Shield AI"
@@ -32,6 +29,7 @@ export function SponsorMiddle(_props: SponsorMiddleProps) {
                 />
               </div>
               <div className="h-[262px] flex items-end">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={getStorageUrl('sponsors/sick.png')}
                   alt="SICK"
@@ -54,18 +52,21 @@ export function SponsorMiddle(_props: SponsorMiddleProps) {
                 <div className="absolute top-16 left-1/2 -translate-x-1/2 z-10 flex items-end gap-8">
                   <div className="flex flex-col items-center">
                     <div className="w-[284px] h-[284px] rounded-full overflow-hidden bg-neutral-300 shadow-md mb-2">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={getStorageUrl('sponsors/choset.jpg')} alt="Prof. Howie Choset" className="w-full h-full object-cover" />
                     </div>
                     <p className="text-white text-[22px] font-semibold text-center">Prof. Howie Choset</p>
                   </div>
                   <div className="flex flex-col items-center">
                     <div className="w-[284px] h-[284px] rounded-full overflow-hidden bg-neutral-300 shadow-md mb-2">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={getStorageUrl('sponsors/drkelly.jpg')} alt="Dr. Clinton W. Kelly III" className="w-full h-full object-cover" />
                     </div>
                     <p className="text-white text-[22px] font-semibold text-center">Dr. Clinton W. Kelly III</p>
                   </div>
                   <div className="flex flex-col items-center">
                     <div className="w-[284px] h-[284px] rounded-full overflow-hidden bg-neutral-300 shadow-md mb-2">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={getStorageUrl('mentors/red-whittaker.jpg')} alt="Prof. Red Whittaker" className="w-full h-full object-cover" />
                     </div>
                     <p className="text-white text-[22px] font-semibold text-center">Prof. Red Whittaker</p>
