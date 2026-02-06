@@ -18,11 +18,6 @@ export function SponsorCTA() {
           {/* Heading */}
           <h2 className="text-white text-5xl font-semibold mb-8">Join The Crew</h2>
 
-          {/* Description text */}
-          <p className="text-white text-3xl font-normal text-center max-w-4xl mb-12 leading-relaxed whitespace-pre-wrap">
-            Lorem ipsum dolor sit amet, consect adipiscing elit. Lorem ipsum dolor sit amet, consect adipiscing elit.Lorem ipsum dolor sit amet, consect adipiscing elit.
-          </p>
-
           {/* Button */}
           <button className="bg-rose-900 hover:bg-rose-800 transition-colors text-white text-xl font-semibold px-8 py-5 rounded-lg mb-6">
             View Sponsorship Packet
