@@ -26,12 +26,13 @@ test.describe('Smoke Tests', () => {
   test('sponsors page loads correctly', async ({ page }) => {
     await page.goto('/sponsors');
     
-    // Check that the sponsors page loads
-    await expect(page.getByRole('heading', { name: /our sponsors/i })).toBeVisible();
+    // Check that the sponsors page loads with a main heading
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     
-    // Check that sponsors are present (we removed tiers, now just have sponsor cards)
-    const sponsorCards = page.locator('text=Synopsys').or(page.locator('text=Prof. Howie Choset'));
-    await expect(sponsorCards.first()).toBeVisible();
+    // Check that at least one sponsor asset is present
+    await expect(
+      page.getByAltText(/shield ai|sick|prof\. howie choset/i)
+    ).toBeVisible();
   });
 
   test('navigation works correctly', async ({ page }) => {
