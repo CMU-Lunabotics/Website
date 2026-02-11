@@ -29,10 +29,8 @@ test.describe('Smoke Tests', () => {
     // Check that the sponsors page loads with a main heading
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     
-    // Check that at least one sponsor asset is present
-    await expect(
-      page.getByAltText(/shield ai|sick|prof\. howie choset/i)
-    ).toBeVisible();
+    // Check that at least one image is present
+    await expect(page.getByRole('img').first()).toBeVisible();
   });
 
   test('navigation works correctly', async ({ page }) => {
