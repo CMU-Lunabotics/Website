@@ -50,7 +50,7 @@ export default function DonatePage() {
     <main>
       <PageHeader
         title="Support Moon Miners"
-        description="Your donation helps us push the boundaries of planetary robotics. Please fill out the form below before proceeding to donate."
+        subtitle="Your donation helps us push the boundaries of planetary robotics. Please fill out the form below before proceeding to donate."
       />
       
       <Container className="py-16">
@@ -101,7 +101,7 @@ export default function DonatePage() {
             </Button>
 
             <p className="text-xs text-gray-500 text-center">
-              By continuing, you'll be redirected to CMU's secure donation platform.
+              By continuing, you&apos;ll be redirected to CMU&apos;s secure donation platform.
             </p>
           </form>
         </div>
