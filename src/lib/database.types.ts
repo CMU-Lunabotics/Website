@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      donors: {
+        Row: {
+          id: number
+          created_at: string
+          name: string | null
+          email: string | null
+        }
+        Insert: {
+          id?: number
+          created_at?: string
+          name?: string | null
+          email?: string | null
+        }
+        Update: {
+          id?: number
+          created_at?: string
+          name?: string | null
+          email?: string | null
+        }
+        Relationships: []
+      }
       member_subteams: {
         Row: {
           member_id: string

@@ -18,7 +18,7 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
     <section className="relative min-h-[80vh] flex items-center overflow-hidden py-20">
       {/* 1. Center the entire container on the screen */}
       <Container className="mx-auto px-6 lg:px-12">
-        {/* 2. Use a grid or flex to split the text and the media */}
+        {/* 2. Use flex to split the text and the media */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
           
           {/* Text Content */}

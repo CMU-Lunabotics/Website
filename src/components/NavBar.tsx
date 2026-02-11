@@ -47,15 +47,11 @@ export function NavBar({ logoPath }: NavBarProps) {
           </nav>
 
           
-          {/* Donate CTA (external link) */}
+          {/* Donate CTA (internal link to form) */}
           <Button asChild className="hidden md:inline-block bg-[#900043] hover:bg-[#7a0037] text-white rounded-md px-4 py-2">
-            <a
-              href="https://givenow.cmu.edu/campaigns/42968/donations/new?a=9031589&designation=planetaryroboticsfund&amt="
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href="/donate">
               Donate
-            </a>
+            </Link>
           </Button>
 
           {/* Mobile menu button */}
