@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      allowed_users: {
+        Row: {
+          added_at: string | null
+          email: string
+          id: string
+        }
+        Insert: {
+          added_at?: string | null
+          email: string
+          id?: string
+        }
+        Update: {
+          added_at?: string | null
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      donors: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: number
+          name: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: number
+          name?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: number
+          name?: string | null
+        }
+        Relationships: []
+      }
       member_subteams: {
         Row: {
           member_id: string
@@ -259,6 +298,8 @@ export type Database = {
           links: Json | null
           published: boolean | null
           slug: string
+          submitted_at: string | null
+          submitted_by: string | null
           summary: string
           tags: Json | null
           title: string
@@ -273,6 +314,8 @@ export type Database = {
           links?: Json | null
           published?: boolean | null
           slug: string
+          submitted_at?: string | null
+          submitted_by?: string | null
           summary: string
           tags?: Json | null
           title: string
@@ -287,6 +330,8 @@ export type Database = {
           links?: Json | null
           published?: boolean | null
           slug?: string
+          submitted_at?: string | null
+          submitted_by?: string | null
           summary?: string
           tags?: Json | null
           title?: string
@@ -315,7 +360,7 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      is_allowed_user: { Args: { email: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never

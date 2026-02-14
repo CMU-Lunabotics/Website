@@ -1,9 +1,18 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   images: {
-    loader: "custom",
-    loaderFile: "./src/lib/supabase-image-loader.ts",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "hypejatlztjwwyyznnwd.supabase.co",
+        pathname: "/storage/v1/object/public/media/**",
+      },
+    ],
+    unoptimized: true,
+  },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "5mb",
+    },
   },
 };
 

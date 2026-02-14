@@ -11,6 +11,9 @@ export const metadata = {
   description: 'Latest news, milestones, and updates from the CMU MoonMiners team.',
 };
 
+// Force dynamic rendering to avoid caching
+export const dynamic = 'force-dynamic';
+
 export default async function UpdatesPage() {
   const updates = await getUpdates();
 
