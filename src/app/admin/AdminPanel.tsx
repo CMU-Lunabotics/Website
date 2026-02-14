@@ -20,7 +20,7 @@ interface UpdateItem {
   date: string
   submitted_by: string | null
   submitted_at: string | null
-  published: boolean
+  published: boolean | null
 }
 
 interface AdminPanelProps {
