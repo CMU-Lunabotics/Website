@@ -20,15 +20,15 @@ export function SponsorMiddle() {
           <div className="flex flex-col items-center">
             <h2 className="text-white text-6xl font-semibold mb-8">Current Sponsors</h2>
             <div className="flex items-center justify-center gap-12 mt-4">
-              <div className="h-[262px] flex items-end">
+              <div className="h-[262px] flex items-center justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={getStorageUrl('sponsors/shieldAI.png')}
                   alt="Shield AI"
-                  className="w-[465px] max-h-[240px] object-contain filter brightness-0 invert"
+                  className="w-[360px] max-h-[240px] object-contain filter brightness-0 invert"
                 />
               </div>
-              <div className="h-[262px] flex items-end">
+              <div className="h-[262px] flex items-center justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={getStorageUrl('sponsors/sick.png')}
@@ -36,12 +36,20 @@ export function SponsorMiddle() {
                   className="w-[401px] max-h-[240px] object-contain filter brightness-0 invert"
                 />
               </div>
+              <div className="h-[262px] flex items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={getStorageUrl('sponsors/airlab.png')}
+                  alt="AirLab"
+                  className="w-[350px] max-h-[240px] gap-20 mb-5 object-contain filter brightness-0 invert"
+                />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Individual Patrons placed exactly 386px below Current Sponsors (200 + 386 = 586px) */}
-        <div className="absolute left-0 w-full z-20" style={{ top: '586px' }}>
+        <div className="absolute left-0 w-full z-20" style={{ top: '800px' }}>
           <div className="flex flex-col items-center px-6">
             <div className="text-white text-5xl font-semibold font-['Inter'] mb-6">Individual Patrons</div>
 
