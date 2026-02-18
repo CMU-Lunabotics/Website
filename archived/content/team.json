@@ -1,5 +1,5 @@
 {
-  "teamPhoto": "/images/team/team-2025.jpg",
+  "teamPhoto": "/images/team/team-2026.jpg",
   "blurb": "We are an interdisciplinary group at CMU building a lunar excavation robot for NASA Lunabotics. We focus on autonomy/perception, dust-robust mechanisms, and high-TRL testing.",
   "pillars": [
     {"title": "Autonomy & Perception", "desc": "GPS-denied SLAM, factor graphs, robust sensing."},

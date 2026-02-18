@@ -6,6 +6,7 @@ import { MentorCard } from '@/components/MentorCard';
 import { Button } from '@/components/ui/button';
 import { getMembers, getTeamInfo, getMentors } from '@/lib/content';
 import { ExternalLink, Users, BookOpen, Download } from 'lucide-react';
+import { getStorageUrl } from '@/lib/supabase';
 
 export const metadata = {
   title: 'Team - CMU MoonMiners',
@@ -23,13 +24,12 @@ export default async function TeamPage() {
     <>
       <PageHeader
         title="Our Team"
-        subtitle="Meet the interdisciplinary group building the future of lunar robotics"
       />
 
       {/* Team Photo Banner */}
       <div className="relative w-full min-h-screen overflow-hidden">
         <Image
-          src={teamInfo.teamPhoto}
+          src={getStorageUrl('team/team-2026.JPG')}
           alt="CMU MoonMiners team photo"
           fill
           className="object-contain"

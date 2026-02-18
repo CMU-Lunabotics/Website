@@ -1,6 +1,9 @@
 'use client';
 
 import { getStorageUrl } from '@/lib/supabase';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { View } from 'lucide-react';
 
 export function SponsorCTA() {
   return (
@@ -20,9 +23,11 @@ export function SponsorCTA() {
           <h2 className="text-white text-5xl font-semibold mb-8">Join The Crew</h2>
 
           {/* Button */}
-          <button className="bg-rose-900 hover:bg-rose-800 transition-colors text-white text-xl font-semibold px-8 py-5 rounded-lg mb-6">
-            View Sponsorship Packet
-          </button>
+          <Button asChild size="lg" className="bg-rose-900 hover:bg-rose-800 transition-colors text-white text-xl font-semibold px-8 py-7 rounded-lg mb-6">
+            <Link href="https://www.canva.com/design/DAHAtIDK2O0/6b-gnU3OEda1BFzFEbbxww/view?utm_content=DA[…]hare&utm_medium=link2&utm_source=uniquelinks&utlId=h6193394fec">
+              View Sponsorship Packet
+            </Link>
+          </Button>
 
           {/* Contact info */}
           <div className="text-white text-xl font-semibold text-center">
