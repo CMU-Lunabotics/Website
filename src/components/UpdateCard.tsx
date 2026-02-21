@@ -112,8 +112,8 @@ export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps)
           </>
         ) : (
           <Image
-            src={getStorageUrl('team/team-2025.jpg')}
-            alt="Default team cover"
+            src={getStorageUrl('team/team-2026.JPG')}
+            alt="Group team cover"
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />

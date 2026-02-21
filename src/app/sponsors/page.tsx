@@ -1,23 +1,18 @@
-import { PageHeader } from '@/components/PageHeader';
-import { SponsorGrid } from '@/components/SponsorGrid';
-import { getSponsors } from '@/lib/content';
+import { SponsorLanding } from '@/components/sponsors/SponsorLanding';
+import SponsorMiddle from '@/components/sponsors/SponsorMiddle';
+import SponsorCTA from '@/components/sponsors/SponsorCTA';
 
 export const metadata = {
   title: 'Sponsors - CMU MoonMiners',
   description: 'Our valued sponsors supporting lunar robotics research and development.',
 };
 
-export default async function SponsorsPage() {
-  const sponsors = await getSponsors();
-
+export default function SponsorsPage() {
   return (
-    <>
-      <PageHeader
-        title="Our Sponsors"
-        subtitle="Supporting the future of lunar robotics"
-      />
-
-      <SponsorGrid sponsors={sponsors} />
-    </>
+    <div className="relative">
+      <SponsorLanding />
+      <SponsorMiddle />
+      <SponsorCTA />
+    </div>
   );
 }
