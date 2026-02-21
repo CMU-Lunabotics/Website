@@ -14,24 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
-      donors: {
+      allowed_users: {
         Row: {
-          id: number
-          created_at: string
-          name: string | null
-          email: string | null
+          added_at: string | null
+          email: string
+          has_account: boolean
+          id: string
         }
         Insert: {
-          id?: number
-          created_at?: string
-          name?: string | null
-          email?: string | null
+          added_at?: string | null
+          email: string
+          has_account?: boolean
+          id?: string
         }
         Update: {
-          id?: number
+          added_at?: string | null
+          email?: string
+          has_account?: boolean
+          id?: string
+        }
+        Relationships: []
+      }
+      donors: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: number
+          name: string | null
+        }
+        Insert: {
           created_at?: string
-          name?: string | null
           email?: string | null
+          id?: number
+          name?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: number
+          name?: string | null
         }
         Relationships: []
       }
@@ -280,6 +301,8 @@ export type Database = {
           links: Json | null
           published: boolean | null
           slug: string
+          submitted_at: string | null
+          submitted_by: string | null
           summary: string
           tags: Json | null
           title: string
@@ -294,6 +317,8 @@ export type Database = {
           links?: Json | null
           published?: boolean | null
           slug: string
+          submitted_at?: string | null
+          submitted_by?: string | null
           summary: string
           tags?: Json | null
           title: string
@@ -308,6 +333,8 @@ export type Database = {
           links?: Json | null
           published?: boolean | null
           slug?: string
+          submitted_at?: string | null
+          submitted_by?: string | null
           summary?: string
           tags?: Json | null
           title?: string
@@ -336,7 +363,7 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      is_allowed_user: { Args: { email: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
