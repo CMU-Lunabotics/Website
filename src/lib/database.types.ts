@@ -18,16 +18,19 @@ export type Database = {
         Row: {
           added_at: string | null
           email: string
+          has_account: boolean
           id: string
         }
         Insert: {
           added_at?: string | null
           email: string
+          has_account?: boolean
           id?: string
         }
         Update: {
           added_at?: string | null
           email?: string
+          has_account?: boolean
           id?: string
         }
         Relationships: []
