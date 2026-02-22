@@ -4,19 +4,17 @@ import { Hero } from '@/components/Hero';
 import { Section } from '@/components/Section';
 import { HomeSponsors } from '@/components/HomeSponsors';
 import { UpdateCard } from '@/components/UpdateCard';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { getSiteConfig, getTeamInfo, getUpdates, getSponsors } from '@/lib/content';
+import { getSiteConfig, getUpdates, getSponsors } from '@/lib/content';
 import { getStorageUrl } from '@/lib/supabase';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 // Force dynamic rendering to show latest updates
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const [siteConfig, teamInfo, updates, sponsors] = await Promise.all([
+  const [siteConfig, updates, sponsors] = await Promise.all([
     getSiteConfig(),
-    getTeamInfo(),
     getUpdates(),
     getSponsors(),
   ]);
@@ -43,12 +41,11 @@ export default async function Home() {
 
         {/* Rover artwork overlay (moved closer to center and enlarged) */}
         <div className="hidden lg:block absolute left-[60%] -translate-x-1/2 top-12 w-[700px] h-[700px] pointer-events-none">
-          <img
+          <Image
             src={getStorageUrl('hero/rover-360.gif')}
             alt=""
             className="w-full h-full object-contain"
-            loading="lazy"
-            decoding="async"
+            unoptimized
             role="img"
             aria-hidden="true"
             tabIndex={-1}

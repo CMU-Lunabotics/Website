@@ -41,7 +41,7 @@ export async function createUpdate(formData: FormData) {
         })
         .filter(Boolean) as { label: string; url: string }[]
     }
-  } catch (e) {
+  } catch {
     return { error: 'Invalid format for tags, images, or links' }
   }
 

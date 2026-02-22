@@ -3,7 +3,6 @@
 import { getStorageUrl } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { View } from 'lucide-react';
 
 export function SponsorCTA() {
   return (

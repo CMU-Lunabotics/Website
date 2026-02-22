@@ -31,7 +31,7 @@ export function Newsletter() {
       await new Promise((res) => setTimeout(res, 700));
       setStatus('success');
       setEmail('');
-    } catch (err) {
+    } catch {
       setError('Subscription failed. Please try again.');
       setStatus('error');
     }

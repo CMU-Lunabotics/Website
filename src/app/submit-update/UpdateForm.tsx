@@ -7,11 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 
-interface UpdateFormProps {
-  userEmail: string
-}
-
-export function UpdateForm({ userEmail }: UpdateFormProps) {
+export function UpdateForm() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
   const [isPending, startTransition] = useTransition()

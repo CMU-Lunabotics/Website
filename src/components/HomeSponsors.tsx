@@ -46,9 +46,6 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
                     );
                   }
 
-                  const realIdx = idx % slots.length;
-                  const variant = realIdx % 5;
-
                   return (
                     <div key={`${sponsor.name}-${idx}`} className={`${styles.tile} flex items-center justify-center`}>
                       <div className={`w-40 md:w-56 h-40 rounded-lg overflow-hidden bg-white/10 flex items-center justify-center`}>

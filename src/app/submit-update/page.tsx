@@ -36,7 +36,7 @@ export default async function SubmitUpdatePage() {
 
         {/* Form */}
         <section className="bg-white rounded-lg shadow-md p-6">
-          <UpdateForm userEmail={user.email} />
+          <UpdateForm />
         </section>
       </div>
     </div>

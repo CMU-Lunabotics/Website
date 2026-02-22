@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Github, Youtube, Instagram, Mail } from 'lucide-react';
 import { Container } from './Container';
-import { Logo } from './Logo';
 
 interface FooterProps {
   siteConfig: {
