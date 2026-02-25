@@ -3,31 +3,31 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Update } from '@/lib/content';
 import { UpdateModal } from './UpdateModal';
 import { getStorageUrl } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 interface UpdateCardProps {
   update: Update;
-  navigateOnClick?: boolean; 
+  navigateOnClick?: boolean;
+  variant?: 'default' | 'compact';
 }
 
-export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps) {
+export function UpdateCard({ update, navigateOnClick = false, variant = 'default' }: UpdateCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const images = update.images || [];
   const hasMultipleImages = images.length > 1;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+
   useEffect(() => {
     if (currentImageIndex >= images.length) {
       setCurrentImageIndex(0);
     }
   }, [images.length, currentImageIndex]);
-  
+
   const safeIndex = images.length > 0 ? Math.max(0, Math.min(currentImageIndex, images.length - 1)) : 0;
 
   const nextImage = (e: React.MouseEvent) => {
@@ -50,16 +50,15 @@ export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps)
     }
   };
 
+  const imageHeight = variant === 'compact' ? 'h-64' : 'h-[400px]';
+
   const cardContent = (
-    <Card 
-      className="group hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer bg-muted/20 border-zinc-800 text-white hover:border-zinc-700 p-0" 
+    <div
+      className="group cursor-pointer overflow-hidden"
       onClick={handleCardClick}
     >
-      {/* FIX: 
-         1. Added 'p-0' to the Card className above to kill any default padding.
-         2. The image div below is the very first child, so it sits flush against the top border.
-      */}
-      <div className="relative h-64 w-full overflow-hidden bg-zinc-900 m-0">
+      {/* Image area */}
+      <div className={cn('relative w-full overflow-hidden rounded-2xl bg-zinc-800', imageHeight)}>
         {images.length > 0 ? (
           <>
             <Image
@@ -70,8 +69,6 @@ export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps)
               className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-            
-            <div className="absolute inset-0" />
 
             {hasMultipleImages && (
               <>
@@ -91,7 +88,7 @@ export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps)
                 >
                   <ChevronRight className="h-4 w-4" />
                 </Button>
-                
+
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
                   {images.map((_, index) => (
                     <button
@@ -120,13 +117,21 @@ export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps)
         )}
       </div>
 
-      {/* TEXT CONTENT CONTAINER - This applies the padding only to the bottom half */}
-      <div className="flex flex-col p-6 space-y-4">
-        <div className="flex items-start justify-between gap-2">
-          <Badge variant="secondary" className="bg-zinc-800 text-zinc-100 border-none hover:bg-zinc-700">
+      {/* Text content */}
+      <div className="flex flex-col pt-4 space-y-3">
+        {/* Category tags */}
+        <div className="flex flex-wrap gap-2">
+          <span className="text-xs uppercase tracking-wider px-3 py-1 rounded-full border border-zinc-600 text-zinc-300">
             {update.category}
-          </Badge>
-          <div className="flex items-center text-sm text-zinc-400">
+          </span>
+        </div>
+
+        {/* Title + date */}
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="text-lg font-semibold text-zinc-50 group-hover:text-white transition-colors leading-tight">
+            {update.title}
+          </h3>
+          <div className="flex items-center text-sm text-zinc-400 shrink-0">
             <Calendar className="mr-1.5 h-3.5 w-3.5" />
             {new Date(update.date).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -136,24 +141,24 @@ export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps)
           </div>
         </div>
 
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-zinc-50 group-hover:text-white transition-colors">
-            {update.title}
-          </h3>
-          <p className="text-zinc-400 text-sm leading-relaxed line-clamp-2">
-            {update.summary}
-          </p>
-        </div>
+        {/* Summary */}
+        <p className="text-zinc-400 text-sm leading-relaxed line-clamp-2">
+          {update.summary}
+        </p>
 
-        <div className="flex flex-wrap gap-2 pt-2 mt-auto">
+        {/* Topic tags */}
+        <div className="flex flex-wrap gap-2 pt-1">
           {update.tags.map((tag) => (
-            <Badge key={tag} variant="outline" className="text-[10px] uppercase tracking-wider bg-white/70 text-zinc-500 py-0 px-2">
+            <span
+              key={tag}
+              className="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/10 text-zinc-300"
+            >
               {tag}
-            </Badge>
+            </span>
           ))}
         </div>
       </div>
-    </Card>
+    </div>
   );
 
   return (
@@ -165,10 +170,10 @@ export function UpdateCard({ update, navigateOnClick = false }: UpdateCardProps)
       ) : (
         <>
           {cardContent}
-          <UpdateModal 
-            update={update} 
-            open={isModalOpen} 
-            onOpenChange={setIsModalOpen} 
+          <UpdateModal
+            update={update}
+            open={isModalOpen}
+            onOpenChange={setIsModalOpen}
           />
         </>
       )}

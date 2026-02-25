@@ -1,10 +1,6 @@
-import Link from 'next/link';
-import { Section } from '@/components/Section';
-import { UpdateCard } from '@/components/UpdateCard';
 import { getUpdates } from '@/lib/content';
-import { ArrowLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { getStorageUrl } from '@/lib/supabase';
+import { UpdatesPageContent } from '@/components/UpdatesPageContent';
 
 export const metadata = {
   title: 'Team Updates - CMU MoonMiners',
@@ -18,58 +14,46 @@ export default async function UpdatesPage() {
   const updates = await getUpdates();
 
   // Sort updates by date (newest first)
-  const sortedUpdates = [...updates].sort((a, b) => 
+  const sortedUpdates = [...updates].sort((a, b) =>
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
+  // Featured update is the newest one
+  const featuredUpdate = sortedUpdates[0];
+  // Remaining updates for the grid
+  const remainingUpdates = sortedUpdates.slice(1);
+
+  // Extract unique categories
+  const categories = Array.from(new Set(sortedUpdates.map((u) => u.category)));
+
   return (
     <section className="relative">
-      {/* Background image matching SponsorMiddle */}
       <div className="w-full relative min-h-screen">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={getStorageUrl('hero/Rectangle 30.png')}
-          alt="Updates section background"
-          className="absolute left-0 top-0 w-full h-full object-cover"
-        />
-
-        {/* Content */}
-        <div className="relative z-10">
-          {/* Header with white text */}
-          <div className="py-12">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl">
-                <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                  Team Updates
-                </h1>
-                <p className="mt-4 text-lg text-white/90">
-                  Latest news, milestones, and achievements from our team
-                </p>
-              </div>
-            </div>
+        {/* Header section with rover background */}
+        <div className="relative h-[600px] md:h-[800px] lg:h-[750px] overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={getStorageUrl('updates/updates-bg.png')}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 right-0 opacity-[0.4] object-contain scale-85 origin-top-right"
+          />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col justify-end h-[578px] pb-8">
+            <h1 className="text-5xl md:text-[60px] font-bold tracking-tight text-white leading-tight">
+              News and Updates
+            </h1>
+            <p className="mt-4 text-lg text-white/70 max-w-2xl">
+              Latest news, milestones, and achievements from the CMU MoonMiners team
+            </p>
           </div>
-
-          {/* Back to Home */}
-          <Section className="py-4">
-            <Button asChild variant="ghost">
-              <Link href="/">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Home
-              </Link>
-            </Button>
-          </Section>
-
-          {/* Updates Grid */}
-          <Section>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {sortedUpdates.map((update) => (
-                <UpdateCard key={update.id} update={update} />
-              ))}
-            </div>
-          </Section>
         </div>
+
+        <UpdatesPageContent
+          updates={remainingUpdates}
+          featuredUpdate={featuredUpdate}
+          categories={categories}
+        />
       </div>
     </section>
   );
 }
-
