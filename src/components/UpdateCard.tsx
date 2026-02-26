@@ -54,11 +54,11 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
 
   const cardContent = (
     <div
-      className="group cursor-pointer overflow-hidden"
+      className="inline-flex flex-col items-start gap-7 group cursor-pointer overflow-hidden"
       onClick={handleCardClick}
     >
       {/* Image area */}
-      <div className={cn('relative w-full overflow-hidden rounded-2xl bg-zinc-800', imageHeight)}>
+      <div className={cn('relative w-full overflow-hidden bg-zinc-800', imageHeight)}>
         {images.length > 0 ? (
           <>
             <Image
@@ -118,7 +118,7 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
       </div>
 
       {/* Text content */}
-      <div className="flex flex-col pt-4 space-y-3">
+      <div className="flex flex-col space-y-3">
         {/* Category tags */}
         <div className="flex flex-wrap gap-2">
           <span className="text-xs uppercase tracking-wider px-3 py-1 rounded-full border border-zinc-600 text-zinc-300">

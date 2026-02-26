@@ -6,7 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue: #0210fd;
   --font-sans: var(--font-inter);
   --font-serif: var(--font-newsreader);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -122,5 +122,11 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .clip-corner-tr {
+    clip-path: polygon(0 0, calc(100% - 80px) 0, 100% 80px, 100% 100%, 0 100%);
   }
 }

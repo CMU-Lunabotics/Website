@@ -30,7 +30,7 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
       {/* Featured Update Card */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
         <div
-          className="relative w-full h-[500px] md:h-[550px] border-white overflow-hidden cursor-pointer group"
+          className="relative w-[1280px] h-[612px] md:h-[550px] border border-zinc-600 hover:border-zinc-400 overflow-hidden cursor-pointer group clip-corner-tr"
           onClick={() => setFeaturedModalOpen(true)}
         >
           {/* Background image */}
@@ -44,7 +44,10 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
           />
 
           {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(0deg, #000 19.88%, rgba(0, 0, 0, 0.00) 67.32%)' }}
+          />
 
           {/* Content overlay at bottom */}
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
@@ -96,7 +99,7 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
               key={category}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                'px-5 py-2 rounded-full text-sm font-medium transition-colors',
+                'px-5 py-2 text-sm font-medium transition-colors',
                 activeCategory === category
                   ? 'bg-brand-blue text-white'
                   : 'border border-zinc-600 text-white hover:border-zinc-400'
