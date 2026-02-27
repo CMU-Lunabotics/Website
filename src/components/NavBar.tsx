@@ -1,68 +1,24 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
-import { Logo } from './Logo';
-import { Button } from '@/components/ui/button';
-import { getStorageUrl } from '@/lib/supabase';
 
-const navigation = [
-  { name: 'Team', href: '/team' },
-  { name: 'Updates', href: '/updates' },
-  { name: 'Sponsors', href: '/sponsors' },
-];
-
-interface NavBarProps {
-  logoPath?: string;
-}
-
-export function NavBar({ logoPath }: NavBarProps) {
-  const pathname = usePathname();
-
+export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/60 backdrop-blur supports-[backdrop-filter]:bg-white/50">
-      <div className="container max-w-none flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2 pl-4 md:pl-8">
-          <Logo logoPath={logoPath || getStorageUrl('logo/logo2026.svg')} />
-          <span className="text-sm font-semibold text-black">Moon Miners</span>
+    <nav className="fixed top-0 left-0 right-0 z-[9999] px-4 py-6">
+      <div className="mx-auto max-w-[1280px] h-[60px] flex justify-between items-center px-6 bg-white/10 backdrop-blur-md rounded-lg border border-white/5">
+        <Link href="/" className="text-[20px] font-normal tracking-wider text-white font-[var(--font-audiowide)]">
+          Moon Miners
         </Link>
         
-        <div className="flex items-center space-x-4">
-          <nav className="hidden md:flex items-center space-x-6">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  'text-sm font-medium transition-colors hover:text-primary',
-                  pathname === item.href
-                    ? 'text-black'
-                    : 'text-black'
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          
-          {/* Donate CTA (internal link to form) */}
-          <Button asChild className="hidden md:inline-block bg-[#900043] hover:bg-[#7a0037] text-white rounded-md px-4 py-2">
-            <Link href="/donate">
-              Donate
-            </Link>
-          </Button>
-
-          {/* Mobile menu button */}
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <span className="sr-only">Open menu</span>
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </Button>
+        <div className="flex gap-8 items-center text-sm uppercase tracking-widest font-bold">
+          <Link href="/team" className="text-white hover:opacity-70 transition-opacity">Team</Link>
+          <Link href="/updates" className="text-white hover:opacity-70 transition-opacity">Updates</Link>
+          <Link href="/sponsors" className="text-white hover:opacity-70 transition-opacity">Sponsors</Link>
+          <Link href="/donate" className="bg-white text-black px-6 py-2 rounded-[2px] hover:bg-white/90 transition-all">
+            Donate
+          </Link>
         </div>
       </div>
-    </header>
+    </nav>
   );
 }

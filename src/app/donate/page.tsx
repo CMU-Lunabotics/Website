@@ -1,111 +1,63 @@
 'use client';
 
-import { useState } from 'react';
-import { Container } from '@/components/Container';
-import { PageHeader } from '@/components/PageHeader';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { useRouter } from 'next/navigation';
+import React from 'react';
 
 export default function DonatePage() {
-  const router = useRouter();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
-
-  const donationUrl = 'https://givenow.cmu.edu/campaigns/42968/donations/new?a=9031589&designation=planetaryroboticsfund&amt=';
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch('/api/donors', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || 'Failed to submit form');
-      }
-
-      // Redirect to donation page
-      window.open(donationUrl, '_blank');
-      router.push('/');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
-      setIsSubmitting(false);
-    }
-  };
-
   return (
-    <main>
-      <PageHeader
-        title="Support Moon Miners"
-        subtitle="Your donation helps us push the boundaries of planetary robotics. Please fill out the form below before proceeding to donate."
-      />
+    <main className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
       
-      <Container className="py-16">
-        <div className="max-w-md mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Full Name *
-              </label>
-              <Input
-                id="name"
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="John Doe"
-                className="w-full"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address *
-              </label>
-              <Input
-                id="email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="john.doe@example.com"
-                className="w-full"
-              />
-            </div>
-
-            {error && (
-              <div className="text-red-600 text-sm bg-red-50 p-3 rounded-md">
-                {error}
-              </div>
-            )}
-
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-[#900043] hover:bg-[#7a0037] text-white"
-            >
-              {isSubmitting ? 'Processing...' : 'Continue to Donation'}
-            </Button>
-
-            <p className="text-xs text-gray-500 text-center">
-              By continuing, you&apos;ll be redirected to CMU&apos;s secure donation platform.
+      {/* Main Container: pt-[120px] gives space for the Navbar from layout.tsx */}
+      <div className="relative pt-[120px] pb-20 px-4 flex flex-col items-center">
+        
+        {/* The "Rectangle 21" Card from Figma */}
+        <div className="w-full max-w-[1062px] bg-[#D9D9D9]/10 backdrop-blur-md rounded-[2px] p-12 md:p-20 border border-white/10 shadow-2xl">
+          
+          {/* Header Section (Frame 2 in your CSS) */}
+          <div className="flex flex-col gap-4 text-center mb-16 max-w-[959px] mx-auto">
+            <h1 className="text-[42px] md:text-[56px] font-semibold leading-tight tracking-tight font-['Noto_Sans_Display',_sans-serif]">
+              Support Moon Miners
+            </h1>
+            <p className="text-[18px] md:text-[20px] font-light text-white/80 leading-relaxed font-['Noto_Sans_Display',_sans-serif]">
+              Your donation helps us push the boundaries of planetary robotics. 
+              Please fill out the form below before proceeding to the donation page.
             </p>
-          </form>
+          </div>
+
+          {/* Form Inputs (Grouped logically) */}
+          <div className="flex flex-col gap-10 max-w-[800px] mx-auto">
+            
+            <div className="flex flex-col gap-3">
+              <label className="text-[12px] font-bold text-white/40 uppercase tracking-[0.3em] ml-1">
+                Full Name
+              </label>
+              <input 
+                type="text"
+                placeholder="Enter your name"
+                className="w-full h-[70px] bg-white/5 border border-white/20 rounded-[2px] px-6 text-lg focus:outline-none focus:border-white/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
+              />
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <label className="text-[12px] font-bold text-white/40 uppercase tracking-[0.3em] ml-1">
+                Email Address
+              </label>
+              <input 
+                type="email"
+                placeholder="email@example.com"
+                className="w-full h-[70px] bg-white/5 border border-white/20 rounded-[2px] px-6 text-lg focus:outline-none focus:border-white/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
+              />
+            </div>
+
+            {/* Continue Button (The "Frame 60" style) */}
+            <button className="w-full h-[80px] bg-white text-black hover:bg-white/90 rounded-[2px] transition-all flex items-center justify-center mt-6 group">
+              <span className="text-[20px] font-bold uppercase tracking-widest">
+                Continue to donation
+              </span>
+            </button>
+
+          </div>
         </div>
-      </Container>
+      </div>
     </main>
   );
 }
