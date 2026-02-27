@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { UpdateCard } from '@/components/UpdateCard';
 import { getUpdates } from '@/lib/content';
 import { ArrowLeft } from 'lucide-react';
@@ -19,20 +20,17 @@ export default async function UpdatesPage() {
   );
 
   return (
-    // Added h-full and relative to ensure the main container occupies space
     <main className="relative min-h-screen bg-black overflow-x-hidden">
-      
-      {/* Background Layer 
-          - Changed to absolute instead of fixed to prevent "scroll-jacking"
-          - Added pointer-events-none so mouse clicks pass through to links
-      */}
-      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden h-full">
-        <img
+      {/* Background Layer - Fixed with Next.js Image component */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <Image
           src={getStorageUrl('hero/Rectangle 30.png')}
-          alt=""
-          className="w-full h-full object-cover opacity-40" 
+          alt="Background"
+          fill
+          priority
+          className="object-cover opacity-40" 
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/20 to-black" />
       </div>
 
       {/* Content Layer */}
@@ -49,7 +47,7 @@ export default async function UpdatesPage() {
         </div>
 
         <div className="mx-auto max-w-7xl mb-12">
-          <Button asChild variant="ghost" className="text-white hover:bg-white/10 transition-colors">
+          <Button asChild variant="ghost" className="text-white hover:bg-white/10">
             <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Home
@@ -57,7 +55,6 @@ export default async function UpdatesPage() {
           </Button>
         </div>
 
-        {/* Updates Grid */}
         <div className="mx-auto max-w-7xl pb-40">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sortedUpdates.map((update) => (
