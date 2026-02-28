@@ -17,12 +17,12 @@ export function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
-        <h1 className="text-2xl font-bold text-center mb-6">Admin Login</h1>
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="max-w-md w-full bg-card border border-border rounded-lg shadow-sm p-8">
+        <h1 className="text-2xl font-bold text-center text-foreground mb-6">Admin Login</h1>
         <form action={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
               Password
             </label>
             <Input
@@ -30,14 +30,14 @@ export function LoginForm() {
               name="password"
               id="password"
               required
-              className="w-full text-gray-900 placeholder:text-gray-500"
+              className="w-full"
               placeholder="Enter admin password"
             />
           </div>
           <Button type="submit" disabled={isPending} className="w-full">
             {isPending ? 'Logging in...' : 'Login'}
           </Button>
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+          {error && <p className="text-destructive text-sm text-center">{error}</p>}
         </form>
       </div>
     </div>

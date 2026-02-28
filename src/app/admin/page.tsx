@@ -31,7 +31,7 @@ export default async function AdminPage() {
   // Fetch ALL updates (both published and unpublished)
   const { data: allUpdates } = await supabase
     .from('updates')
-    .select('id, title, slug, summary, category, date, submitted_by, submitted_at, published')
+    .select('id, title, slug, summary, category, date, submitted_by, submitted_at, published, featured')
     .order('submitted_at', { ascending: false })
     .returns<Update[]>()
 

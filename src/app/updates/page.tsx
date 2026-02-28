@@ -4,7 +4,7 @@ import { UpdatesPageContent } from '@/components/UpdatesPageContent';
 
 export const metadata = {
   title: 'Team Updates - CMU MoonMiners',
-  description: 'Latest news, milestones, and updates from the CMU MoonMiners team.',
+  description: 'Stay up to date with our current milestones, goals, and accomplishments',
 };
 
 // Force dynamic rendering to avoid caching
@@ -18,10 +18,10 @@ export default async function UpdatesPage() {
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  // Featured update is the newest one
-  const featuredUpdate = sortedUpdates[0];
+  // Featured update: admin-selected, or fall back to newest
+  const featuredUpdate = sortedUpdates.find((u) => u.featured) || sortedUpdates[0];
   // Remaining updates for the grid
-  const remainingUpdates = sortedUpdates.slice(1);
+  const remainingUpdates = sortedUpdates.filter((u) => u !== featuredUpdate);
 
   // Extract unique categories
   const categories = Array.from(new Set(sortedUpdates.map((u) => u.category)));
@@ -39,11 +39,11 @@ export default async function UpdatesPage() {
             className="pointer-events-none absolute top-0 right-0 opacity-[0.4] object-contain scale-85 origin-top-right"
           />
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col justify-end h-[578px] pb-8">
-            <h1 className="text-5xl md:text-[60px] font-bold tracking-tight text-white leading-tight">
+            <h1 className="text-[63.429px] font-semibold text-white leading-[76.749px] font-display">
               News and Updates
             </h1>
             <p className="mt-4 text-lg text-white/70 max-w-2xl">
-              Latest news, milestones, and achievements from the CMU MoonMiners team
+              Stay up to date with our current milestones, goals, and accomplishments
             </p>
           </div>
         </div>

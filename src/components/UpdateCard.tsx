@@ -121,22 +121,25 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
       <div className="flex flex-col space-y-3">
         {/* Category tags */}
         <div className="flex flex-wrap gap-2">
-          <span className="text-xs uppercase tracking-wider px-3 py-1 rounded-full border border-zinc-600 text-zinc-300">
+          <span className="font-display font-semibold text-sm flex items-center justify-center px-3 py-1 rounded-full bg-brand-white text-brand-black">
+            {update.team ? update.team : "All"}
+          </span>
+          <span className="font-display font-semibold text-sm px-4 py-2 rounded-full border border-zinc-600 text-zinc-300">
             {update.category}
           </span>
         </div>
 
         {/* Title + date */}
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="text-lg font-semibold text-zinc-50 group-hover:text-white transition-colors leading-tight">
+        <div className="flex items-baseline justify-between gap-2">
+          <h3 className="text-4xl font-display font-semibold text-zinc-50 group-hover:text-white transition-colors leading-tight">
             {update.title}
           </h3>
           <div className="flex items-center text-sm text-zinc-400 shrink-0">
             <Calendar className="mr-1.5 h-3.5 w-3.5" />
             {new Date(update.date).toLocaleDateString('en-US', {
               year: 'numeric',
-              month: 'short',
-              day: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
             })}
           </div>
         </div>

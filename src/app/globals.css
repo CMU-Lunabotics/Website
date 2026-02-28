@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@400;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -7,8 +8,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-brand-blue: #0210fd;
+  --color-brand-white: #F1EDE6;
+  --color-brand-black: #1E1E1E;
   --font-sans: var(--font-inter);
   --font-serif: var(--font-newsreader);
+  --font-display: 'Noto Sans Display', sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);

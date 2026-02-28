@@ -135,6 +135,7 @@ export type Database = {
           role?: string
           tags?: Json | null
           year?: string | null
+          team?: string | null
         }
         Relationships: []
       }
@@ -296,6 +297,7 @@ export type Database = {
           content: string | null
           created_at: string | null
           date: string
+          featured: boolean
           id: string
           images: Json | null
           links: Json | null
@@ -305,6 +307,7 @@ export type Database = {
           submitted_by: string | null
           summary: string
           tags: Json | null
+          team: string | null
           title: string
         }
         Insert: {
@@ -312,6 +315,7 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           date: string
+          featured?: boolean
           id?: string
           images?: Json | null
           links?: Json | null
@@ -321,6 +325,7 @@ export type Database = {
           submitted_by?: string | null
           summary: string
           tags?: Json | null
+          team?: string | null
           title: string
         }
         Update: {
@@ -328,6 +333,7 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           date?: string
+          featured?: boolean
           id?: string
           images?: Json | null
           links?: Json | null
@@ -337,6 +343,7 @@ export type Database = {
           submitted_by?: string | null
           summary?: string
           tags?: Json | null
+          team?: string | null
           title?: string
         }
         Relationships: []

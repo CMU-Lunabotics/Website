@@ -236,6 +236,49 @@ export async function unpublishUpdate(id: string) {
   return { success: true }
 }
 
+// Set an update as featured (only one at a time)
+export async function setFeaturedUpdate(id: string) {
+  if (!(await verifySession())) return { error: 'Unauthorized' }
+
+  // Unset any currently featured update
+  const { error: unsetError } = await supabase
+    .from('updates')
+    .update({ featured: false })
+    .eq('featured', true)
+
+  if (unsetError) {
+    return { error: 'Failed to unset featured update: ' + unsetError.message }
+  }
+
+  // Set the new featured update
+  const { error } = await supabase
+    .from('updates')
+    .update({ featured: true })
+    .eq('id', id)
+
+  if (error) {
+    return { error: 'Failed to set featured update: ' + error.message }
+  }
+
+  return { success: true }
+}
+
+// Unset featured from an update
+export async function unsetFeaturedUpdate(id: string) {
+  if (!(await verifySession())) return { error: 'Unauthorized' }
+
+  const { error } = await supabase
+    .from('updates')
+    .update({ featured: false })
+    .eq('id', id)
+
+  if (error) {
+    return { error: 'Failed to unset featured update: ' + error.message }
+  }
+
+  return { success: true }
+}
+
 // Delete an update
 export async function deleteUpdate(id: string) {
   if (!(await verifySession())) return { error: 'Unauthorized' }
