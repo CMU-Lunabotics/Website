@@ -1,68 +1,30 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { UpdateCard } from '@/components/UpdateCard';
+import { Section } from '@/components/Section';
 import { getUpdates } from '@/lib/content';
-import { ArrowLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { getStorageUrl } from '@/lib/supabase';
 
-export const metadata = {
-  title: 'Team Updates - CMU MoonMiners',
-  description: 'Latest news, milestones, and updates from the CMU MoonMiners team.',
-};
-
+// Force dynamic rendering to show latest updates
 export const dynamic = 'force-dynamic';
 
 export default async function UpdatesPage() {
   const updates = await getUpdates();
-  const sortedUpdates = [...updates].sort((a, b) => 
-    new Date(b.date).getTime() - new Date(a.date).getTime()
+
+  // Sort updates by date descending
+  const sortedUpdates = [...updates].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   return (
-    <main className="relative min-h-screen bg-black overflow-x-hidden">
-      {/* Background Layer - Fixed with Next.js Image component */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
-        <Image
-          src={getStorageUrl('hero/Rectangle 30.png')}
-          alt="Background"
-          fill
-          priority
-          className="object-cover opacity-40" 
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/20 to-black" />
-      </div>
-
-      {/* Content Layer */}
-      <div className="relative z-10 pt-[120px] px-4 sm:px-6 lg:px-8"> 
-        <div className="py-12 mx-auto max-w-7xl">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl font-[var(--font-audiowide)]">
-              Team Updates
-            </h1>
-            <p className="mt-4 text-lg text-white/70 font-[var(--font-noto)]">
-              Latest news, milestones, and achievements from our team
-            </p>
-          </div>
-        </div>
-
-        <div className="mx-auto max-w-7xl mb-12">
-          <Button asChild variant="ghost" className="text-white hover:bg-white/10">
-            <Link href="/">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Home
-            </Link>
-          </Button>
-        </div>
-
-        <div className="mx-auto max-w-7xl pb-40">
+    <main className="min-h-screen pt-24 pb-16">
+      <Section title="All Updates" titleClassName="text-white">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sortedUpdates.map((update) => (
-              <UpdateCard key={update.id} update={update} />
+              /* Use 'data' instead of 'update' to match our new component prop */
+              <UpdateCard key={update.id} data={update} />
             ))}
           </div>
         </div>
-      </div>
+      </Section>
     </main>
   );
 }
