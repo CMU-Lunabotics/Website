@@ -1,13 +1,6 @@
-import { UpdateCard } from '@/components/UpdateCard';
-import { Section } from '@/components/Section';
-import { getUpdates } from '@/lib/content';
-
-// Force dynamic rendering to show latest updates
-export const dynamic = 'force-dynamic';
-
 export default async function UpdatesPage() {
   const updates = await getUpdates();
-
+  
   // Sort updates by date descending
   const sortedUpdates = [...updates].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
