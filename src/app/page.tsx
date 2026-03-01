@@ -31,7 +31,6 @@ export default async function Home() {
     <div className="relative bg-black">
       <Hero
         headline={siteConfig.hero.headline}
-        headlineAccent={siteConfig.hero.headlineAccent}
         subhead={siteConfig.hero.subhead}
         ctaPrimary={siteConfig.hero.ctaPrimary}
         ctaSecondary={siteConfig.hero.ctaSecondary}

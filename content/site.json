@@ -10,9 +10,8 @@
     "instagram": "https://instagram.com/cmu_moonminers"
   },
   "hero": {
-    "headline": "Born to win. Built to prove it.",
-    "headlineAccent": true,
-    "subhead": "We are an ambitious, interdisciplinary team of undergraduate engineering, design, and business, united by a shared passion for advancing space technology.",
+    "headline": "Born to win.\nBuilt to prove it.",
+    "subhead": "We are an ambitious, interdisciplinary team of students across engineering, design, and business, united by a shared passion for advancing space technology.",
     "ctaPrimary": {"label": "Learn more", "href": "/team"},
     "ctaSecondary": {"label": "Meet the Team", "href": "/team"},
     "heroImage": "hero/titlepagemoon.jpg",
