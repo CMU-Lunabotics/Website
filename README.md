@@ -30,7 +30,7 @@ npm test         # Playwright smoke tests
 ```
 src/
   app/                 # Next.js App Router pages
-    layout.tsx        # Root layout (ThemeProvider, NavBar, Footer)
+    layout.sx        # Root layout (ThemeProvider, NavBar, Footer)
     page.tsx          # Home
     team/page.tsx     # Team
     sponsors/page.tsx # Sponsors

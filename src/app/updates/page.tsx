@@ -7,7 +7,7 @@ export const metadata = {
   description: 'Stay up to date with our current milestones, goals, and accomplishments',
 };
 
-// Force dynamic rendering to avoid caching
+// Force dynamic rendering to show latest updates
 export const dynamic = 'force-dynamic';
 
 export default async function UpdatesPage() {

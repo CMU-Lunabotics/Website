@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Hero } from '@/components/Hero';
 import { Section } from '@/components/Section';
 import { HomeSponsors } from '@/components/HomeSponsors';
-import { UpdateCard } from '@/components/UpdateCard';
+import { UpdateCard } from '@/components/UpdateCard'; // Only keep one!
 import { Button } from '@/components/ui/button';
 import { getSiteConfig, getUpdates, getSponsors } from '@/lib/content';
 import { getStorageUrl } from '@/lib/supabase';
@@ -19,7 +19,6 @@ export default async function Home() {
     getSponsors(),
   ]);
 
-  // Get latest 3 updates for home page
   const latestUpdates = [...updates]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
@@ -28,7 +27,6 @@ export default async function Home() {
 
   return (
     <div className="relative">
-      {/* Full-page background for homepage */}
       <div className="absolute inset-0 -z-10">
         <Image
           src={getStorageUrl('hero/homepage-bg.png')}
@@ -38,27 +36,19 @@ export default async function Home() {
           priority
           sizes="100vw"
         />
-
-        {/* Rover artwork overlay (moved closer to center and enlarged) */}
         <div className="hidden lg:block absolute left-[60%] -translate-x-1/2 top-12 w-[700px] h-[700px] pointer-events-none">
           <Image
             src={getStorageUrl('hero/rover-360.gif')}
             alt=""
             className="w-full h-full object-contain"
             unoptimized
-            role="img"
-            aria-hidden="true"
-            tabIndex={-1}
             width={900}
             height={780}
           />
         </div>
-
-        {/* Subtle moon shadow behind rover */}
         <div className="hidden lg:block absolute left-[55%] -translate-x-1/2 top-[320px] w-[420px] h-[160px] rounded-full bg-gradient-to-t from-black/60 to-transparent opacity-60 pointer-events-none transform-gpu blur-[10px]" />
       </div>
 
-      {/* Hero Section */}
       <Hero
         headline={siteConfig.hero.headline}
         subhead={siteConfig.hero.subhead}
@@ -66,20 +56,16 @@ export default async function Home() {
         ctaSecondary={siteConfig.hero.ctaSecondary}
       />
 
-      {/* Spacer between hero and mission */}
       <div className="mb-12 md:mb-20" />
 
-      {/* Our Mission */}
       <Section className="relative pt-24 md:pt-16">
         <div className="relative max-w-6xl mx-auto">
-          {/* Decorative large words positioned like Figma (brought above artwork) */}
           <div className="pointer-events-none absolute inset-x-0 top-0 hidden md:block z-20" aria-hidden>
             <h2 className="absolute left-40 -top-0 text-[90px] font-semibold text-white leading-[0.95] opacity-90">Our</h2>
             <h2 className="absolute right-12 top-60 text-[90px] font-semibold text-white leading-[0.95] opacity-90">Mission</h2>
           </div>
 
           <div className="flex flex-col items-center gap-8 relative z-10">
-            {/* Rover artwork with moon ellipse (centered) */}
             <div className="relative w-72 h-72 md:w-[577px] md:h-[363px] rounded-full overflow-hidden flex items-center justify-center">
               <Image
                 src={getStorageUrl('home/moon-ellipse.png')}
@@ -88,20 +74,17 @@ export default async function Home() {
                 className="object-cover"
                 priority
               />
-
               <div className="relative w-[85%] h-[85%] md:w-[92%] md:h-[92%] z-20">
                 <Image
                   src={getStorageUrl('hero/rover-clear.png')}
                   alt="Rover"
                   fill
                   className="object-contain"
-                  sizes="(max-width: 800px) 100vw, 70vw"
                   priority
                 />
               </div>
             </div>
 
-            {/* Centered Text & CTA below the artwork */}
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-lg text-white mb-6">
                 CMU Moon Miners exists to set the standard for student-led lunar robotics. We build integrated, field-ready systems with one goal: to win decisively today while laying the groundwork for a lasting space robotics program at Carnegie Mellon.
@@ -120,13 +103,11 @@ export default async function Home() {
         <HomeSponsors sponsors={sponsors} />
       </div>
 
-      {/* Recent Highlights */}
       <Section 
         title="Recent Highlights" 
         titleClassName="text-white"
         className="text-white bg-transparent pt-12 md:pt-16"
       >
-        {/* Newsletter (below recent highlights) */}
         <div className={`grid grid-cols-1 gap-8 mb-8 ${latestCount >= 3 ? 'md:grid-cols-3' : latestCount === 2 ? 'md:grid-cols-2 md:justify-center md:max-w-4xl md:mx-auto' : 'md:grid-cols-1'}`}>
           {latestUpdates.map((update) => (
             <UpdateCard key={update.id} update={update} navigateOnClick={true} variant="compact" />
@@ -140,8 +121,6 @@ export default async function Home() {
             </Link>
           </Button>
         </div>
-
-
       </Section>
     </div>
   );
