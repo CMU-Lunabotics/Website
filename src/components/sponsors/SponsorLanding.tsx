@@ -1,42 +1,71 @@
 'use client';
 
-import { getStorageUrl } from '@/lib/supabase';
+import Image from 'next/image';
+import headerImage from './header.png'; // same folder
+import { Button } from '@/components/ui/button';
 
 export function SponsorLanding() {
   return (
-    <section className="relative w-full overflow-hidden">
-      {/* Background Image */}
-      <div className="relative w-full h-[483px]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={getStorageUrl('hero/image 6.png')}
-          alt="Sponsors hero background"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+    <>
+    <section className="relative w-full min-h-[650px] bg-black overflow-hidden">
 
-        {/* Gray overlay background */}
-        <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center">
-          {/* Overlay background panel behind content */}
-          <div className="absolute w-[90%] md:w-[1440px] h-[372px] top-[111px] bg-neutral-200/40 -z-10" />
+    <Image
+      src={headerImage}
+      alt="Sponsors hero background"
+      fill
+      priority
+    />
 
-          {/* Main content container */}
-          <div className="relative w-full h-full flex flex-col items-center justify-center px-4">
-            {/* Heading */}
-            <h1 className="text-white text-5xl md:text-6xl font-semibold text-center mb-12 drop-shadow-lg">
-              Powering the Mission
-            </h1>
+    <div className="relative z-10 max-w-7xl mx-auto px-6 pt-70 pb-24 flex flex-col lg:flex-row justify-start">
+      
+      <div className="max-w-xl text-left">
+        
+        <h1 className="text-white text-5xl md:text-6xl font-semibold mb-6">
+          Sponsor
+        </h1>
 
-            {/* Description box with semi-transparent background */}
-            <div className="max-w-2xl animate-fade-in">
-              <div className="bg-gray-700/60 rounded-lg px-8 py-6 backdrop-blur-sm">
-                <p className="text-white text-center text-lg md:text-xl font-medium leading-relaxed">
-                  We are proud to be supported by industry leaders in robotics, aerospace, and engineering. Thank you for making our journey to the NASA Lunabotics Competition possible.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="text-gray-300 text-lg md:text-xl leading-relaxed mb-8">
+          This mission is made possible by the organizations that support 
+          our team and believe in the impact of our work.
+        </p>
+
+        <Button
+          className="
+            bg-transparent 
+            border 
+            border-white 
+            text-white 
+            hover:bg-white 
+            hover:text-black 
+            px-8 
+            py-4 
+            text-lg 
+            rounded-none 
+            transition-all 
+            duration-300
+          "
+        >
+          Support us →
+        </Button>
       </div>
-    </section>
+    </div>
+  </section>
+
+  <section className="w-full bg-black py-24 mt-24">
+    <div className="max-w-7xl mx-auto px-6">
+      <h2 className="text-white text-4xl md:text-4xl font-semibold mb-6">
+        Why Sponsor Us?
+      </h2>
+
+      <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
+        Technology is table stakes. Execution wins championships. The difference 
+        between a contender and a champion is how fast you can test, break, and rebuild. 
+        As a first-year team, we don’t rely on legacy funding, inherited infrastructure, 
+        or alumni pipelines.
+      </p>
+
+    </div>
+  </section>
+  </>
   );
 }

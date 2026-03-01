@@ -1,99 +1,148 @@
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
-import { getStorageUrl } from '@/lib/supabase';
 
-export function SponsorMiddle() {
+/*
+  Replace these imports with your actual filenames (in the same folder as this component)
+  or change to your getStorageUrl(...) pattern if you load from Supabase/storage.
+*/
+import topLeftImg from './picture1.png';     // 1) small left photo (top-left)
+// import topRightImg from './picture1.png';   // 2) wide hero graphic (top-right)
+// import bottomRightImg from './picture1.jpg'; // 3) small right photo (bottom-right)
+// import decorativePattern from './picture1.png'; // optional pattern for the big dark card
+
+export default function SponsorGrid() {
   return (
-    <section className="relative">
-      {/* Combined full-bleed area containing both backgrounds so we can precisely space headings */}
-      <div className="w-full relative" style={{ height: '1100px' }}>
-        {/* First background (Rectangle 30) */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={getStorageUrl('hero/Rectangle 30.png')}
-          alt="Sponsors section background"
-          className="absolute left-0 top-0 w-full h-[1223px] object-cover"
-        />
+    <section className="w-full bg-black text-white py-12">
+      <div className="max-w-7xl mx-auto px-6">
 
-        {/* Headings and logos positioned absolutely so gap between them is exactly 386px */}
-        {/* Place Current Sponsors at top 200px */}
-        <div className="absolute left-0 w-full z-20" style={{ top: '200px' }}>
-          <div className="flex flex-col items-center">
-            <h2 className="text-white text-6xl font-semibold mb-8">Current Sponsors</h2>
-            <div className="flex items-center justify-center gap-12 mt-4">
-              <div className="h-[262px] flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={getStorageUrl('sponsors/shieldAI.png')}
-                  alt="Shield AI"
-                  className="w-[360px] max-h-[240px] object-contain filter brightness-0 invert"
-                />
-              </div>
-              <div className="h-[262px] flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={getStorageUrl('sponsors/sick.png')}
-                  alt="SICK"
-                  className="w-[401px] max-h-[240px] object-contain filter brightness-0 invert"
-                />
-              </div>
-              <div className="h-[262px] flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={getStorageUrl('sponsors/airlab.png')}
-                  alt="AirLab"
-                  className="w-[350px] max-h-[240px] gap-20 mb-5 object-contain filter brightness-0 invert"
-                />
-              </div>
+        {/* ---------- TOP ROW ---------- */}
+        <div className="grid grid-cols-12 gap-6 items-stretch mb-8">
+          {/* left image */}
+          <div className="col-span-12 md:col-span-4">
+            <div className="relative w-full h-[320px] md:h-[360px] rounded-sm overflow-hidden border border-gray-800">
+              <Image
+                src={topLeftImg}
+                alt="Workshop photo"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
-        </div>
 
-        {/* Individual Patrons placed exactly 386px below Current Sponsors (200 + 386 = 586px) */}
-        <div className="absolute left-0 w-full z-20" style={{ top: '800px' }}>
-          <div className="flex flex-col items-center px-6">
-            <div className="text-white text-5xl font-semibold font-['Inter'] mb-6">Individual Patrons</div>
+          {/* right hero */}
+          <div className="col-span-12 md:col-span-8">
+            <div
+              className="relative w-full h-[320px] md:h-[360px] overflow-hidden"
+              style={{
+                /* subtle chamfer effect on right top corner */
+                background:
+                  'linear-gradient(180deg,#2238f6 0%,#6e4fe8 60%,rgba(48,47,52,0.7) 100%)',
+              }}
+            >
+              {/* optional decorative pattern or shapes */}
+              <Image
+                src={topLeftImg}
+                alt="Support Our Team graphic"
+                fill
+                className="object-cover opacity-95"
+                priority
+              />
 
-            <div className="w-full flex items-center justify-center">
-              <div className="relative w-[1217px] h-[409px]">
-                <div className="absolute inset-0 bg-zinc-300/20 rounded-[10px] z-0" />
+              <div className="relative z-10 h-full flex items-center">
+                <div className="max-w-3xl pl-8 md:pl-12 pr-6">
+                  <h3 className="text-4xl md:text-5xl font-semibold text-white drop-shadow-lg">
+                    Support Our Team
+                  </h3>
 
-                <div className="absolute top-16 left-1/2 -translate-x-1/2 z-10 flex items-end gap-8">
-                  <div className="flex flex-col items-center">
-                    <div className="w-[284px] h-[284px] rounded-full overflow-hidden bg-neutral-300 shadow-md mb-2">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={getStorageUrl('sponsors/choset.jpg')} alt="Prof. Howie Choset" className="w-full h-full object-cover" />
-                    </div>
-                    <p className="text-white text-[22px] font-semibold text-center">Prof. Howie Choset</p>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="w-[284px] h-[284px] rounded-full overflow-hidden bg-neutral-300 shadow-md mb-2">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={getStorageUrl('sponsors/drkelly.jpg')} alt="Dr. Clinton W. Kelly III" className="w-full h-full object-cover" />
-                    </div>
-                    <p className="text-white text-[22px] font-semibold text-center">Dr. Clinton W. Kelly III</p>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="w-[284px] h-[284px] rounded-full overflow-hidden bg-neutral-300 shadow-md mb-2">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={getStorageUrl('mentors/red-whittaker.jpg')} alt="Prof. Red Whittaker" className="w-full h-full object-cover" />
-                    </div>
-                    <p className="text-white text-[22px] font-semibold text-center">Prof. Red Whittaker</p>
-                  </div>
+                  <p className="text-gray-200 mt-4 text-base md:text-lg max-w-xl leading-relaxed">
+                    Support the mission to design, manufacture, and deploy
+                    field-ready lunar robotics as we represent Carnegie Mellon
+                    University on the national stage at NASA Lunabotics.
+                  </p>
+
+                  <Link
+                    href="#"
+                    className="inline-block mt-6 border border-white text-white px-6 py-3 rounded-none bg-transparent hover:bg-white hover:text-black transition-all duration-200"
+                  >
+                    Learn more about our mission →
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="max-w-6xl mx-auto px-6">
+        {/* ---------- BOTTOM ROW ---------- */}
+        <div className="grid grid-cols-12 gap-6 items-stretch">
+          {/* left: big dark card with chamfer and dashed border */}
+          <div className="col-span-12 lg:col-span-8">
+            <div
+              className="relative w-full h-[320px] overflow-hidden border border-dashed border-gray-600"
+              style={{
+                background:
+                  'linear-gradient(180deg, rgba(20,20,20,0.95), rgba(18,18,18,0.95))',
+              }}
+            >
+              {/* optional pattern / subtle artwork on the dark card */}
+              <div className="absolute inset-0 opacity-20 pointer-events-none">
+                {/* If you have a decorative pattern, show it here. Otherwise remove. */}
+                <Image
+                  src={topLeftImg}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: 'center' }}
+                />
+              </div>
 
-        
+              <div className="relative z-10 h-full flex items-center">
+                <div className="px-8 md:px-12 py-8 max-w-3xl">
+                  {/* star icon / small emblem */}
+                  <div className="mb-6">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2 L14 9 L21 10 L16 14 L17 21 L12 17 L7 21 L8 14 L3 10 L10 9 Z" fill="white" opacity="0.95" />
+                    </svg>
+                  </div>
 
-        
+                  <h3 className="text-4xl md:text-5xl font-semibold text-white leading-tight mb-4">
+                    What We Can Offer
+                  </h3>
+
+                  <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mb-6">
+                    Our sponsorship tiers offer a range of strategic benefits,
+                    from brand visibility via logo placement and newsletters to
+                    exclusive recruiting access, prominent features in our
+                    documentary and more.
+                  </p>
+
+                  <Link
+                    href="#"
+                    className="inline-block border border-white text-white px-6 py-3 rounded-none bg-transparent hover:bg-white hover:text-black transition-all duration-200"
+                  >
+                    View full sponsorship package →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* right: small image */}
+          <div className="col-span-12 lg:col-span-4">
+            <div className="relative w-full h-[320px] rounded-sm overflow-hidden border border-gray-800">
+              <Image
+                src={topLeftImg}
+                alt="Team workshop photo"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
-
-export default SponsorMiddle;
