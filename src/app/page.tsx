@@ -80,8 +80,7 @@ export default async function Home() {
       >
         <div className={`grid grid-cols-1 gap-8 mb-8 ${latestCount >= 3 ? 'md:grid-cols-3' : latestCount === 2 ? 'md:grid-cols-2 md:justify-center md:max-w-4xl md:mx-auto' : 'md:grid-cols-1'}`}>
           {latestUpdates.map((update) => (
-            /* CHANGED 'update={update}' TO 'data={update}' TO MATCH OUR COMPONENT */
-            <UpdateCard key={update.id} data={update} />
+            <UpdateCard key={update.id} update={update} navigateOnClick={true} variant="compact" />
           ))}
         </div>
         <div className="text-right">
