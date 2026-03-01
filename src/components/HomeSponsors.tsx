@@ -4,7 +4,6 @@ import { useState, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Section } from './Section';
 import { Sponsors } from '@/lib/content';
 
 interface HomeSponsorsProps {
@@ -43,8 +42,8 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
   }, [maxIndex]);
 
   return (
-    <Section className="py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="py-16">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header: title + subtitle centered, "View all" top-right */}
         <div className="flex items-start justify-between gap-4 mb-10">
           <div className="w-16 flex-shrink-0" aria-hidden />
@@ -103,12 +102,12 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
               {slots.map((sponsor, idx) => (
                 <div
                   key={sponsor ? `${sponsor.name}-${idx}` : `slot-${idx}`}
-                  className="flex-shrink-0 flex items-center justify-center px-0.5"
+                  className="flex-shrink-0 flex items-center justify-center px-0"
                   style={{ width: `${100 / slots.length}%` }}
                 >
                   {!sponsor ? (
                     <div
-                      className="w-full max-w-[300px] aspect-[5/3] bg-white/10 flex items-center justify-center border-2 border-dotted border-white/15"
+                      className="w-full max-w-[420px] aspect-[5/3] bg-white/10 flex items-center justify-center border-2 border-dotted border-white/15"
                       style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
                     >
                       <span className="text-sm text-white/50">Sponsor slot</span>
@@ -118,7 +117,7 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
                       href={sponsor.url || '#'}
                       target={sponsor.url && sponsor.url !== '#' ? '_blank' : undefined}
                       rel={sponsor.url && sponsor.url !== '#' ? 'noopener noreferrer' : undefined}
-                      className="block w-full max-w-[300px] aspect-[5/3] bg-white/10 overflow-hidden flex items-center justify-center p-4 hover:bg-white/15 transition-colors border-2 border-dotted border-white/15"
+                      className="block w-full max-w-[420px] aspect-[5/3] bg-white/10 overflow-hidden flex items-center justify-center p-4 hover:bg-white/15 transition-colors border-2 border-dotted border-white/15"
                       style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
                     >
                       <div className="relative w-full h-full">
@@ -127,7 +126,7 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
                           alt={`${sponsor.name} logo`}
                           fill
                           className="object-contain"
-                          sizes="300px"
+                          sizes="420px"
                         />
                       </div>
                     </a>
@@ -149,6 +148,6 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
           </button>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
