@@ -240,12 +240,14 @@ export const UpdateSchema = z.object({
   images: z.array(z.string()),
   content: z.string(),
   tags: z.array(z.string()),
+  featured: z.boolean(),
   link: z.string().url().or(z.literal('')).optional(),
   linkLabel: z.string().optional(),
   links: z.array(z.object({
     url: z.string().url(),
     label: z.string(),
   })).optional(),
+  team: z.string().optional(),
 });
 
 export type Update = z.infer<typeof UpdateSchema>;
@@ -272,9 +274,11 @@ export async function getUpdates(): Promise<Update[]> {
       images: ((row.images as string[]) || []).map((img) => getStorageUrl(img)),
       content: row.content || '',
       tags: (row.tags as string[]) || [],
+      featured: row.featured ?? false,
       link: firstLink?.url || '',
       linkLabel: firstLink?.label || '',
       links: links,
+      team: row.team || undefined,
     };
   });
 
