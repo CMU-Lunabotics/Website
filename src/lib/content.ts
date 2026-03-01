@@ -15,6 +15,7 @@ export const SiteConfigSchema = z.object({
   }),
   hero: z.object({
     headline: z.string(),
+    headlineAccent: z.boolean().optional(),
     subhead: z.string().optional(),
     ctaPrimary: z.object({
       label: z.string(),
@@ -27,6 +28,34 @@ export const SiteConfigSchema = z.object({
     heroImage: z.string(),
     video: z.string().nullable(),
   }),
+  mission: z.object({
+    title: z.string(),
+    body: z.string(),
+    cta: z.object({ label: z.string(), href: z.string() }),
+    image: z.string(),
+  }).optional(),
+  bento: z.object({
+    title: z.string(),
+    updatesTitle: z.string(),
+    updatesDescription: z.string(),
+    updatesCta: z.string(),
+    updatesHref: z.string(),
+    membersStat: z.string(),
+    membersDescription: z.string(),
+    roverStat: z.string(),
+    roverDescription: z.string(),
+    teamImage: z.string(),
+    handsImage: z.string(),
+  }).optional(),
+  operationalMilestones: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    milestones: z.array(z.object({
+      label: z.string(),
+      position: z.enum(['above', 'below']),
+      variant: z.enum(['default', 'moon', 'highlight']).optional(),
+    })),
+  }).optional(),
 });
 
 export type SiteConfig = z.infer<typeof SiteConfigSchema>;
@@ -99,14 +128,20 @@ export type Sponsors = z.infer<typeof SponsorsSchema>;
 export async function getSiteConfig(): Promise<SiteConfig> {
   const content = await import('../../content/site.json');
   const config = content.default;
-  return SiteConfigSchema.parse({
+  const parsed = SiteConfigSchema.parse({
     ...config,
     logo: getStorageUrl(config.logo),
     hero: {
       ...config.hero,
       heroImage: getStorageUrl(config.hero.heroImage),
     },
+    mission: config.mission ? {
+      ...config.mission,
+      image: getStorageUrl(config.mission.image),
+    } : undefined,
+    bento: config.bento,
   });
+  return parsed;
 }
 
 export async function getMembers(): Promise<Member[]> {
