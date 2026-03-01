@@ -6,9 +6,9 @@ test.describe('Smoke Tests', () => {
     
     // Check that the main elements are present
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-    // Use .first() since there are multiple "Join Us" links (hero + footer)
-    await expect(page.getByRole('link', { name: /join us/i }).first()).toBeVisible();
-    // Use .first() since there are multiple "Meet the Team" links (hero + footer)
+    // Hero primary CTA from site.json (e.g. "Learn more")
+    await expect(page.getByRole('link', { name: /learn more/i }).first()).toBeVisible();
+    // Mission or hero CTA (e.g. "Meet the team")
     await expect(page.getByRole('link', { name: /meet the team/i }).first()).toBeVisible();
   });
 

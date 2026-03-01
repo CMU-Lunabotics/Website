@@ -7,6 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-sans: var(--font-noto);
   --color-brand-blue: #0210fd;
   --color-brand-white: #F1EDE6;
   --color-brand-black: #1E1E1E;

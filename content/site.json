@@ -10,10 +10,42 @@
     "instagram": "https://instagram.com/cmu_moonminers"
   },
   "hero": {
-    "headline": "First Footprint.\nEngineered to Lead.",
-    "ctaPrimary": {"label": "Join Us", "href": "/team"},
+    "headline": "Born to win.\nBuilt to prove it.",
+    "subhead": "We are an ambitious, interdisciplinary team of students across engineering, design, and business, united by a shared passion for advancing space technology.",
+    "ctaPrimary": {"label": "Learn more", "href": "/team"},
     "ctaSecondary": {"label": "Meet the Team", "href": "/team"},
     "heroImage": "hero/titlepagemoon.jpg",
     "video": null
+  },
+  "mission": {
+    "title": "Our Mission",
+    "body": "CMU MoonMiners seeks to set the standard for student-led large industry-like builds in space. We build ready systems with marginal risk on an extremely aggressive timeline, laying the groundwork for a landing rover robotic program at Carnegie Mellon.",
+    "cta": {"label": "Meet the team", "href": "/team"},
+    "image": "home/mission-photo.jpg"
+  },
+  "bento": {
+    "title": "The cutting edge of planetary robotics",
+    "updatesTitle": "CMU Moon Miners",
+    "updatesDescription": "Setting the standard for student-led lunar robotics, building marginal-risk ready systems on an aggressive timeline.",
+    "updatesCta": "View our updates",
+    "updatesHref": "/updates",
+    "membersStat": "72 members",
+    "membersDescription": "An interdisciplinary team across engineering, business, computer science and more",
+    "roverStat": "The first autonomous rover",
+    "roverDescription": "in the NASA Lunabotics competition",
+    "teamImage": "home/bento-top.png",
+    "handsImage": "home/bento-bottom.png"
+  },
+  "operationalMilestones": {
+    "title": "Operational Milestones",
+    "subtitle": "2025-2026 milestones",
+    "milestones": [
+      {"label": "Moon Miners founded", "position": "below"},
+      {"label": "Preliminary Design Review", "position": "below"},
+      {"label": "Critical Design Review", "position": "above"},
+      {"label": "Accepted into Lunabotics Challenge", "position": "below"},
+      {"label": "Qualifying Challenge", "position": "above"},
+      {"label": "The Challenge", "position": "above"}
+    ]
   }
 }

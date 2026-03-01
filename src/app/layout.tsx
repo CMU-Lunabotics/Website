@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${audiowide.variable} ${notoTabs.variable}`}>
-      <body className="bg-black antialiased flex flex-col min-h-screen">
+      <body className="bg-black antialiased flex flex-col min-h-screen font-[var(--font-noto)]">
         <header className="relative z-[9999]">
           <Navbar />
         </header>
