@@ -40,7 +40,7 @@ export function HomeBento({
         </h2>
 
         {/* Figma layout: 3 columns. Row 1: [team photo] [gradient span 2]. Row 2: [72 members] [rover] [hands]. No rounding, no gap. */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 overflow-hidden">
           {/* Top-left: team photo */}
           <div className="relative w-full aspect-[411/316] lg:aspect-auto lg:h-[316px] overflow-hidden bg-neutral-900">
             <Image
@@ -52,8 +52,11 @@ export function HomeBento({
             />
           </div>
 
-          {/* Top-right: gradient card */}
-          <div className="relative lg:col-span-2 min-h-[316px] overflow-hidden bg-gradient-to-br from-blue-600/50 via-purple-600/40 to-indigo-600/30 p-8 lg:p-10 flex flex-col justify-between border-none">
+          {/* Top-right: gradient card - cut top-right and bottom-left */}
+          <div
+            className="relative lg:col-span-2 min-h-[316px] overflow-hidden bg-gradient-to-br from-blue-600/50 via-purple-600/40 to-indigo-600/30 p-8 lg:p-10 flex flex-col justify-between border-3 border-white/20"
+            style={{ clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
+          >
             <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
               <div className="absolute top-6 right-6 w-24 h-24 rounded-full border border-white/10" />
               <div className="absolute bottom-10 right-16 w-16 h-16 rounded-full border border-white/10" />
@@ -80,7 +83,10 @@ export function HomeBento({
           </div>
 
           {/* Bottom-left: 72 members - Noto Sans Display 36px semibold, 16px regular */}
-          <div className="bg-neutral-900 p-8 lg:p-9 flex flex-col justify-end gap-4 min-h-[316px]">
+          <div
+            className="bg-neutral-900 p-8 lg:p-9 flex flex-col justify-end gap-4 min-h-[316px] overflow-hidden border-3 border-dotted border-white/15"
+            style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
+          >
             <Sparkles className="h-10 w-10 text-white/90 shrink-0" aria-hidden />
             <p className="text-[36px] font-semibold leading-[1] text-white font-[var(--font-noto)]">
               {membersStat}
@@ -90,8 +96,11 @@ export function HomeBento({
             </p>
           </div>
 
-          {/* Bottom-middle: first autonomous rover - two circle icons, two-line title */}
-          <div className="bg-neutral-900 p-8 lg:p-9 flex flex-col justify-end gap-4 min-h-[316px]">
+          {/* Bottom-middle: first autonomous rover - clipped at top-right */}
+          <div
+            className="bg-neutral-900 p-8 lg:p-9 flex flex-col justify-end gap-4 min-h-[316px] overflow-hidden border-3 border-dotted border-white/15"
+            style={{ clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 0 100%)' }}
+          >
             <div className="flex flex-col gap-1.5 shrink-0" aria-hidden>
               <div className="w-6 h-6 rounded-full bg-white/90" />
               <div className="w-6 h-6 rounded-full border-2 border-white/90" />
