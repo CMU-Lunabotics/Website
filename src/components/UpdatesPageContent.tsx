@@ -129,8 +129,8 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
       {/* Featured update modal */}
       <UpdateModal
         update={featuredUpdate}
-        open={featuredModalOpen}
-        onOpenChange={setFeaturedModalOpen}
+        isOpen={featuredModalOpen}
+        onClose={() => setFeaturedModalOpen(false)}
       />
     </div>
   );

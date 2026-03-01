@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -174,8 +176,8 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
           {cardContent}
           <UpdateModal
             update={update}
-            open={isModalOpen}
-            onOpenChange={setIsModalOpen}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
           />
         </>
       )}
