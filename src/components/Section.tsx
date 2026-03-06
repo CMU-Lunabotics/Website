@@ -8,6 +8,8 @@ interface SectionProps {
   id?: string;
   titleClassName?: string;
   subtitleClassName?: string;
+  /** Optional class for the header wrapper (e.g. mb-6 to reduce space below subtitle) */
+  headerClassName?: string;
   /** 'left' for Figma-style left-aligned headers (e.g. Advisors), default 'center' */
   headerAlign?: 'left' | 'center';
   /** Optional title size: 'default' (3xl/4xl) or 'advisors' (42px semibold) */
@@ -24,14 +26,16 @@ export function Section({
   id,
   titleClassName,
   subtitleClassName,
+  headerClassName,
   headerAlign = 'center',
   titleSize = 'default',
   subtitleSize = 'default',
 }: SectionProps) {
   const isLeft = headerAlign === 'left';
-  const titleSizeClass = titleSize === 'advisors' ? 'text-[36px] font-semibold leading-[100%]' : 'text-2xl font-bold tracking-tight sm:text-3xl';
-  const subtitleSizeClass = subtitleSize === 'advisors' ? 'text-[20px] leading-[100%]' : 'text-lg';
-  const subtitleGapClass = titleSize === 'advisors' ? 'mt-2' : 'mt-4';
+  const titleSizeClass = 'text-[36px] font-semibold leading-[100%]';
+  const subtitleSizeClass = 'text-[20px] leading-[100%]';
+  // Same title-to-subtitle spacing for all sections (Advisors + Team)
+  const titleSubtitleGap = 'mt-2';
 
   return (
     <section id={id} className={cn('py-16', className)}>
@@ -40,7 +44,8 @@ export function Section({
           <div
             className={cn(
               'mb-12',
-              isLeft ? 'text-left' : 'text-center'
+              isLeft ? 'text-left' : 'text-center',
+              headerClassName
             )}
           >
             {title && (
@@ -51,11 +56,11 @@ export function Section({
             {subtitle && (
               <p
                 className={cn(
-                  subtitleGapClass,
                   subtitleSizeClass,
                   'text-white/90 max-w-2xl',
                   isLeft ? '' : 'mx-auto',
-                  subtitleClassName
+                  subtitleClassName,
+                  titleSubtitleGap
                 )}
               >
                 {subtitle}

@@ -11,15 +11,15 @@ const SUBTITLE =
 
 export function TeamHero() {
   return (
-    <section className="relative w-full min-h-[70vh] flex flex-col justify-end">
-      {/* Background image from Supabase - shifted right via transform */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 w-[80%] -translate-x-[-50%]">
+    <section className="relative w-full min-h-[70vh] flex flex-col justify-end overflow-visible bg-transparent pb-20">
+      {/* Background image: wrapper extends left so 80% + translate doesn't get clipped */}
+      <div className="absolute top-0 left-0 right-0 min-h-[calc(100%+20vh)] z-0 overflow-visible">
+        <div className="absolute inset-0 w-[80%] -translate-x-[-50%] -translate-y-[10%] overflow-visible">
           <Image
             src={getStorageUrl('team/team-hero.png')}
             alt=""
             fill
-            className="object-cover object-center"
+            className="object-cover object-center overflow-visible"
             sizes="100vw"
             priority
             aria-hidden
@@ -27,8 +27,8 @@ export function TeamHero() {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full pb-16 pt-24 md:pb-20 md:pt-28">
+      {/* Content — pinned to bottom of hero */}
+      <div className="relative z-10 w-full pb-16 pt-24 md:pb-20 md:pt-50 bg-transparent">
         <Container className="px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-tight">

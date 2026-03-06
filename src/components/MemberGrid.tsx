@@ -157,7 +157,7 @@ export function MemberGrid({ members }: MemberGridProps) {
 
         {/* Subteam Filter Pills */}
         <div className="space-y-3">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             <button
               onClick={() => setSelectedSubteam('all')}
               className={`px-5 py-2.5 text-md transition-colors ${

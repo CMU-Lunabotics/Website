@@ -2,9 +2,7 @@ import { TeamHero } from '@/components/TeamHero';
 import { Section } from '@/components/Section';
 import { MemberGrid } from '@/components/MemberGrid';
 import { MentorCard } from '@/components/MentorCard';
-import { Button } from '@/components/ui/button';
 import { getMembers, getTeamInfo, getMentors } from '@/lib/content';
-import { ExternalLink, Users, BookOpen, Download } from 'lucide-react';
 
 export const metadata = {
   title: 'Team - CMU MoonMiners',
@@ -22,11 +20,11 @@ export default async function TeamPage() {
     <>
       <TeamHero />
 
-      {/* Advisors — Figma: left-aligned header, 42px title, 20px subtitle */}
+      {/* Advisors */}
       <Section
         id="advisors"
         title="Our Advisors"
-        subtitle="Expert guidance from leading researchers in robotics and space systems"
+        subtitle="Expert guidance from leading researchers in robotics and space systems."
         headerAlign="left"
         titleSize="advisors"
         subtitleSize="advisors"
@@ -39,9 +37,11 @@ export default async function TeamPage() {
       </Section>
 
       {/* Team Members */}
-      <Section 
-        title="Our Team" 
-        subtitle="The talented individuals driving our mission forward"
+      <Section
+        title="Our Team"
+        subtitle="The talented individuals driving our mission forward."
+        headerAlign="left"
+        headerClassName="mb-4"
         className="bg-black"
         titleClassName="text-left text-[36px]"
         subtitleClassName="text-left text-[20px]"

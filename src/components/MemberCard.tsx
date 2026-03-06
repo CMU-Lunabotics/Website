@@ -42,7 +42,7 @@ export function MemberCard({ member }: MemberCardProps) {
               {/* Role / position */}
               <p className="text-base text-[#9f9f9f] pb-2">{member.role}</p>
               {/* Name */}
-              <h3 className="text-2xl sm:text-[24px] lg:text-[28px] font-semibold leading-[1.05] text-white">
+              <h3 className="text-2xl sm:text-[24px] lg:text-[28px] font-semibold leading-[1.05] text-white pb-0">
                 {member.name}
               </h3>
             </div>
