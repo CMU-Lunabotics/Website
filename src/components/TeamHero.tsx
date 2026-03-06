@@ -12,8 +12,35 @@ const SUBTITLE =
 export function TeamHero() {
   return (
     <section className="relative w-full min-h-[70vh] flex flex-col justify-end overflow-visible bg-transparent pb-20">
-      {/* Background image: wrapper extends left so 80% + translate doesn't get clipped */}
+
+      {/* Background layer: circles behind, then main hero image on top */}
       <div className="absolute top-0 left-0 right-0 min-h-[calc(100%+20vh)] z-0 overflow-visible">
+        {/* Decorative circle images — centered, behind hero */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none -translate-x-[7%] -translate-y-[25%]">
+          <div className="relative w-[80%] max-w-lg aspect-square">
+            <Image
+              src={getStorageUrl('team/team-hero-circles1.png')}
+              alt=""
+              fill
+              className="object-contain object-center opacity-90"
+              sizes="(max-width: 768px) 70vw, 36rem"
+              aria-hidden
+            />
+          </div>
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none -translate-x-[-10%] -translate-y-[33%]">
+          <div className="relative w-[75%] max-w-xl aspect-square">
+            <Image
+              src={getStorageUrl('team/team-hero-circles2.png')}
+              alt=""
+              fill
+              className="object-contain object-center opacity-90"
+              sizes="(max-width: 700px) 60vw, 30rem"
+              aria-hidden
+            />
+          </div>
+        </div>
+        {/* Main hero background image */}
         <div className="absolute inset-0 w-[80%] -translate-x-[-50%] -translate-y-[10%] overflow-visible">
           <Image
             src={getStorageUrl('team/team-hero.png')}

@@ -9,7 +9,7 @@ export function Navbar() {
 
   return (
     // 'border-none' and 'shadow-none' ensure no decorative lines appear
-    <nav className="fixed top-0 left-0 w-full z-[9999] bg-black/40 backdrop-blur-md border-none shadow-none">
+    <nav className="fixed top-0 left-0 w-full z-[9999] bg-black/40 backdrop-blur-[2px] border-none shadow-none">
       
       {/* - px-6 md:px-12: Controls the horizontal space for the logo and links
           - h-[80px]: Keeps the height consistent
