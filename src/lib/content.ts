@@ -234,7 +234,9 @@ export const MentorSchema = z.object({
   links: z.object({
     website: z.string(),
     linkedin: z.string(),
-    email: z.string().email(),
+    email: z.string().optional(),
+    wikipedia: z.string().optional(),
+    google_scholar: z.string().optional(),
   }),
 });
 
@@ -255,11 +257,22 @@ export async function getMentors(): Promise<Mentor[]> {
     photo: getStorageUrl(row.photo_path),
     bio: row.bio || '',
     expertise: (row.expertise as string[]) || [],
-    links: (row.links as { website?: string; linkedin?: string; email?: string }) || {
-      website: '',
-      linkedin: '',
-      email: '',
-    },
+    links: (() => {
+      const raw = (row.links as {
+        website?: string;
+        linkedin?: string;
+        email?: string;
+        wikipedia?: string;
+        google_scholar?: string;
+      }) || {};
+      return {
+        website: raw.website ?? '',
+        linkedin: raw.linkedin ?? '',
+        email: raw.email ?? '',
+        wikipedia: raw.wikipedia ?? '',
+        google_scholar: raw.google_scholar ?? '',
+      };
+    })(),
   }));
 
   return z.array(MentorSchema).parse(mentors);

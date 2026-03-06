@@ -8,21 +8,56 @@ interface SectionProps {
   id?: string;
   titleClassName?: string;
   subtitleClassName?: string;
+  /** 'left' for Figma-style left-aligned headers (e.g. Advisors), default 'center' */
+  headerAlign?: 'left' | 'center';
+  /** Optional title size: 'default' (3xl/4xl) or 'advisors' (42px semibold) */
+  titleSize?: 'default' | 'advisors';
+  /** Optional subtitle size: 'default' (lg) or 'advisors' (20px) */
+  subtitleSize?: 'default' | 'advisors';
 }
 
-export function Section({ title, subtitle, children, className, id, titleClassName, subtitleClassName }: SectionProps) {
+export function Section({
+  title,
+  subtitle,
+  children,
+  className,
+  id,
+  titleClassName,
+  subtitleClassName,
+  headerAlign = 'center',
+  titleSize = 'default',
+  subtitleSize = 'default',
+}: SectionProps) {
+  const isLeft = headerAlign === 'left';
+  const titleSizeClass = titleSize === 'advisors' ? 'text-[36px] font-semibold leading-[100%]' : 'text-2xl font-bold tracking-tight sm:text-3xl';
+  const subtitleSizeClass = subtitleSize === 'advisors' ? 'text-[20px] leading-[100%]' : 'text-lg';
+  const subtitleGapClass = titleSize === 'advisors' ? 'mt-2' : 'mt-4';
+
   return (
     <section id={id} className={cn('py-16', className)}>
       <Container>
         {(title || subtitle) && (
-          <div className="text-center mb-12">
+          <div
+            className={cn(
+              'mb-12',
+              isLeft ? 'text-left' : 'text-center'
+            )}
+          >
             {title && (
-              <h2 className={cn('text-3xl font-bold tracking-tight sm:text-4xl', titleClassName)}>
+              <h2 className={cn(titleSizeClass, titleClassName, 'text-white')}>
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p className={cn('mt-4 text-lg text-muted-foreground max-w-2xl mx-auto', subtitleClassName)}>
+              <p
+                className={cn(
+                  subtitleGapClass,
+                  subtitleSizeClass,
+                  'text-white/90 max-w-2xl',
+                  isLeft ? '' : 'mx-auto',
+                  subtitleClassName
+                )}
+              >
                 {subtitle}
               </p>
             )}

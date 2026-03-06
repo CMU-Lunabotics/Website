@@ -10,10 +10,10 @@ interface MemberGridProps {
 }
 
 export function MemberGrid({ members }: MemberGridProps) {
-  const [searchTerm, setSearchTerm] = useState('');
+  // const [searchTerm, setSearchTerm] = useState('');
   const [selectedSubteam, setSelectedSubteam] = useState('all');
   const [selectedMechanicalSubteam, setSelectedMechanicalSubteam] = useState('all');
-  const [showLeadsOnly, setShowLeadsOnly] = useState(false);
+  // const [showLeadsOnly, setShowLeadsOnly] = useState(false);
 
   // Get unique subteams for filter
   const subteams = useMemo(() => {
@@ -60,9 +60,9 @@ export function MemberGrid({ members }: MemberGridProps) {
   // Filter members based on search, subteam, mechanical subteam, and leads only
   const filteredMembers = useMemo(() => {
     const filtered = sortedMembers.filter(member => {
-      const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           member.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           member.bio.toLowerCase().includes(searchTerm.toLowerCase());
+      // const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      //                      member.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      //                      member.bio.toLowerCase().includes(searchTerm.toLowerCase());
       
       const matchesSubteam = selectedSubteam === 'all' || 
         member.subteam.split(',').map(s => s.trim()).includes(selectedSubteam);
@@ -97,9 +97,9 @@ export function MemberGrid({ members }: MemberGridProps) {
                      member.name === 'Juee Chandrachud' || // System
                      member.name === 'Alan Chen'; // Technical Lead
       
-      const matchesLeadsFilter = !showLeadsOnly || isLead;
+      // const matchesLeadsFilter = !showLeadsOnly || isLead;
       
-      return matchesSearch && matchesSubteam && matchesMechanicalSubteam && matchesLeadsFilter;
+      return matchesSubteam && matchesMechanicalSubteam;
     });
     
     // Remove any duplicates by email (defensive check)
@@ -112,7 +112,7 @@ export function MemberGrid({ members }: MemberGridProps) {
       seen.add(key);
       return true;
     });
-  }, [sortedMembers, searchTerm, selectedSubteam, selectedMechanicalSubteam, showLeadsOnly]);
+  }, [sortedMembers, selectedSubteam, selectedMechanicalSubteam]);
 
   return (
     <div className="space-y-6">
@@ -120,17 +120,15 @@ export function MemberGrid({ members }: MemberGridProps) {
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
-            <Input
+            {/* <Input
               placeholder="Search members..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full"
-            />
+            /> */}
           </div>
         </div>
         
         {/* View Toggle */}
-        <div className="space-y-3">
+        {/* <div className="space-y-3">
           <h3 className="text-sm font-medium text-muted-foreground">View:</h3>
           <div className="flex gap-2">
             <button
@@ -139,9 +137,10 @@ export function MemberGrid({ members }: MemberGridProps) {
                 showLeadsOnly
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-muted text-muted-foreground hover:bg-muted/80'
-              }`}
-            >
-              Leads Only
+              }`}? 'bg-white text-black'
+                    : 'bg-transparent text-white border border-white hover:bg-muted/80'
+            > */}
+              {/* Leads Only
             </button>
             <button
               onClick={() => setShowLeadsOnly(false)}
@@ -154,18 +153,17 @@ export function MemberGrid({ members }: MemberGridProps) {
               All Members
             </button>
           </div>
-        </div>
+        </div>  */}
 
         {/* Subteam Filter Pills */}
         <div className="space-y-3">
-          <h3 className="text-sm font-medium text-muted-foreground">Filter by Subteam:</h3>
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setSelectedSubteam('all')}
-              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              className={`px-5 py-2.5 text-md transition-colors ${
                 selectedSubteam === 'all'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                  ? 'bg-white text-black'
+                  : 'bg-transparent text-white border border-white hover:bg-muted/80'
               }`}
             >
               All Subteams
@@ -174,10 +172,10 @@ export function MemberGrid({ members }: MemberGridProps) {
               <button
                 key={subteam}
                 onClick={() => setSelectedSubteam(subteam)}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                className={`px-5 py-2.5 text-md transition-colors ${
                   selectedSubteam === subteam
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    ? 'bg-white text-black'
+                    : 'bg-transparent text-white border border-white hover:bg-muted/80'
                 }`}
               >
                 {subteam}
@@ -189,14 +187,14 @@ export function MemberGrid({ members }: MemberGridProps) {
         {/* Mechanical Subteam Filter */}
         {selectedSubteam === 'Mechanical' && (
           <div className="space-y-3">
-            <h3 className="text-sm font-medium text-muted-foreground">Filter by Mechanical Subteam:</h3>
+            <h3 className="text-sm text-muted-foreground">Filter by Mechanical Subteam:</h3>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setSelectedMechanicalSubteam('all')}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                className={`px-5 py-2.5 text-md transition-colors ${
                   selectedMechanicalSubteam === 'all'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    ? 'bg-white text-black'
+                    : 'bg-transparent text-white border border-white hover:bg-muted/80'
                 }`}
               >
                 All
@@ -205,10 +203,10 @@ export function MemberGrid({ members }: MemberGridProps) {
                 <button
                   key={subteam}
                   onClick={() => setSelectedMechanicalSubteam(subteam)}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-5 py-2.5 text-md transition-colors ${
                     selectedMechanicalSubteam === subteam
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                      ? 'bg-white text-black'
+                      : 'bg-transparent text-white border border-white hover:bg-muted/80'
                   }`}
                 >
                   {subteam}

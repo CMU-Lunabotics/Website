@@ -1,59 +1,118 @@
 import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ExternalLink, Mail } from 'lucide-react';
 import { Mentor } from '@/lib/content';
+import { getStorageUrl } from '@/lib/supabase';
+import { cn } from '@/lib/utils';
 
 interface MentorCardProps {
   mentor: Mentor;
 }
 
+const DEFAULT_ADVISOR_PHOTO = 'mentors/zhang-ji.jpg';
+
 export function MentorCard({ mentor }: MentorCardProps) {
+  const photoSrc = mentor.photo || getStorageUrl(DEFAULT_ADVISOR_PHOTO);
+
+  const hasLink = (url: string) => url && url.trim() !== '';
+
   return (
-    <Card className="h-full">
-      <CardHeader className="text-center">
-        <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-muted">
-          <Image
-            src={mentor.photo}
-            alt={`Portrait of ${mentor.name}`}
-            fill
-            className="object-contain"
-            sizes="96px"
-          />
-        </div>
-        <CardTitle className="text-xl">{mentor.name}</CardTitle>
-        <p className="text-sm text-muted-foreground">{mentor.title}</p>
-        <p className="text-xs text-muted-foreground">{mentor.affiliation}</p>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <p className="text-sm text-muted-foreground">{mentor.bio}</p>
-        
-        <div className="flex flex-wrap gap-1">
-          {mentor.expertise.map((skill) => (
-            <Badge key={skill} variant="secondary" className="text-xs">
-              {skill}
-            </Badge>
-          ))}
-        </div>
-        
-        <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm" asChild>
-            <a href={`mailto:${mentor.links.email}`}>
-              <Mail className="h-4 w-4 mr-2" />
-              Email
-            </a>
-          </Button>
-          {mentor.links.website && (
-            <Button variant="outline" size="sm" asChild>
-              <a href={mentor.links.website} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="h-4 w-4 mr-2" />
+    <article
+      className={cn(
+        'flex w-full max-w-[410px] flex-col overflow-hidden',
+        'bg-black'
+      )}
+    >
+      {/* Top: full-width image — Figma 410×360, object-cover */}
+      <div className="relative h-[360px] w-full shrink-0">
+        <Image
+          src={photoSrc}
+          alt={`Portrait of ${mentor.name}`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 410px"
+        />
+      </div>
+
+      {/* Content — Figma: 16px padding, 16px gap between groups */}
+      <div className="flex flex-col gap-4 px-4 pb-5 pt-4">
+        {/* Role (title) — 16px Regular, #9f9f9f */}
+        <p className="text-base text-[#9f9f9f]">{mentor.title}</p>
+
+        {/* Name — 36px SemiBold, white */}
+        <p className="text-[36px] font-semibold leading-[100%] text-white">
+          {mentor.name}
+        </p>
+
+        {/* Links row + bio — Figma: underlined 14px links, then 16px bio */}
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-wrap gap-3">
+            {hasLink(mentor.links.wikipedia ?? '') && (
+              <a
+                href={mentor.links.wikipedia ?? '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+              >
+                Wikipedia
+              </a>
+            )}
+            {hasLink(mentor.links.google_scholar ?? '') && (
+              <a
+                href={mentor.links.google_scholar ?? '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+              >
+                Google Scholar
+              </a>
+            )}
+            {hasLink(mentor.links.website) && (
+              <a
+                href={mentor.links.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+              >
                 Website
               </a>
-            </Button>
+            )}
+            {hasLink(mentor.links.linkedin) && (
+              <a
+                href={mentor.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+              >
+                LinkedIn
+              </a>
+            )}
+            {mentor.links.email && (
+              <a
+                href={`mailto:${mentor.links.email}`}
+                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+              >
+                Email
+              </a>
+            )}
+          </div>
+          {mentor.bio && (
+            <p className="text-base leading-normal text-white">{mentor.bio}</p>
           )}
         </div>
-      </CardContent>
-    </Card>
+
+        {/* Tags — Figma: bg rgba(255,255,255,0.16), rounded-[20px], 14px Medium */}
+        {mentor.expertise.length > 0 && (
+          <div className="flex flex-wrap gap-3">
+            {mentor.expertise.map((skill) => (
+              <span
+                key={skill}
+                className="rounded-[20px] bg-white/10 px-3.5 py-2.5 text-sm font-medium text-white"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </article>
   );
 }
