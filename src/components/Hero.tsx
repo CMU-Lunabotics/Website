@@ -20,7 +20,7 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
   return (
     <section className="relative min-h-[120vh] flex flex-col justify-end overflow-hidden pb-20 lg:pb-28 pt-20 lg:pt-28">
       {/* Circles / geometric elements - large, behind text and rover, does not affect layout */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none -translate-y-[10%]">
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none -translate-y-[5%]">
         <div className="relative w-[min(120vw,600px)] h-[min(120vh,600px)]">
           <Image
             src={getStorageUrl('home/home-hero-circles.png')}
@@ -33,7 +33,7 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
         </div>
       </div>
       {/* Hero image - full height, rover fully visible (no bottom cutoff) */}
-      <div className="absolute inset-y-0 left-[55%] lg:left-[52%] right-0 z-[1] flex justify-end items-center pointer-events-none">
+      <div className="absolute inset-y-0 left-[55%] lg:left-[48%] right-0 z-[1] flex justify-end items-center pointer-events-none">
         <div className="relative w-full h-full min-h-[280px] lg:min-w-[58%]">
           <Image
             src={getStorageUrl('home/home-hero.png')}
@@ -41,7 +41,7 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
             fill
             className="object-contain object-left object-center"
             priority
-            sizes="(max-width: 1024px) 90vw, 50vw"
+            sizes="(max-width: 1024px) 100vw, 60vw"
           />
         </div>
       </div>

@@ -21,28 +21,66 @@ export function MemberCard({ member }: MemberCardProps) {
           whileHover={{ y: -4 }}
           transition={{ duration: 0.2 }}
         >
-          <Card className="group cursor-pointer overflow-hidden transition-all duration-200 hover:shadow-lg" data-testid="member-card">
-            <div className="relative aspect-[4/5] overflow-hidden">
+          <Card
+            className="group cursor-pointer overflow-hidden border-none bg-transparent py-0 pt-0 transition-all duration-200 rounded-none"
+            data-testid="member-card"
+          >
+            {/* Top image area */}
+            <div className="relative h-[300px] w-full overflow-hidden bg-transparent">
               <Image
                 src={member.photo}
                 alt={`Portrait of ${member.name}`}
                 fill
                 className="object-cover transition-transform duration-200 group-hover:scale-105"
-                sizes="(min-width: 1024px) 200px, (min-width: 640px) 160px, 120px"
-                priority={false}
+                sizes="(min-width: 1024px) 260px, (min-width: 640px) 220px, 180px"
+                priority
               />
             </div>
-            <CardContent className="p-4">
-              <h3 className="font-semibold text-lg">{member.name}</h3>
-              <p className="text-sm text-muted-foreground mb-1">{member.role}</p>
-              <p className="text-xs text-muted-foreground mb-2">Class of {member.year}</p>
-              <div className="flex flex-wrap gap-1">
-                {member.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="text-xs">
-                    {tag}
-                  </Badge>
-                ))}
+             {/* Content */}
+          <CardContent className="px-4 pb-2 flex flex-col gap-4">
+            <div className="space-y-1">
+              {/* Role / position */}
+              <p className="text-base text-[#9f9f9f] pb-2">{member.role}</p>
+              {/* Name */}
+              <h3 className="text-2xl sm:text-[24px] lg:text-[28px] font-semibold leading-[1.05] text-white pb-0">
+                {member.name}
+              </h3>
+            </div>
+
+            <div className="space-y-2">
+              {/* Link row */}
+              <div className="flex flex-wrap gap-3">
+                {member.links.linkedin && (
+                  <a
+                    href={member.links.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-white underline underline-offset-2 hover:text-white/80"
+                  >
+                    LinkedIn
+                  </a>
+                )}
               </div>
+
+                {/* Class year — 16px white */}
+                <p className="text-base text-white">
+                  Class of {member.year}
+                </p>
+              </div>
+
+              {/* Tags — Figma-style pills */}
+              {member.tags.length > 0 && (
+                <div className="flex flex-wrap gap-3">
+                  {member.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-[20px] bg-white/10 px-3.5 py-2.5 text-xs font-medium text-white"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
         </motion.div>

@@ -1,12 +1,8 @@
-import Image from 'next/image';
-import { PageHeader } from '@/components/PageHeader';
+import { TeamHero } from '@/components/TeamHero';
 import { Section } from '@/components/Section';
 import { MemberGrid } from '@/components/MemberGrid';
 import { MentorCard } from '@/components/MentorCard';
-import { Button } from '@/components/ui/button';
 import { getMembers, getTeamInfo, getMentors } from '@/lib/content';
-import { ExternalLink, Users, BookOpen, Download } from 'lucide-react';
-import { getStorageUrl } from '@/lib/supabase';
 
 export const metadata = {
   title: 'Team - CMU MoonMiners',
@@ -22,70 +18,16 @@ export default async function TeamPage() {
 
   return (
     <>
-      <PageHeader
-        title="Our Team"
-      />
+      <TeamHero />
 
-      {/* Team Photo Banner */}
-      <div className="relative w-full min-h-screen overflow-hidden">
-        <Image
-          src={getStorageUrl('team/team-2026.JPG')}
-          alt="CMU MoonMiners team photo"
-          fill
-          className="object-contain"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
-          <p className="text-sm text-muted-foreground bg-background/80 px-4 py-2 rounded-lg">
-            CMU MoonMiners Team 2025
-          </p>
-        </div>
-      </div>
-
-      {/* Quick Navigation */}
-      <Section className="py-8">
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button asChild variant="outline" size="lg">
-            <a href="#mentors">
-              <Users className="mr-2 h-4 w-4" />
-              View Mentors
-            </a>
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <a href="/LunaboticsGuideBook.pdf" target="_blank" rel="noopener noreferrer">
-              <BookOpen className="mr-2 h-4 w-4" />
-              Team Guidebook
-              <Download className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <a 
-              href="https://www.nasa.gov/learning-resources/lunabotics-challenge/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              Learn About Lunabotics
-              <ExternalLink className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
-        </div>
-      </Section>
-
-      {/* Team Description */}
-      <Section title="About Our Team">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-lg text-muted-foreground text-center">
-            {teamInfo.blurb}
-          </p>
-        </div>
-      </Section>
-
-      {/* Mentors */}
-      <Section 
-        id="mentors"
-        title="Our Mentors" 
-        subtitle="Expert guidance from leading researchers in robotics and space systems"
+      {/* Advisors */}
+      <Section
+        id="advisors"
+        title="Our Advisors"
+        subtitle="Expert guidance from leading researchers in robotics and space systems."
+        headerAlign="left"
+        titleSize="advisors"
+        subtitleSize="advisors"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {mentors.map((mentor) => (
@@ -95,10 +37,14 @@ export default async function TeamPage() {
       </Section>
 
       {/* Team Members */}
-      <Section 
-        title="Team Members" 
-        subtitle="The talented individuals driving our mission forward"
-        className="bg-muted/30"
+      <Section
+        title="Our Team"
+        subtitle="The talented individuals driving our mission forward."
+        headerAlign="left"
+        headerClassName="mb-4"
+        className="bg-black"
+        titleClassName="text-left text-[36px]"
+        subtitleClassName="text-left text-[20px]"
       >
         <MemberGrid members={members} />
       </Section>
