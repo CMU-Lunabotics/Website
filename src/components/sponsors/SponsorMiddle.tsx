@@ -7,9 +7,12 @@ import Link from 'next/link';
 /*
   Local images in the SAME folder as this file.
 */
-import topLeftImg from './picture1.png';
-import orbitPicture from './picture2.png';
+import topLeftImg from './topleft.png';
+import bottomRightImg from './bottomright.png';
+import topRightImg from './topright.png';
+import bottomLeftImg from './bottomleft.png';
 import placeholderLogo from './picture3.png';
+import launchPhoto from './launch.png';
 
 type SponsorSlide = {
   tier: string;
@@ -51,9 +54,10 @@ export default function SponsorGrid() {
                 }}
               >
                 <Image
-                  src={topLeftImg}
+                  src={topRightImg}
                   alt="Support Our Team graphic"
                   fill
+                  quality={100}
                   className="object-cover opacity-95"
                   priority
                 />
@@ -96,7 +100,7 @@ export default function SponsorGrid() {
                 {/* subtle texture/pattern (using your same image as placeholder background) */}
                 <div className="absolute inset-0 opacity-20 pointer-events-none">
                   <Image
-                    src={topLeftImg}
+                    src={bottomLeftImg}
                     alt=""
                     fill
                     className="object-cover"
@@ -142,7 +146,7 @@ export default function SponsorGrid() {
             <div className="col-span-12 lg:col-span-4">
               <div className="relative w-full h-[320px] overflow-hidden border border-gray-800">
                 <Image
-                  src={topLeftImg}
+                  src={bottomRightImg}
                   alt="Team workshop photo"
                   fill
                   className="object-cover"
@@ -168,7 +172,7 @@ export default function SponsorGrid() {
 
           <div className="mt-8">
             <Image
-              src={orbitPicture}
+              src={launchPhoto}
               alt="Orbit graphic"
               width={500}
               height={300}
@@ -176,11 +180,6 @@ export default function SponsorGrid() {
             />
           </div>
 
-          <div className="mt-12">
-            <div className="text-6xl md:text-7xl font-semibold tracking-wide">
-              LAUNCH
-            </div>
-          </div>
         </div>
       </section>
 
