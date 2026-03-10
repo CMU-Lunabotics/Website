@@ -1,24 +1,26 @@
 'use client';
 
 import React from 'react';
-import Image, { type StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
+import { getStorageUrl } from '@/lib/supabase';
 
-/*
-  Local images in the SAME folder as this file.
-*/
-import topLeftImg from './topleft.png';
-import bottomRightImg from './bottomright.png';
-import topRightImg from './topright.png';
-import bottomLeftImg from './bottomleft.png';
-import placeholderLogo from './picture3.png';
-import launchPhoto from './launch.png';
+const topLeftImg = getStorageUrl('sponsors/topleft.png');
+const bottomRightImg = getStorageUrl('sponsors/bottomright.png');
+const topRightImg = getStorageUrl('sponsors/topright.png');
+const bottomLeftImg = getStorageUrl('sponsors/bottomleft.png');
+const launchPhoto = getStorageUrl('sponsors/launch.png');
+
+const shieldAiLogo = getStorageUrl('sponsors/shieldAI.png');
+const sickLogo = getStorageUrl('sponsors/sick.png');
+const acmeLogo = getStorageUrl('sponsors/acme.svg');
+const airlabLogo = getStorageUrl('sponsors/airlab.png');
 
 type SponsorSlide = {
   tier: string;
   name: string;
   description: string;
-  logo: StaticImageData;
+  logo: string;
 };
 
 export default function SponsorGrid() {
@@ -97,7 +99,6 @@ export default function SponsorGrid() {
                     'linear-gradient(180deg, rgba(20,20,20,0.95), rgba(18,18,18,0.95))',
                 }}
               >
-                {/* subtle texture/pattern (using your same image as placeholder background) */}
                 <div className="absolute inset-0 opacity-20 pointer-events-none">
                   <Image
                     src={bottomLeftImg}
@@ -166,10 +167,6 @@ export default function SponsorGrid() {
             Those Who Made Our Mission Possible
           </h2>
 
-          <p className="mt-5 text-base md:text-xl text-white/75">
-            With your support, whether monetary or non-monetary, we are able to get closer to our goals.
-          </p>
-
           <div className="mt-8">
             <Image
               src={launchPhoto}
@@ -201,29 +198,29 @@ function SponsorCarousel() {
       tier: 'Sponsor',
       name: 'Shield AI',
       description:
-        'Donated $5000 to help with material and building costs and provided equipment to support our mission.',
-      logo: placeholderLogo,
+        'Donated to help with material and building costs and provided equipment to support our mission.',
+      logo: shieldAiLogo,
     },
     {
       tier: 'Sponsor',
       name: 'SICK',
       description:
         'Provided sensors and technical support to help the team accelerate testing and integration.',
-      logo: placeholderLogo,
+      logo: sickLogo,
     },
     {
       tier: 'Sponsor',
-      name: 'Another Sponsor',
+      name: 'ACME',
       description:
         'Supported our manufacturing pipeline and helped fund critical drivetrain components.',
-      logo: placeholderLogo,
+      logo: acmeLogo,
     },
     {
       tier: 'Sponsor',
-      name: 'One More',
+      name: 'AIRLAB',
       description:
         'Enabled outreach and documentation efforts that help us recruit and grow the team.',
-      logo: placeholderLogo,
+      logo: airlabLogo,
     },
   ];
 
@@ -309,7 +306,7 @@ function SponsorCard({
   tier: string;
   name: string;
   description: string;
-  logo: StaticImageData;
+  logo: string;
   isActive: boolean;
 }) {
   return (
@@ -326,7 +323,7 @@ function SponsorCard({
 
       {/* Logo */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="relative w-[240px] md:w-[360px] h-[120px] md:h-[160px] opacity-95">
+        <div className="relative w-[340px] md:w-[520px] h-[180px] md:h-[260px] opacity-95">
           <Image src={logo} alt={`${name} logo`} fill className="object-contain" />
         </div>
       </div>
@@ -337,11 +334,11 @@ function SponsorCard({
           {tier}
         </span>
 
-        <h3 className="text-white text-4xl md:text-5xl font-semibold leading-tight">
+        <h3 className="text-white text-4xl md:text-5xl font-semibold leading-tight whitespace-nowrap">
           {name}
         </h3>
 
-        <p className="mt-3 text-white/75 text-sm md:text-base leading-relaxed">
+        <p className="mt-3 text-white/75 text-sm md:text-base leading- whitespace-nowrap">
           {description}
         </p>
       </div>

@@ -3,17 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import tier1Img from './tier1photo.png';
-import tier2Img from './tier2photo.png';
-import tier3Img from './tier3photo.png';
-import tier4Img from './tier4photo.png';
+import { getStorageUrl } from '@/lib/supabase';
 
 const tiers = [
-  { image: tier1Img },
-  { image: tier2Img },
-  { image: tier3Img },
-  { image: tier4Img },
+  { image: getStorageUrl('sponsors/tier1photo.png'), alt: 'Tier 1 sponsorship graphic' },
+  { image: getStorageUrl('sponsors/tier2photo.png'), alt: 'Tier 2 sponsorship graphic' },
+  { image: getStorageUrl('sponsors/tier3photo.png'), alt: 'Tier 3 sponsorship graphic' },
+  { image: getStorageUrl('sponsors/tier4photo.png'), alt: 'Tier 4 sponsorship graphic' },
 ];
 
 export function SponsorCTA() {
@@ -24,6 +20,7 @@ export function SponsorCTA() {
       {/* =============================== */}
       <section className="w-full bg-black text-white py-28">
         <div className="max-w-7xl mx-auto px-6 text-center">
+
           <h2 className="text-4xl md:text-6xl font-semibold">
             Fuel Our Mission
           </h2>
@@ -43,7 +40,7 @@ export function SponsorCTA() {
                 <div className="relative w-full aspect-[4/5]">
                   <Image
                     src={t.image}
-                    alt="Sponsorship tier"
+                    alt={t.alt}
                     fill
                     quality={100}
                     className="object-cover"
@@ -62,6 +59,7 @@ export function SponsorCTA() {
               Learn more about our sponsorship packages →
             </Link>
           </div>
+
         </div>
       </section>
 
@@ -70,6 +68,7 @@ export function SponsorCTA() {
       {/* =============================== */}
       <section className="w-full bg-black text-white py-28">
         <div className="max-w-7xl mx-auto px-6 text-center">
+
           <h2 className="text-4xl md:text-6xl font-semibold">
             Personal Donations
           </h2>
@@ -79,6 +78,7 @@ export function SponsorCTA() {
           </p>
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-white/20">
+
             <div className="py-10 px-6 text-lg md:text-xl font-medium border-b sm:border-b-0 sm:border-r border-white/20 bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">
               Red Whittaker
             </div>
@@ -94,7 +94,9 @@ export function SponsorCTA() {
             <div className="py-10 px-6 text-lg md:text-xl font-medium bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">
               Linda & Andrew Nelson
             </div>
+
           </div>
+
         </div>
       </section>
     </>
