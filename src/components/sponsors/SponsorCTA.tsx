@@ -20,10 +20,15 @@ export function SponsorCTA() {
       {/* =============================== */}
       <section className="w-full bg-black text-white py-28">
         <div className="max-w-7xl mx-auto px-6 text-center">
+
           <h2 className="text-4xl md:text-6xl font-semibold">
-            Those Who Made Our Mission Possible
+            Fuel Our Mission
           </h2>
-          
+
+          <p className="mt-6 text-white/75 text-base md:text-xl max-w-4xl mx-auto leading-relaxed">
+            We are deeply grateful for the partners who support our team and believe in our vision.
+            The sponsorship tiers below highlight how various forms of support contribute to our success.
+          </p>
 
           {/* Tier Grid */}
           <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -54,6 +59,7 @@ export function SponsorCTA() {
               Learn more about our sponsorship packages →
             </Link>
           </div>
+
         </div>
       </section>
 
@@ -62,6 +68,7 @@ export function SponsorCTA() {
       {/* =============================== */}
       <section className="w-full bg-black text-white py-28">
         <div className="max-w-7xl mx-auto px-6 text-center">
+
           <h2 className="text-4xl md:text-6xl font-semibold">
             Personal Donations
           </h2>
@@ -71,6 +78,7 @@ export function SponsorCTA() {
           </p>
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-white/20">
+
             <div className="py-10 px-6 text-lg md:text-xl font-medium border-b sm:border-b-0 sm:border-r border-white/20 bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">
               Red Whittaker
             </div>
@@ -86,7 +94,9 @@ export function SponsorCTA() {
             <div className="py-10 px-6 text-lg md:text-xl font-medium bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">
               Linda & Andrew Nelson
             </div>
+
           </div>
+
         </div>
       </section>
     </>

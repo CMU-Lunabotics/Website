@@ -167,10 +167,6 @@ export default function SponsorGrid() {
             Those Who Made Our Mission Possible
           </h2>
 
-          <p className="mt-5 text-base md:text-xl text-white/75">
-            With your support, whether monetary or non-monetary, we are able to get closer to our goals.
-          </p>
-
           <div className="mt-8">
             <Image
               src={launchPhoto}
@@ -180,6 +176,7 @@ export default function SponsorGrid() {
               className="mx-auto w-[280px] md:w-[380px] h-auto"
             />
           </div>
+
         </div>
       </section>
 
@@ -341,7 +338,7 @@ function SponsorCard({
           {name}
         </h3>
 
-        <p className="mt-3 text-white/75 text-sm md:text-base leading-relaxed">
+        <p className="mt-3 text-white/75 text-sm md:text-base leading- whitespace-nowrap">
           {description}
         </p>
       </div>
