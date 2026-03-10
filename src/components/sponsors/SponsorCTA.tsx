@@ -3,17 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import tier1Img from './tier1photo.png';
-import tier2Img from './tier2photo.png';
-import tier3Img from './tier3photo.png';
-import tier4Img from './tier4photo.png';
+import { getStorageUrl } from '@/lib/supabase';
 
 const tiers = [
-  { image: tier1Img },
-  { image: tier2Img },
-  { image: tier3Img },
-  { image: tier4Img },
+  { image: getStorageUrl('sponsors/tier1photo.png'), alt: 'Tier 1 sponsorship graphic' },
+  { image: getStorageUrl('sponsors/tier2photo.png'), alt: 'Tier 2 sponsorship graphic' },
+  { image: getStorageUrl('sponsors/tier3photo.png'), alt: 'Tier 3 sponsorship graphic' },
+  { image: getStorageUrl('sponsors/tier4photo.png'), alt: 'Tier 4 sponsorship graphic' },
 ];
 
 export function SponsorCTA() {
@@ -25,13 +21,9 @@ export function SponsorCTA() {
       <section className="w-full bg-black text-white py-28">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-6xl font-semibold">
-            Fuel Our Mission
+            Those Who Made Our Mission Possible
           </h2>
-
-          <p className="mt-6 text-white/75 text-base md:text-xl max-w-4xl mx-auto leading-relaxed">
-            We are deeply grateful for the partners who support our team and believe in our vision.
-            The sponsorship tiers below highlight how various forms of support contribute to our success.
-          </p>
+          
 
           {/* Tier Grid */}
           <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -43,7 +35,7 @@ export function SponsorCTA() {
                 <div className="relative w-full aspect-[4/5]">
                   <Image
                     src={t.image}
-                    alt="Sponsorship tier"
+                    alt={t.alt}
                     fill
                     quality={100}
                     className="object-cover"
