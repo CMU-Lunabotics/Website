@@ -33,6 +33,9 @@ export function Navbar() {
 
         {/* NAVIGATION LINKS */}
         <div className="hidden md:flex items-center gap-8 lg:gap-12">
+          <Link href="/about" className="text-white/70 hover:text-[#F1EDE6] text-xs font-bold uppercase tracking-widest transition-all">
+            About
+          </Link>
           <Link href="/team" className="text-white/70 hover:text-[#F1EDE6] text-xs font-bold uppercase tracking-widest transition-all">
             Team
           </Link>
