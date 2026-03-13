@@ -7,7 +7,7 @@ export function AboutHero() {
       {/* Point cloud background — upload to hero/point-cloud.jpg in Supabase Storage */}
       <div className="absolute inset-0">
         <Image
-          src={getStorageUrl('our-story/lidarr 1.png')}
+          src={getStorageUrl('our-story/Group 702.png')}
           alt="Point cloud map"
           fill
           className="object-cover opacity-70"
