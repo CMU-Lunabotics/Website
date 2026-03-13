@@ -17,26 +17,7 @@ export function AboutHero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
       </div>
 
-      {/* Point Cloud Map label — top right */}
-      <div className="absolute top-28 right-10 z-10 flex items-center gap-2">
-        <div className="w-3.5 h-3.5 border border-white/60" />
-        <span className="text-white/70 text-xs font-mono tracking-[0.2em] uppercase">
-          Point Cloud Map
-        </span>
-      </div>
-
-      {/* Framed rectangle overlay (decorative, matches design) */}
-      <div
-        className="absolute z-10 border border-white/30"
-        style={{ top: '18%', left: '38%', width: '28%', height: '38%' }}
-      >
-        <div className="absolute -top-px -left-px w-3 h-3 border-t border-l border-white/70" />
-        <div className="absolute -top-px -right-px w-3 h-3 border-t border-r border-white/70" />
-        <div className="absolute -bottom-px -left-px w-3 h-3 border-b border-l border-white/70" />
-        <div className="absolute -bottom-px -right-px w-3 h-3 border-b border-r border-white/70" />
-      </div>
-
-      {/* Bottom-left content */}
+{/* Bottom-left content */}
       <div className="absolute bottom-16 left-10 z-10 max-w-lg px-2 flex flex-col items-start gap-[6px]">
         <h1 className="text-6xl lg:text-7xl font-bold text-white font-[var(--font-noto)]">
           Our Story
