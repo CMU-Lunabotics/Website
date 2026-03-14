@@ -12,7 +12,7 @@ const DEFAULT_ADVISOR_PHOTO = 'mentors/zhang-ji.jpg';
 export function MentorCard({ mentor }: MentorCardProps) {
   const photoSrc = mentor.photo || getStorageUrl(DEFAULT_ADVISOR_PHOTO);
 
-  const hasLink = (url: string) => url && url.trim() !== '';
+  const hasLink = (url: string | undefined) => url && url.trim() !== '';
 
   return (
     <article
@@ -21,7 +21,6 @@ export function MentorCard({ mentor }: MentorCardProps) {
         'bg-black'
       )}
     >
-      {/* Top: full-width image — Figma 410×360, object-cover */}
       <div className="relative h-[360px] w-full shrink-0">
         <Image
           src={photoSrc}
@@ -32,21 +31,17 @@ export function MentorCard({ mentor }: MentorCardProps) {
         />
       </div>
 
-      {/* Content — Figma: 16px padding, 16px gap between groups */}
       <div className="flex flex-col gap-4 px-4 pb-5 pt-4">
-        {/* Role (title) — 16px Regular, #9f9f9f */}
         <p className="text-base text-[#9f9f9f]">{mentor.title}</p>
 
-        {/* Name — 36px SemiBold, white */}
         <p className="text-[36px] font-semibold leading-[100%] text-white">
           {mentor.name}
         </p>
 
-        {/* Links row + bio — Figma: underlined 14px links, then 16px bio */}
         <div className="flex flex-col gap-2">
           <div className="flex flex-wrap gap-3">
             {hasLink(mentor.links.wikipedia ?? '') && (
-              <a
+              
                 href={mentor.links.wikipedia ?? '#'}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -56,7 +51,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
               </a>
             )}
             {hasLink(mentor.links.google_scholar ?? '') && (
-              <a
+              
                 href={mentor.links.google_scholar ?? '#'}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -66,7 +61,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
               </a>
             )}
             {hasLink(mentor.links.website) && (
-              <a
+              
                 href={mentor.links.website}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -76,7 +71,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
               </a>
             )}
             {hasLink(mentor.links.linkedin) && (
-              <a
+              
                 href={mentor.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -86,7 +81,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
               </a>
             )}
             {mentor.links.email && (
-              <a
+              
                 href={`mailto:${mentor.links.email}`}
                 className="text-sm text-white underline underline-offset-2 hover:text-white/80"
               >
@@ -99,7 +94,6 @@ export function MentorCard({ mentor }: MentorCardProps) {
           )}
         </div>
 
-        {/* Tags — Figma: bg rgba(255,255,255,0.16), rounded-[20px], 14px Medium */}
         {mentor.expertise.length > 0 && (
           <div className="flex flex-wrap gap-3">
             {mentor.expertise.map((skill) => (
