@@ -62,7 +62,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
             )}
             {hasLink(mentor.links.website) && (
               
-                href={mentor.links.website}
+                href={mentor.links.website!}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-white underline underline-offset-2 hover:text-white/80"
@@ -72,7 +72,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
             )}
             {hasLink(mentor.links.linkedin) && (
               
-                href={mentor.links.linkedin}
+                href={mentor.links.linkedin!}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-white underline underline-offset-2 hover:text-white/80"
