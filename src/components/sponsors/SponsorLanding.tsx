@@ -56,7 +56,7 @@ export function SponsorLanding() {
           <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
             Technology is table stakes. Execution wins championships. The difference
             between a contender and a champion is how fast you can test, break, and rebuild.
-            As a first-year team, we don't rely on legacy funding, inherited infrastructure,
+            As a first-year team, we don&apos;t rely on legacy funding, inherited infrastructure,
             or alumni pipelines.
           </p>
         </div>
