@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function SponsorsPage() {
   return (
-    <div className="relative bg-black pt-24">
+    <div className="relative bg-black">
       <SponsorLanding />
       <SponsorMiddle />
       <SponsorCTA />
