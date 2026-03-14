@@ -233,7 +233,7 @@ export const MentorSchema = z.object({
   expertise: z.array(z.string()),
   links: z.object({
     website: z.string(),
-    linkedin: z.string(),
+    linkedin: z.string().optional(),
     email: z.string().optional(),
     wikipedia: z.string().optional(),
     google_scholar: z.string().optional(),
