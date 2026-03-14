@@ -1,24 +1,24 @@
-import Image from 'next/image';
-import { Mentor } from '@/lib/content';
-import { getStorageUrl } from '@/lib/supabase';
-import { cn } from '@/lib/utils';
+import Image from "next/image";
+import { Mentor } from "@/lib/content";
+import { getStorageUrl } from "@/lib/supabase";
+import { cn } from "@/lib/utils";
 
 interface MentorCardProps {
   mentor: Mentor;
 }
 
-const DEFAULT_ADVISOR_PHOTO = 'mentors/zhang-ji.jpg';
+const DEFAULT_ADVISOR_PHOTO = "mentors/zhang-ji.jpg";
 
 export function MentorCard({ mentor }: MentorCardProps) {
   const photoSrc = mentor.photo || getStorageUrl(DEFAULT_ADVISOR_PHOTO);
 
-  const hasLink = (url: string | undefined) => url && url.trim() !== '';
+  const hasLink = (url: string | undefined) => url && url.trim() !== "";
 
   return (
     <article
       className={cn(
-        'flex w-full max-w-[410px] flex-col overflow-hidden',
-        'bg-black'
+        "flex w-full max-w-[410px] flex-col overflow-hidden",
+        "bg-black"
       )}
     >
       <div className="relative h-[360px] w-full shrink-0">
@@ -30,19 +30,16 @@ export function MentorCard({ mentor }: MentorCardProps) {
           sizes="(max-width: 768px) 100vw, 410px"
         />
       </div>
-
       <div className="flex flex-col gap-4 px-4 pb-5 pt-4">
         <p className="text-base text-[#9f9f9f]">{mentor.title}</p>
-
         <p className="text-[36px] font-semibold leading-[100%] text-white">
           {mentor.name}
         </p>
-
         <div className="flex flex-col gap-2">
           <div className="flex flex-wrap gap-3">
-            {hasLink(mentor.links.wikipedia ?? '') && (
-              
-                href={mentor.links.wikipedia ?? '#'}
+            {hasLink(mentor.links.wikipedia ?? "") && (
+              <a
+                href={mentor.links.wikipedia ?? "#"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-white underline underline-offset-2 hover:text-white/80"
@@ -50,9 +47,9 @@ export function MentorCard({ mentor }: MentorCardProps) {
                 Wikipedia
               </a>
             )}
-            {hasLink(mentor.links.google_scholar ?? '') && (
-              
-                href={mentor.links.google_scholar ?? '#'}
+            {hasLink(mentor.links.google_scholar ?? "") && (
+              <a
+                href={mentor.links.google_scholar ?? "#"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-white underline underline-offset-2 hover:text-white/80"
@@ -61,7 +58,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
               </a>
             )}
             {hasLink(mentor.links.website) && (
-              
+              <a
                 href={mentor.links.website!}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -71,7 +68,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
               </a>
             )}
             {hasLink(mentor.links.linkedin) && (
-              
+              <a
                 href={mentor.links.linkedin!}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -81,7 +78,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
               </a>
             )}
             {mentor.links.email && (
-              
+              <a
                 href={`mailto:${mentor.links.email}`}
                 className="text-sm text-white underline underline-offset-2 hover:text-white/80"
               >
@@ -93,7 +90,6 @@ export function MentorCard({ mentor }: MentorCardProps) {
             <p className="text-base leading-normal text-white">{mentor.bio}</p>
           )}
         </div>
-
         {mentor.expertise.length > 0 && (
           <div className="flex flex-wrap gap-3">
             {mentor.expertise.map((skill) => (
