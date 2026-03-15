@@ -52,6 +52,10 @@ export const Footer = () => {
           transition: opacity 0.2s;
         }
 
+        .link-column a:hover {
+          opacity: 1;
+        }
+
         .newsletter-box {
           background: rgba(255, 255, 255, 0.08);
           border: 1px solid #747474;
@@ -136,15 +140,32 @@ export const Footer = () => {
           margin: 4px 0 0 0;
         }
 
-        /* Updated Social Frame Section */
-        .social-frame {
+        .social-links {
+          display: flex;
+          align-items: center;
+          gap: 16px;
           margin-top: 16px;
-          width: 155px; /* Width from Figma Frame 621 */
-          height: 36px;
-          background-image: url('https://hypejatlztjwwyyznnwd.supabase.co/storage/v1/object/public/media/footer/Frame%20621%20(2).svg');
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: left center;
+        }
+
+        .social-links a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          opacity: 0.85;
+          transition: opacity 0.2s ease;
+        }
+
+        .social-links a:hover {
+          opacity: 1;
+        }
+
+        .social-links img {
+          width: 24px;
+          height: 24px;
+          display: block;
+          filter: brightness(0) invert(1);
         }
 
         .nasa-section {
@@ -209,13 +230,49 @@ export const Footer = () => {
         <div className="contact-info">
           <h3>Contact</h3>
           <p>cmumoonminers@gmail.com</p>
-          {/* New SVG Frame Replacement */}
-          <div className="social-frame" title="Social Links"></div>
+
+          <div className="social-links">
+            <a
+              href="https://www.instagram.com/cmumoonminers"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg"
+                alt="Instagram"
+              />
+            </a>
+
+            <a
+              href="https://www.youtube.com/@cmumoonminers"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/youtube.svg"
+                alt="YouTube"
+              />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/company/cmu-moon-miners/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg"
+                alt="LinkedIn"
+              />
+            </a>
+          </div>
         </div>
 
         <div className="nasa-section">
           <div className="nasa-logo"></div>
-          <p style={{fontSize: '14px'}}>NASA Lunabotics Challenge</p>
+          <p style={{ fontSize: '14px' }}>NASA Lunabotics Challenge</p>
         </div>
       </div>
 
