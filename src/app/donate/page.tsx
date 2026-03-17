@@ -1,164 +1,231 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 
 const DonatePage = () => {
+  const donationLink =
+    'https://givenow.cmu.edu/campaigns/42968/donations/new?a=9031589&designation=planetaryroboticsfund&amt=';
+
+  const backgroundPhoto =
+    'https://hypejatlztjwwyyznnwd.supabase.co/storage/v1/object/public/media/sponsors/robot%20background%20photo.png';
+
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleContinue = () => {
+    window.open(donationLink, '_blank');
+  };
+
   return (
     <div className="page-wrapper">
       <style>{`
-        /* 1. Global Setup */
+
         .page-wrapper {
-          background-color: #000;
+          background: #000;
           color: #fff;
-          height: 100vh;
-          width: 100vw;
+          min-height: 100vh;
+          width: 100%;
+          position: relative;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          margin: 0;
+          overflow: hidden;
+        }
+
+        .background-photo {
+          position: absolute;
+          inset: 0;
+
+          background-image: url('${backgroundPhoto}');
+          background-repeat: no-repeat;
+
+          /* KEY CHANGES */
+          background-size: 80%; 
+          background-position: right bottom; 
+
+          /* add subtle dark overlay manually */
+        }
+
+        .background-photo::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            180deg,
+            rgba(0,0,0,0.55) 0%,
+            rgba(0,0,0,0.3) 40%,
+            rgba(0,0,0,0.55) 100%
+          );
+        }
+
+        .main-content {
+
+          display: flex;
+          justify-content: center;
+          align-items: flex-start; 
+          padding-top: 80px;
+        }
+
+
+        .donation-box {
+          width: min(760px, 78%);
+          min-height: 500px;
+          padding: 72px 56px 58px;
+          background: linear-gradient(
+            90deg,
+            rgba(70, 70, 70, 0.20) 0%,
+            rgba(40, 40, 40, 0.13) 48%,
+            rgba(70, 70, 70, 0.10) 100%
+          );
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: 0 25px 90px rgba(0, 0, 0, 0.55);
+          border: 1px solid rgba(255, 255, 255, 0.04);
           display: flex;
           flex-direction: column;
-          position: relative;
-          font-family: 'Inter', -apple-system, sans-serif;
-          margin: 0;
-          overflow: hidden; 
+          justify-content: center;
         }
 
-        /* 2. Vector Background (Blueprint) */
-        .vector-bg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-image: url('https://hypejatlztjwwyyznnwd.supabase.co/storage/v1/object/public/media/donors/Group%20671%20(2).svg');
-          background-size: 55%; 
-          background-repeat: no-repeat;
-          background-position: 70% center; 
-          opacity: 0.6; 
-          z-index: 1;
-          pointer-events: none;
-        }
-
-        /* 3. Navigation */
-        .nav {
-          display: flex;
-          justify-content: space-between;
-          padding: 40px 80px;
-          z-index: 10;
-        }
-        .logo { 
-          font-weight: 800; 
-          letter-spacing: 5px; 
-          font-size: 14px;
-          text-transform: uppercase;
-        }
-
-        /* 4. Main Content Area */
-        .main-content {
-          flex: 1;
-          display: flex;
-          justify-content: center; 
-          align-items: center;
-          z-index: 5;
-        }
-
-        /* 5. THE GRAY TRANSPARENT GRADIENT BOX (No Borders) */
-        .donation-box {
-          /* Top: Light Metallic Gray | Bottom: Fully Transparent Black */
-          background: linear-gradient(
-            180deg, 
-            rgba(130, 130, 130, 0.25) 0%,   
-            rgba(0, 0, 0, 0) 100%    
-          );
-          
-          /* Blur defines the glass shape instead of a border */
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          
-          border-radius: 4px;
-          border: none; /* Borders removed */
-          
-          width: 520px;
-          max-width: 90%;
-          padding: 60px 50px;
+        .heading-block {
           text-align: center;
-          
-          /* Shadow provides the necessary depth/separation */
-          box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+          margin-bottom: 72px;
         }
 
-        .donation-box h1 { 
-          font-size: 32px; 
-          font-weight: 700; 
-          margin-bottom: 12px;
-          letter-spacing: -0.02em;
+        .heading-block h1 {
+          margin: 0 0 18px 0;
+          font-size: clamp(20px, 2.5vw, 36px);
+          font-weight: 600;
         }
 
-        .donation-box p { 
-          font-size: 14px; 
-          opacity: 0.7; 
-          margin-bottom: 40px; 
-          line-height: 1.6;
+        .heading-block p {
+          font-size: 18px;
+          opacity: 0.7;
+          line-height: 1.5;
         }
 
-        /* Form Elements (No Borders) */
-        .field { text-align: left; margin-bottom: 25px; }
-        .field label { 
-          display: block; 
-          margin-bottom: 10px; 
-          font-size: 10px; 
-          color: rgba(255, 255, 255, 0.5); 
-          text-transform: uppercase; 
-          letter-spacing: 2px;
+        .form-area {
+          width: 100%;
+          max-width: 800px;
+          margin: 0 auto;
         }
-        
+
+        .field {
+          margin-bottom: 44px;
+        }
+
+        .field label {
+          display: block;
+          margin-bottom: 16px;
+          font-size: 14px;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.95);
+        }
+
         .field input {
           width: 100%;
-          padding: 16px;
-          background: rgba(255, 255, 255, 0.05); 
-          border: none; /* Borders removed */
-          color: #fff;
-          border-radius: 2px;
-          font-size: 15px;
+          height: 68px;
+          padding: 0 24px;
+          background: rgba(32, 32, 32, 0.42);
+          border: none;
           outline: none;
+          color: #fff;
+          font-size: 18px;
+          border-radius: 0;
+          box-sizing: border-box;
+        }
+
+        .field input::placeholder {
+          color: rgba(255, 255, 255, 0.82);
         }
 
         .action-btn {
           width: 100%;
-          padding: 20px;
-          background: #fff;
-          color: #000;
-          font-weight: 800;
+          height: 64px;
+          margin-top: 12px;
+          background: rgba(106, 106, 106, 0.48);
+          color: #fff;
           border: none;
+          font-size: 18px;
+          font-weight: 500;
           cursor: pointer;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          transition: background 0.3s;
+          transition: background 0.25s ease, transform 0.2s ease;
         }
-        
+
         .action-btn:hover {
-          background: #d4d4d4;
+          background: rgba(130, 130, 130, 0.6);
+        }
+
+        .action-btn:active {
+          transform: translateY(1px);
+        }
+
+        @media (max-width: 900px) {
+          .donation-box {
+            padding: 64px 28px 48px;
+            min-height: auto;
+          }
+
+          .heading-block {
+            margin-bottom: 48px;
+          }
+
+          .field {
+            margin-bottom: 30px;
+          }
+
+          .field label {
+            font-size: 15px;
+          }
+
+          .field input {
+            height: 58px;
+            font-size: 16px;
+          }
+
+          .action-btn {
+            height: 58px;
+            font-size: 16px;
+          }
         }
       `}</style>
 
-      <div className="vector-bg" />
-
-      <nav className="nav">
-        <div className="logo">Moon Miners</div>
-        <div style={{fontSize: '11px', opacity: 0.4, letterSpacing: '3px'}}>SECURE ACCESS</div>
-      </nav>
+      <div className="background-photo" />
 
       <main className="main-content">
         <div className="donation-box">
-          <h1>Support the Mission</h1>
-          <p>The technical drawing behind this terminal represents the hardware your contribution will fund.</p>
-          
-          <div className="field">
-            <label>Full Name</label>
-            <input type="text" placeholder="Mission Member Name" />
+          <div className="heading-block">
+            <h1>Support Moon Miners</h1>
+            <p>
+              Your donation helps us push the boundaries of planetary robotics.
+              Please fill out the form below before proceeding to the donation page.
+            </p>
           </div>
 
-          <div className="field">
-            <label>Email Address</label>
-            <input type="email" placeholder="contact@agency.gov" />
-          </div>
+          <div className="form-area">
+            <div className="field">
+              <label htmlFor="fullName">Full Name *</label>
+              <input
+                id="fullName"
+                type="text"
+                placeholder="John Doe"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
+            </div>
 
-          <button className="action-btn">Initialize Transfer</button>
+            <div className="field">
+              <label htmlFor="email">Email Address *</label>
+              <input
+                id="email"
+                type="email"
+                placeholder="johndoe@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <button className="action-btn" onClick={handleContinue}>
+              Continue to donation
+            </button>
+          </div>
         </div>
       </main>
     </div>
