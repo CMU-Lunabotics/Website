@@ -14,7 +14,7 @@ export function TeamHero() {
     <section className="relative w-full min-h-[70vh] flex flex-col justify-end overflow-visible bg-transparent pb-20">
 
       {/* Background layer: circles behind, then main hero image on top */}
-      <div className="absolute top-0 left-0 right-0 min-h-[calc(100%+20vh)] z-0 overflow-visible">
+      <div className="absolute top-0 left-0 right-0 min-h-[calc(100%+20vh)] z-0 overflow-visible pointer-events-none">
         {/* Decorative circle images — centered, behind hero */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none -translate-x-[7%] -translate-y-[25%]">
           <div className="relative w-[80%] max-w-lg aspect-square">
@@ -55,7 +55,7 @@ export function TeamHero() {
       </div>
 
       {/* Content — pinned to bottom of hero */}
-      <div className="relative z-10 w-full pb-16 pt-24 md:pb-20 md:pt-50 bg-transparent">
+      <div className="relative z-[1] w-full pb-16 pt-24 md:pb-20 md:pt-50 bg-transparent">
         <Container className="px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-tight">
