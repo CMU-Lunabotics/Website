@@ -215,6 +215,7 @@ export function OperationalMilestones({ title, subtitle }: OperationalMilestones
                 </radialGradient>
                 <linearGradient id="om-orange-dot" x1="0.5" y1="0" x2="0.5" y2="1">
                   <stop offset="0%" stopColor="#FF6224" />
+                  <stop offset="80%" stopColor="#fabfa8" />
                   <stop offset="100%" stopColor="#F1EDE6" />
                 </linearGradient>
                 <linearGradient id="om-purple-dot" x1="0.5" y1="0" x2="0.5" y2="1">
@@ -296,14 +297,29 @@ export function OperationalMilestones({ title, subtitle }: OperationalMilestones
                 );
               })}
 
-              {/* Default "We are here" orange decorations (only when nothing selected) */}
+              {/* Default "We are here" glowing dot with orbiting planets (only when nothing selected) */}
               {selected === null && (
                 <>
-                  <circle cx={960} cy={164} r={55} fill="none" stroke="#f1ede6" strokeOpacity={0.15} strokeDasharray="3 3" />
-                  <circle cx={960} cy={164} r={48} fill="url(#om-glow)" />
-                  <circle cx={960} cy={164} r={28} fill="url(#om-sphere)" />
-                  <circle cx={930} cy={200} r={8} fill="url(#om-sphere)" />
-                  <circle cx={1000} cy={120} r={4} fill="#ff6b35" opacity={0.5} />
+                  {/* Glowing dot */}
+                  <circle cx={946} cy={182} r={14} fill="url(#om-white-glow)" />
+                  <circle cx={946} cy={182} r={5} fill="#f1ede6" stroke="#f1ede6" strokeWidth={1} />
+
+                  {/* Dashed orbit circle */}
+                  <circle cx={946} cy={182} r={48} fill="none" stroke="#f1ede6" strokeOpacity={0.3} strokeDasharray="4 4" />
+
+                  {/* Two orbiting orange planets */}
+                  <g>
+                    <animateTransform
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 946 182"
+                      to="360 946 182"
+                      dur="10s"
+                      repeatCount="indefinite"
+                    />
+                    <circle cx={994} cy={182} r={7} fill="url(#om-orange-dot)" />
+                    <circle cx={898} cy={182} r={13} fill="url(#om-orange-dot)" />
+                  </g>
                 </>
               )}
 
