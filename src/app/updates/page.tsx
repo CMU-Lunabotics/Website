@@ -30,13 +30,14 @@ export default async function UpdatesPage() {
     <section className="relative">
       <div className="w-full relative min-h-screen">
         {/* Header section with rover background */}
-        <div className="relative h-[600px] md:h-[800px] lg:h-[750px] overflow-hidden">
+        {/* Header section with rover background */}
+        <div className="relative h-[800px] md:h-[850px] lg:h-[900px] ">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={getStorageUrl('updates/updates-bg.png')}
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute top-0 right-0 opacity-[0.4] object-contain scale-85 origin-top-right"
+            className="pointer-events-none absolute top-0 right-0 w-[65%] h-[80%] opacity-[0.8] object-contain origin-top-right"
           />
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col justify-end h-[578px] pb-8">
             <h1 className="text-[63.429px] font-semibold text-white leading-[76.749px] font-display">

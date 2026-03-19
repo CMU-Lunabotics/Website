@@ -31,8 +31,8 @@ export function UpdateModal({ update, isOpen, onClose }: UpdateModalProps) {
         
         <div className="p-8">
           <p className="text-sm text-blue-400 font-medium mb-2">{update.date}</p>
-          <h2 className="text-3xl font-bold text-white mb-6 font-[var(--font-audiowide)]">{update.title}</h2>
-          <div className="prose prose-invert max-w-none">
+          <h2 className="text-3xl font-display font-semibold text-white mb-6 font-[var(--font-audiowide)]">{update.title}</h2>
+          <div className="font-display prose prose-invert max-w-none">
             <p className="text-white/80 leading-relaxed whitespace-pre-wrap">{update.content}</p>
           </div>
         </div>

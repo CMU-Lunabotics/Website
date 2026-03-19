@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Update } from '@/lib/content';
-import { UpdateModal } from './UpdateModal';
+// import { UpdateModal } from './UpdateModal'; // TODO: Re-enable
 import { getStorageUrl } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -18,7 +18,7 @@ interface UpdateCardProps {
 }
 
 export function UpdateCard({ update, navigateOnClick = false, variant = 'default' }: UpdateCardProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false); // TODO: Re-enable
   const images = update.images || [];
   const hasMultipleImages = images.length > 1;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -45,18 +45,14 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  const handleCardClick = () => {
-    if (!navigateOnClick) {
-      setIsModalOpen(true);
-    }
-  };
+  // TODO: Re-enable modal on click
+  const handleCardClick = () => {};
 
   const imageHeight = variant === 'compact' ? 'h-64' : 'h-[400px]';
 
   const cardContent = (
     <div
-      className="inline-flex flex-col items-start gap-7 group cursor-pointer overflow-hidden"
-      onClick={handleCardClick}
+      className="inline-flex flex-col items-start gap-7 group overflow-hidden"
     >
       {/* Image area */}
       <div className={cn('relative w-full overflow-hidden bg-zinc-800', imageHeight)}>
@@ -67,7 +63,7 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
               src={images[safeIndex]}
               alt={`${update.title} - Image ${safeIndex + 1}`}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="object-cover" /* TODO: Re-enable: group-hover:scale-105 transition-transform duration-500 */
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
 
@@ -113,7 +109,7 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
             src={getStorageUrl('team/team-2026.JPG')}
             alt="Group team cover"
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover" /* TODO: Re-enable: group-hover:scale-105 transition-transform duration-500 */
           />
         )}
       </div>
@@ -172,14 +168,8 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
           {cardContent}
         </Link>
       ) : (
-        <>
-          {cardContent}
-          <UpdateModal
-            update={update}
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-          />
-        </>
+        // TODO: Re-enable UpdateModal here
+        cardContent
       )}
     </>
   );

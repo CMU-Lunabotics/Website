@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react'
 import { addAllowedUser, removeAllowedUser, logout, approveUpdate, unpublishUpdate, deleteUpdate, setFeaturedUpdate } from './actions'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { getStorageUrl } from '@/lib/supabase'
 
 interface AllowedUser {
   id: string
@@ -22,6 +23,7 @@ interface UpdateItem {
   submitted_at: string | null
   published: boolean | null
   featured: boolean
+  images: unknown
 }
 
 interface AdminPanelProps {
@@ -188,6 +190,19 @@ export function AdminPanel({ initialUsers, initialUpdates }: AdminPanelProps) {
                         <span><strong>Date:</strong> {new Date(update.date).toLocaleDateString()}</span>
                         <span><strong>Submitted by:</strong> {update.submitted_by || 'Unknown'}</span>
                       </div>
+                      {Array.isArray(update.images) && update.images.length > 0 && (
+                        <div className="flex gap-2 mt-3 flex-wrap">
+                          {(update.images as string[]).map((img, i) => (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              key={i}
+                              src={getStorageUrl(img)}
+                              alt={`Image ${i + 1}`}
+                              className="h-24 w-24 object-cover rounded border border-border"
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
                     <div className="flex gap-2 ml-4">
                       {update.published ? (

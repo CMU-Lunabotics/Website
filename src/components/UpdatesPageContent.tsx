@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Calendar } from 'lucide-react';
 import { Update } from '@/lib/content';
 import { UpdateCard } from './UpdateCard';
-import { UpdateModal } from './UpdateModal';
 import { getStorageUrl } from '@/lib/supabase';
 import { cn } from '@/lib/utils';
 
@@ -17,7 +16,6 @@ interface UpdatesPageContentProps {
 
 export function UpdatesPageContent({ updates, featuredUpdate, categories }: UpdatesPageContentProps) {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [featuredModalOpen, setFeaturedModalOpen] = useState(false);
 
   const filteredUpdates = activeCategory === 'All'
     ? updates
@@ -30,15 +28,14 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
       {/* Featured Update Card */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
         <div
-          className="relative w-[1280px] h-[612px] md:h-[550px] border border-zinc-600 hover:border-zinc-400 overflow-hidden cursor-pointer group clip-corner-tr"
-          onClick={() => setFeaturedModalOpen(true)}
+          className="relative w-[1280px] h-[612px] md:h-[550px] border border-zinc-600 overflow-hidden group clip-corner-tr"
         >
           {/* Background image */}
           <Image
             src={featuredImage}
             alt={featuredUpdate.title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-700"
+            className="object-cover" /* TODO: Re-enable: group-hover:scale-105 transition-transform duration-700 */
             sizes="100vw"
             priority
           />
@@ -126,12 +123,7 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
         )}
       </div>
 
-      {/* Featured update modal */}
-      <UpdateModal
-        update={featuredUpdate}
-        isOpen={featuredModalOpen}
-        onClose={() => setFeaturedModalOpen(false)}
-      />
+      {/* TODO: Re-enable featured update modal */}
     </div>
   );
 }
