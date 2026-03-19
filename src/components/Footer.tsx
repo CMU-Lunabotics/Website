@@ -1,11 +1,12 @@
 import React from 'react';
+import Link from 'next/link';
 
 export const Footer = () => {
   return (
     <footer className="footer-wrapper">
       <style>{`
         .footer-wrapper {
-          background: rgba(217, 217, 217, 0.16); 
+          background: rgba(217, 217, 217, 0.16);
           width: 100%;
           position: relative;
           color: #FFFFFF;
@@ -172,6 +173,14 @@ export const Footer = () => {
           display: flex;
           align-items: center;
           gap: 10px;
+          text-decoration: none;
+          color: #FFFFFF;
+          opacity: 0.85;
+          transition: opacity 0.2s ease;
+        }
+
+        .nasa-section:hover {
+          opacity: 1;
         }
 
         .nasa-logo {
@@ -194,21 +203,24 @@ export const Footer = () => {
         <div className="link-grid">
           <div className="link-column">
             <h3>Home</h3>
-            <a href="#about">About</a>
+            <Link href="/about">About</Link>
           </div>
+
           <div className="link-column">
             <h3>Team</h3>
-            <a href="#story">Our story</a>
-            <a href="#team">Our team</a>
+            <Link href="/team">Our story</Link>
+            <Link href="/team">Our team</Link>
           </div>
+
           <div className="link-column">
             <h3>Sponsors</h3>
-            <a href="#partner">Partner</a>
-            <a href="#donate">Donate</a>
+            <Link href="/sponsors">Partner</Link>
+            <Link href="/donate">Donate</Link>
           </div>
+
           <div className="link-column">
             <h3>Updates</h3>
-            <a href="#news">News</a>
+            <Link href="/updates">News</Link>
           </div>
         </div>
 
@@ -270,10 +282,17 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="nasa-section">
-          <div className="nasa-logo"></div>
-          <p style={{ fontSize: '14px' }}>NASA Lunabotics Challenge</p>
-        </div>
+        <a
+          href="https://www.nasa.gov/learning-resources/for-colleges-universities/nasa-launches-2026-lunabotics-challenge/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nasa-section"
+        >
+          <div className="nasa-logo" />
+          <p style={{ fontSize: '14px', margin: 0 }}>
+            NASA Lunabotics Challenge
+          </p>
+        </a>
       </div>
 
       <div className="copyright">
