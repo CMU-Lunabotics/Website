@@ -17,13 +17,13 @@ export function AboutHero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
       </div>
 
-{/* Bottom-left content */}
-      <div className="absolute bottom-16 left-10 z-10 max-w-lg px-2 flex flex-col items-start gap-[6px]">
-        <h1 className="text-6xl lg:text-7xl font-bold text-white font-[var(--font-noto)]">
+      {/* Bottom-left content — typography matches home Hero subhead */}
+      <div className="absolute bottom-16 left-6 z-10 max-w-3xl pr-6 lg:left-12 lg:pr-12 text-left font-display">
+        <h1 className="text-6xl lg:text-7xl font-semibold text-white font-display">
           Our Story
         </h1>
-        <p className="text-white/90 text-lg leading-relaxed font-[var(--font-noto)] max-w-md">
-          Moon Miners is a student-led engineering team developing autonomous robotic systems for lunar excavation. By combining robotics, systems engineering, and innovation, we are preparing the technologies needed for humanity&apos;snext steps on the Moon.
+        <p className="mt-6 text-lg font-400 text-white/90 max-w-3xl leading-relaxed">
+          Moon Miners is a student-led engineering team developing autonomous robotic systems for lunar excavation. By combining robotics, systems engineering, and innovation, we are preparing the technologies needed for humanity&apos;s next steps on the Moon.
         </p>
       </div>
     </section>
