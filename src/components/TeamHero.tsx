@@ -1,6 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { Container } from '@/components/Container';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { getStorageUrl } from '@/lib/supabase';
 import { ArrowRight } from 'lucide-react';
@@ -11,19 +13,18 @@ const SUBTITLE =
 
 export function TeamHero() {
   return (
-    <section className="relative w-full min-h-[70vh] flex flex-col justify-end overflow-visible bg-transparent pb-20">
-
+    <section className="relative min-h-[120vh] flex flex-col justify-end overflow-hidden pb-20 lg:pb-28 pt-20 lg:pt-28">
       {/* Background layer: circles behind, then main hero image on top */}
-      <div className="absolute top-0 left-0 right-0 min-h-[calc(100%+20vh)] z-0 overflow-visible pointer-events-none">
+      <div className="absolute inset-0 z-0 overflow-visible pointer-events-none">
         {/* Decorative circle images — centered, behind hero */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none -translate-x-[7%] -translate-y-[25%]">
-          <div className="relative w-[80%] max-w-lg aspect-square">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none -translate-x-[5%] -translate-y-[18%]">
+          <div className="relative w-[min(110vw,48rem)] aspect-square">
             <Image
               src={getStorageUrl('team/team-hero-circles1.png')}
               alt=""
               fill
               className="object-contain object-center opacity-90"
-              sizes="(max-width: 768px) 70vw, 36rem"
+              sizes="(max-width: 768px) 90vw, 56rem"
               aria-hidden
             />
           </div>
@@ -54,46 +55,66 @@ export function TeamHero() {
         </div>
       </div>
 
-      {/* Content — pinned to bottom of hero */}
-      <div className="relative z-[1] w-full pb-16 pt-24 md:pb-20 md:pt-50 bg-transparent">
-        <Container className="px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-tight">
-              {HEADLINE.split('\n').map((line, i) => (
-                <span key={i}>
-                  {i > 0 && <br />}
-                  {line}
-                </span>
-              ))}
-            </h1>
-            <p className="mt-6 text-lg text-white/90 max-w-2xl leading-relaxed">
-              {SUBTITLE}
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="h-12 px-6 text-base rounded-none font-medium border-white text-white bg-transparent hover:bg-white/10 hover:text-white hover:border-white"
-              >
-                <Link href="#advisors">
-                  Learn More
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="h-12 px-6 text-base rounded-none font-medium border-white bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white"
-              >
-                <Link href="/contact">Join Our Team
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+      {/* Mobility label — over team imagery */}
+      <div className="pointer-events-none absolute z-[2] top-[10%] sm:top-[12%] lg:top-[16%] left-[14%] sm:right-0.5 lg:right-1">
+        <Image
+          src={getStorageUrl('team/label_mobility.png')}
+          alt="Mobility"
+          width={238}
+          height={58}
+          className="h-auto w-[min(200px,52vw)] sm:w-[min(220px,40vw)] lg:w-[238px] object-contain"
+          sizes="(max-width: 640px) 52vw, (max-width: 1024px) 40vw, 238px"
+        />
+      </div>
+
+      <div className="relative z-10 w-full pl-6 pr-6 lg:pl-12 lg:pr-12 mb-12 lg:mb-20">
+        <div className="flex flex-col lg:flex-row items-start justify-start gap-8 lg:gap-8">
+          <div className="max-w-2xl flex-shrink-0 lg:pr-4">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-white text-left font-display"
+            >
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] font-display">
+                {HEADLINE.split('\n').map((line, i) => (
+                  <span key={i}>
+                    {i > 0 && <br />}
+                    {line}
+                  </span>
+                ))}
+              </h1>
+              <p className="mt-6 text-lg font-medium text-white/90 max-w-2xl leading-relaxed">
+                {SUBTITLE}
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="h-12 px-6 text-base font-medium rounded-none border-white text-white bg-transparent hover:bg-white/10 hover:text-white hover:border-white"
+                >
+                  <Link href="#advisors">
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="h-12 px-6 text-base font-medium rounded-none border-white bg-transparent text-white hover:bg-white/10 hover:text-white hover:border-white"
+                >
+                  <Link href="/contact">
+                    Join Our Team
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
           </div>
-        </Container>
+          <div className="hidden lg:block flex-shrink-0 w-0 lg:w-[42%] xl:w-[40%]" aria-hidden />
+        </div>
       </div>
     </section>
   );

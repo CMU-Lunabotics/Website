@@ -49,14 +49,14 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
       <div className="relative z-10 w-full pl-6 pr-6 lg:pl-12 lg:pr-12 mb-12 lg:mb-20">
         <div className="flex flex-col lg:flex-row items-start justify-start gap-8 lg:gap-8">
           {/* Text content - left-aligned, no centering */}
-          <div className="max-w-2xl flex-shrink-0 lg:pr-4">
+          <div className="max-w-3xl flex-shrink-0 lg:pr-4">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-white text-left font-[var(--font-noto)]"
+              className="text-white text-left font-display"
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] font-display">
                 {(
                   <>
                     <span>{headlineParts[0].trim()}</span>
@@ -66,7 +66,7 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
                 )}
               </h1>
               {subhead && (
-                <p className="mt-6 text-lg text-white/90 max-w-2xl leading-relaxed">
+                <p className="mt-6 text-lg font-medium text-white/90 leading-relaxed">
                   {subhead}
                 </p>
               )}

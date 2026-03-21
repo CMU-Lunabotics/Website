@@ -9,9 +9,10 @@ const audiowide = Audiowide({
   variable: '--font-audiowide' 
 });
 
-const notoTabs = Noto_Sans_Display({ 
+const notoDisplay = Noto_Sans_Display({
   subsets: ['latin'],
-  variable: '--font-noto' 
+  variable: '--font-noto',
+  display: 'swap',
 });
 
 export const metadata = {
@@ -21,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${audiowide.variable} ${notoTabs.variable}`}>
+    <html lang="en" className={`${audiowide.variable} ${notoDisplay.variable}`}>
       <body className="bg-black antialiased flex flex-col min-h-screen font-[var(--font-noto)]">
         <header className="relative z-[9999]">
           <Navbar />
