@@ -8,7 +8,7 @@ const headerImage = getStorageUrl('sponsors/header.png');
 export function SponsorLanding() {
   return (
     <>
-      <section className="relative w-full min-h-[900px] bg-black overflow-hidden">
+      <section className="hidden md:block relative w-full min-h-[900px] bg-black overflow-hidden">
         <Image
           src={headerImage}
           alt="Sponsors hero background"
@@ -27,20 +27,7 @@ export function SponsorLanding() {
               our team and believe in the impact of our work.
             </p>
             <Button
-              className="
-                bg-transparent
-                border
-                border-white
-                text-white
-                hover:bg-white
-                hover:text-black
-                px-8
-                py-4
-                text-lg
-                rounded-none
-                transition-all
-                duration-300
-              "
+              className="bg-transparent border border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg rounded-none transition-all duration-300"
             >
               Support us →
             </Button>
@@ -48,7 +35,7 @@ export function SponsorLanding() {
         </div>
       </section>
 
-      <section className="w-full bg-black py-24 mt-24">
+      <section className="hidden md:block w-full bg-black py-24 mt-24">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-white text-4xl md:text-4xl font-semibold mb-6">
             Why Sponsor Us?
