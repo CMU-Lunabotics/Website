@@ -1,4 +1,5 @@
 import { SponsorLanding } from '@/components/sponsors/SponsorLanding';
+import { SponsorMobile } from '@/components/sponsors/SponsorMobile';
 import SponsorMiddle from '@/components/sponsors/SponsorMiddle';
 import SponsorCTA from '@/components/sponsors/SponsorCTA';
 
@@ -11,8 +12,11 @@ export default function SponsorsPage() {
   return (
     <div className="relative bg-black">
       <SponsorLanding />
-      <SponsorMiddle />
-      <SponsorCTA />
+      <SponsorMobile />
+      <div className="hidden md:block">
+        <SponsorMiddle />
+        <SponsorCTA />
+      </div>
     </div>
   );
 }
