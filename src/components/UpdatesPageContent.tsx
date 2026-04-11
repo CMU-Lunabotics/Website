@@ -28,14 +28,15 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
       {/* Featured Update Card */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
         <div
-          className="relative w-[1280px] h-[612px] md:h-[550px] border border-zinc-600 overflow-hidden group clip-corner-tr"
+          className="relative w-full h-[320px] md:h-[500px] lg:h-[550px] border border-zinc-600 overflow-hidden group"
+          style={{ clipPath: 'polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%)' }}
         >
           {/* Background image */}
           <Image
             src={featuredImage}
             alt={featuredUpdate.title}
             fill
-            className="object-cover" /* TODO: Re-enable: group-hover:scale-105 transition-transform duration-700 */
+            className="object-cover"
             sizes="100vw"
             priority
           />
@@ -47,38 +48,41 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
           />
 
           {/* Content overlay at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-            {/* Category tag + date */}
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-xs uppercase tracking-wider px-3 py-1 rounded-full border border-white/30 text-white/90">
-                {featuredUpdate.category}
-              </span>
-              <div className="flex items-center text-sm text-white/60">
-                <Calendar className="mr-1.5 h-3.5 w-3.5" />
+          <div className="absolute bottom-0 left-0 right-0 p-5 md:p-10">
+
+            {/* Category tags row */}
+            <div className="flex items-center gap-3 mb-3">
+              {featuredUpdate.category && (
+                <span className="text-xs md:text-sm px-3 md:px-4 py-1 md:py-1.5 rounded-full border border-white/40 bg-black/40 text-white font-medium">
+                  {featuredUpdate.category}
+                </span>
+              )}
+              <div className="flex items-center text-xs md:text-sm text-white/60">
+                <Calendar className="mr-1.5 h-3 w-3 md:h-3.5 md:w-3.5" />
                 {new Date(featuredUpdate.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
                   month: 'short',
                   day: 'numeric',
+                  year: 'numeric',
                 })}
               </div>
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight max-w-3xl mb-3">
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-white leading-tight max-w-3xl mb-2">
               {featuredUpdate.title}
             </h2>
 
             {/* Summary */}
-            <p className="text-white/70 text-base leading-relaxed max-w-3xl line-clamp-2 mb-4">
+            <p className="text-white/70 text-xs md:text-base leading-relaxed max-w-3xl line-clamp-2 mb-3">
               {featuredUpdate.summary}
             </p>
 
-            {/* Topic tags */}
+            {/* Bottom tags */}
             <div className="flex flex-wrap gap-2">
               {featuredUpdate.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/15 text-white/80"
+                  className="text-[10px] md:text-sm px-2.5 md:px-4 py-0.5 md:py-1.5 rounded-full bg-white/15 border border-white/20 text-white/80"
                 >
                   {tag}
                 </span>
@@ -90,15 +94,15 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
 
       {/* Category Filter Tabs */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-10">
-        <div className="flex flex-wrap gap-3">
-          {['All', ...categories].map((category) => (
+        <div className="flex flex-nowrap overflow-x-auto gap-2 scrollbar-hide">
+          {[...new Set(['All', ...categories, 'Outreach'])].map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                'px-5 py-2 text-sm font-medium transition-colors',
+                'px-4 py-2 text-xs md:text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0',
                 activeCategory === category
-                  ? 'bg-brand-blue text-white'
+                  ? 'bg-white text-black'
                   : 'border border-zinc-600 text-white hover:border-zinc-400'
               )}
             >

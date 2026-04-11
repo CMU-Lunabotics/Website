@@ -18,7 +18,6 @@ interface UpdateCardProps {
 }
 
 export function UpdateCard({ update, navigateOnClick = false, variant = 'default' }: UpdateCardProps) {
-  // const [isModalOpen, setIsModalOpen] = useState(false); // TODO: Re-enable
   const images = update.images || [];
   const hasMultipleImages = images.length > 1;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -45,17 +44,16 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  // TODO: Re-enable modal on click
   const handleCardClick = () => {};
 
-  const imageHeight = variant === 'compact' ? 'h-64' : 'h-[400px]';
+  const imageHeight = variant === 'compact' ? 'h-48' : 'h-[280px] md:h-[400px]';
 
   const cardContent = (
-    <div
-      className="inline-flex flex-col items-start gap-7 group overflow-hidden"
-    >
+    <div className="w-full flex flex-col items-start gap-5 md:gap-7 group overflow-hidden">
       {/* Image area */}
-      <div className={cn('relative w-full overflow-hidden bg-zinc-800', imageHeight)}>
+      <div className={cn('relative w-full overflow-hidden bg-zinc-800', imageHeight)}
+        style={{ clipPath: 'polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%)' }}
+      >
         {images.length > 0 ? (
           <>
             <Image
@@ -63,7 +61,7 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
               src={images[safeIndex]}
               alt={`${update.title} - Image ${safeIndex + 1}`}
               fill
-              className="object-cover" /* TODO: Re-enable: group-hover:scale-105 transition-transform duration-500 */
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
 
@@ -109,13 +107,13 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
             src={getStorageUrl('team/team-2026.JPG')}
             alt="Group team cover"
             fill
-            className="object-cover" /* TODO: Re-enable: group-hover:scale-105 transition-transform duration-500 */
+            className="object-cover"
           />
         )}
       </div>
 
       {/* Text content */}
-      <div className="flex flex-col space-y-3">
+      <div className="w-full flex flex-col space-y-3 px-1">
         {/* Category tags */}
         <div className="flex flex-wrap gap-2">
           <span className="font-display font-semibold text-sm flex items-center justify-center px-3 py-1 rounded-full bg-brand-white text-brand-black">
@@ -128,7 +126,7 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
 
         {/* Title + date */}
         <div className="flex items-baseline justify-between gap-2">
-          <h3 className="text-4xl font-display font-semibold text-zinc-50 group-hover:text-white transition-colors leading-tight">
+          <h3 className="text-2xl md:text-4xl font-display font-semibold text-zinc-50 group-hover:text-white transition-colors leading-tight">
             {update.title}
           </h3>
           <div className="flex items-center text-sm text-zinc-400 shrink-0">
@@ -168,7 +166,7 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
           {cardContent}
         </Link>
       ) : (
-        // TODO: Re-enable UpdateModal here
+        
         cardContent
       )}
     </>
