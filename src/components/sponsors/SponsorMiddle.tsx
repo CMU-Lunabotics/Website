@@ -16,6 +16,7 @@ const sickLogo     = getStorageUrl('sponsors/sick.png');
 const acmeLogo     = getStorageUrl('sponsors/acme.svg');
 const synopsysLogo = getStorageUrl('sponsors/synopsys.png');
 const xsensLogo    = 'https://hypejatlztjwwyyznnwd.supabase.co/storage/v1/object/public/media/sponsors/xsens-logo-motion-capture-for-humanoids.jpg';
+const lockheedMartinLogo = getStorageUrl('sponsors/lockheedmartin.jpg');
 
 type SponsorSlide = {
   tier: string;
@@ -122,6 +123,7 @@ function SponsorCarousel() {
     { tier: 'Sponsor', name: 'ACME',       description: 'Supported our manufacturing pipeline and helped fund critical drivetrain components.',               logo: acmeLogo },
     { tier: 'Sponsor', name: 'Synopsys',   description: 'Enabled outreach and documentation efforts that help us recruit and grow the team.',                 logo: synopsysLogo },
     { tier: 'Sponsor', name: 'Xsens',      description: 'Provided cutting-edge motion capture technology to support our robotics development and testing.',   logo: xsensLogo },
+    { tier: 'Sponsor', name: 'Lockheed Martin', description: 'Supports student-led aerospace and robotics innovation through industry partnership and mentorship.', logo: lockheedMartinLogo },
   ];
 
   const [index, setIndex] = React.useState(0);

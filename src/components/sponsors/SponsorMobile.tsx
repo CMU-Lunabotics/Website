@@ -9,6 +9,7 @@ const sickLogo     = getStorageUrl('sponsors/sick.png');
 const acmeLogo     = getStorageUrl('sponsors/acme.svg');
 const synopsysLogo = getStorageUrl('sponsors/synopsys.png');
 const xsensLogo    = getStorageUrl('sponsors/xsens-logo-motion-capture-for-humanoids.jpg');
+const lockheedMartinLogo = getStorageUrl('sponsors/lockheedmartin.jpg');
 const toprightImg  = getStorageUrl('sponsors/topright.png');
 const topleftImg   = getStorageUrl('sponsors/topleft.png');
 const actionImg    = getStorageUrl('sponsors/bottomleft.png');
@@ -21,6 +22,7 @@ const sponsors = [
   { tag: 'Milestone', name: 'ACME',       desc: 'Supported our manufacturing pipeline and helped fund critical drivetrain components.',                   logo: acmeLogo },
   { tag: 'Milestone', name: 'Synopsys',   desc: 'Enabled outreach and documentation efforts that help us recruit and grow the team.',                     logo: synopsysLogo },
   { tag: 'Milestone', name: 'Xsens',      desc: 'Provided cutting-edge motion capture technology to support our robotics development and testing.',       logo: xsensLogo },
+  { tag: 'Milestone', name: 'Lockheed Martin', desc: 'Supports student-led aerospace and robotics innovation through industry partnership and mentorship.', logo: lockheedMartinLogo },
 ];
 
 export function SponsorMobile() {
