@@ -13,10 +13,16 @@ const launchPhoto    = getStorageUrl('sponsors/launch.png');
 
 const shieldAiLogo = getStorageUrl('sponsors/shieldAI.png');
 const sickLogo     = getStorageUrl('sponsors/sick.png');
-const acmeLogo     = getStorageUrl('sponsors/acme.svg');
-const synopsysLogo = getStorageUrl('sponsors/synopsys.png');
-const xsensLogo    = 'https://hypejatlztjwwyyznnwd.supabase.co/storage/v1/object/public/media/sponsors/xsens-logo-motion-capture-for-humanoids.jpg';
-const lockheedMartinLogo = getStorageUrl('sponsors/lockheedmartin.jpg');
+const acmeLogo     = getStorageUrl('sponsors/acmeroboticslogot.png');
+const synopsysLogo = getStorageUrl('sponsors/synopsys-logo-white-rgb.png');
+const xsensLogo    = getStorageUrl('sponsors/xsenslogot.png');
+const lockheedMartinLogo = getStorageUrl('sponsors/lockheedmartintransparent.png');
+const airlabLogo = getStorageUrl('sponsors/AirLab_Color.png');
+const fordLogo = getStorageUrl('sponsors/Ford_Color.png');
+const geckoRoboticsLogo = getStorageUrl('sponsors/Gecko Robotics_Color.png');
+const onShapeLogo = getStorageUrl('sponsors/OnShape_Color.png');
+const sendCutSendLogo = getStorageUrl('sponsors/SendCutSend_Color.png');
+
 
 type SponsorSlide = {
   tier: string;
@@ -118,13 +124,19 @@ export default function SponsorGrid() {
 
 function SponsorCarousel() {
   const slides: SponsorSlide[] = [
-    { tier: 'Sponsor', name: 'Shield AI',  description: 'Donated to help with material and building costs and provided equipment to support our mission.', logo: shieldAiLogo },
-    { tier: 'Sponsor', name: 'SICK',       description: 'Provided sensors and technical support to help the team accelerate testing and integration.',      logo: sickLogo },
-    { tier: 'Sponsor', name: 'ACME',       description: 'Supported our manufacturing pipeline and helped fund critical drivetrain components.',               logo: acmeLogo },
-    { tier: 'Sponsor', name: 'Synopsys',   description: 'Enabled outreach and documentation efforts that help us recruit and grow the team.',                 logo: synopsysLogo },
-    { tier: 'Sponsor', name: 'Xsens',      description: 'Provided cutting-edge motion capture technology to support our robotics development and testing.',   logo: xsensLogo },
-    { tier: 'Sponsor', name: 'Lockheed Martin', description: 'Supports student-led aerospace and robotics innovation through industry partnership and mentorship.', logo: lockheedMartinLogo },
-  ];
+    { tier: 'Sponsor', name: 'Shield AI',       description: 'An AI defense company building autonomous systems that protect service members and civilians in complex, contested environments.',          logo: shieldAiLogo },
+    { tier: 'Sponsor', name: 'SICK',             description: 'A global leader in sensor intelligence, developing solutions for factory automation, logistics, and process automation.',                  logo: sickLogo },
+    { tier: 'Sponsor', name: 'ACME',             description: 'A precision manufacturing company specializing in advanced machining and fabrication for aerospace and industrial applications.',          logo: acmeLogo },
+    { tier: 'Sponsor', name: 'Synopsys',         description: 'A world leader in silicon design, verification, and semiconductor IP, powering the chips that drive modern technology.',                  logo: synopsysLogo },
+    { tier: 'Sponsor', name: 'Xsens',            description: 'A pioneer in 3D motion tracking technology, delivering high-precision inertial sensing solutions for robotics, film, and healthcare.',   logo: xsensLogo },
+    { tier: 'Sponsor', name: 'Lockheed Martin',  description: 'A global aerospace, defense, and security company driving innovation in space exploration, hypersonics, and advanced technology systems.', logo: lockheedMartinLogo },
+    { tier: 'Sponsor', name: 'AirLab',           description: 'Carnegie Mellon\'s Airlab researches autonomous aerial and ground robots, advancing perception, navigation, and AI for real-world deployment.', logo: airlabLogo },
+    { tier: 'Sponsor', name: 'Ford',             description: 'A century-old American automaker at the forefront of electric vehicles, connected mobility, and autonomous driving technology.',           logo: fordLogo },
+    { tier: 'Sponsor', name: 'Gecko Robotics',   description: 'Builds robots and AI software to inspect and maintain critical infrastructure, keeping power plants, pipelines, and vessels operational.', logo: geckoRoboticsLogo },
+    { tier: 'Sponsor', name: 'OnShape',          description: 'A cloud-native CAD platform that enables engineering teams to design, collaborate, and manage product development entirely in the browser.', logo: onShapeLogo },
+    { tier: 'Sponsor', name: 'SendCutSend',      description: 'An online manufacturing service offering instant-quote laser cutting, bending, and finishing for rapid prototyping and production parts.',  logo: sendCutSendLogo },
+
+];
 
   const [index, setIndex] = React.useState(0);
   const goPrev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
@@ -166,8 +178,8 @@ function SponsorCard({ tier, name, description, logo, isActive }: { tier: string
     <div className={['relative w-full h-[380px] md:h-[420px] overflow-hidden', 'border border-dashed border-white/25', 'bg-gradient-to-br from-neutral-900 via-neutral-950 to-black', 'shadow-[0_0_60px_rgba(0,0,0,0.6)]', isActive ? 'opacity-100' : 'opacity-45'].join(' ')}>
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.06),rgba(0,0,0,0.75))]" />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="relative w-[340px] md:w-[520px] h-[180px] md:h-[260px] opacity-95">
-          <Image src={logo} alt={`${name} logo`} fill className="object-contain" />
+        <div className="relative w-[340px] md:w-[520px] h-[180px] md:h-[260px]">
+          <Image src={logo} alt={`${name} logo`} fill className="object-contain" style={{ mixBlendMode: 'screen' }} />
         </div>
       </div>
       <div className="absolute left-8 bottom-8 right-8 md:right-auto md:w-[520px]">

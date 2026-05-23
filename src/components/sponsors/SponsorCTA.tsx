@@ -28,11 +28,12 @@ export function SponsorCTA() {
           <p className="mt-6 text-white/75 text-base md:text-xl max-w-4xl mx-auto leading-relaxed">
             The following individuals have donated to the team, getting us one step closer to achieving our dream.
           </p>
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-white/20">
-            <div className="py-10 px-6 text-lg md:text-xl font-medium border-b sm:border-b-0 sm:border-r border-white/20 bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">Red Whittaker</div>
-            <div className="py-10 px-6 text-lg md:text-xl font-medium border-b sm:border-b-0 lg:border-r border-white/20 bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">Clint Kelly</div>
-            <div className="py-10 px-6 text-lg md:text-xl font-medium border-b lg:border-b-0 lg:border-r border-white/20 bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">Howie Choset</div>
-            <div className="py-10 px-6 text-lg md:text-xl font-medium bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">Linda & Andrew Nelson</div>
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border border-white/20">
+            <div className="py-10 px-6 text-lg md:text-xl font-medium flex items-center justify-center border-b sm:border-b-0 sm:border-r border-white/20 bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">Red Whittaker</div>
+            <div className="py-10 px-6 text-lg md:text-xl font-medium flex items-center justify-center border-b sm:border-b-0 lg:border-r border-white/20 bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">Clint Kelly</div>
+            <div className="py-10 px-6 text-lg md:text-xl font-medium flex items-center justify-center border-b lg:border-b-0 lg:border-r border-white/20 bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">Howie Choset</div>
+            <div className="py-10 px-6 text-lg md:text-xl font-medium flex items-center justify-center border-b lg:border-b-0 lg:border-r border-white/20 bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">Linda & Andrew Nelson</div>
+            <div className="py-10 px-6 text-lg md:text-xl font-medium flex items-center justify-center bg-gradient-to-b from-neutral-900 to-black hover:bg-neutral-800/40 transition">Wenshan Wang</div>
           </div>
         </div>
       </section>
