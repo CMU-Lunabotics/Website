@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getStorageUrl } from '@/lib/supabase';
+import type { SponsorWithTier } from '@/lib/content';
 
 const topLeftImg     = getStorageUrl('sponsors/topleft.png');
 const bottomRightImg = getStorageUrl('sponsors/bottomright.png');
@@ -11,27 +12,11 @@ const topRightImg    = getStorageUrl('sponsors/topright.png');
 const bottomLeftImg  = getStorageUrl('sponsors/bottomleft.png');
 const launchPhoto    = getStorageUrl('sponsors/launch.png');
 
-const shieldAiLogo = getStorageUrl('sponsors/shieldAI.png');
-const sickLogo     = getStorageUrl('sponsors/sick.png');
-const acmeLogo     = getStorageUrl('sponsors/acmeroboticslogot.png');
-const synopsysLogo = getStorageUrl('sponsors/synopsys-logo-white-rgb.png');
-const xsensLogo    = getStorageUrl('sponsors/xsenslogot.png');
-const lockheedMartinLogo = getStorageUrl('sponsors/lockheedmartintransparent.png');
-const airlabLogo = getStorageUrl('sponsors/AirLab_Color.png');
-const fordLogo = getStorageUrl('sponsors/Ford_Color.png');
-const geckoRoboticsLogo = getStorageUrl('sponsors/Gecko Robotics_Color.png');
-const onShapeLogo = getStorageUrl('sponsors/OnShape_Color.png');
-const sendCutSendLogo = getStorageUrl('sponsors/SendCutSend_Color.png');
+interface SponsorMiddleProps {
+  corporateSponsors: SponsorWithTier[];
+}
 
-
-type SponsorSlide = {
-  tier: string;
-  name: string;
-  description: string;
-  logo: string;
-};
-
-export default function SponsorGrid() {
+export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps) {
   return (
     <>
       {/* IMAGE GRID SECTION */}
@@ -115,32 +100,21 @@ export default function SponsorGrid() {
       {/* CAROUSEL SECTION */}
       <section className="w-full bg-black py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <SponsorCarousel />
+          {corporateSponsors.length > 0 ? (
+            <SponsorCarousel sponsors={corporateSponsors} />
+          ) : (
+            <p className="text-center text-white/50 text-lg">Sponsors coming soon.</p>
+          )}
         </div>
       </section>
     </>
   );
 }
 
-function SponsorCarousel() {
-  const slides: SponsorSlide[] = [
-    { tier: 'Sponsor', name: 'Shield AI',       description: 'An AI defense company building autonomous systems that protect service members and civilians in complex, contested environments.',          logo: shieldAiLogo },
-    { tier: 'Sponsor', name: 'SICK',             description: 'A global leader in sensor intelligence, developing solutions for factory automation, logistics, and process automation.',                  logo: sickLogo },
-    { tier: 'Sponsor', name: 'ACME',             description: 'A precision manufacturing company specializing in advanced machining and fabrication for aerospace and industrial applications.',          logo: acmeLogo },
-    { tier: 'Sponsor', name: 'Synopsys',         description: 'A world leader in silicon design, verification, and semiconductor IP, powering the chips that drive modern technology.',                  logo: synopsysLogo },
-    { tier: 'Sponsor', name: 'Xsens',            description: 'A pioneer in 3D motion tracking technology, delivering high-precision inertial sensing solutions for robotics, film, and healthcare.',   logo: xsensLogo },
-    { tier: 'Sponsor', name: 'Lockheed Martin',  description: 'A global aerospace, defense, and security company driving innovation in space exploration, hypersonics, and advanced technology systems.', logo: lockheedMartinLogo },
-    { tier: 'Sponsor', name: 'AirLab',           description: 'Carnegie Mellon\'s Airlab researches autonomous aerial and ground robots, advancing perception, navigation, and AI for real-world deployment.', logo: airlabLogo },
-    { tier: 'Sponsor', name: 'Ford',             description: 'A century-old American automaker at the forefront of electric vehicles, connected mobility, and autonomous driving technology.',           logo: fordLogo },
-    { tier: 'Sponsor', name: 'Gecko Robotics',   description: 'Builds robots and AI software to inspect and maintain critical infrastructure, keeping power plants, pipelines, and vessels operational.', logo: geckoRoboticsLogo },
-    { tier: 'Sponsor', name: 'OnShape',          description: 'A cloud-native CAD platform that enables engineering teams to design, collaborate, and manage product development entirely in the browser.', logo: onShapeLogo },
-    { tier: 'Sponsor', name: 'SendCutSend',      description: 'An online manufacturing service offering instant-quote laser cutting, bending, and finishing for rapid prototyping and production parts.',  logo: sendCutSendLogo },
-
-];
-
+function SponsorCarousel({ sponsors }: { sponsors: SponsorWithTier[] }) {
   const [index, setIndex] = React.useState(0);
-  const goPrev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
-  const goNext = () => setIndex((i) => (i + 1) % slides.length);
+  const goPrev = () => setIndex((i) => (i - 1 + sponsors.length) % sponsors.length);
+  const goNext = () => setIndex((i) => (i + 1) % sponsors.length);
   const goTo   = (i: number) => setIndex(i);
 
   return (
@@ -150,9 +124,9 @@ function SponsorCarousel() {
           className="flex transition-transform duration-500 ease-out"
           style={{ transform: `translateX(calc(50% - ${(index + 0.5) * 100}%))` }}
         >
-          {slides.map((s, i) => (
+          {sponsors.map((s, i) => (
             <div key={`${s.name}-${i}`} className="shrink-0 w-full px-6" aria-hidden={i !== index}>
-              <SponsorCard tier={s.tier} name={s.name} description={s.description} logo={s.logo} isActive={i === index} />
+              <SponsorCard tier={s.tierName} name={s.name} description={s.blurb} logo={s.logo} isActive={i === index} />
             </div>
           ))}
         </div>
@@ -162,7 +136,7 @@ function SponsorCarousel() {
       <button type="button" onClick={goNext} className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-white/30 text-white/90 hover:border-white/60 hover:text-white transition flex items-center justify-center bg-black/40 backdrop-blur-sm" aria-label="Next sponsor">›</button>
 
       <div className="mt-10 flex items-center justify-center gap-3">
-        {slides.map((_, i) => (
+        {sponsors.map((_, i) => (
           <button key={i} type="button" onClick={() => goTo(i)}
             className={['h-2.5 rounded-full transition-all', i === index ? 'w-10 bg-white/90' : 'w-2.5 bg-white/25 hover:bg-white/40'].join(' ')}
             aria-label={`Go to slide ${i + 1}`}
@@ -178,8 +152,12 @@ function SponsorCard({ tier, name, description, logo, isActive }: { tier: string
     <div className={['relative w-full h-[380px] md:h-[420px] overflow-hidden', 'border border-dashed border-white/25', 'bg-gradient-to-br from-neutral-900 via-neutral-950 to-black', 'shadow-[0_0_60px_rgba(0,0,0,0.6)]', isActive ? 'opacity-100' : 'opacity-45'].join(' ')}>
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.06),rgba(0,0,0,0.75))]" />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="relative w-[340px] md:w-[520px] h-[180px] md:h-[260px]">
-          <Image src={logo} alt={`${name} logo`} fill className="object-contain" style={{ mixBlendMode: 'screen' }} />
+        <div className="relative w-[340px] md:w-[520px] h-[180px] md:h-[260px] flex items-center justify-center">
+          {logo ? (
+            <Image src={logo} alt={`${name} logo`} fill className="object-contain" style={{ mixBlendMode: 'screen' }} />
+          ) : (
+            <div className="text-white text-3xl font-bold opacity-60 tracking-wider select-none">{name}</div>
+          )}
         </div>
       </div>
       <div className="absolute left-8 bottom-8 right-8 md:right-auto md:w-[520px]">

@@ -120,14 +120,18 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
                       className="block w-full max-w-[420px] aspect-[5/3] bg-white/10 overflow-hidden flex items-center justify-center p-4 hover:bg-white/15 transition-colors border-2 border-dotted border-white/15"
                       style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
                     >
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={sponsor.logo}
-                          alt={`${sponsor.name} logo`}
-                          fill
-                          className="object-contain"
-                          sizes="420px"
-                        />
+                      <div className="relative w-full h-full flex items-center justify-center">
+                        {sponsor.logo ? (
+                          <Image
+                            src={sponsor.logo}
+                            alt={`${sponsor.name} logo`}
+                            fill
+                            className="object-contain"
+                            sizes="420px"
+                          />
+                        ) : (
+                          <span className="text-white text-lg font-semibold">{sponsor.name}</span>
+                        )}
                       </div>
                     </a>
                   )}

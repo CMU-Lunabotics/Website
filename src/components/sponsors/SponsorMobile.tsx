@@ -3,30 +3,24 @@
 import React from 'react';
 import Image from 'next/image';
 import { getStorageUrl } from '@/lib/supabase';
+import type { SponsorWithTier } from '@/lib/content';
 
-const shieldAiLogo = getStorageUrl('sponsors/shieldAI.png');
-const sickLogo     = getStorageUrl('sponsors/sick.png');
-const acmeLogo     = getStorageUrl('sponsors/acme.svg');
-const synopsysLogo = getStorageUrl('sponsors/synopsys.png');
-const xsensLogo    = getStorageUrl('sponsors/xsens-logo-motion-capture-for-humanoids.jpg');
-const lockheedMartinLogo = getStorageUrl('sponsors/lockheedmartin.jpg');
 const toprightImg  = getStorageUrl('sponsors/topright.png');
 const topleftImg   = getStorageUrl('sponsors/topleft.png');
 const actionImg    = getStorageUrl('sponsors/bottomleft.png');
 const heroImg      = getStorageUrl('sponsors/Group 709.svg');
 const bottomrightImg = 'https://hypejatlztjwwyyznnwd.supabase.co/storage/v1/object/public/media/sponsors/bottomright.png';
 
-const sponsors = [
-  { tag: 'Milestone', name: 'Shield AI',  desc: 'Donated $5,000 to help with material and building costs and provided equipment to support our mission.', logo: shieldAiLogo },
-  { tag: 'Milestone', name: 'SICK',       desc: 'Provided sensors and technical support to help the team accelerate testing and integration.',            logo: sickLogo },
-  { tag: 'Milestone', name: 'ACME',       desc: 'Supported our manufacturing pipeline and helped fund critical drivetrain components.',                   logo: acmeLogo },
-  { tag: 'Milestone', name: 'Synopsys',   desc: 'Enabled outreach and documentation efforts that help us recruit and grow the team.',                     logo: synopsysLogo },
-  { tag: 'Milestone', name: 'Xsens',      desc: 'Provided cutting-edge motion capture technology to support our robotics development and testing.',       logo: xsensLogo },
-  { tag: 'Milestone', name: 'Lockheed Martin', desc: 'Supports student-led aerospace and robotics innovation through industry partnership and mentorship.', logo: lockheedMartinLogo },
-];
+interface SponsorMobileProps {
+  corporateSponsors: SponsorWithTier[];
+  individualDonors: SponsorWithTier[];
+}
 
-export function SponsorMobile() {
+export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMobileProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
+
+  // Guard against empty sponsors array
+  const safeIndex = corporateSponsors.length > 0 ? activeIndex % corporateSponsors.length : 0;
 
   return (
     <div className="bg-black w-full font-display text-white md:hidden">
@@ -139,60 +133,72 @@ export function SponsorMobile() {
       {/* ── SPONSOR CAROUSEL ── */}
       <section className="pt-8 pb-4">
         <div className="px-5">
-          <div className="relative">
-            <div className="absolute w-[27px] h-[27px] bg-black z-10" style={{ bottom: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
-            <div className="absolute w-[27px] h-[27px] bg-black z-10" style={{ top: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
-            <div
-              className="w-full overflow-hidden flex flex-col"
-              style={{
-                background: 'linear-gradient(0deg, rgba(30,30,30,0.54) 0%, rgba(132,132,132,0.3) 100%)',
-                border: '0.886px dashed rgba(255,255,255,0.25)',
-                minHeight: '397px',
-                padding: '40px 30px 30px',
-              }}
-            >
-              {/* Logo */}
-              <div className="flex items-center justify-center mb-8" style={{ height: '100px' }}>
-                <div className="relative w-[262px] h-[78px]">
-                  <Image
-                    src={sponsors[activeIndex].logo}
-                    alt={`${sponsors[activeIndex].name} logo`}
-                    fill
-                    className="object-contain"
-                  />
+          {corporateSponsors.length > 0 ? (
+            <div className="relative">
+              <div className="absolute w-[27px] h-[27px] bg-black z-10" style={{ bottom: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
+              <div className="absolute w-[27px] h-[27px] bg-black z-10" style={{ top: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
+              <div
+                className="w-full overflow-hidden flex flex-col"
+                style={{
+                  background: 'linear-gradient(0deg, rgba(30,30,30,0.54) 0%, rgba(132,132,132,0.3) 100%)',
+                  border: '0.886px dashed rgba(255,255,255,0.25)',
+                  minHeight: '397px',
+                  padding: '40px 30px 30px',
+                }}
+              >
+                {/* Logo */}
+                <div className="flex items-center justify-center mb-8" style={{ height: '100px' }}>
+                  <div className="relative w-[262px] h-[78px] flex items-center justify-center">
+                    {corporateSponsors[safeIndex].logo ? (
+                      <Image
+                        src={corporateSponsors[safeIndex].logo}
+                        alt={`${corporateSponsors[safeIndex].name} logo`}
+                        fill
+                        className="object-contain"
+                      />
+                    ) : (
+                      <div className="text-white text-2xl font-bold opacity-60 tracking-wider select-none">
+                        {corporateSponsors[safeIndex].name}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col gap-3">
+                  <span
+                    className="inline-flex items-center justify-center text-white text-[12px] font-semibold self-start"
+                    style={{ border: '0.886px solid #999999', borderRadius: '17.7px', padding: '7px 14px' }}
+                  >
+                    {corporateSponsors[safeIndex].tierName}
+                  </span>
+                  <p className="text-[32px] font-semibold text-white leading-[43px]">{corporateSponsors[safeIndex].name}</p>
+                  <p className="text-[14px] text-white/75 leading-[19px]">{corporateSponsors[safeIndex].blurb}</p>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="flex flex-col gap-3">
-                <span
-                  className="inline-flex items-center justify-center text-white text-[12px] font-semibold self-start"
-                  style={{ border: '0.886px solid #999999', borderRadius: '17.7px', padding: '7px 14px' }}
-                >
-                  {sponsors[activeIndex].tag}
-                </span>
-                <p className="text-[32px] font-semibold text-white leading-[43px]">{sponsors[activeIndex].name}</p>
-                <p className="text-[14px] text-white/75 leading-[19px]">{sponsors[activeIndex].desc}</p>
-              </div>
             </div>
-          </div>
+          ) : (
+            <p className="text-center text-white/50 text-lg py-8">Sponsors coming soon.</p>
+          )}
         </div>
 
         {/* Dots */}
-        <div className="flex items-center justify-center gap-2 mt-6">
-          {sponsors.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              className="rounded-full transition-all duration-300"
-              style={{
-                height: '14px',
-                width: i === activeIndex ? '55px' : '14px',
-                background: i === activeIndex ? '#D9D9D9' : 'rgba(217,217,217,0.3)',
-              }}
-            />
-          ))}
-        </div>
+        {corporateSponsors.length > 0 && (
+          <div className="flex items-center justify-center gap-2 mt-6">
+            {corporateSponsors.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                className="rounded-full transition-all duration-300"
+                style={{
+                  height: '14px',
+                  width: i === safeIndex ? '55px' : '14px',
+                  background: i === safeIndex ? '#D9D9D9' : 'rgba(217,217,217,0.3)',
+                }}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* ── LAUNCH ── */}
@@ -214,17 +220,21 @@ export function SponsorMobile() {
         <p className="text-[20px] font-normal text-white leading-[27px] mb-6">
           The following individuals have donated to the team, getting us one step closer to achieving our dream.
         </p>
-        <div className="grid grid-cols-2">
-          {['Red Whittaker', 'Clint Kelly', 'Howie Choset', 'Linda & Andrew Nelson'].map((name) => (
-            <div
-              key={name}
-              className="py-4 px-2 flex items-center justify-center"
-              style={{ border: '1px solid #686868', background: 'linear-gradient(0deg, rgba(30,30,30,0.56) 50%, rgba(132,132,132,0.56) 335.15%)', height: '55px' }}
-            >
-              <p className="text-[16px] font-medium text-white text-center leading-[22px]">{name}</p>
-            </div>
-          ))}
-        </div>
+        {individualDonors.length > 0 ? (
+          <div className="grid grid-cols-2">
+            {individualDonors.map((donor) => (
+              <div
+                key={donor.name}
+                className="py-4 px-2 flex items-center justify-center"
+                style={{ border: '1px solid #686868', background: 'linear-gradient(0deg, rgba(30,30,30,0.56) 50%, rgba(132,132,132,0.56) 335.15%)', height: '55px' }}
+              >
+                <p className="text-[16px] font-medium text-white text-center leading-[22px]">{donor.name}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-white/50 text-lg">Individual donors coming soon.</p>
+        )}
       </section>
 
     </div>

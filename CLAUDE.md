@@ -150,6 +150,7 @@ All functions in `src/lib/content.ts`:
 | `getMembers()`    | `members_with_subteams` view     |
 | `getMentors()`    | `mentors` table                  |
 | `getSponsors()`   | `sponsors` table                 |
+| `getSponsorsPageData()` | `sponsors` + `sponsor_tiers` (tier-grouped) |
 | `getTeamInfo()`   | `team_info` table                |
 | `getUpdates()`    | `updates` table                  |
 
