@@ -39,7 +39,7 @@ export function SponsorCTA({ individualDonors }: SponsorCTAProps) {
               ))}
             </div>
           ) : (
-            <p className="mt-16 text-white/50 text-lg">Individual donors coming soon.</p>
+            <p className="mt-16 text-white/50 text-lg">Individuals coming soon.</p>
           )}
         </div>
       </section>
