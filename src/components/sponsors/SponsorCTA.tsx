@@ -13,7 +13,7 @@ export function SponsorCTA({ individualDonors }: SponsorCTAProps) {
       {/* PERSONAL DONATIONS SECTION */}
       <section className="w-full bg-black text-white py-28">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-semibold">Personal Donations</h2>
+          <h2 className="text-4xl md:text-6xl font-semibold">Personal Sponsors</h2>
           <p className="mt-6 text-white/75 text-base md:text-xl max-w-4xl mx-auto leading-relaxed">
             The following individuals have donated to the team, getting us one step closer to achieving our dream.
           </p>
