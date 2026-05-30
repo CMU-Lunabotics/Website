@@ -21,6 +21,14 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
 
   // Guard against empty sponsors array
   const safeIndex = corporateSponsors.length > 0 ? activeIndex % corporateSponsors.length : 0;
+  const goPrev = () => {
+    if (corporateSponsors.length === 0) return;
+    setActiveIndex((i) => (i - 1 + corporateSponsors.length) % corporateSponsors.length);
+  };
+  const goNext = () => {
+    if (corporateSponsors.length === 0) return;
+    setActiveIndex((i) => (i + 1) % corporateSponsors.length);
+  };
 
   return (
     <div className="bg-black w-full font-display text-white md:hidden">
@@ -135,6 +143,22 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
         <div className="px-5">
           {corporateSponsors.length > 0 ? (
             <div className="relative">
+              <button
+                type="button"
+                onClick={goPrev}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-white/30 text-white/90 hover:border-white/60 hover:text-white transition flex items-center justify-center bg-black/40 backdrop-blur-sm text-xl leading-none"
+                aria-label="Previous sponsor"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={goNext}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-white/30 text-white/90 hover:border-white/60 hover:text-white transition flex items-center justify-center bg-black/40 backdrop-blur-sm text-xl leading-none"
+                aria-label="Next sponsor"
+              >
+                ›
+              </button>
               <div className="absolute w-[27px] h-[27px] bg-black z-10" style={{ bottom: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
               <div className="absolute w-[27px] h-[27px] bg-black z-10" style={{ top: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
               <div
