@@ -124,6 +124,28 @@ export const SponsorsSchema = z.object({
 
 export type Sponsors = z.infer<typeof SponsorsSchema>;
 
+// Enhanced sponsor data with tier grouping for the sponsor page
+export type SponsorWithTier = {
+  name: string;
+  logo: string;
+  url: string;
+  blurb: string;
+  whiteOnDark: boolean;
+  tierName: string;
+  tierSlug: string;
+  displayOrder: number;
+};
+
+export type SponsorsPageData = {
+  corporateSponsors: SponsorWithTier[];
+  individualDonors: SponsorWithTier[];
+  callToAction: {
+    headline: string;
+    copy: string;
+    email: string;
+  };
+};
+
 // Content loader functions
 export async function getSiteConfig(): Promise<SiteConfig> {
   const content = await import('../../content/site.json');
@@ -221,6 +243,63 @@ export async function getSponsors(): Promise<Sponsors> {
       };
 
   return SponsorsSchema.parse({ sponsors, callToAction });
+}
+
+export async function getSponsorsPageData(): Promise<SponsorsPageData> {
+  const { data, error } = await supabase
+    .from('sponsors')
+    .select('*, sponsor_tiers(name, slug)')
+    .order('display_order', { ascending: true });
+
+  if (error) {
+    console.error('Failed to fetch sponsors from Supabase:', error);
+    // Return empty fallback so the page still renders
+    return {
+      corporateSponsors: [],
+      individualDonors: [],
+      callToAction: {
+        headline: 'Support CMU MoonMiners',
+        copy: 'Help us push lunar robotics forward. Contact us for our sponsorship prospectus.',
+        email: 'moonminers@andrew.cmu.edu',
+      },
+    };
+  }
+
+  const rows = data || [];
+
+  const allSponsors: SponsorWithTier[] = rows.map((row) => {
+    const tier = row.sponsor_tiers as { name: string; slug: string } | null;
+    return {
+      name: row.name,
+      logo: getStorageUrl(row.logo_path),
+      url: row.url || '#',
+      blurb: row.blurb || '',
+      whiteOnDark: row.white_on_dark || false,
+      tierName: tier?.name || 'Sponsor',
+      tierSlug: tier?.slug || 'sponsor',
+      displayOrder: row.display_order ?? 0,
+    };
+  });
+
+  // The tier with slug "individual" holds personal donors; everything else is corporate
+  const corporateSponsors = allSponsors.filter((s) => s.tierSlug !== 'individual');
+  const individualDonors = allSponsors.filter((s) => s.tierSlug === 'individual');
+
+  // Find the first sponsor with CTA fields filled
+  const ctaRow = rows.find((row) => row.cta_headline && row.cta_copy && row.cta_email);
+  const callToAction = ctaRow
+    ? {
+        headline: ctaRow.cta_headline!,
+        copy: ctaRow.cta_copy!,
+        email: ctaRow.cta_email!,
+      }
+    : {
+        headline: 'Support CMU MoonMiners',
+        copy: 'Help us push lunar robotics forward. Contact us for our sponsorship prospectus.',
+        email: 'moonminers@andrew.cmu.edu',
+      };
+
+  return { corporateSponsors, individualDonors, callToAction };
 }
 
 // Mentor schema
