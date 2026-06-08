@@ -277,7 +277,7 @@ export const Footer = () => {
       </div>
 
       <div className="copyright">
-        Moon Miners © 2026
+        CMU Moon Miners © 2026
       </div>
     </footer>
   );
