@@ -1,7 +1,7 @@
 {
   "teamName": "CMU MoonMiners",
   "tagline": "Autonomous lunar excavation for NASA Lunabotics.",
-  "contactEmail": "moonminers@andrew.cmu.edu",
+  "contactEmail": "moonminers@cmu.edu",
   "location": "Carnegie Mellon University, Pittsburgh, PA",
   "logo": "logo/logo20262.png",
   "social": {
@@ -12,7 +12,7 @@
   "hero": {
     "headline": "Born to win.\nBuilt to prove it.",
     "subhead": "We are an ambitious, interdisciplinary team of students across engineering, design, and business, united by a shared passion for advancing space technology.",
-    "ctaPrimary": {"label": "Learn more", "href": "/team"},
+    "ctaPrimary": {"label": "Learn More", "href": "/team"},
     "ctaSecondary": {"label": "Meet the Team", "href": "/team"},
     "heroImage": "hero/titlepagemoon.jpg",
     "video": null
@@ -24,12 +24,12 @@
     "image": "home/mission-photo.jpg"
   },
   "bento": {
-    "title": "The cutting edge of planetary robotics",
+    "title": "Building a fully autonomous lunar rover",
     "updatesTitle": "CMU Moon Miners",
     "updatesDescription": "Setting the standard for student-led lunar robotics, building marginal-risk ready systems on an aggressive timeline.",
     "updatesCta": "View our updates",
     "updatesHref": "/updates",
-    "membersStat": "72 members",
+    "membersStat": "76 members",
     "membersDescription": "An interdisciplinary team across engineering, business, computer science and more",
     "roverStat": "The first autonomous rover",
     "roverDescription": "in the NASA Lunabotics competition",
@@ -38,14 +38,14 @@
   },
   "operationalMilestones": {
     "title": "Operational Milestones",
-    "subtitle": "2025-2026 milestones",
+    "subtitle": "2026-2027 milestones",
     "milestones": [
-      {"label": "Moon Miners founded", "position": "below"},
-      {"label": "Preliminary Design Review", "position": "below"},
-      {"label": "Critical Design Review", "position": "above"},
-      {"label": "Accepted into Lunabotics Challenge", "position": "below"},
-      {"label": "Qualifying Challenge", "position": "above"},
-      {"label": "The Challenge", "position": "above"}
+      {"label": "Moon Miners founded", "date": "2025-09-30"},
+      {"label": "Lunabotics 2026 Competition", "date": "2026-05-12"},
+      {"label": "Preliminary Design Review", "date": "2026-11-07"},
+      {"label": "Critical Design Review", "date": "2026-12-19"},
+      {"label": "Announcement of Selection for Lunabotics 2027", "date": "2026-12-14"},
+      {"label": "The Challenge", "date": "2027-05-24", "location": "Kennedy Space Center"}
     ]
   }
 }

@@ -13,11 +13,10 @@ import { cn } from '@/lib/utils';
 
 interface UpdateCardProps {
   update: Update;
-  navigateOnClick?: boolean;
   variant?: 'default' | 'compact';
 }
 
-export function UpdateCard({ update, navigateOnClick = false, variant = 'default' }: UpdateCardProps) {
+export function UpdateCard({ update, variant = 'default' }: UpdateCardProps) {
   const images = update.images || [];
   const hasMultipleImages = images.length > 1;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -51,7 +50,7 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
   const cardContent = (
     <div className="w-full flex flex-col items-start gap-5 md:gap-7 group overflow-hidden">
       {/* Image area */}
-      <div className={cn('relative w-full overflow-hidden bg-zinc-800', imageHeight)}
+      <div className={cn('relative w-full overflow-hidden bg-deep-space', imageHeight)}
         style={{ clipPath: 'polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%)' }}
       >
         {images.length > 0 ? (
@@ -116,20 +115,20 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
       <div className="w-full flex flex-col space-y-3 px-1">
         {/* Category tags */}
         <div className="flex flex-wrap gap-2">
-          <span className="font-display font-semibold text-sm flex items-center justify-center px-3 py-1 rounded-full bg-brand-white text-brand-black">
+          <span className="font-display font-semibold text-sm flex items-center justify-center px-3 py-1 rounded-full bg-tartan text-starlight">
             {update.team ? update.team : "All"}
           </span>
-          <span className="font-display font-semibold text-sm px-4 py-2 rounded-full border border-zinc-600 text-zinc-300">
+          <span className="font-display font-semibold text-sm px-4 py-2 rounded-full border border-titanium/50 text-moon-dust">
             {update.category}
           </span>
         </div>
 
         {/* Title + date */}
         <div className="flex items-baseline justify-between gap-2">
-          <h3 className="text-2xl md:text-4xl font-display font-semibold text-zinc-50 group-hover:text-white transition-colors leading-tight">
+          <h3 className="text-2xl md:text-4xl font-display font-semibold text-starlight group-hover:text-supernova transition-colors leading-tight">
             {update.title}
           </h3>
-          <div className="flex items-center text-sm text-zinc-400 shrink-0">
+          <div className="flex items-center text-sm text-moon-dust shrink-0">
             <Calendar className="mr-1.5 h-3.5 w-3.5" />
             {new Date(update.date).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -140,7 +139,7 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
         </div>
 
         {/* Summary */}
-        <p className="text-zinc-400 text-sm leading-relaxed line-clamp-2">
+        <p className="text-moon-dust text-sm leading-relaxed line-clamp-2">
           {update.summary}
         </p>
 
@@ -149,7 +148,7 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
           {update.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/10 text-zinc-300"
+              className="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-plum/40 text-moon-dust"
             >
               {tag}
             </span>
@@ -160,15 +159,8 @@ export function UpdateCard({ update, navigateOnClick = false, variant = 'default
   );
 
   return (
-    <>
-      {navigateOnClick ? (
-        <Link href="/updates" className="block h-full">
-          {cardContent}
-        </Link>
-      ) : (
-        
-        cardContent
-      )}
-    </>
+    <Link href={`/updates/${update.id}`} className="block h-full cursor-pointer">
+      {cardContent}
+    </Link>
   );
 }

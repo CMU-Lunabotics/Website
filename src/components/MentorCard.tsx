@@ -18,7 +18,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
     <article
       className={cn(
         "flex w-full max-w-[410px] flex-col overflow-hidden",
-        "bg-black"
+        "card-cosmic clip-corner-sm"
       )}
     >
       <div className="relative h-[360px] w-full shrink-0">
@@ -31,8 +31,8 @@ export function MentorCard({ mentor }: MentorCardProps) {
         />
       </div>
       <div className="flex flex-col gap-4 px-4 pb-5 pt-4">
-        <p className="text-base text-[#9f9f9f]">{mentor.title}</p>
-        <p className="text-[36px] font-semibold leading-[100%] text-white">
+        <p className="text-base text-moon-dust">{mentor.title}</p>
+        <p className="text-[36px] font-semibold leading-[100%] text-starlight">
           {mentor.name}
         </p>
         <div className="flex flex-col gap-2">
@@ -42,7 +42,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
                 href={mentor.links.wikipedia ?? "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+                className="text-sm text-supernova underline underline-offset-2 hover:text-starlight"
               >
                 Wikipedia
               </a>
@@ -52,7 +52,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
                 href={mentor.links.google_scholar ?? "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+                className="text-sm text-supernova underline underline-offset-2 hover:text-starlight"
               >
                 Google Scholar
               </a>
@@ -62,7 +62,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
                 href={mentor.links.website!}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+                className="text-sm text-supernova underline underline-offset-2 hover:text-starlight"
               >
                 Website
               </a>
@@ -72,7 +72,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
                 href={mentor.links.linkedin!}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+                className="text-sm text-supernova underline underline-offset-2 hover:text-starlight"
               >
                 LinkedIn
               </a>
@@ -80,14 +80,14 @@ export function MentorCard({ mentor }: MentorCardProps) {
             {mentor.links.email && (
               <a
                 href={`mailto:${mentor.links.email}`}
-                className="text-sm text-white underline underline-offset-2 hover:text-white/80"
+                className="text-sm text-supernova underline underline-offset-2 hover:text-starlight"
               >
                 Email
               </a>
             )}
           </div>
           {mentor.bio && (
-            <p className="text-base leading-normal text-white">{mentor.bio}</p>
+            <p className="text-base leading-normal text-moon-dust">{mentor.bio}</p>
           )}
         </div>
         {mentor.expertise.length > 0 && (
@@ -95,7 +95,7 @@ export function MentorCard({ mentor }: MentorCardProps) {
             {mentor.expertise.map((skill) => (
               <span
                 key={skill}
-                className="rounded-[20px] bg-white/10 px-3.5 py-2.5 text-sm font-medium text-white"
+                className="rounded-[20px] bg-plum/50 px-3.5 py-2.5 text-sm font-medium text-starlight"
               >
                 {skill}
               </span>

@@ -4,26 +4,29 @@ import { Container } from '@/components/Container';
 
 export function AboutOrigin() {
   return (
-    <section className="bg-black py-20 lg:py-28">
+    <section className="py-20 lg:py-28">
       <Container className="px-6 lg:px-12">
         {/* Header */}
         <div className="mb-10">
-          <h2 className="text-white font-[var(--font-noto)] font-semibold text-[42px]">
+          <h2 className="text-starlight font-[var(--font-noto)] font-semibold text-[42px]">
             The Origin
           </h2>
-          <p className="text-white font-[var(--font-noto)] font-normal text-[20px] max-w-3xl">
+          <p className="text-moon-dust font-[var(--font-noto)] font-normal text-[20px] max-w-3xl mt-2">
             More than a student organization: a professional-grade integration of engineering, design, and business specialized for the lunar frontier.
           </p>
         </div>
 
-        {/* Team Photo */}
-        <div className="relative w-full mb-20">
+        {/* Field test photo — cosmic clipped corners */}
+        <div
+          className="relative w-full mb-20 border border-titanium/40"
+          style={{ clipPath: 'polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px))' }}
+        >
           <Image
-            src={getStorageUrl('our-story/Group 700.png')}
-            alt="CMU Moon Miners team"
-            width={1400}
-            height={900}
-            className="w-full h-auto"
+            src="/images/building-arena.jpg"
+            alt="The test arena being built at the Robotics Innovation Center"
+            width={2000}
+            height={1500}
+            className="w-full h-auto block"
           />
         </div>
 

@@ -1,6 +1,15 @@
 import { z } from 'zod';
 import { supabase, getStorageUrl } from './supabase';
 
+// Ensure external profile links are absolute (DB rows often store "linkedin.com/in/name"
+// without a protocol, which the browser would resolve relative to our own domain).
+function externalUrl(url: string | undefined | null): string {
+  const trimmed = (url ?? '').trim();
+  if (!trimmed) return '';
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  return `https://${trimmed.replace(/^\/+/, '')}`;
+}
+
 // Site configuration schema
 export const SiteConfigSchema = z.object({
   teamName: z.string(),
@@ -50,10 +59,13 @@ export const SiteConfigSchema = z.object({
   operationalMilestones: z.object({
     title: z.string(),
     subtitle: z.string(),
+    // Each milestone: a label, an ISO date (YYYY-MM-DD), and an optional
+    // location shown under the label. Past/future styling and the
+    // "We are here" marker are computed automatically from today's date.
     milestones: z.array(z.object({
       label: z.string(),
-      position: z.enum(['above', 'below']),
-      variant: z.enum(['default', 'moon', 'highlight']).optional(),
+      date: z.string(),
+      location: z.string().optional(),
     })),
   }).optional(),
 });
@@ -181,12 +193,15 @@ export async function getMembers(): Promise<Member[]> {
     year: row.year || '',
     email: row.email || '',
     photo: getStorageUrl(row.photo_path),
-    links: (row.links as { linkedin?: string; github?: string; website?: string; instagram?: string }) || {
-      linkedin: '',
-      github: '',
-      website: '',
-      instagram: '',
-    },
+    links: (() => {
+      const raw = (row.links as { linkedin?: string; github?: string; website?: string; instagram?: string }) || {};
+      return {
+        linkedin: externalUrl(raw.linkedin),
+        github: externalUrl(raw.github),
+        website: externalUrl(raw.website),
+        instagram: externalUrl(raw.instagram),
+      };
+    })(),
     bio: row.bio || '',
     tags: (row.tags as string[]) || [],
   }));
@@ -223,7 +238,7 @@ export async function getSponsors(): Promise<Sponsors> {
   const sponsors = (data || []).map((row) => ({
     name: row.name,
     logo: getStorageUrl(row.logo_path),
-    url: row.url || '#',
+    url: row.url ? externalUrl(row.url) : '#',
     blurb: row.blurb || '',
     whiteOnDark: row.white_on_dark || false,
   }));
@@ -272,7 +287,7 @@ export async function getSponsorsPageData(): Promise<SponsorsPageData> {
     return {
       name: row.name,
       logo: getStorageUrl(row.logo_path),
-      url: row.url || '#',
+      url: row.url ? externalUrl(row.url) : '#',
       blurb: row.blurb || '',
       whiteOnDark: row.white_on_dark || false,
       tierName: tier?.name || 'Sponsor',
@@ -345,11 +360,11 @@ export async function getMentors(): Promise<Mentor[]> {
         google_scholar?: string;
       }) || {};
       return {
-        website: raw.website ?? '',
-        linkedin: raw.linkedin ?? '',
+        website: externalUrl(raw.website),
+        linkedin: externalUrl(raw.linkedin),
         email: raw.email ?? '',
-        wikipedia: raw.wikipedia ?? '',
-        google_scholar: raw.google_scholar ?? '',
+        wikipedia: externalUrl(raw.wikipedia),
+        google_scholar: externalUrl(raw.google_scholar),
       };
     })(),
   }));
@@ -410,4 +425,35 @@ export async function getUpdates(): Promise<Update[]> {
   });
 
   return z.array(UpdateSchema).parse(updates);
+}
+
+export async function getUpdateBySlug(slug: string): Promise<Update | null> {
+  const { data: row, error } = await supabase
+    .from('updates')
+    .select('*')
+    .eq('published', true)
+    .eq('slug', slug)
+    .maybeSingle();
+
+  if (error) throw error;
+  if (!row) return null;
+
+  const links = (row.links as Array<{ url: string; label: string }>) || [];
+  const firstLink = links[0];
+
+  return UpdateSchema.parse({
+    id: row.slug,
+    title: row.title,
+    date: row.date,
+    category: row.category,
+    summary: row.summary,
+    images: ((row.images as string[]) || []).map((img) => getStorageUrl(img)),
+    content: row.content || '',
+    tags: (row.tags as string[]) || [],
+    featured: row.featured ?? false,
+    link: firstLink?.url || '',
+    linkLabel: firstLink?.label || '',
+    links: links,
+    team: row.team || undefined,
+  });
 }

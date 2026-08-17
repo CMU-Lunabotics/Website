@@ -33,31 +33,14 @@ You're importing a component that needs "next/headers"
    - Manages the `allowed_users` table
 
 2. **User Authentication** (`/login` → `/submit-update`)
-   - Supabase Auth with email verification
-   - Email must be in `allowed_users` table
-   - Magic link for first-time setup
-   - Email + password for returning users
-
-### User Login Flow
-
-**First-Time User:**
-1. Enter email at `/login`
-2. System checks if email in `allowed_users` table
-3. If approved: Send magic link email
-4. User clicks link → redirected to `/auth/setup-password`
-5. User creates password → logged in → `/submit-update`
-
-**Returning User:**
-1. Enter email at `/login`
-2. System detects existing account → shows password field
-3. Enter password → logged in → `/submit-update`
-
-**Forgot Password:**
-1. Enter wrong password → "Incorrect password" error
-2. Click "Forgot Password? Send Reset Link"
-3. Receive reset email → click link
-4. Redirected to `/auth/reset-password`
-5. Set new password → redirected to `/login`
+   - Shared team password (env: `SUBMIT_SHARED_PASSWORD`), same for everyone
+   - Cookie session: `update_session` (HMAC of the shared password)
+   - No Supabase accounts or emails involved; writes to the RLS-protected
+     `updates` table go through the service role key (`SUPABASE_SERVICE_ROLE_KEY`,
+     server-only — see `src/lib/supabase-admin.ts`)
+   - The old per-user email-OTP flow (`/auth/callback`, setup/reset-password
+     pages, `allowed_users` gating) is no longer reachable from `/login` but the
+     routes still exist
 
 ### Auth Routes
 
@@ -100,6 +83,7 @@ You're importing a component that needs "next/headers"
 | `updates`         | News/milestone posts (published=true for public, submitted_by, submitted_at) |
 | `team_info`       | Team photo, blurb, pillars                                    |
 | `allowed_users`   | Emails authorized to submit updates (managed via `/admin`)    |
+| `mailing_list`    | Footer signup emails (created via `scripts/mailing-list.sql`; anon insert-only) |
 
 ### Views
 
@@ -161,6 +145,8 @@ NEXT_PUBLIC_SUPABASE_URL=https://hypejatlztjwwyyznnwd.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<from dashboard>
 NEXT_PUBLIC_SITE_URL=http://localhost:3000  # Update for production
 ADMIN_PASSWORD=<set in Vercel/deployment>
+SUBMIT_SHARED_PASSWORD=<shared team password for /login>
+SUPABASE_SERVICE_ROLE_KEY=<Supabase dashboard → Settings → API; server-only, needed for update submissions>
 ```
 
 **Required for:**

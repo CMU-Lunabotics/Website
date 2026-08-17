@@ -1,6 +1,6 @@
 'use server'
 
-import { createClient } from '@/lib/supabase-server'
+import { createAdminClient } from '@/lib/supabase-admin'
 import { verifyUserSession } from '../login/actions'
 
 export async function createUpdate(formData: FormData) {
@@ -45,7 +45,10 @@ export async function createUpdate(formData: FormData) {
     return { error: 'Invalid format for tags, images, or links' }
   }
 
-  const supabase = await createClient()
+  const supabase = createAdminClient()
+  if (!supabase) {
+    return { error: 'Server is missing SUPABASE_SERVICE_ROLE_KEY — add it to the environment.' }
+  }
   const { error } = await supabase.from('updates').insert({
     title,
     slug,
@@ -93,14 +96,10 @@ export async function uploadImage(formData: FormData) {
   const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
   const filePath = `${folder}/${fileName}`
 
-  // Upload to Supabase Storage using authenticated client
-  const supabase = await createClient()
-
-  // Verify user session in supabase
-  const { data: { user: authUser }, error: authError } = await supabase.auth.getUser()
-  if (authError || !authUser) {
-    console.error('Auth error:', authError)
-    return { error: 'Authentication failed. Please log in again.' }
+  // Upload to Supabase Storage with the server-side service client
+  const supabase = createAdminClient()
+  if (!supabase) {
+    return { error: 'Server is missing SUPABASE_SERVICE_ROLE_KEY — add it to the environment.' }
   }
 
   try {

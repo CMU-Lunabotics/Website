@@ -3,5 +3,5 @@ export default function LoginLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <div className="text-gray-900">{children}</div>
+  return <div className="text-starlight">{children}</div>
 }

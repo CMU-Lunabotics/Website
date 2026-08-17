@@ -49,7 +49,7 @@ export function Section({
             )}
           >
             {title && (
-              <h2 className={cn(titleSizeClass, titleClassName, 'text-white')}>
+              <h2 className={cn(titleSizeClass, titleClassName, 'text-starlight')}>
                 {title}
               </h2>
             )}
@@ -57,7 +57,7 @@ export function Section({
               <p
                 className={cn(
                   subtitleSizeClass,
-                  'text-white/90 max-w-2xl',
+                  'text-moon-dust max-w-2xl',
                   isLeft ? '' : 'mx-auto',
                   subtitleClassName,
                   titleSubtitleGap

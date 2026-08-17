@@ -28,7 +28,7 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
       {/* Featured Update Card */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
         <div
-          className="relative w-full h-[320px] md:h-[500px] lg:h-[550px] border border-zinc-600 overflow-hidden group"
+          className="relative w-full h-[320px] md:h-[500px] lg:h-[550px] border border-titanium/40 overflow-hidden group"
           style={{ clipPath: 'polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%)' }}
         >
           {/* Background image */}
@@ -44,7 +44,7 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
           {/* Dark gradient overlay */}
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(0deg, #000 19.88%, rgba(0, 0, 0, 0.00) 67.32%)' }}
+            style={{ background: 'linear-gradient(0deg, #090A12 19.88%, rgba(9, 10, 18, 0.00) 67.32%)' }}
           />
 
           {/* Content overlay at bottom */}
@@ -53,11 +53,11 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
             {/* Category tags row */}
             <div className="flex items-center gap-3 mb-3">
               {featuredUpdate.category && (
-                <span className="text-xs md:text-sm px-3 md:px-4 py-1 md:py-1.5 rounded-full border border-white/40 bg-black/40 text-white font-medium">
+                <span className="text-xs md:text-sm px-3 md:px-4 py-1 md:py-1.5 rounded-full bg-tartan text-starlight font-medium">
                   {featuredUpdate.category}
                 </span>
               )}
-              <div className="flex items-center text-xs md:text-sm text-white/60">
+              <div className="flex items-center text-xs md:text-sm text-moon-dust">
                 <Calendar className="mr-1.5 h-3 w-3 md:h-3.5 md:w-3.5" />
                 {new Date(featuredUpdate.date).toLocaleDateString('en-US', {
                   month: 'short',
@@ -68,12 +68,12 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
             </div>
 
             {/* Title */}
-            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-white leading-tight max-w-3xl mb-2">
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-starlight leading-tight max-w-3xl mb-2">
               {featuredUpdate.title}
             </h2>
 
             {/* Summary */}
-            <p className="text-white/70 text-xs md:text-base leading-relaxed max-w-3xl line-clamp-2 mb-3">
+            <p className="text-moon-dust text-xs md:text-base leading-relaxed max-w-3xl line-clamp-2 mb-3">
               {featuredUpdate.summary}
             </p>
 
@@ -82,7 +82,7 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
               {featuredUpdate.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] md:text-sm px-2.5 md:px-4 py-0.5 md:py-1.5 rounded-full bg-white/15 border border-white/20 text-white/80"
+                  className="text-[10px] md:text-sm px-2.5 md:px-4 py-0.5 md:py-1.5 rounded-full bg-plum/50 border border-titanium/30 text-starlight/85"
                 >
                   {tag}
                 </span>
@@ -102,8 +102,8 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
               className={cn(
                 'px-4 py-2 text-xs md:text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0',
                 activeCategory === category
-                  ? 'bg-white text-black'
-                  : 'border border-zinc-600 text-white hover:border-zinc-400'
+                  ? 'bg-tartan text-starlight'
+                  : 'border border-titanium/50 text-moon-dust hover:border-supernova/70 hover:text-starlight'
               )}
             >
               {category === 'All' ? 'All tags' : category}
@@ -122,7 +122,7 @@ export function UpdatesPageContent({ updates, featuredUpdate, categories }: Upda
 
         {filteredUpdates.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-zinc-400 text-lg">No updates found for this category.</p>
+            <p className="text-moon-dust text-lg">No updates found for this category.</p>
           </div>
         )}
       </div>

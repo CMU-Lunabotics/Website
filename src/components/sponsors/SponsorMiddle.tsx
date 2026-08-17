@@ -6,11 +6,10 @@ import Link from 'next/link';
 import { getStorageUrl } from '@/lib/supabase';
 import type { SponsorWithTier } from '@/lib/content';
 
-const topLeftImg     = getStorageUrl('sponsors/topleft.png');
-const bottomRightImg = getStorageUrl('sponsors/bottomright.png');
+const topLeftImg     = '/images/rover-sponsor-decals.jpg';
+const bottomRightImg = '/images/clean-room-crew-arena.jpg';
 const topRightImg    = getStorageUrl('sponsors/topright.png');
 const bottomLeftImg  = getStorageUrl('sponsors/bottomleft.png');
-const launchPhoto    = getStorageUrl('sponsors/launch.png');
 
 interface SponsorMiddleProps {
   corporateSponsors: SponsorWithTier[];
@@ -20,27 +19,33 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
   return (
     <>
       {/* IMAGE GRID SECTION */}
-      <section className="w-full bg-black text-white py-12">
+      <section className="w-full text-starlight py-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-12 gap-6 items-stretch mb-8">
             <div className="col-span-12 md:col-span-4">
-              <div className="relative w-full h-[320px] md:h-[360px] overflow-hidden border border-gray-800">
-                <Image src={topLeftImg} alt="Workshop photo" fill className="object-cover" priority />
+              <div
+                className="relative w-full h-[320px] md:h-[360px] overflow-hidden border border-titanium/30"
+                style={{ clipPath: 'polygon(32px 0, 100% 0, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0 100%, 0 32px)' }}
+              >
+                <Image src={topLeftImg} alt="Sponsor decals on the rover chassis" fill className="object-cover" priority />
               </div>
             </div>
             <div className="col-span-12 md:col-span-8">
               <div
                 className="relative w-full h-[320px] md:h-[360px] overflow-hidden"
-                style={{ background: 'linear-gradient(180deg,#2238f6 0%,#6e4fe8 60%,rgba(48,47,52,0.7) 100%)' }}
+                style={{ background: 'linear-gradient(135deg,#151426 0%,#33204F 55%,rgba(196,18,48,0.65) 100%)' }}
               >
                 <Image src={topRightImg} alt="Support Our Team graphic" fill quality={100} className="object-cover opacity-95" priority />
+                {/* Recolor the baked-in blue artwork toward cosmic plum */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: '#33204F', mixBlendMode: 'color' }} aria-hidden />
+                <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(21,20,38,0.5) 0%, rgba(51,32,79,0.35) 55%, rgba(196,18,48,0.4) 100%)' }} aria-hidden />
                 <div className="relative z-10 h-full flex items-center">
                   <div className="max-w-3xl pl-8 md:pl-12 pr-6">
-                    <h3 className="text-4xl md:text-5xl font-semibold text-white drop-shadow-lg">Support Our Team</h3>
-                    <p className="text-gray-200 mt-4 text-base md:text-lg max-w-xl leading-relaxed">
+                    <h3 className="text-4xl md:text-5xl font-semibold text-starlight drop-shadow-lg">Support Our Team</h3>
+                    <p className="text-starlight/85 mt-4 text-base md:text-lg max-w-xl leading-relaxed">
                       Support the mission to design, manufacture, and deploy field-ready lunar robotics as we represent Carnegie Mellon University on the national stage at NASA Lunabotics.
                     </p>
-                    <Link href="#" className="inline-block mt-6 border border-white text-white px-6 py-3 rounded-none bg-transparent hover:bg-white hover:text-black transition-all duration-200">
+                    <Link href="/about" className="inline-block mt-6 bg-tartan text-starlight font-semibold px-6 py-3 rounded-none hover:bg-supernova transition-all duration-200">
                       Learn more about our mission →
                     </Link>
                   </div>
@@ -52,8 +57,8 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
           <div className="grid grid-cols-12 gap-6 items-stretch">
             <div className="col-span-12 lg:col-span-8">
               <div
-                className="relative w-full h-[320px] overflow-hidden border border-dashed border-gray-600"
-                style={{ background: 'linear-gradient(180deg, rgba(20,20,20,0.95), rgba(18,18,18,0.95))' }}
+                className="relative w-full h-[320px] overflow-hidden border border-dashed border-titanium/50"
+                style={{ background: 'linear-gradient(180deg, rgba(21,20,38,0.95), rgba(9,10,18,0.95))' }}
               >
                 <div className="absolute inset-0 opacity-20 pointer-events-none">
                   <Image src={bottomLeftImg} alt="" fill className="object-cover" style={{ objectPosition: 'center' }} />
@@ -62,14 +67,14 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
                   <div className="px-8 md:px-12 py-8 max-w-3xl">
                     <div className="mb-6">
                       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2 L14 9 L21 10 L16 14 L17 21 L12 17 L7 21 L8 14 L3 10 L10 9 Z" fill="white" opacity="0.95" />
+                        <path d="M12 2 L14 9 L21 10 L16 14 L17 21 L12 17 L7 21 L8 14 L3 10 L10 9 Z" fill="#F04455" opacity="0.95" />
                       </svg>
                     </div>
-                    <h3 className="text-4xl md:text-5xl font-semibold text-white leading-tight mb-4">What We Can Offer</h3>
-                    <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mb-6">
+                    <h3 className="text-4xl md:text-5xl font-semibold text-starlight leading-tight mb-4">What We Can Offer</h3>
+                    <p className="text-moon-dust text-base md:text-lg leading-relaxed max-w-2xl mb-6">
                       Our sponsorship tiers offer a range of strategic benefits, from brand visibility via logo placement and newsletters to exclusive recruiting access, prominent features in our documentary and more.
                     </p>
-                    <Link href="#" className="inline-block border border-white text-white px-6 py-3 rounded-none bg-transparent hover:bg-white hover:text-black transition-all duration-200">
+                    <Link href="mailto:moonminers@cmu.edu" className="inline-block border border-titanium/50 text-starlight px-6 py-3 rounded-none bg-transparent hover:border-supernova/70 hover:bg-supernova/10 transition-all duration-200">
                       View full sponsorship package →
                     </Link>
                   </div>
@@ -77,8 +82,11 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
               </div>
             </div>
             <div className="col-span-12 lg:col-span-4">
-              <div className="relative w-full h-[320px] overflow-hidden border border-gray-800">
-                <Image src={bottomRightImg} alt="Team workshop photo" fill className="object-cover" />
+              <div
+                className="relative w-full h-[320px] overflow-hidden border border-titanium/30"
+                style={{ clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
+              >
+                <Image src={bottomRightImg} alt="Pit crew in clean-room suits at the competition arena" fill className="object-cover" />
               </div>
             </div>
           </div>
@@ -86,24 +94,21 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
       </section>
 
       {/* TIER HEADER SECTION */}
-      <section className="w-full bg-black text-white py-24">
+      <section className="w-full text-starlight py-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-starlight">
             Those Who Made Our Mission Possible
           </h2>
-          <div className="mt-8">
-            <Image src={launchPhoto} alt="Orbit graphic" width={500} height={300} className="mx-auto w-[280px] md:w-[380px] h-auto" />
-          </div>
         </div>
       </section>
 
       {/* CAROUSEL SECTION */}
-      <section className="w-full bg-black py-24">
+      <section className="w-full py-24">
         <div className="max-w-7xl mx-auto px-6">
           {corporateSponsors.length > 0 ? (
             <SponsorCarousel sponsors={corporateSponsors} />
           ) : (
-            <p className="text-center text-white/50 text-lg">Sponsors coming soon.</p>
+            <p className="text-center text-moon-dust/60 text-lg">Sponsors coming soon.</p>
           )}
         </div>
       </section>
@@ -126,19 +131,19 @@ function SponsorCarousel({ sponsors }: { sponsors: SponsorWithTier[] }) {
         >
           {sponsors.map((s, i) => (
             <div key={`${s.name}-${i}`} className="shrink-0 w-full px-6" aria-hidden={i !== index}>
-              <SponsorCard tier={s.tierName} name={s.name} description={s.blurb} logo={s.logo} isActive={i === index} />
+              <SponsorCard tier={s.tierName} name={s.name} description={s.blurb} logo={s.logo} url={s.url} isActive={i === index} />
             </div>
           ))}
         </div>
       </div>
 
-      <button type="button" onClick={goPrev} className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-white/30 text-white/90 hover:border-white/60 hover:text-white transition flex items-center justify-center bg-black/40 backdrop-blur-sm" aria-label="Previous sponsor">‹</button>
-      <button type="button" onClick={goNext} className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-white/30 text-white/90 hover:border-white/60 hover:text-white transition flex items-center justify-center bg-black/40 backdrop-blur-sm" aria-label="Next sponsor">›</button>
+      <button type="button" onClick={goPrev} className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-titanium/40 text-starlight hover:border-supernova/70 hover:text-starlight transition flex items-center justify-center bg-deep-space/60 backdrop-blur-sm" aria-label="Previous sponsor">‹</button>
+      <button type="button" onClick={goNext} className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-titanium/40 text-starlight hover:border-supernova/70 hover:text-starlight transition flex items-center justify-center bg-deep-space/60 backdrop-blur-sm" aria-label="Next sponsor">›</button>
 
       <div className="mt-10 flex items-center justify-center gap-3">
         {sponsors.map((_, i) => (
           <button key={i} type="button" onClick={() => goTo(i)}
-            className={['h-2.5 rounded-full transition-all', i === index ? 'w-10 bg-white/90' : 'w-2.5 bg-white/25 hover:bg-white/40'].join(' ')}
+            className={['h-2.5 rounded-full transition-all', i === index ? 'w-10 bg-supernova' : 'w-2.5 bg-titanium/40 hover:bg-titanium/70'].join(' ')}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
@@ -147,24 +152,32 @@ function SponsorCarousel({ sponsors }: { sponsors: SponsorWithTier[] }) {
   );
 }
 
-function SponsorCard({ tier, name, description, logo, isActive }: { tier: string; name: string; description: string; logo: string; isActive: boolean }) {
-  return (
-    <div className={['relative w-full h-[380px] md:h-[420px] overflow-hidden', 'border border-dashed border-white/25', 'bg-gradient-to-br from-neutral-900 via-neutral-950 to-black', 'shadow-[0_0_60px_rgba(0,0,0,0.6)]', isActive ? 'opacity-100' : 'opacity-45'].join(' ')}>
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.06),rgba(0,0,0,0.75))]" />
+function SponsorCard({ tier, name, description, logo, url, isActive }: { tier: string; name: string; description: string; logo: string; url: string; isActive: boolean }) {
+  const isLinked = Boolean(url && url !== '#');
+  const card = (
+    <div className={['relative w-full h-[380px] md:h-[420px] overflow-hidden', 'border border-dashed border-titanium/40', 'bg-gradient-to-br from-deep-space via-void to-void', 'shadow-[0_0_60px_rgba(9,10,18,0.7)]', isActive ? 'opacity-100' : 'opacity-45', isLinked ? 'transition-colors hover:border-supernova/60 cursor-pointer' : ''].join(' ')}>
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(51,32,79,0.35),rgba(9,10,18,0.75))]" />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="relative w-[340px] md:w-[520px] h-[180px] md:h-[260px] flex items-center justify-center">
           {logo ? (
             <Image src={logo} alt={`${name} logo`} fill className="object-contain" style={{ mixBlendMode: 'screen' }} />
           ) : (
-            <div className="text-white text-3xl font-bold opacity-60 tracking-wider select-none">{name}</div>
+            <div className="text-starlight text-3xl font-bold opacity-60 tracking-wider select-none">{name}</div>
           )}
         </div>
       </div>
       <div className="absolute left-8 bottom-8 right-8 md:right-auto md:w-[520px]">
-        <span className="inline-flex items-center justify-center px-4 py-1.5 border border-white/30 text-white/85 text-sm rounded-full mb-4 bg-black/30 backdrop-blur-sm">{tier}</span>
-        <h3 className="text-white text-4xl md:text-5xl font-semibold leading-tight whitespace-nowrap">{name}</h3>
-        <p className="mt-3 text-white/75 text-sm md:text-base leading-relaxed">{description}</p>
+        <span className="inline-flex items-center justify-center px-4 py-1.5 border border-supernova/50 text-starlight text-sm rounded-full mb-4 bg-tartan/20 backdrop-blur-sm">{tier}</span>
+        <h3 className="text-starlight text-4xl md:text-5xl font-semibold leading-tight whitespace-nowrap">{name}</h3>
+        <p className="mt-3 text-moon-dust text-sm md:text-base leading-relaxed">{description}</p>
       </div>
     </div>
+  );
+
+  if (!isLinked) return card;
+  return (
+    <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${name}`} className="block">
+      {card}
+    </a>
   );
 }

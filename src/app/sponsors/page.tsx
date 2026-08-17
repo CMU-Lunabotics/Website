@@ -13,7 +13,7 @@ export default async function SponsorsPage() {
   const sponsorData = await getSponsorsPageData();
 
   return (
-    <div className="relative bg-black">
+    <div className="relative">
       <SponsorLanding />
       <SponsorMobile
         corporateSponsors={sponsorData.corporateSponsors}

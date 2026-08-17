@@ -48,13 +48,13 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
         <div className="flex items-start justify-between gap-4 mb-10">
           <div className="w-16 flex-shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col items-center justify-center text-center min-w-0">
-            <h2 className="text-4xl font-bold text-white">Meet our sponsors</h2>
-            <p className="mt-2 text-lg text-white/70">Learn more about those supporting us!</p>
+            <h2 className="text-4xl font-bold text-starlight">Meet our sponsors</h2>
+            <p className="mt-2 text-lg text-moon-dust">Learn more about those supporting us!</p>
           </div>
           <div className="w-16 flex-shrink-0 flex justify-end">
             <Link
               href="/sponsors"
-              className="text-sm text-white/90 hover:text-white underline underline-offset-2 whitespace-nowrap"
+              className="text-sm text-moon-dust hover:text-supernova underline underline-offset-2 whitespace-nowrap transition-colors"
             >
               View all 
             </Link>
@@ -68,7 +68,7 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
             type="button"
             onClick={goPrev}
             disabled={currentIndex === 0}
-            className="flex-shrink-0 w-12 h-12 border rounded-full border-white/30 bg-white/5 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/50 disabled:opacity-40 disabled:pointer-events-none transition-colors"
+            className="flex-shrink-0 w-12 h-12 border rounded-full border-titanium/40 bg-deep-space/60 flex items-center justify-center text-starlight hover:border-supernova/70 hover:bg-supernova/10 disabled:opacity-40 disabled:pointer-events-none transition-colors"
             aria-label="Previous sponsors"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -80,7 +80,7 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
             <div
               className="absolute left-0 top-0 bottom-0 w-20 md:w-28 z-10 pointer-events-none"
               style={{
-                background: 'linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%)',
+                background: 'linear-gradient(to right, rgba(9,10,18,0.9) 0%, rgba(9,10,18,0) 100%)',
               }}
               aria-hidden
             />
@@ -88,7 +88,7 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
             <div
               className="absolute right-0 top-0 bottom-0 w-20 md:w-28 z-10 pointer-events-none"
               style={{
-                background: 'linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%)',
+                background: 'linear-gradient(to left, rgba(9,10,18,0.9) 0%, rgba(9,10,18,0) 100%)',
               }}
               aria-hidden
             />
@@ -107,17 +107,17 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
                 >
                   {!sponsor ? (
                     <div
-                      className="w-full max-w-[420px] aspect-[5/3] bg-white/10 flex items-center justify-center border-2 border-dotted border-white/15"
+                      className="w-full max-w-[420px] aspect-[5/3] bg-deep-space/80 flex items-center justify-center border border-dotted border-titanium/40"
                       style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
                     >
-                      <span className="text-sm text-white/50">Sponsor slot</span>
+                      <span className="text-sm text-moon-dust/60">Sponsor slot</span>
                     </div>
                   ) : (
                     <a
                       href={sponsor.url || '#'}
                       target={sponsor.url && sponsor.url !== '#' ? '_blank' : undefined}
                       rel={sponsor.url && sponsor.url !== '#' ? 'noopener noreferrer' : undefined}
-                      className="block w-full max-w-[420px] aspect-[5/3] bg-white/10 overflow-hidden flex items-center justify-center p-4 hover:bg-white/15 transition-colors border-2 border-dotted border-white/15"
+                      className="block w-full max-w-[420px] aspect-[5/3] bg-deep-space/80 overflow-hidden flex items-center justify-center p-6 hover:bg-plum/40 hover:border-supernova/50 transition-colors border border-titanium/40"
                       style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
                     >
                       <div className="relative w-full h-full flex items-center justify-center">
@@ -130,7 +130,7 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
                             sizes="420px"
                           />
                         ) : (
-                          <span className="text-white text-lg font-semibold">{sponsor.name}</span>
+                          <span className="text-starlight text-lg font-semibold">{sponsor.name}</span>
                         )}
                       </div>
                     </a>
@@ -145,7 +145,7 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
             type="button"
             onClick={goNext}
             disabled={currentIndex >= maxIndex}
-            className="flex-shrink-0 w-12 h-12 rounded-full border border-white/30 bg-white/5 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/50 disabled:opacity-40 disabled:pointer-events-none transition-colors"
+            className="flex-shrink-0 w-12 h-12 rounded-full border border-titanium/40 bg-deep-space/60 flex items-center justify-center text-starlight hover:border-supernova/70 hover:bg-supernova/10 disabled:opacity-40 disabled:pointer-events-none transition-colors"
             aria-label="Next sponsors"
           >
             <ChevronRight className="w-6 h-6" />

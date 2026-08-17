@@ -2,6 +2,7 @@ import { TeamHero } from '@/components/TeamHero';
 import { Section } from '@/components/Section';
 import { MemberGrid } from '@/components/MemberGrid';
 import { MentorCard } from '@/components/MentorCard';
+import { TeamPlacements } from '@/components/TeamPlacements';
 import { getMembers, getTeamInfo, getMentors } from '@/lib/content';
 
 export const metadata = {
@@ -19,6 +20,9 @@ export default async function TeamPage() {
   return (
     <>
       <TeamHero />
+
+      {/* Where Moon Miners land */}
+      <TeamPlacements />
 
       {/* Advisors */}
       <Section
@@ -42,7 +46,6 @@ export default async function TeamPage() {
         subtitle="The talented individuals driving our mission forward."
         headerAlign="left"
         headerClassName="mb-4"
-        className="bg-black"
         titleClassName="text-left text-[36px]"
         subtitleClassName="text-left text-[20px]"
       >

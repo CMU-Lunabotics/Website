@@ -22,7 +22,7 @@ export function MemberCard({ member }: MemberCardProps) {
           transition={{ duration: 0.2 }}
         >
           <Card
-            className="group cursor-pointer overflow-hidden border-none bg-transparent py-0 pt-0 transition-all duration-200 rounded-none"
+            className="group cursor-pointer overflow-hidden border-none bg-transparent py-0 pt-0 transition-all duration-200 rounded-none gap-0"
             data-testid="member-card"
           >
             {/* Top image area */}
@@ -37,12 +37,12 @@ export function MemberCard({ member }: MemberCardProps) {
               />
             </div>
              {/* Content */}
-          <CardContent className="px-4 pb-2 flex flex-col gap-4">
+          <CardContent className="px-4 pt-4 pb-2 flex flex-col gap-4">
             <div className="space-y-1">
               {/* Role / position */}
-              <p className="text-base text-[#9f9f9f] pb-2">{member.role}</p>
+              <p className="text-base text-moon-dust pb-2">{member.role}</p>
               {/* Name */}
-              <h3 className="text-2xl sm:text-[24px] lg:text-[28px] font-semibold leading-[1.05] text-white pb-0">
+              <h3 className="text-2xl sm:text-[24px] lg:text-[28px] font-semibold leading-[1.05] text-starlight pb-0">
                 {member.name}
               </h3>
             </div>
@@ -55,7 +55,7 @@ export function MemberCard({ member }: MemberCardProps) {
                     href={member.links.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-white underline underline-offset-2 hover:text-white/80"
+                    className="text-xs text-supernova underline underline-offset-2 hover:text-starlight"
                   >
                     LinkedIn
                   </a>
@@ -63,7 +63,7 @@ export function MemberCard({ member }: MemberCardProps) {
               </div>
 
                 {/* Class year — 16px white */}
-                <p className="text-base text-white">
+                <p className="text-base text-moon-dust">
                   Class of {member.year}
                 </p>
               </div>
@@ -74,7 +74,7 @@ export function MemberCard({ member }: MemberCardProps) {
                   {member.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-[20px] bg-white/10 px-3.5 py-2.5 text-xs font-medium text-white"
+                      className="rounded-[20px] bg-plum/50 px-3.5 py-2.5 text-xs font-medium text-starlight"
                     >
                       {tag}
                     </span>

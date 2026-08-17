@@ -1,18 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getStorageUrl } from '@/lib/supabase';
 import { ArrowRight } from 'lucide-react';
 
 export function AboutChallenge() {
   return (
-    <section className="bg-black">
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[60vh]">
-        {/* Left: image with left padding so it doesn't touch the border */}
-        <div className="flex items-center pl-10 lg:pl-16 py-10">
-          <div className="relative overflow-hidden" style={{ width: '737px', height: '450px', maxWidth: '100%' }}>
+    <section>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 min-h-[60vh] items-center px-6 lg:px-12">
+        {/* Left: image centered in its column */}
+        <div className="flex items-center justify-center py-10">
+          <div
+            className="relative overflow-hidden"
+            style={{
+              width: '737px',
+              height: '450px',
+              maxWidth: '100%',
+              clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))',
+            }}
+          >
             <Image
-              src={getStorageUrl('our-story/IMG_1869.jpg')}
-              alt="System overview presentation"
+              src="/images/nasa-award-team.jpg"
+              alt="Moon Miners with their award in front of the NASA globe at Kennedy Space Center"
               fill
               className="object-cover"
               sizes="737px"
@@ -20,27 +27,28 @@ export function AboutChallenge() {
             <div
               className="absolute inset-0"
               style={{
-                background: 'linear-gradient(0deg, rgba(2, 16, 253, 0.18) 17.4%, rgba(163, 150, 150, 0.18) 69.53%, rgba(163, 150, 150, 0.00) 103.76%)',
+                background: 'linear-gradient(0deg, rgba(51, 32, 79, 0.35) 17.4%, rgba(196, 18, 48, 0.12) 69.53%, rgba(196, 18, 48, 0.00) 103.76%)',
                 mixBlendMode: 'soft-light',
               }}
             />
           </div>
         </div>
 
-        {/* Right: text */}
-        <div className="flex flex-col justify-center px-10 lg:px-16 py-20 bg-black">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white font-[var(--font-noto)] mb-6">
+        {/* Right: text block nudged right, left-aligned for readability */}
+        <div className="flex flex-col justify-center items-start text-left px-10 py-20 lg:pl-28 lg:pr-10">
+          <h2 className="text-4xl lg:text-5xl font-bold text-starlight font-[var(--font-noto)] mb-6">
             The Challenge
           </h2>
-          <p className="text-white/70 text-base leading-relaxed font-[var(--font-noto)] mb-10 max-w-md">
-            Founded in 2025, CMU Moon Miners is a first-year team with nothing to
-            inherit and everything to prove. We are building a fully autonomous lunar
-            excavation rover from scratch — not as a class project, not as a research
-            demo, but to win the NASA Lunabotics Competition outright.
+          <p className="text-moon-dust text-base leading-relaxed font-[var(--font-noto)] mb-10 max-w-md">
+            Founded in 2025, CMU Moon Miners went from a blank whiteboard to the
+            national stage in a single season. Now we&apos;re back with hard-won
+            experience, a proven playbook, and a new rover in the works — not as a
+            class project, not as a research demo, but to win the NASA Lunabotics
+            Competition outright.
           </p>
           <Link
             href="/team"
-            className="inline-flex items-center gap-2 border border-white text-white text-sm font-[var(--font-noto)] px-6 py-3 hover:bg-white hover:text-black transition-all w-fit"
+            className="inline-flex items-center gap-2 bg-tartan text-starlight text-sm font-semibold font-[var(--font-noto)] px-6 py-3 hover:bg-supernova transition-all w-fit"
           >
             Meet the team
             <ArrowRight className="h-4 w-4" />
