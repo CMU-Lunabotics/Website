@@ -111,7 +111,10 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
               aria-hidden
             />
 
-            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-3xl border border-titanium/40">
+            <div
+              className="relative w-full aspect-[4/3] overflow-hidden border border-titanium/40"
+              style={{ clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
+            >
               <Image
                 src="/images/rover-digging-arena.jpg"
                 alt="The rover digging regolith in the Lunabotics competition arena"
