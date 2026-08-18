@@ -22,7 +22,7 @@ export function AboutOrigin() {
           style={{ clipPath: 'polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px))' }}
         >
           <Image
-            src="/images/building-arena.jpg"
+            src={getStorageUrl('our-story/building-arena.jpg')}
             alt="The test arena being built at the Robotics Innovation Center"
             width={2000}
             height={1500}
