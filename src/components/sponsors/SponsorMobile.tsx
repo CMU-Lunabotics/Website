@@ -66,79 +66,6 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
         </div>
       </section>
 
-      {/* ── WHY SPONSOR US ── */}
-      <section className="px-5 pt-6 pb-2">
-        <h2 className="text-[36px] font-semibold leading-[49px] mb-2 text-starlight">Why Sponsor Us?</h2>
-        <p className="text-[20px] font-normal leading-[27px] text-moon-dust mb-6">
-          Technology is table stakes. Execution wins championships.
-        </p>
-
-        {/* Card 1 — topleft.png, image only */}
-        <div className="relative w-full h-[280px] mb-6">
-          <div className="absolute inset-0 overflow-hidden">
-            <Image src={topleftImg} alt="Team member" fill className="object-cover" />
-          </div>
-          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ top: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
-          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ bottom: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
-        </div>
-
-        {/* Card 2 — topright.png with "Support Our Team" overlay */}
-        <div className="relative w-full h-[280px] mb-6">
-          <div className="absolute inset-0 overflow-hidden">
-            <Image src={toprightImg} alt="Support our team" fill className="object-cover" />
-            <div className="absolute inset-0 pointer-events-none" style={{ background: '#33204F', mixBlendMode: 'color' }} aria-hidden />
-            <div
-              className="absolute inset-0"
-              style={{ background: 'linear-gradient(0deg, rgba(51,32,79,0.55) 17.4%, rgba(196,18,48,0.2) 69.53%, rgba(196,18,48,0) 103.76%)' }}
-            />
-          </div>
-          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ top: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
-          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ bottom: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
-          <div className="absolute bottom-[24px] left-[29px] right-6 z-10">
-            <p className="text-[28px] font-semibold text-starlight leading-[38px] mb-2">Support Our Team</p>
-            <p className="text-base text-starlight/85 leading-[22px] mb-4">
-              Setting the standard for student-led lunar robotics, building field-ready systems.
-            </p>
-            <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-sm hover:bg-supernova transition-all duration-300 font-semibold">
-              Donate to support us
-            </button>
-          </div>
-        </div>
-
-        {/* Card 3 — dashed "What we can offer" with bottomleft.png */}
-        <div className="relative w-full h-[280px] mb-6">
-          <div
-            className="absolute inset-0 overflow-hidden"
-            style={{ border: '1px dashed rgba(118,119,134,0.6)', background: 'linear-gradient(180deg, rgba(51,32,79,0.35) 0%, rgba(21,20,38,0.5) 100%)' }}
-          >
-            <Image src={actionImg} alt="Team in action" fill className="object-cover opacity-30" />
-          </div>
-          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ bottom: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
-          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ top: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
-          <div className="absolute left-[33px] z-10" style={{ top: '32px' }}>
-            <svg width="28" height="31" viewBox="0 0 28 31" fill="#F04455" className="mb-2 opacity-90">
-              <path d="M14 0 L17 11 L28 13 L20 20 L22 31 L14 26 L6 31 L8 20 L0 13 L11 11 Z" />
-            </svg>
-            <p className="text-[28px] font-semibold text-starlight leading-[38px] mb-2">What we can offer</p>
-            <p className="text-base text-moon-dust leading-[22px] mb-4">
-              An interdisciplinary team across engineering, business, computer science and more.
-            </p>
-            <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-sm hover:bg-supernova transition-all duration-300 font-semibold">
-              View our sponsorship deck
-            </button>
-          </div>
-        </div>
-
-        {/* Card 4 — bottomright.png, image only */}
-        <div className="relative w-full h-[280px] mb-6">
-          <div className="absolute inset-0 overflow-hidden">
-            <Image src={bottomrightImg} alt="Team at work" fill className="object-cover" />
-          </div>
-          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ top: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
-          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ bottom: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
-        </div>
-      </section>
-
       {/* ── THOSE WHO MADE OUR MISSION POSSIBLE ── */}
       <section className="px-5 pt-10 text-center">
         <h2 className="text-[36px] font-semibold leading-[49px] text-starlight">Those Who Made Our</h2>
@@ -229,6 +156,79 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
             ))}
           </div>
         )}
+      </section>
+
+      {/* ── WHY SPONSOR US ── */}
+      <section className="px-5 pt-6 pb-2">
+        <h2 className="text-[36px] font-semibold leading-[49px] mb-2 text-starlight">Why Sponsor Us?</h2>
+        <p className="text-[20px] font-normal leading-[27px] text-moon-dust mb-6">
+          Technology is table stakes. Execution wins championships.
+        </p>
+
+        {/* Card 1 — topleft.png, image only */}
+        <div className="relative w-full h-[280px] mb-6">
+          <div className="absolute inset-0 overflow-hidden">
+            <Image src={topleftImg} alt="Team member" fill className="object-cover" />
+          </div>
+          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ top: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
+          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ bottom: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
+        </div>
+
+        {/* Card 2 — topright.png with "Support Our Team" overlay */}
+        <div className="relative w-full h-[280px] mb-6">
+          <div className="absolute inset-0 overflow-hidden">
+            <Image src={toprightImg} alt="Support our team" fill className="object-cover" />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: '#33204F', mixBlendMode: 'color' }} aria-hidden />
+            <div
+              className="absolute inset-0"
+              style={{ background: 'linear-gradient(0deg, rgba(51,32,79,0.55) 17.4%, rgba(196,18,48,0.2) 69.53%, rgba(196,18,48,0) 103.76%)' }}
+            />
+          </div>
+          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ top: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
+          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ bottom: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
+          <div className="absolute bottom-[24px] left-[29px] right-6 z-10">
+            <p className="text-[28px] font-semibold text-starlight leading-[38px] mb-2">Support Our Team</p>
+            <p className="text-base text-starlight/85 leading-[22px] mb-4">
+              Setting the standard for student-led lunar robotics, building field-ready systems.
+            </p>
+            <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-sm hover:bg-supernova transition-all duration-300 font-semibold">
+              Donate to support us
+            </button>
+          </div>
+        </div>
+
+        {/* Card 3 — dashed "What we can offer" with bottomleft.png */}
+        <div className="relative w-full h-[280px] mb-6">
+          <div
+            className="absolute inset-0 overflow-hidden"
+            style={{ border: '1px dashed rgba(118,119,134,0.6)', background: 'linear-gradient(180deg, rgba(51,32,79,0.35) 0%, rgba(21,20,38,0.5) 100%)' }}
+          >
+            <Image src={actionImg} alt="Team in action" fill className="object-cover opacity-30" />
+          </div>
+          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ bottom: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
+          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ top: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
+          <div className="absolute left-[33px] z-10" style={{ top: '32px' }}>
+            <svg width="28" height="31" viewBox="0 0 28 31" fill="#F04455" className="mb-2 opacity-90">
+              <path d="M14 0 L17 11 L28 13 L20 20 L22 31 L14 26 L6 31 L8 20 L0 13 L11 11 Z" />
+            </svg>
+            <p className="text-[28px] font-semibold text-starlight leading-[38px] mb-2">What we can offer</p>
+            <p className="text-base text-moon-dust leading-[22px] mb-4">
+              An interdisciplinary team across engineering, business, computer science and more.
+            </p>
+            <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-sm hover:bg-supernova transition-all duration-300 font-semibold">
+              View our sponsorship deck
+            </button>
+          </div>
+        </div>
+
+        {/* Card 4 — bottomright.png, image only */}
+        <div className="relative w-full h-[280px] mb-6">
+          <div className="absolute inset-0 overflow-hidden">
+            <Image src={bottomrightImg} alt="Team at work" fill className="object-cover" />
+          </div>
+          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ top: '-13px', left: '-13px', transform: 'rotate(-45deg)' }} />
+          <div className="absolute w-[27px] h-[27px] bg-void z-10" style={{ bottom: '-13px', right: '-13px', transform: 'rotate(-45deg)' }} />
+        </div>
       </section>
 
       {/* ── LAUNCH ── */}

@@ -249,3 +249,9 @@
     animation: none;
   }
 }
+
+/* Never allow stray decorative bleed to create horizontal scroll */
+html,
+body {
+  overflow-x: clip;
+}

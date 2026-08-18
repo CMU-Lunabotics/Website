@@ -30,8 +30,8 @@ export function AboutOrigin() {
           />
         </div>
 
-        {/* Quote callout — Figma asset */}
-        <div className="relative w-full">
+        {/* Quote callout — Figma asset; hidden on mobile where the baked-in text is unreadable */}
+        <div className="relative w-full hidden md:block">
           <Image
             src={getStorageUrl('our-story/Group 684.png')}
             alt="Setting the standard for student-led lunar robotics"

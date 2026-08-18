@@ -1,5 +1,5 @@
 import { Container } from '@/components/Container';
-import { Cpu, Mountain, Radar, Route } from 'lucide-react';
+import { Bot, Cpu, Mountain, Radar, Route, Trophy } from 'lucide-react';
 
 const SUBSYSTEMS = [
   {
@@ -75,6 +75,22 @@ export function AboutAtlas() {
                 <p className="mt-2 text-sm leading-relaxed text-moon-dust">{body}</p>
               </div>
             ))}
+          </div>
+
+          {/* 2026 accolades */}
+          <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-titanium/25 pt-6">
+            <div className="flex items-center gap-3">
+              <Trophy className="h-6 w-6 text-supernova shrink-0" aria-hidden />
+              <p className="text-sm leading-relaxed text-moon-dust">
+                Won <span className="font-semibold text-starlight">Best Presentations and Demonstrations</span> as a novice team
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <Bot className="h-6 w-6 text-supernova shrink-0" aria-hidden />
+              <p className="text-sm leading-relaxed text-moon-dust">
+                The <span className="font-semibold text-starlight">only first-year team</span> to ever produce an autonomous system.
+              </p>
+            </div>
           </div>
 
           {/* 2027 successor teaser */}

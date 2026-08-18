@@ -19,6 +19,47 @@ interface SponsorMiddleProps {
 export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps) {
   return (
     <>
+      {/* Sponsors Graphic SECTION */}
+      <section className="w-full text-starlight py-16">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-starlight">
+            Those Who Made Our Mission Possible
+          </h2>
+          <p className="mt-3 text-moon-dust/80 text-lg md:text-xl">
+            Our 2026 Sponsors
+          </p>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 text-center py-8">
+          <div
+            className="inline-block w-full max-w-4xl overflow-hidden border border-titanium/30"
+            style={{ clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
+          >
+            <Image
+              src={sponsorsGraphic}
+              alt="Sponsors graphic"
+              width={1000}
+              height={400}
+              className="w-full h-auto block"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* WHY SPONSOR US */}
+      <section className="w-full py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-starlight text-4xl md:text-4xl font-semibold mb-6">
+            Why Sponsor Us?
+          </h2>
+          <p className="text-moon-dust text-lg md:text-xl leading-relaxed">
+            Technology is table stakes. Execution wins championships. The difference
+            between a contender and a champion is how fast you can test, break, and rebuild.
+            We don&apos;t rely on legacy funding, inherited infrastructure, or alumni pipelines.
+          </p>
+        </div>
+      </section>
+
       {/* IMAGE GRID SECTION */}
       <section className="w-full text-starlight py-12">
         <div className="max-w-7xl mx-auto px-6">
@@ -33,7 +74,7 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
             </div>
             <div className="col-span-12 md:col-span-8">
               <div
-                className="relative w-full h-[320px] md:h-[360px] overflow-hidden"
+                className="relative w-full min-h-[320px] md:min-h-[360px] overflow-hidden"
                 style={{ background: 'linear-gradient(135deg,#151426 0%,#33204F 55%,rgba(196,18,48,0.65) 100%)' }}
               >
                 <Image src={topRightImg} alt="Support Our Team graphic" fill quality={100} className="object-cover opacity-95" priority />
@@ -41,7 +82,7 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
                 <div className="absolute inset-0 pointer-events-none" style={{ background: '#33204F', mixBlendMode: 'color' }} aria-hidden />
                 <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(21,20,38,0.5) 0%, rgba(51,32,79,0.35) 55%, rgba(196,18,48,0.4) 100%)' }} aria-hidden />
                 <div className="relative z-10 h-full flex items-center">
-                  <div className="max-w-3xl pl-8 md:pl-12 pr-6">
+                  <div className="max-w-3xl px-6 py-8 md:pl-12 md:pr-6">
                     <h3 className="text-4xl md:text-5xl font-semibold text-starlight drop-shadow-lg">Support Our Team</h3>
                     <p className="text-starlight/85 mt-4 text-base md:text-lg max-w-xl leading-relaxed">
                       Support the mission to design, manufacture, and deploy field-ready lunar robotics as we represent Carnegie Mellon University on the national stage at NASA Lunabotics.
@@ -58,14 +99,14 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
           <div className="grid grid-cols-12 gap-6 items-stretch">
             <div className="col-span-12 lg:col-span-8">
               <div
-                className="relative w-full h-[320px] overflow-hidden border border-dashed border-titanium/50"
+                className="relative w-full min-h-[320px] overflow-hidden border border-dashed border-titanium/50"
                 style={{ background: 'linear-gradient(180deg, rgba(21,20,38,0.95), rgba(9,10,18,0.95))' }}
               >
                 <div className="absolute inset-0 opacity-20 pointer-events-none">
                   <Image src={bottomLeftImg} alt="" fill className="object-cover" style={{ objectPosition: 'center' }} />
                 </div>
                 <div className="relative z-10 h-full flex items-center">
-                  <div className="px-8 md:px-12 py-8 max-w-3xl">
+                  <div className="px-6 md:px-12 py-8 max-w-3xl">
                     {/* <div className="mb-6">
                       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
                         <path d="M12 2 L14 9 L21 10 L16 14 L17 21 L12 17 L7 21 L8 14 L3 10 L10 9 Z" fill="#F04455" opacity="0.95" />
@@ -76,7 +117,7 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
                       Our sponsorship tiers offer a range of strategic benefits, from brand visibility via logo placement and newsletters to exclusive recruiting access, prominent features in our documentary and more.
                     </p>
                     <Link href="mailto:moonminers@cmu.edu" className="inline-block border border-titanium/50 text-starlight px-6 py-3 rounded-none bg-transparent hover:border-supernova/70 hover:bg-supernova/10 transition-all duration-200">
-                      View full sponsorship package →
+                      Contact Us →
                     </Link>
                   </div>
                 </div>
@@ -102,31 +143,6 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
           </h2>
         </div>
       </section> */}
-
-      {/* Sponsors Graphic SECTION */}
-      <section className="w-full text-starlight py-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-starlight">
-            Those Who Made Our Mission Possible
-          </h2>
-          <p className="mt-3 text-moon-dust/80 text-lg md:text-xl">
-            Our 2026 Sponsors
-          </p>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <Image
-            src={sponsorsGraphic}
-            alt="Sponsors graphic"
-            width={1000}
-            height={400}
-            className="inline-block w-full max-w-4xl h-auto object-contain py-8"
-            priority
-          />
-        </div>
-  
-   
-        
-      </section>
 
       {/* CAROUSEL SECTION */}
       {/* <section className="w-full py-24">

@@ -13,7 +13,7 @@ interface HomeMissionProps {
 
 export function HomeMission({ title, body, cta }: HomeMissionProps) {
   return (
-    <section className="relative py-20 lg:py-28">
+    <section className="relative py-20 lg:py-28 overflow-x-clip">
       <Container className="px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left: title + body + CTA */}
