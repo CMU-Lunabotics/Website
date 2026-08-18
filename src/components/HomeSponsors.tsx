@@ -12,10 +12,9 @@ interface HomeSponsorsProps {
 
 const desiredOrder = [
   'sponsors/drkelly.jpg',
-  'sponsors/shieldAI.png',
-  'sponsors/sick.png',
-  'sponsors/choset.jpg',
+  'mentors/wenshan.jpeg',
   'mentors/red-whittaker.jpg',
+  'sponsors/choset.jpg',
 ];
 
 function getPathSuffix(url: string) {
@@ -48,7 +47,7 @@ export function HomeSponsors({ sponsors }: HomeSponsorsProps) {
         <div className="flex items-start justify-between gap-4 mb-10">
           <div className="w-16 flex-shrink-0" aria-hidden />
           <div className="flex-1 flex flex-col items-center justify-center text-center min-w-0">
-            <h2 className="text-4xl font-bold text-starlight">Meet our sponsors</h2>
+            <h2 className="text-4xl font-bold text-starlight">Meet some of our Sponsors</h2>
             <p className="mt-2 text-lg text-moon-dust">Learn more about those supporting us!</p>
           </div>
           <div className="w-16 flex-shrink-0 flex justify-end">

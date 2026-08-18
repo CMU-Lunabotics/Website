@@ -131,7 +131,7 @@ function SponsorCarousel({ sponsors }: { sponsors: SponsorWithTier[] }) {
         >
           {sponsors.map((s, i) => (
             <div key={`${s.name}-${i}`} className="shrink-0 w-full px-6" aria-hidden={i !== index}>
-              <SponsorCard tier={s.tierName} name={s.name} description={s.blurb} logo={s.logo} url={s.url} isActive={i === index} />
+              <SponsorCard name={s.name} description={s.blurb} logo={s.logo} url={s.url} isActive={i === index} />
             </div>
           ))}
         </div>
@@ -152,7 +152,7 @@ function SponsorCarousel({ sponsors }: { sponsors: SponsorWithTier[] }) {
   );
 }
 
-function SponsorCard({ tier, name, description, logo, url, isActive }: { tier: string; name: string; description: string; logo: string; url: string; isActive: boolean }) {
+function SponsorCard({ name, description, logo, url, isActive }: { name: string; description: string; logo: string; url: string; isActive: boolean }) {
   const isLinked = Boolean(url && url !== '#');
   const card = (
     <div className={['relative w-full h-[380px] md:h-[420px] overflow-hidden', 'border border-dashed border-titanium/40', 'bg-gradient-to-br from-deep-space via-void to-void', 'shadow-[0_0_60px_rgba(9,10,18,0.7)]', isActive ? 'opacity-100' : 'opacity-45', isLinked ? 'transition-colors hover:border-supernova/60 cursor-pointer' : ''].join(' ')}>
@@ -167,7 +167,6 @@ function SponsorCard({ tier, name, description, logo, url, isActive }: { tier: s
         </div>
       </div>
       <div className="absolute left-8 bottom-8 right-8 md:right-auto md:w-[520px]">
-        <span className="inline-flex items-center justify-center px-4 py-1.5 border border-supernova/50 text-starlight text-sm rounded-full mb-4 bg-tartan/20 backdrop-blur-sm">{tier}</span>
         <h3 className="text-starlight text-4xl md:text-5xl font-semibold leading-tight whitespace-nowrap">{name}</h3>
         <p className="mt-3 text-moon-dust text-sm md:text-base leading-relaxed">{description}</p>
       </div>

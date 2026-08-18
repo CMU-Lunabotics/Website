@@ -201,12 +201,6 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
 
                 {/* Content */}
                 <div className="flex flex-col gap-3">
-                  <span
-                    className="inline-flex items-center justify-center text-starlight text-[12px] font-semibold self-start"
-                    style={{ border: '0.886px solid rgba(240,68,85,0.6)', borderRadius: '17.7px', padding: '7px 14px' }}
-                  >
-                    {corporateSponsors[safeIndex].tierName}
-                  </span>
                   <p className="text-[32px] font-semibold text-starlight leading-[43px]">{corporateSponsors[safeIndex].name}</p>
                   <p className="text-[14px] text-moon-dust leading-[19px]">{corporateSponsors[safeIndex].blurb}</p>
                 </div>
