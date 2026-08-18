@@ -10,6 +10,7 @@ const topLeftImg     = '/images/rover-sponsor-decals.jpg';
 const bottomRightImg = '/images/clean-room-crew-arena.jpg';
 const topRightImg    = getStorageUrl('sponsors/topright.png');
 const bottomLeftImg  = getStorageUrl('sponsors/bottomleft.png');
+const sponsorsGraphic = '/images/mm_2026_sponsors.jpg';
 
 interface SponsorMiddleProps {
   corporateSponsors: SponsorWithTier[];
@@ -65,11 +66,11 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
                 </div>
                 <div className="relative z-10 h-full flex items-center">
                   <div className="px-8 md:px-12 py-8 max-w-3xl">
-                    <div className="mb-6">
+                    {/* <div className="mb-6">
                       <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
                         <path d="M12 2 L14 9 L21 10 L16 14 L17 21 L12 17 L7 21 L8 14 L3 10 L10 9 Z" fill="#F04455" opacity="0.95" />
                       </svg>
-                    </div>
+                    </div> */}
                     <h3 className="text-4xl md:text-5xl font-semibold text-starlight leading-tight mb-4">What We Can Offer</h3>
                     <p className="text-moon-dust text-base md:text-lg leading-relaxed max-w-2xl mb-6">
                       Our sponsorship tiers offer a range of strategic benefits, from brand visibility via logo placement and newsletters to exclusive recruiting access, prominent features in our documentary and more.
@@ -94,16 +95,41 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
       </section>
 
       {/* TIER HEADER SECTION */}
-      <section className="w-full text-starlight py-24">
+      {/* <section className="w-full text-starlight py-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-starlight">
             Those Who Made Our Mission Possible
           </h2>
         </div>
+      </section> */}
+
+      {/* Sponsors Graphic SECTION */}
+      <section className="w-full text-starlight py-24">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-starlight">
+            Those Who Made Our Mission Possible
+          </h2>
+          <p className="mt-3 text-moon-dust/80 text-lg md:text-xl">
+            Our 2026 Sponsors
+          </p>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <Image
+            src={sponsorsGraphic}
+            alt="Sponsors graphic"
+            width={1000}
+            height={400}
+            className="inline-block w-full max-w-4xl h-auto object-contain py-8"
+            priority
+          />
+        </div>
+  
+   
+        
       </section>
 
       {/* CAROUSEL SECTION */}
-      <section className="w-full py-24">
+      {/* <section className="w-full py-24">
         <div className="max-w-7xl mx-auto px-6">
           {corporateSponsors.length > 0 ? (
             <SponsorCarousel sponsors={corporateSponsors} />
@@ -111,7 +137,7 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
             <p className="text-center text-moon-dust/60 text-lg">Sponsors coming soon.</p>
           )}
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

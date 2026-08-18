@@ -21,7 +21,7 @@ export default async function SponsorsPage() {
       />
       <div className="hidden md:block">
         <SponsorMiddle corporateSponsors={sponsorData.corporateSponsors} />
-        <SponsorCTA individualDonors={sponsorData.individualDonors} />
+        {/* <SponsorCTA individualDonors={sponsorData.individualDonors} /> */}
       </div>
     </div>
   );

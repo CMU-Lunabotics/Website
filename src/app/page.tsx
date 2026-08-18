@@ -69,9 +69,9 @@ export default async function Home() {
         />
       )}
 
-      <div className="py-12 md:py-20">
+      {/* <div className="py-12 md:py-20">
         <HomeSponsors sponsors={sponsors} />
-      </div>
+      </div> */}
 
       <Section
         title="Recent Highlights"

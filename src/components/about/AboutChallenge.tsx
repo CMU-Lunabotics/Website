@@ -18,7 +18,7 @@ export function AboutChallenge() {
             }}
           >
             <Image
-              src="/images/nasa-award-team.jpg"
+              src="/images/nasa-team.png"
               alt="Moon Miners with their award in front of the NASA globe at Kennedy Space Center"
               fill
               className="object-cover"
