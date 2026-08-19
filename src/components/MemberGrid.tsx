@@ -137,8 +137,8 @@ export function MemberGrid({ members }: MemberGridProps) {
                 showLeadsOnly
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-muted text-muted-foreground hover:bg-muted/80'
-              }`}? 'bg-white text-black'
-                    : 'bg-transparent text-white border border-white hover:bg-muted/80'
+              }`}? 'bg-tartan text-starlight'
+                    : 'bg-transparent text-moon-dust border border-titanium/50 hover:border-supernova/70 hover:text-starlight'
             > */}
               {/* Leads Only
             </button>
@@ -162,8 +162,8 @@ export function MemberGrid({ members }: MemberGridProps) {
               onClick={() => setSelectedSubteam('all')}
               className={`px-5 py-2.5 text-md transition-colors ${
                 selectedSubteam === 'all'
-                  ? 'bg-white text-black'
-                  : 'bg-transparent text-white border border-white hover:bg-muted/80'
+                  ? 'bg-tartan text-starlight'
+                  : 'bg-transparent text-moon-dust border border-titanium/50 hover:border-supernova/70 hover:text-starlight'
               }`}
             >
               All Subteams
@@ -174,8 +174,8 @@ export function MemberGrid({ members }: MemberGridProps) {
                 onClick={() => setSelectedSubteam(subteam)}
                 className={`px-5 py-2.5 text-md transition-colors ${
                   selectedSubteam === subteam
-                    ? 'bg-white text-black'
-                    : 'bg-transparent text-white border border-white hover:bg-muted/80'
+                    ? 'bg-tartan text-starlight'
+                    : 'bg-transparent text-moon-dust border border-titanium/50 hover:border-supernova/70 hover:text-starlight'
                 }`}
               >
                 {subteam}
@@ -193,8 +193,8 @@ export function MemberGrid({ members }: MemberGridProps) {
                 onClick={() => setSelectedMechanicalSubteam('all')}
                 className={`px-5 py-2.5 text-md transition-colors ${
                   selectedMechanicalSubteam === 'all'
-                    ? 'bg-white text-black'
-                    : 'bg-transparent text-white border border-white hover:bg-muted/80'
+                    ? 'bg-tartan text-starlight'
+                    : 'bg-transparent text-moon-dust border border-titanium/50 hover:border-supernova/70 hover:text-starlight'
                 }`}
               >
                 All
@@ -205,8 +205,8 @@ export function MemberGrid({ members }: MemberGridProps) {
                   onClick={() => setSelectedMechanicalSubteam(subteam)}
                   className={`px-5 py-2.5 text-md transition-colors ${
                     selectedMechanicalSubteam === subteam
-                      ? 'bg-white text-black'
-                      : 'bg-transparent text-white border border-white hover:bg-muted/80'
+                      ? 'bg-tartan text-starlight'
+                      : 'bg-transparent text-moon-dust border border-titanium/50 hover:border-supernova/70 hover:text-starlight'
                   }`}
                 >
                   {subteam}

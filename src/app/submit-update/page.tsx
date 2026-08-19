@@ -19,13 +19,13 @@ export default async function SubmitUpdatePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-deep-space/60 pt-28 pb-8">
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Submit Update</h1>
-            <p className="text-gray-600 mt-1">Logged in as: {user.email}</p>
+            <h1 className="text-3xl font-bold text-starlight">Submit Update</h1>
+            <p className="text-moon-dust mt-1">Logged in as: {user.email}</p>
           </div>
           <form action={userLogout}>
             <Button type="submit" variant="outline">
@@ -35,7 +35,7 @@ export default async function SubmitUpdatePage() {
         </div>
 
         {/* Form */}
-        <section className="bg-white rounded-lg shadow-md p-6">
+        <section className="card-cosmic clip-corner-sm backdrop-blur-md p-6">
           <UpdateForm />
         </section>
       </div>

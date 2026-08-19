@@ -1,30 +1,25 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { getStorageUrl } from '@/lib/supabase';
+import logo from '../../public/brand/moonminers-logo.png';
 
 interface LogoProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg';
-  logoPath?: string;
 }
 
-export function Logo({ className, size = 'md', logoPath = getStorageUrl('logo/logo2026.svg') }: LogoProps) {
-  const sizeClasses = {
-    sm: 'h-8 w-auto',
-    md: 'h-10 w-auto',
-    lg: 'h-12 w-auto',
-  };
+const sizes = {
+  sm: 'h-12',
+  md: 'h-16',
+  lg: 'h-24',
+};
 
+export function Logo({ className, size = 'md' }: LogoProps) {
   return (
-    <div className={cn('flex items-center', className)}>
-      <Image
-        src={logoPath}
-        alt="CMU MoonMiners Logo"
-        width={200}
-        height={60}
-        className={cn('object-contain', sizeClasses[size])}
-        priority
-      />
-    </div>
+    <Image
+      src={logo}
+      alt="Moon Miners logo"
+      className={cn('w-auto object-contain', sizes[size], className)}
+      priority
+    />
   );
 }

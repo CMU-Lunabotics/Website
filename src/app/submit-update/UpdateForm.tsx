@@ -206,7 +206,7 @@ export function UpdateForm() {
           value={formData.tags}
           onChange={(e) => updateField('tags', e.target.value)}
         />
-        <p className="text-xs text-gray-500">Example: tag1, tag2, tag3</p>
+        <p className="text-xs text-titanium">Example: tag1, tag2, tag3</p>
       </div>
 
       <div className="space-y-2">
@@ -220,7 +220,7 @@ export function UpdateForm() {
           disabled={uploading || isPending}
           className="cursor-pointer"
         />
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-titanium">
           {uploading ? 'Uploading...' : 'Upload multiple images (JPG, PNG, GIF)'}
         </p>
 
@@ -229,8 +229,8 @@ export function UpdateForm() {
             <p className="text-sm font-medium">Uploaded Images ({uploadedImages.length}):</p>
             <ul className="space-y-1">
               {uploadedImages.map((path, index) => (
-                <li key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded text-sm">
-                  <span className="text-gray-700 truncate">{path}</span>
+                <li key={index} className="flex items-center justify-between bg-deep-space/60 p-2 rounded text-sm">
+                  <span className="text-starlight/90 truncate">{path}</span>
                   <button
                     type="button"
                     onClick={() => removeImage(index)}
@@ -255,7 +255,7 @@ export function UpdateForm() {
           value={formData.links}
           onChange={(e) => updateField('links', e.target.value)}
         />
-        <p className="text-xs text-gray-500">Example: Label | https://url.com</p>
+        <p className="text-xs text-titanium">Example: Label | https://url.com</p>
       </div>
 
       <div className="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded">
@@ -265,7 +265,7 @@ export function UpdateForm() {
       </div>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
+        <div className="bg-tartan/15 border border-supernova/40 text-supernova px-4 py-3 rounded">
           {error}
         </div>
       )}

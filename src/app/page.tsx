@@ -28,7 +28,7 @@ export default async function Home() {
   const latestCount = latestUpdates.length;
 
   return (
-    <div className="relative bg-black">
+    <div className="relative">
       <Hero
         headline={siteConfig.hero.headline}
         subhead={siteConfig.hero.subhead}
@@ -69,22 +69,22 @@ export default async function Home() {
         />
       )}
 
-      <div className="py-12 md:py-20">
+      {/* <div className="py-12 md:py-20">
         <HomeSponsors sponsors={sponsors} />
-      </div>
+      </div> */}
 
-      <Section 
-        title="Recent Highlights" 
-        titleClassName="text-left text-white"
-        className="text-white bg-transparent pt-12 md:pt-16"
+      <Section
+        title="Recent Highlights"
+        titleClassName="text-left"
+        className="text-starlight bg-transparent pt-12 md:pt-16"
       >
         <div className={`grid grid-cols-1 gap-8 mb-8 ${latestCount >= 3 ? 'md:grid-cols-3' : latestCount === 2 ? 'md:grid-cols-2 md:justify-center md:max-w-4xl md:mx-auto' : 'md:grid-cols-1'}`}>
           {latestUpdates.map((update) => (
-            <UpdateCard key={update.id} update={update} navigateOnClick={true} variant="compact" />
+            <UpdateCard key={update.id} update={update} variant="compact" />
           ))}
         </div>
         <div className="text-right">
-          <Button asChild variant="outline" size="lg" className="text-black border-white hover:bg-white/10 hover:text-white rounded-none">
+          <Button asChild variant="outline" size="lg" className="rounded-none">
             <Link href="/updates">
               View All Updates
               <ArrowRight className="ml-2 h-4 w-4" />

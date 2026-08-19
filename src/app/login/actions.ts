@@ -1,61 +1,56 @@
 'use server'
 
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase-server'
-import { supabase } from '@/lib/supabase'
-import { z } from 'zod'
+import { cookies } from 'next/headers'
+import { createHmac } from 'crypto'
 
-// Check if email is authorized and return status for the client
-export async function checkUserStatus(email: string) {
-  const emailSchema = z.string().email()
-  const result = emailSchema.safeParse(email)
+const SESSION_COOKIE = 'update_session'
 
-  if (!result.success) {
-    return { error: 'Invalid email address' }
+// Cookie value is an HMAC derived from the shared password, so a cookie can't
+// be forged without knowing the password itself.
+function sessionToken(): string | null {
+  const pw = process.env.SUBMIT_SHARED_PASSWORD
+  if (!pw) return null
+  return createHmac('sha256', pw).update('submit-update-session').digest('hex')
+}
+
+// Shared-password login: everyone uses the same password (SUBMIT_SHARED_PASSWORD).
+export async function loginWithSharedPassword(formData: FormData) {
+  const password = (formData.get('password') as string) ?? ''
+  const expected = process.env.SUBMIT_SHARED_PASSWORD
+
+  if (!expected) {
+    return { error: 'Login is not configured. Set SUBMIT_SHARED_PASSWORD.' }
+  }
+  if (password !== expected) {
+    return { error: 'Incorrect password.' }
   }
 
-  const { data: allowedUser } = await supabase
-    .from('allowed_users')
-    .select('email')
-    .eq('email', result.data)
-    .single()
+  const cookieStore = await cookies()
+  cookieStore.set(SESSION_COOKIE, sessionToken()!, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 60 * 60 * 24 * 30, // 30 days
+    path: '/',
+  })
 
-  if (!allowedUser) {
-    return { status: 'rejected', error: 'Email not authorized. Contact an admin.' }
-  }
-
-  // Authorized — client will send the magic link using the browser Supabase client
-  return { status: 'allowed', email: result.data }
+  redirect('/submit-update')
 }
 
 export async function userLogout() {
-  const supabaseServer = await createClient()
-  await supabaseServer.auth.signOut()
+  const cookieStore = await cookies()
+  cookieStore.delete(SESSION_COOKIE)
   redirect('/login')
 }
 
 export async function verifyUserSession(): Promise<{ email: string } | null> {
-  const supabaseServer = await createClient()
+  const token = sessionToken()
+  if (!token) return null
 
-  const {
-    data: { user },
-  } = await supabaseServer.auth.getUser()
+  const cookieStore = await cookies()
+  const session = cookieStore.get(SESSION_COOKIE)
+  if (session?.value !== token) return null
 
-  if (!user?.email) {
-    return null
-  }
-
-  // Verify user is still in allowed_users table
-  const { data } = await supabase
-    .from('allowed_users')
-    .select('email')
-    .eq('email', user.email)
-    .single()
-
-  if (!data) {
-    await supabaseServer.auth.signOut()
-    return null
-  }
-
-  return { email: user.email }
+  return { email: 'team' }
 }

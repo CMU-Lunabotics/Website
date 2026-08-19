@@ -7,12 +7,28 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-noto);
-  --color-brand-blue: #0210fd;
-  --color-brand-white: #F1EDE6;
-  --color-brand-black: #1E1E1E;
+
+  /* ── CMU Cosmic Palette ── */
+  --color-void: #090A12;        /* Event Horizon — main background */
+  --color-deep-space: #151426;  /* Cards / sections */
+  --color-plum: #33204F;        /* Cosmic Plum — gradients / depth */
+  --color-tartan: #C41230;      /* Tartan Red — CMU identity / major accents */
+  --color-supernova: #F04455;   /* Supernova Red — glows, hover, highlights */
+  --color-starlight: #F5F1E8;   /* Main text */
+  --color-moon-dust: #B9B5C7;   /* Secondary text */
+  --color-titanium: #767786;    /* Borders / subtle UI */
+
+  /* Legacy brand aliases (kept so old class names resolve to the new palette) */
+  --color-brand-blue: #33204F;
+  --color-brand-white: #F5F1E8;
+  --color-brand-black: #090A12;
+
   --font-serif: var(--font-newsreader);
-  /* Same face as next/font Noto_Sans_Display (--font-noto on <html>) */
+  /* Body face: Noto Sans Display (--font-noto on <html>) */
   --font-display: var(--font-noto), ui-sans-serif, sans-serif;
+  /* Techno display face for headings / eyebrows */
+  --font-tech: var(--font-audiowide), ui-sans-serif, sans-serif;
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,84 +64,96 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/*
+ * The site is dark-only: the cosmic theme is applied at :root so every
+ * shadcn/ui component picks up the palette automatically.
+ */
 :root {
-  --brand-blue: #0210fd;
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.4 0.2 0); /* CMU Red #990000 */
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-basic: oklch(0.5727 0 0);
-  --muted-light: oklch(0.9006 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --background: #090A12;
+  --foreground: #F5F1E8;
+  --card: #151426;
+  --card-foreground: #F5F1E8;
+  --popover: #151426;
+  --popover-foreground: #F5F1E8;
+  --primary: #C41230;
+  --primary-foreground: #F5F1E8;
+  --secondary: #33204F;
+  --secondary-foreground: #F5F1E8;
+  --muted: #1c1b30;
+  --muted-basic: #767786;
+  --muted-light: #B9B5C7;
+  --muted-foreground: #B9B5C7;
+  --accent: #33204F;
+  --accent-foreground: #F5F1E8;
+  --destructive: #F04455;
+  --border: rgba(118, 119, 134, 0.35);
+  --input: rgba(118, 119, 134, 0.4);
+  --ring: rgba(240, 68, 85, 0.6);
+  --chart-1: #C41230;
+  --chart-2: #F04455;
+  --chart-3: #33204F;
+  --chart-4: #B9B5C7;
+  --chart-5: #767786;
+  --sidebar: #151426;
+  --sidebar-foreground: #F5F1E8;
+  --sidebar-primary: #C41230;
+  --sidebar-primary-foreground: #F5F1E8;
+  --sidebar-accent: #33204F;
+  --sidebar-accent-foreground: #F5F1E8;
+  --sidebar-border: rgba(118, 119, 134, 0.35);
+  --sidebar-ring: rgba(240, 68, 85, 0.6);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #090A12;
+  --foreground: #F5F1E8;
+  --card: #151426;
+  --card-foreground: #F5F1E8;
+  --popover: #151426;
+  --popover-foreground: #F5F1E8;
+  --primary: #C41230;
+  --primary-foreground: #F5F1E8;
+  --secondary: #33204F;
+  --secondary-foreground: #F5F1E8;
+  --muted: #1c1b30;
+  --muted-foreground: #B9B5C7;
+  --accent: #33204F;
+  --accent-foreground: #F5F1E8;
+  --destructive: #F04455;
+  --border: rgba(118, 119, 134, 0.35);
+  --input: rgba(118, 119, 134, 0.4);
+  --ring: rgba(240, 68, 85, 0.6);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    background-color: #090A12;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  ::selection {
+    background-color: rgba(196, 18, 48, 0.7);
+    color: #F5F1E8;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #090A12;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #33204F;
+    border-radius: 5px;
+    border: 2px solid #090A12;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #767786;
   }
 }
 
@@ -133,4 +161,97 @@
   .clip-corner-tr {
     clip-path: polygon(0 0, calc(100% - 80px) 0, 100% 80px, 100% 100%, 0 100%);
   }
+
+  /* Angular cut corner, small (cards) */
+  .clip-corner-sm {
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+  }
+
+  /* Techno display face */
+  .font-tech {
+    font-family: var(--font-tech);
+  }
+
+  /* Small uppercase section eyebrow */
+  .eyebrow {
+    font-family: var(--font-tech);
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #F04455;
+  }
+
+  /* Signature cosmic gradient: Event Horizon → Deep Space → Cosmic Plum → Tartan Red */
+  .bg-cosmic-gradient {
+    background-image: linear-gradient(135deg, #090A12 0%, #151426 35%, #33204F 70%, #C41230 100%);
+  }
+  .bg-cosmic-gradient-soft {
+    background-image: linear-gradient(135deg, #151426 0%, #33204F 60%, rgba(196, 18, 48, 0.55) 100%);
+  }
+
+  /* Horizontal divider that fades out, with the tartan accent */
+  .cosmic-rule {
+    height: 1px;
+    background-image: linear-gradient(90deg, #C41230, rgba(196, 18, 48, 0.35) 40%, transparent 100%);
+  }
+
+  /* Card surface: deep space + titanium hairline; supernova on hover */
+  .card-cosmic {
+    background-color: rgba(21, 20, 38, 0.75);
+    border: 1px solid rgba(118, 119, 134, 0.3);
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  }
+  .card-cosmic:hover {
+    border-color: rgba(240, 68, 85, 0.55);
+    box-shadow: 0 0 32px rgba(240, 68, 85, 0.12), 0 0 0 1px rgba(240, 68, 85, 0.1);
+  }
+
+  /* Supernova glow for primary CTAs */
+  .glow-supernova {
+    box-shadow: 0 0 24px rgba(240, 68, 85, 0.35);
+  }
+  .glow-supernova-hover {
+    transition: box-shadow 200ms ease;
+  }
+  .glow-supernova-hover:hover {
+    box-shadow: 0 0 32px rgba(240, 68, 85, 0.5);
+  }
+
+  /* Gradient text accent */
+  .text-cosmic-gradient {
+    background-image: linear-gradient(100deg, #F5F1E8 20%, #B9B5C7 45%, #F04455 75%, #C41230 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Star twinkle for the Starfield background */
+@keyframes star-twinkle {
+  0%, 100% { opacity: var(--star-max, 0.9); }
+  50% { opacity: var(--star-min, 0.25); }
+}
+.star-twinkle {
+  animation: star-twinkle var(--star-dur, 4s) ease-in-out infinite;
+  animation-delay: var(--star-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-twinkle {
+    animation: none;
+  }
+}
+
+/* Never allow stray decorative bleed to create horizontal scroll */
+html,
+body {
+  overflow-x: clip;
 }

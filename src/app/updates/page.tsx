@@ -30,10 +30,19 @@ export default async function UpdatesPage() {
   return (
     <section className="relative">
       <div className="w-full relative">
-        <div className="relative min-h-[100svh] lg:min-h-[120vh] flex flex-col lg:block overflow-hidden pt-0 lg:pt-28 lg:pb-28">
+        <div className="relative min-h-[100svh] lg:min-h-[110vh] flex flex-col lg:block overflow-hidden pt-0 lg:pt-28 lg:pb-28">
+          {/* Plum glow */}
+          <div
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{
+              background:
+                'radial-gradient(ellipse 55% 50% at 70% 40%, rgba(51,32,79,0.4) 0%, rgba(196,18,48,0.1) 55%, transparent 75%)',
+            }}
+            aria-hidden
+          />
 
           {/* Circles */}
-          <div className="absolute inset-0 z-0 flex items-center justify-left pointer-events-none -translate-x-[-10%] -translate-y-[20%]">
+          <div className="absolute inset-0 z-0 flex items-center justify-left pointer-events-none -translate-x-[-10%] -translate-y-[20%] opacity-80">
             <div className="relative w-[min(180vw,1000px)] h-[min(180vh,1000px)]">
               <Image
                 src={getStorageUrl('updates/circles-hero.png')}
@@ -46,7 +55,7 @@ export default async function UpdatesPage() {
             </div>
           </div>
 
-          {/* Hero artwork */}
+          {/* Hero artwork — excavation subsystem render */}
           <div className="relative lg:absolute lg:inset-y-0 lg:left-[28%] lg:right-0 z-[1] w-full h-[140vw] lg:h-auto flex-shrink-0 pointer-events-none">
             {/* Mobile image */}
             <Image
@@ -70,32 +79,23 @@ export default async function UpdatesPage() {
             />
           </div>
 
-          {/* Excavation Tag - hidden on mobile */}
-          <div className="hidden lg:block absolute top-[22%] left-[20%] z-10">
-            <Image
-              src={getStorageUrl('updates/excavationgroup.png')}
-              alt="Excavation"
-              width={240}
-              height={50}
-              className="object-contain"
-            />
-          </div>
-
           {/* TEXT SECTION */}
           <div className="relative lg:absolute lg:bottom-[20%] lg:left-0 z-10 w-full px-6 lg:pl-12 mt-auto pt-0 pb-10 lg:pt-0 lg:pb-0">
             <div className="max-w-2xl">
-              <div className="text-white text-left font-display">
+              <div className="text-starlight text-left font-display">
+                <p className="eyebrow mb-5 flex items-center gap-3">
+                  <span className="inline-block h-px w-10 bg-tartan" aria-hidden />
+                  Mission Log
+                </p>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] font-display">
-                  News & Updates
+                  News &amp; Updates
                 </h1>
-                <p className="mt-4 text-base lg:text-lg font-medium text-white/90 leading-relaxed">
+                <p className="mt-4 text-base lg:text-lg font-medium text-moon-dust leading-relaxed">
                   Stay up to date with our current milestones, goals and accomplishments
                 </p>
               </div>
-              
             </div>
           </div>
-
         </div>
 
         <UpdatesPageContent

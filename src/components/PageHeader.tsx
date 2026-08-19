@@ -25,11 +25,11 @@ export function PageHeader({ title, subtitle, breadcrumb, className }: PageHeade
         )}
         
         <div className="max-w-3xl">
-          <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl font-display">
+          <h1 className="text-4xl font-semibold tracking-tight text-starlight sm:text-5xl font-display">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-4 text-lg font-medium text-muted-foreground">
+            <p className="mt-4 text-lg font-medium text-moon-dust">
               {subtitle}
             </p>
           )}

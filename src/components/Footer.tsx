@@ -1,283 +1,131 @@
-import React from 'react';
+import Link from 'next/link';
+import { Instagram, Linkedin, Youtube, Rocket } from 'lucide-react';
+import { Logo } from '@/components/Logo';
+import { MailingListForm } from '@/components/MailingListForm';
+
+const LINK_COLUMNS = [
+  {
+    title: 'Team',
+    links: [
+      { label: 'Our Story', href: '/about' },
+      { label: 'Our Team', href: '/team' },
+    ],
+  },
+  {
+    title: 'Sponsors',
+    links: [
+      { label: 'Partner', href: '/sponsors' },
+      { label: 'Donate', href: '/donate' },
+    ],
+  },
+  {
+    title: 'Updates',
+    links: [
+      { label: 'News', href: '/updates' },
+      { label: 'Submit an Update', href: '/login' },
+    ],
+  },
+];
+
+const SOCIALS = [
+  { label: 'Instagram', href: 'https://www.instagram.com/cmumoonminers', Icon: Instagram },
+  { label: 'YouTube', href: 'https://www.youtube.com/@cmumoonminers', Icon: Youtube },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/cmu-moon-miners/', Icon: Linkedin },
+];
 
 export const Footer = () => {
   return (
-    <footer className="footer-wrapper">
-      <style>{`
-        .footer-wrapper {
-          background: rgba(217, 217, 217, 0.16); 
-          width: 100%;
-          position: relative;
-          color: #FFFFFF;
-          font-family: 'Noto Sans Display', sans-serif;
-          padding: 40px 5.56%;
-          box-sizing: border-box;
-          margin-top: 60px;
-          overflow: hidden;
-        }
+    <footer className="relative z-[1] mt-16 border-t border-titanium/20 bg-deep-space/80 backdrop-blur-sm">
+      {/* Cosmic accent line */}
+      <div
+        className="absolute inset-x-0 top-0 h-px"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent 0%, #33204F 25%, #C41230 50%, #33204F 75%, transparent 100%)',
+        }}
+        aria-hidden
+      />
 
-        .footer-top {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          flex-wrap: wrap;
-          gap: 30px;
-        }
-
-        .link-grid {
-          display: flex;
-          gap: 32px;
-          flex: 1;
-        }
-
-        .link-column {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          min-width: 100px;
-        }
-
-        .link-column h3 {
-          font-weight: 700;
-          font-size: 20px;
-          line-height: 1.2;
-          margin: 0 0 4px 0;
-        }
-
-        .link-column a {
-          color: #FFFFFF;
-          text-decoration: underline;
-          font-size: 14px;
-          opacity: 0.8;
-          transition: opacity 0.2s;
-        }
-
-        .link-column a:hover {
-          opacity: 1;
-        }
-
-        .newsletter-box {
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid #747474;
-          border-radius: 7px;
-          padding: 25px 30px;
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          width: 380px;
-          box-sizing: border-box;
-        }
-
-        .newsletter-text h2 {
-          font-weight: 700;
-          font-size: 24px;
-          margin: 0;
-          text-align: center;
-        }
-
-        .newsletter-text p {
-          font-weight: 400;
-          font-size: 14px;
-          margin: 4px 0 0 0;
-          text-align: center;
-        }
-
-        .newsletter-form {
-          display: flex;
-          gap: 12px;
-        }
-
-        .email-input-wrapper {
-          flex: 1;
-          border: 1px solid #949494;
-          border-radius: 7px;
-          padding: 8px 15px;
-          background: transparent;
-          height: 38px;
-          display: flex;
-          align-items: center;
-        }
-
-        .email-input-wrapper input {
-          background: transparent;
-          border: none;
-          color: #FFFFFF;
-          width: 100%;
-          outline: none;
-          font-size: 14px;
-        }
-
-        .signup-btn {
-          background: rgba(255, 255, 255, 0.18);
-          border-radius: 50px;
-          height: 38px;
-          padding: 0 20px;
-          color: #FFFFFF;
-          font-size: 14px;
-          border: none;
-          cursor: pointer;
-        }
-
-        .footer-bottom {
-          margin-top: 40px;
-          padding-top: 20px;
-          border-top: 1px solid rgba(255,255,255,0.05);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 20px;
-        }
-
-        .contact-info h3 {
-          font-weight: 700;
-          font-size: 20px;
-          margin: 0;
-        }
-
-        .contact-info p {
-          font-size: 14px;
-          margin: 4px 0 0 0;
-        }
-
-        .social-links {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          margin-top: 16px;
-        }
-
-        .social-links a {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 32px;
-          height: 32px;
-          opacity: 0.85;
-          transition: opacity 0.2s ease;
-        }
-
-        .social-links a:hover {
-          opacity: 1;
-        }
-
-        .social-links img {
-          width: 24px;
-          height: 24px;
-          display: block;
-          filter: brightness(0) invert(1);
-        }
-
-        .nasa-section {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        .nasa-logo {
-          width: 28px;
-          height: 28px;
-          background: url('https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg') no-repeat center;
-          background-size: contain;
-        }
-
-        .copyright {
-          text-align: center;
-          margin-top: 30px;
-          font-size: 12px;
-          opacity: 0.6;
-          width: 100%;
-        }
-      `}</style>
-
-      <div className="footer-top">
-        <div className="link-grid">
-          <div className="link-column">
-            <h3>Home</h3>
-            <a href="#about">About</a>
-          </div>
-          <div className="link-column">
-            <h3>Team</h3>
-            <a href="#story">Our story</a>
-            <a href="#team">Our team</a>
-          </div>
-          <div className="link-column">
-            <h3>Sponsors</h3>
-            <a href="#partner">Partner</a>
-            <a href="#donate">Donate</a>
-          </div>
-          <div className="link-column">
-            <h3>Updates</h3>
-            <a href="#news">News</a>
-          </div>
-        </div>
-
-        <div className="newsletter-box">
-          <div className="newsletter-text">
-            <h2>Mailing List</h2>
-            <p>Stay informed on our mission.</p>
-          </div>
-          <div className="newsletter-form">
-            <div className="email-input-wrapper">
-              <input type="email" placeholder="Email Address" />
+      <div className="mx-auto max-w-7xl px-6 lg:px-12 py-14">
+        {/* Top: brand + links + newsletter */}
+        <div className="flex flex-wrap items-start justify-between gap-10">
+          {/* Brand */}
+          <div className="max-w-xs">
+            <Link href="/" aria-label="Moon Miners home">
+              <Logo size="md" />
+            </Link>
+            <p className="mt-4 text-sm leading-relaxed text-moon-dust">
+              Carnegie Mellon University&apos;s student team building autonomous lunar
+              excavation robotics for the NASA Lunabotics Challenge.
+            </p>
+            <div className="mt-5 flex items-center gap-3">
+              {SOCIALS.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-9 w-9 items-center justify-center rounded-sm border border-titanium/30 text-moon-dust transition-colors hover:border-supernova/60 hover:text-starlight"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
-            <button className="signup-btn">Join</button>
           </div>
-        </div>
-      </div>
 
-      <div className="footer-bottom">
-        <div className="contact-info">
-          <h3>Contact</h3>
-          <p>cmumoonminers@gmail.com</p>
+          {/* Link columns */}
+          <div className="flex flex-wrap gap-12">
+            {LINK_COLUMNS.map((col) => (
+              <div key={col.title} className="flex min-w-[100px] flex-col gap-2">
+                <h3 className="mb-1 text-sm font-bold uppercase tracking-[0.2em] text-starlight">
+                  {col.title}
+                </h3>
+                {col.links.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="text-sm text-moon-dust transition-colors hover:text-supernova"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
 
-          <div className="social-links">
-            <a
-              href="https://www.instagram.com/cmumoonminers"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg"
-                alt="Instagram"
-              />
-            </a>
-
-            <a
-              href="https://www.youtube.com/@cmumoonminers"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/youtube.svg"
-                alt="YouTube"
-              />
-            </a>
-
-            <a
-              href="https://www.linkedin.com/company/cmu-moon-miners/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg"
-                alt="LinkedIn"
-              />
-            </a>
+          {/* Newsletter */}
+          <div className="w-full max-w-sm border border-titanium/30 bg-void/60 p-6 clip-corner-sm">
+            <h2 className="text-lg font-bold text-starlight">Mailing List</h2>
+            <p className="mt-1 text-sm text-moon-dust">Stay informed on our mission.</p>
+            <MailingListForm />
           </div>
         </div>
 
-        <div className="nasa-section">
-          <div className="nasa-logo"></div>
-          <p style={{ fontSize: '14px' }}>NASA Lunabotics Challenge</p>
-        </div>
-      </div>
+        {/* Bottom: contact + NASA */}
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-6 border-t border-titanium/20 pt-8">
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-starlight">
+              Contact
+            </h3>
+            <a
+              href="mailto:moonminers@cmu.edu"
+              className="mt-1 block text-sm text-moon-dust transition-colors hover:text-supernova"
+            >
+              moonminers@cmu.edu
+            </a>
+          </div>
 
-      <div className="copyright">
-        CMU Moon Miners © 2026
+          <div className="flex items-center gap-2.5 text-moon-dust">
+            <Rocket className="h-5 w-5 text-supernova" aria-hidden />
+            <p className="text-sm">NASA Lunabotics Challenge</p>
+          </div>
+        </div>
+
+        <div className="mt-10 text-center text-xs tracking-wide text-titanium">
+          <span className="text-tartan">—</span> CMU Moon Miners © 2026{' '}
+          <span className="text-tartan">—</span>
+        </div>
       </div>
     </footer>
   );
