@@ -53,9 +53,10 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
             Why Sponsor Us?
           </h2>
           <p className="text-moon-dust text-lg md:text-xl leading-relaxed">
-            Technology is table stakes. Execution wins championships. The difference
-            between a contender and a champion is how fast you can test, break, and rebuild.
-            We don&apos;t rely on legacy funding, inherited infrastructure, or alumni pipelines.
+            Building robots for the Moon takes more than great tech—it’s about the drive to test, learn, and adapt faster than the competition.
+            We value hands-on execution, rapid iteration, and a willingness to push boundaries.
+            Every experiment, every lesson learned, brings us closer to success.
+       
           </p>
         </div>
       </section>

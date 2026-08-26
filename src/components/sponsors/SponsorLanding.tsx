@@ -39,7 +39,7 @@ export function SponsorLanding() {
               Sponsors
             </h1>
             <p className="text-moon-dust text-lg md:text-xl font-medium leading-relaxed mb-8">
-              This mission is made possible by the organizations that support
+              This mission is made possible by the organizations and individuals that support
               our team and believe in the impact of our work.
             </p>
             <Button asChild size="lg" className="h-12 px-8 text-lg rounded-none font-semibold">
