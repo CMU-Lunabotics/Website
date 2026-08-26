@@ -48,6 +48,14 @@ export function Navbar() {
                 </Link>
               );
             })}
+            <a
+              href="https://forms.gle/YUJ8CbPqCUfKkdQo7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-titanium/50 text-starlight px-7 py-2.5 rounded-sm font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:border-supernova/70 hover:bg-supernova/10"
+            >
+              Apply
+            </a>
             <Link
               href="/donate"
               className="bg-tartan text-starlight px-7 py-2.5 rounded-sm font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:bg-supernova glow-supernova-hover"
@@ -145,6 +153,15 @@ export function Navbar() {
             >
               Donate
             </Link>
+            <a
+              href="https://forms.gle/YUJ8CbPqCUfKkdQo7"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="inline-flex items-center justify-center border border-titanium/50 text-starlight px-8 py-4 rounded-sm font-black text-sm uppercase tracking-[0.2em] hover:border-supernova/70 hover:bg-supernova/10 transition-all"
+            >
+              Apply
+            </a>
           </div>
         </div>
       )}
