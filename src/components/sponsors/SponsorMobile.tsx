@@ -162,7 +162,7 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
       <section className="px-5 pt-6 pb-2">
         <h2 className="text-[36px] font-semibold leading-[49px] mb-2 text-starlight">Why Sponsor Us?</h2>
         <p className="text-[20px] font-normal leading-[27px] text-moon-dust mb-6">
-            Building robots for the Moon takes more than great tech—it's about the drive to test, learn, and adapt faster than the competition.
+            Building robots for the Moon takes more than great tech—it&apos;s about the drive to test, learn, and adapt faster than the competition.
             We value hands-on execution, rapid iteration, and a willingness to push boundaries.
             Every experiment, every lesson learned, brings us closer to success.
         </p>
