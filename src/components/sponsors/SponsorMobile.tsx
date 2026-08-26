@@ -57,7 +57,7 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
             Sponsorship
           </h1>
           <p className="text-base font-medium leading-[22px] text-moon-dust mb-4">
-            This mission is made possible by the organizations that support our
+            This mission is made possible by the organizations and individuals that support our
             team and believe in the impact of our work.
           </p>
           <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-sm hover:bg-supernova transition-all duration-300 font-semibold">
@@ -162,7 +162,9 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
       <section className="px-5 pt-6 pb-2">
         <h2 className="text-[36px] font-semibold leading-[49px] mb-2 text-starlight">Why Sponsor Us?</h2>
         <p className="text-[20px] font-normal leading-[27px] text-moon-dust mb-6">
-          Technology is table stakes. Execution wins championships.
+            Building robots for the Moon takes more than great tech—it's about the drive to test, learn, and adapt faster than the competition.
+            We value hands-on execution, rapid iteration, and a willingness to push boundaries.
+            Every experiment, every lesson learned, brings us closer to success.
         </p>
 
         {/* Card 1 — topleft.png, image only */}
