@@ -1,5 +1,6 @@
 import { getStorageUrl } from '@/lib/supabase';
 import Image from 'next/image';
+import { InstagramProfileEmbed } from '@/components/about/InstagramProfileEmbed';
 
 export function AboutHero() {
   return (
@@ -37,6 +38,16 @@ export function AboutHero() {
         <p className="mt-6 text-lg text-moon-dust max-w-3xl leading-relaxed">
           Moon Miners is a student-led engineering team developing autonomous robotic systems for lunar excavation. By combining robotics, systems engineering, and innovation, we are preparing the technologies needed for humanity&apos;s next steps on the Moon.
         </p>
+      </div>
+
+      {/* Instagram profile embed — desktop: overlay on the rover (right side); mobile: below hero */}
+      <div className="hidden lg:flex absolute right-8 xl:right-16 top-1/2 -translate-y-1/2 z-10 w-[350px] xl:w-[400px]">
+        <InstagramProfileEmbed className="w-full drop-shadow-2xl" />
+      </div>
+
+      {/* Mobile / tablet: embed flows after the hero text */}
+      <div className="lg:hidden relative z-10 px-6 pb-10 pt-[calc(100vh-80px)]">
+        <InstagramProfileEmbed className="mx-auto max-w-[400px]" />
       </div>
     </section>
   );
