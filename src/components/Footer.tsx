@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Instagram, Linkedin, Youtube, Rocket } from 'lucide-react';
 import { Logo } from '@/components/Logo';
 import { MailingListForm } from '@/components/MailingListForm';
+import { InstagramProfileEmbed } from '@/components/about/InstagramProfileEmbed';
 
 const LINK_COLUMNS = [
   {
@@ -47,10 +48,10 @@ export const Footer = () => {
       />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-12 py-14">
-        {/* Top: brand + links + newsletter */}
-        <div className="flex flex-wrap items-start justify-between gap-10">
-          {/* Brand */}
-          <div className="max-w-xs">
+        {/* Top: brand + instagram + links */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* Brand — left column, row 1 */}
+          <div className="max-w-xs lg:col-start-1 lg:row-start-1">
             <Link href="/" aria-label="Moon Miners home">
               <Logo size="md" />
             </Link>
@@ -74,10 +75,15 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Link columns */}
-          <div className="flex flex-wrap gap-12">
+          {/* Instagram embed — middle column, spans both rows */}
+          <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 flex items-start justify-center">
+            <InstagramProfileEmbed className="w-full max-w-[400px]" />
+          </div>
+
+          {/* Link columns — right column, spans both rows, stacked vertically */}
+          <div className="flex flex-col gap-8 lg:col-start-3 lg:row-start-1 lg:row-span-2">
             {LINK_COLUMNS.map((col) => (
-              <div key={col.title} className="flex min-w-[100px] flex-col gap-2">
+              <div key={col.title} className="flex flex-col gap-2">
                 <h3 className="mb-1 text-sm font-bold uppercase tracking-[0.2em] text-starlight">
                   {col.title}
                 </h3>
@@ -94,8 +100,8 @@ export const Footer = () => {
             ))}
           </div>
 
-          {/* Newsletter */}
-          <div className="w-full max-w-sm border border-titanium/30 bg-void/60 p-6 clip-corner-sm">
+          {/* Newsletter — left column, row 2 */}
+          <div className="w-full max-w-sm border border-titanium/30 bg-void/60 p-6 clip-corner-sm lg:col-start-1 lg:row-start-2">
             <h2 className="text-lg font-bold text-starlight">Mailing List</h2>
             <p className="mt-1 text-sm text-moon-dust">Stay informed on our mission.</p>
             <MailingListForm />
