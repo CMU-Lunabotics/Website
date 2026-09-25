@@ -1,9 +1,17 @@
 import { TeamHero } from '@/components/TeamHero';
 import { Section } from '@/components/Section';
-import { MemberGrid } from '@/components/MemberGrid';
 import { MentorCard } from '@/components/MentorCard';
 import { TeamPlacements } from '@/components/TeamPlacements';
-import { getMembers, getTeamInfo, getMentors } from '@/lib/content';
+import { TeamRoster } from '@/components/TeamRoster';
+import { getMentors } from '@/lib/content';
+
+const KEEP_ADVISORS = ['Red Whittaker', 'Wenshan Wang', 'Zhang Ji'];
+
+const ADVISOR_PHOTO_OVERRIDES: Record<string, string> = {
+  'Red Whittaker': '/images/advisors/whittaker.jpg',
+  'Wenshan Wang': '/images/advisors/wenshan-wang.jpg',
+  'Zhang Ji': '/images/advisors/zhang-ji.jpg',
+};
 
 export const metadata = {
   title: 'Team - CMU MoonMiners',
@@ -11,11 +19,15 @@ export const metadata = {
 };
 
 export default async function TeamPage() {
-  const [members, teamInfo, mentors] = await Promise.all([
-    getMembers(),
-    getTeamInfo(),
-    getMentors(),
-  ]);
+  const allMentors = await getMentors();
+
+  const mentors = allMentors
+    .filter((m) => KEEP_ADVISORS.includes(m.name))
+    .sort((a, b) => KEEP_ADVISORS.indexOf(a.name) - KEEP_ADVISORS.indexOf(b.name))
+    .map((m) => ({
+      ...m,
+      photo: ADVISOR_PHOTO_OVERRIDES[m.name] ?? m.photo,
+    }));
 
   return (
     <>
@@ -49,7 +61,7 @@ export default async function TeamPage() {
         titleClassName="text-left text-[36px]"
         subtitleClassName="text-left text-[20px]"
       >
-        <MemberGrid members={members} />
+        <TeamRoster />
       </Section>
     </>
   );
