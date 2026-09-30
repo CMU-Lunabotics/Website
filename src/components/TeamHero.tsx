@@ -19,13 +19,13 @@ export function TeamHero() {
           src="/images/team-official-photo.jpg"
           alt=""
           fill
-          className="object-cover object-center opacity-45"
+          className="object-cover object-center opacity-65"
           priority
           sizes="100vw"
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/60 to-void/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-void/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-void/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-void/60 via-transparent to-transparent" />
         <div
           className="absolute inset-0"
           style={{
@@ -47,7 +47,7 @@ export function TeamHero() {
             >
               <p className="eyebrow mb-5 flex items-center gap-3">
                 <span className="inline-block h-px w-10 bg-tartan" aria-hidden />
-                76 members · 14 majors · 1 mission
+                100+ members · 15+ majors · 1 mission
               </p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] font-display">
                 {HEADLINE.split('\n').map((line, i) => (
