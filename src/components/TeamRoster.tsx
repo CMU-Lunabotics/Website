@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Mail } from 'lucide-react';
 import { Member } from '@/lib/content';
 
 const SUBTEAM_ORDER = ['Avionics', 'Mechanical', 'Outreach', 'Software', 'Systems'] as const;
@@ -43,12 +43,23 @@ function NameList({ members }: { members: Member[] }) {
         <li
           key={m.name}
           data-testid="member-card"
-          className={
+          className={`flex items-center gap-2 text-base leading-relaxed ${
             m.isLead
-              ? 'text-base leading-relaxed font-semibold text-starlight'
-              : 'text-base leading-relaxed text-moon-dust'
-          }
+              ? 'font-semibold text-starlight'
+              : 'text-moon-dust'
+          }`}
         >
+          {m.email ? (
+            <a
+              href={`mailto:${m.email}`}
+              aria-label={`Email ${m.name}`}
+              className="flex-shrink-0 text-moon-dust/60 hover:text-supernova transition-colors"
+            >
+              <Mail className="h-3.5 w-3.5" />
+            </a>
+          ) : (
+            <span className="flex-shrink-0 w-3.5" />
+          )}
           {m.name}
         </li>
       ))}
