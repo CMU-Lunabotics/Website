@@ -1,6 +1,6 @@
 import { TeamHero } from '@/components/TeamHero';
 import { Section } from '@/components/Section';
-import { MemberGrid } from '@/components/MemberGrid';
+import { TeamRoster } from '@/components/TeamRoster';
 import { MentorCard } from '@/components/MentorCard';
 import { TeamPlacements } from '@/components/TeamPlacements';
 import { getMembers, getTeamInfo, getMentors } from '@/lib/content';
@@ -52,7 +52,7 @@ export default async function TeamPage() {
         titleClassName="text-left text-[36px]"
         subtitleClassName="text-left text-[20px]"
       >
-        <MemberGrid members={members} />
+        <TeamRoster members={members} />
       </Section>
     </>
   );

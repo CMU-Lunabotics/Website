@@ -88,6 +88,7 @@ export const MemberSchema = z.object({
   }),
   bio: z.string(),
   tags: z.array(z.string()),
+  isLead: z.boolean(),
 });
 
 export type Member = z.infer<typeof MemberSchema>;
@@ -204,6 +205,7 @@ export async function getMembers(): Promise<Member[]> {
     })(),
     bio: row.bio || '',
     tags: (row.tags as string[]) || [],
+    isLead: Boolean(row.is_lead),
   }));
 
   return z.array(MemberSchema).parse(members);
