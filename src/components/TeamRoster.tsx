@@ -71,6 +71,8 @@ interface TeamRosterProps {
   members: Member[];
 }
 
+const PROJECT_LEAD = { name: 'Luqman Zaceria', email: 'lzaceria@andrew.cmu.edu' };
+
 export function TeamRoster({ members }: TeamRosterProps) {
   const groups = groupBySubteam(members);
 
@@ -87,6 +89,21 @@ export function TeamRoster({ members }: TeamRosterProps) {
 
   return (
     <>
+      {/* Project Lead — centered above subteam columns */}
+      <p className="mb-4 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-starlight">
+        Project Lead:{' '}
+        <a
+          href={`mailto:${PROJECT_LEAD.email}`}
+          aria-label={`Email ${PROJECT_LEAD.name}`}
+          className="text-moon-dust/60 hover:text-supernova transition-colors"
+        >
+          <Mail className="h-3.5 w-3.5" />
+        </a>
+        <span className="text-base font-semibold normal-case tracking-normal text-starlight">
+          {PROJECT_LEAD.name}
+        </span>
+      </p>
+
       {/* Desktop: five open columns (hidden below lg) */}
       <div className="hidden lg:grid grid-cols-5 gap-6">
         {SUBTEAM_ORDER.map((team) => (
