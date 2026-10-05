@@ -149,15 +149,79 @@ export type SponsorWithTier = {
   displayOrder: number;
 };
 
+export type MarqueeSponsor = {
+  name: string;
+  logo: string;
+  url: string;
+};
+
 export type SponsorsPageData = {
   corporateSponsors: SponsorWithTier[];
   individualDonors: SponsorWithTier[];
+  marqueeSponsors: MarqueeSponsor[];
   callToAction: {
     headline: string;
     copy: string;
     email: string;
   };
 };
+
+/** Display order for the /sponsors logo marquee (then remaining rows A–Z). */
+const MARQUEE_PRIORITY: { name: string; aliases: string[]; logoPath: string }[] = [
+  { name: 'Carnegie Mellon University', aliases: ['CMU'], logoPath: 'sponsors/cmu-2026.png' },
+  { name: 'Clint Kelley', aliases: ['Dr. Clinton W. Kelly III', 'Clinton W. Kelly III', 'Clint Kelly'], logoPath: 'sponsors/clint-kelley-2026.png' },
+  { name: 'Gecko Robotics', aliases: [], logoPath: 'sponsors/gecko-robotics-2026.png' },
+  { name: 'Red Whittaker', aliases: ['Prof. Red Whittaker', 'William Whittaker'], logoPath: 'sponsors/red-whittaker-2026.png' },
+  { name: 'Wenshan Wang', aliases: [], logoPath: 'sponsors/wenshan-wang-2026.png' },
+  { name: 'Gleason', aliases: [], logoPath: 'sponsors/gleason-2026.png' },
+  { name: 'AirLab', aliases: ['Airlab'], logoPath: 'sponsors/airlab-2026.png' },
+  { name: 'Shield AI', aliases: [], logoPath: 'sponsors/shield-ai-2026.png' },
+  { name: 'Lockheed Martin', aliases: [], logoPath: 'sponsors/lockheed-martin-2026.png' },
+  { name: 'SICK', aliases: [], logoPath: 'sponsors/sick-2026.png' },
+  { name: 'Ford', aliases: [], logoPath: 'sponsors/ford-2026.png' },
+  { name: 'XSens', aliases: ['Xsens Technologies', 'Xsens'], logoPath: 'sponsors/xsens-2026.png' },
+  { name: 'SendCutSend', aliases: [], logoPath: 'sponsors/sendcutsend-2026.png' },
+  { name: 'Ansys', aliases: [], logoPath: 'sponsors/ansys-2026.png' },
+  { name: 'KISSsoft', aliases: ['Kisssoft'], logoPath: 'sponsors/kisssoft-2026.png' },
+  { name: 'Onshape', aliases: [], logoPath: 'sponsors/onshape-2026.png' },
+];
+
+function namesMatch(a: string, b: string): boolean {
+  return a.trim().toLowerCase() === b.trim().toLowerCase();
+}
+
+function orderMarqueeSponsors(rows: MarqueeSponsor[]): MarqueeSponsor[] {
+  const used = new Set<number>();
+  const ordered: MarqueeSponsor[] = [];
+
+  for (const entry of MARQUEE_PRIORITY) {
+    const idx = rows.findIndex(
+      (r, i) =>
+        !used.has(i) &&
+        (namesMatch(r.name, entry.name) || entry.aliases.some((alias) => namesMatch(r.name, alias)))
+    );
+    if (idx >= 0) {
+      used.add(idx);
+      ordered.push({
+        ...rows[idx],
+        name: entry.name,
+        logo: getStorageUrl(entry.logoPath),
+      });
+    } else {
+      ordered.push({
+        name: entry.name,
+        logo: getStorageUrl(entry.logoPath),
+        url: '#',
+      });
+    }
+  }
+
+  const remaining = rows
+    .filter((r, i) => !used.has(i) && Boolean(r.logo))
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+
+  return [...ordered, ...remaining];
+}
 
 // Content loader functions
 export async function getSiteConfig(): Promise<SiteConfig> {
@@ -274,6 +338,7 @@ export async function getSponsorsPageData(): Promise<SponsorsPageData> {
     return {
       corporateSponsors: [],
       individualDonors: [],
+      marqueeSponsors: orderMarqueeSponsors([]),
       callToAction: {
         headline: 'Support CMU MoonMiners',
         copy: 'Help us push lunar robotics forward. Contact us for our sponsorship prospectus.',
@@ -288,7 +353,7 @@ export async function getSponsorsPageData(): Promise<SponsorsPageData> {
     const tier = row.sponsor_tiers as { name: string; slug: string } | null;
     return {
       name: row.name,
-      logo: getStorageUrl(row.logo_path),
+      logo: getStorageUrl(typeof row.logo_path === 'string' ? row.logo_path.trim() : row.logo_path),
       url: row.url ? externalUrl(row.url) : '#',
       blurb: row.blurb || '',
       whiteOnDark: row.white_on_dark || false,
@@ -316,7 +381,14 @@ export async function getSponsorsPageData(): Promise<SponsorsPageData> {
         email: 'moonminers@andrew.cmu.edu',
       };
 
-  return { corporateSponsors, individualDonors, callToAction };
+  return {
+    corporateSponsors,
+    individualDonors,
+    marqueeSponsors: orderMarqueeSponsors(
+      allSponsors.map((s) => ({ name: s.name, logo: s.logo, url: s.url }))
+    ),
+    callToAction,
+  };
 }
 
 // Mentor schema

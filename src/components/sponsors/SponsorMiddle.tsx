@@ -4,19 +4,20 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getStorageUrl } from '@/lib/supabase';
-import type { SponsorWithTier } from '@/lib/content';
+import type { MarqueeSponsor, SponsorWithTier } from '@/lib/content';
+import { SponsorLogoMarquee } from '@/components/sponsors/SponsorLogoMarquee';
 
 const topLeftImg     = '/images/rover-sponsor-decals.jpg';
 const bottomRightImg = '/images/clean-room-crew-arena.jpg';
 const topRightImg    = getStorageUrl('sponsors/topright.png');
 const bottomLeftImg  = getStorageUrl('sponsors/bottomleft.png');
-const sponsorsGraphic = '/images/mm_2026_sponsors.jpg';
 
 interface SponsorMiddleProps {
   corporateSponsors: SponsorWithTier[];
+  marqueeSponsors: MarqueeSponsor[];
 }
 
-export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps) {
+export default function SponsorMiddle({ corporateSponsors, marqueeSponsors }: SponsorMiddleProps) {
   return (
     <>
       {/* Sponsors Graphic SECTION */}
@@ -30,19 +31,7 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
           </p>
         </div>
         <div className="max-w-7xl mx-auto px-6 text-center py-8">
-          <div
-            className="inline-block w-full max-w-4xl overflow-hidden border border-titanium/30"
-            style={{ clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
-          >
-            <Image
-              src={sponsorsGraphic}
-              alt="Sponsors graphic"
-              width={1000}
-              height={400}
-              className="w-full h-auto block"
-              priority
-            />
-          </div>
+          <SponsorLogoMarquee sponsors={marqueeSponsors} />
         </div>
       </section>
 
