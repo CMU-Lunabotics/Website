@@ -9,6 +9,6 @@ export const supabase = createClient<Database>(
 export function getStorageUrl(path: string | null): string {
   if (!path) return '';
   if (path.startsWith('http')) return path;
-  const cleanPath = path.replace(/^\/images\//, '');
+  const cleanPath = path.replace(/^\/images\//, '').trim();
   return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/media/${cleanPath}`;
 }
