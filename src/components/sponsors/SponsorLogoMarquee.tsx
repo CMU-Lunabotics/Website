@@ -12,7 +12,7 @@ function isLinked(url: string | undefined): boolean {
 
 function LogoCell({ sponsor }: { sponsor: MarqueeSponsor }) {
   const inner = (
-    <div className="flex h-[140px] md:h-[180px] items-center justify-center bg-void px-4">
+    <div className="flex h-[140px] md:h-[180px] items-center justify-center px-4">
       {sponsor.logo ? (
         <div className="relative h-[72%] w-full">
           <Image

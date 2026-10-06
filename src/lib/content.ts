@@ -159,6 +159,7 @@ export type SponsorsPageData = {
   corporateSponsors: SponsorWithTier[];
   individualDonors: SponsorWithTier[];
   marqueeSponsors: MarqueeSponsor[];
+  individualSponsors: MarqueeSponsor[];
   callToAction: {
     headline: string;
     copy: string;
@@ -166,61 +167,88 @@ export type SponsorsPageData = {
   };
 };
 
-/** Display order for the /sponsors logo marquee (then remaining rows A–Z). */
-const MARQUEE_PRIORITY: { name: string; aliases: string[]; logoPath: string }[] = [
-  { name: 'Carnegie Mellon University', aliases: ['CMU'], logoPath: 'sponsors/cmu-2026.png' },
-  { name: 'Clint Kelley', aliases: ['Dr. Clinton W. Kelly III', 'Clinton W. Kelly III', 'Clint Kelly'], logoPath: 'sponsors/clint-kelley-2026.png' },
-  { name: 'Gecko Robotics', aliases: [], logoPath: 'sponsors/gecko-robotics-2026.png' },
-  { name: 'Red Whittaker', aliases: ['Prof. Red Whittaker', 'William Whittaker'], logoPath: 'sponsors/red-whittaker-2026.png' },
-  { name: 'Wenshan Wang', aliases: [], logoPath: 'sponsors/wenshan-wang-2026.png' },
-  { name: 'Gleason', aliases: [], logoPath: 'sponsors/gleason-2026.png' },
-  { name: 'AirLab', aliases: ['Airlab'], logoPath: 'sponsors/airlab-2026.png' },
-  { name: 'Shield AI', aliases: [], logoPath: 'sponsors/shield-ai-2026.png' },
-  { name: 'Lockheed Martin', aliases: [], logoPath: 'sponsors/lockheed-martin-2026.png' },
-  { name: 'SICK', aliases: [], logoPath: 'sponsors/sick-2026.png' },
-  { name: 'Ford', aliases: [], logoPath: 'sponsors/ford-2026.png' },
-  { name: 'XSens', aliases: ['Xsens Technologies', 'Xsens'], logoPath: 'sponsors/xsens-2026.png' },
-  { name: 'SendCutSend', aliases: [], logoPath: 'sponsors/sendcutsend-2026.png' },
-  { name: 'Ansys', aliases: [], logoPath: 'sponsors/ansys-2026.png' },
-  { name: 'KISSsoft', aliases: ['Kisssoft'], logoPath: 'sponsors/kisssoft-2026.png' },
-  { name: 'Onshape', aliases: [], logoPath: 'sponsors/onshape-2026.png' },
+type SponsorPriority = { name: string; aliases: string[]; logo: string };
+
+/** Company logos in the /sponsors marquee. CMU is omitted — the school is not a sponsor. */
+const COMPANY_PRIORITY: SponsorPriority[] = [
+  { name: 'Gecko Robotics', aliases: [], logo: '/images/sponsors/marquee/gecko-robotics.png' },
+  { name: 'Gleason', aliases: [], logo: '/images/sponsors/marquee/gleason.png' },
+  { name: 'AirLab', aliases: ['Airlab'], logo: '/images/sponsors/marquee/airlab.png' },
+  { name: 'Shield AI', aliases: [], logo: '/images/sponsors/marquee/shield-ai.png' },
+  { name: 'Lockheed Martin', aliases: [], logo: '/images/sponsors/marquee/lockheed-martin.png' },
+  { name: 'SICK', aliases: [], logo: '/images/sponsors/marquee/sick.png' },
+  { name: 'Ford', aliases: [], logo: '/images/sponsors/marquee/ford.png' },
+  { name: 'XSens', aliases: ['Xsens Technologies', 'Xsens'], logo: '/images/sponsors/marquee/xsens.png' },
+  { name: 'SendCutSend', aliases: [], logo: '/images/sponsors/marquee/sendcutsend.png' },
+  { name: 'Ansys', aliases: [], logo: '/images/sponsors/marquee/ansys.png' },
+  { name: 'KISSsoft', aliases: ['Kisssoft'], logo: '/images/sponsors/marquee/kisssoft.png' },
+  { name: 'Onshape', aliases: [], logo: '/images/sponsors/marquee/onshape.png' },
+];
+
+/** People listed under the marquee, in the order they used to appear among the logos. */
+const PERSON_PRIORITY: SponsorPriority[] = [
+  {
+    name: 'Clint Kelley',
+    aliases: ['Dr. Clinton W. Kelly III', 'Clinton W. Kelly III', 'Clint Kelly'],
+    logo: '/images/sponsors/people/clint-kelley.png',
+  },
+  {
+    name: 'Red Whittaker',
+    aliases: ['Prof. Red Whittaker', 'William Whittaker'],
+    logo: '/images/sponsors/people/red-whittaker.png',
+  },
+  { name: 'Wenshan Wang', aliases: [], logo: '/images/sponsors/people/wenshan-wang.png' },
+  {
+    name: 'Howie Choset',
+    aliases: ['Prof. Howie Choset', 'Howie Choset'],
+    logo: '',
+  },
+];
+
+/** Matched and dropped so they never fall into the alphabetical tail. */
+const EXCLUDED_SPONSORS: { name: string; aliases: string[] }[] = [
+  { name: 'Carnegie Mellon University', aliases: ['CMU'] },
 ];
 
 function namesMatch(a: string, b: string): boolean {
   return a.trim().toLowerCase() === b.trim().toLowerCase();
 }
 
-function orderMarqueeSponsors(rows: MarqueeSponsor[]): MarqueeSponsor[] {
-  const used = new Set<number>();
-  const ordered: MarqueeSponsor[] = [];
+function takeMatch(rows: MarqueeSponsor[], used: Set<number>, entry: { name: string; aliases: string[] }) {
+  const idx = rows.findIndex(
+    (r, i) =>
+      !used.has(i) &&
+      (namesMatch(r.name, entry.name) || entry.aliases.some((alias) => namesMatch(r.name, alias)))
+  );
+  if (idx >= 0) used.add(idx);
+  return idx;
+}
 
-  for (const entry of MARQUEE_PRIORITY) {
-    const idx = rows.findIndex(
-      (r, i) =>
-        !used.has(i) &&
-        (namesMatch(r.name, entry.name) || entry.aliases.some((alias) => namesMatch(r.name, alias)))
-    );
-    if (idx >= 0) {
-      used.add(idx);
-      ordered.push({
-        ...rows[idx],
-        name: entry.name,
-        logo: getStorageUrl(entry.logoPath),
-      });
-    } else {
-      ordered.push({
-        name: entry.name,
-        logo: getStorageUrl(entry.logoPath),
-        url: '#',
-      });
-    }
-  }
+function orderSponsors(rows: MarqueeSponsor[]): {
+  companies: MarqueeSponsor[];
+  people: MarqueeSponsor[];
+} {
+  const used = new Set<number>();
+
+  const companies = COMPANY_PRIORITY.map((entry) => {
+    const idx = takeMatch(rows, used, entry);
+    if (idx >= 0) return { ...rows[idx], name: entry.name, logo: entry.logo };
+    return { name: entry.name, logo: entry.logo, url: '#' };
+  });
+
+  const people = PERSON_PRIORITY.map((entry) => {
+    const idx = takeMatch(rows, used, entry);
+    if (idx >= 0) return { ...rows[idx], name: entry.name, logo: entry.logo };
+    return { name: entry.name, logo: entry.logo, url: '#' };
+  });
+
+  for (const entry of EXCLUDED_SPONSORS) takeMatch(rows, used, entry);
 
   const remaining = rows
     .filter((r, i) => !used.has(i) && Boolean(r.logo))
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
 
-  return [...ordered, ...remaining];
+  return { companies: [...companies, ...remaining], people };
 }
 
 // Content loader functions
@@ -335,10 +363,12 @@ export async function getSponsorsPageData(): Promise<SponsorsPageData> {
   if (error) {
     console.error('Failed to fetch sponsors from Supabase:', error);
     // Return empty fallback so the page still renders
+    const emptySponsors = orderSponsors([]);
     return {
       corporateSponsors: [],
       individualDonors: [],
-      marqueeSponsors: orderMarqueeSponsors([]),
+      marqueeSponsors: emptySponsors.companies,
+      individualSponsors: emptySponsors.people,
       callToAction: {
         headline: 'Support CMU MoonMiners',
         copy: 'Help us push lunar robotics forward. Contact us for our sponsorship prospectus.',
@@ -381,12 +411,15 @@ export async function getSponsorsPageData(): Promise<SponsorsPageData> {
         email: 'moonminers@andrew.cmu.edu',
       };
 
+  const ordered = orderSponsors(
+    allSponsors.map((s) => ({ name: s.name, logo: s.logo, url: s.url }))
+  );
+
   return {
     corporateSponsors,
     individualDonors,
-    marqueeSponsors: orderMarqueeSponsors(
-      allSponsors.map((s) => ({ name: s.name, logo: s.logo, url: s.url }))
-    ),
+    marqueeSponsors: ordered.companies,
+    individualSponsors: ordered.people,
     callToAction,
   };
 }

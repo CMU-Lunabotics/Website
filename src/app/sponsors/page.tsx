@@ -18,6 +18,7 @@ export default async function SponsorsPage() {
       <SponsorMiddle
         corporateSponsors={sponsorData.corporateSponsors}
         marqueeSponsors={sponsorData.marqueeSponsors}
+        individualSponsors={sponsorData.individualSponsors}
       />
     </div>
   );
