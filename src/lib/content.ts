@@ -167,26 +167,27 @@ export type SponsorsPageData = {
   };
 };
 
-type SponsorPriority = { name: string; aliases: string[]; logo: string };
+type CompanyPriority = { name: string; aliases: string[]; logoPath: string };
+type PersonPriority = { name: string; aliases: string[]; logo: string };
 
-/** Company logos in the /sponsors marquee. CMU is omitted — the school is not a sponsor. */
-const COMPANY_PRIORITY: SponsorPriority[] = [
-  { name: 'Gecko Robotics', aliases: [], logo: '/images/sponsors/marquee/gecko-robotics.png' },
-  { name: 'Gleason', aliases: [], logo: '/images/sponsors/marquee/gleason.png' },
-  { name: 'AirLab', aliases: ['Airlab'], logo: '/images/sponsors/marquee/airlab.png' },
-  { name: 'Shield AI', aliases: [], logo: '/images/sponsors/marquee/shield-ai.png' },
-  { name: 'Lockheed Martin', aliases: [], logo: '/images/sponsors/marquee/lockheed-martin.png' },
-  { name: 'SICK', aliases: [], logo: '/images/sponsors/marquee/sick.png' },
-  { name: 'Ford', aliases: [], logo: '/images/sponsors/marquee/ford.png' },
-  { name: 'XSens', aliases: ['Xsens Technologies', 'Xsens'], logo: '/images/sponsors/marquee/xsens.png' },
-  { name: 'SendCutSend', aliases: [], logo: '/images/sponsors/marquee/sendcutsend.png' },
-  { name: 'Ansys', aliases: [], logo: '/images/sponsors/marquee/ansys.png' },
-  { name: 'KISSsoft', aliases: ['Kisssoft'], logo: '/images/sponsors/marquee/kisssoft.png' },
-  { name: 'Onshape', aliases: [], logo: '/images/sponsors/marquee/onshape.png' },
+/** Company order in the /sponsors marquee. Logos live in Supabase Storage (`media` bucket). */
+const COMPANY_PRIORITY: CompanyPriority[] = [
+  { name: 'Gecko Robotics', aliases: [], logoPath: 'sponsors/marquee/gecko-robotics.png' },
+  { name: 'Gleason', aliases: [], logoPath: 'sponsors/marquee/gleason.png' },
+  { name: 'AirLab', aliases: ['Airlab'], logoPath: 'sponsors/marquee/airlab.png' },
+  { name: 'Shield AI', aliases: [], logoPath: 'sponsors/marquee/shield-ai.png' },
+  { name: 'Lockheed Martin', aliases: [], logoPath: 'sponsors/marquee/lockheed-martin.png' },
+  { name: 'SICK', aliases: [], logoPath: 'sponsors/marquee/sick.png' },
+  { name: 'Ford', aliases: [], logoPath: 'sponsors/marquee/ford.png' },
+  { name: 'XSens', aliases: ['Xsens Technologies', 'Xsens'], logoPath: 'sponsors/marquee/xsens.png' },
+  { name: 'SendCutSend', aliases: [], logoPath: 'sponsors/marquee/sendcutsend.png' },
+  { name: 'Ansys', aliases: [], logoPath: 'sponsors/marquee/ansys.png' },
+  { name: 'KISSsoft', aliases: ['Kisssoft'], logoPath: 'sponsors/marquee/kisssoft.png' },
+  { name: 'Onshape', aliases: [], logoPath: 'sponsors/marquee/onshape.png' },
 ];
 
 /** People listed under the marquee, in the order they used to appear among the logos. */
-const PERSON_PRIORITY: SponsorPriority[] = [
+const PERSON_PRIORITY: PersonPriority[] = [
   {
     name: 'Clint Kelley',
     aliases: ['Dr. Clinton W. Kelly III', 'Clinton W. Kelly III', 'Clint Kelly'],
@@ -232,8 +233,9 @@ function orderSponsors(rows: MarqueeSponsor[]): {
 
   const companies = COMPANY_PRIORITY.map((entry) => {
     const idx = takeMatch(rows, used, entry);
-    if (idx >= 0) return { ...rows[idx], name: entry.name, logo: entry.logo };
-    return { name: entry.name, logo: entry.logo, url: '#' };
+    const logo = getStorageUrl(entry.logoPath);
+    if (idx >= 0) return { ...rows[idx], name: entry.name, logo };
+    return { name: entry.name, logo, url: '#' };
   });
 
   const people = PERSON_PRIORITY.map((entry) => {
