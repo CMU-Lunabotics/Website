@@ -244,8 +244,25 @@
   animation-delay: var(--star-delay, 0s);
 }
 
+@keyframes sponsor-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.sponsor-marquee-track {
+  animation: sponsor-marquee 15s linear infinite;
+}
+
+.sponsor-marquee-viewport:hover .sponsor-marquee-track,
+.sponsor-marquee-viewport:focus-within .sponsor-marquee-track {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .star-twinkle {
+    animation: none;
+  }
+  .sponsor-marquee-track {
     animation: none;
   }
 }

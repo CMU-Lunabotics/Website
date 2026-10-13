@@ -4,19 +4,69 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getStorageUrl } from '@/lib/supabase';
-import type { SponsorWithTier } from '@/lib/content';
+import type { MarqueeSponsor, SponsorWithTier } from '@/lib/content';
+import { SponsorLogoMarquee } from '@/components/sponsors/SponsorLogoMarquee';
 
 const topLeftImg     = '/images/rover-sponsor-decals.jpg';
 const bottomRightImg = '/images/clean-room-crew-arena.jpg';
 const topRightImg    = getStorageUrl('sponsors/topright.png');
 const bottomLeftImg  = getStorageUrl('sponsors/bottomleft.png');
-const sponsorsGraphic = '/images/mm_2026_sponsors.jpg';
+
+function isLinked(url: string | undefined): boolean {
+  return Boolean(url && url.trim() !== '' && url !== '#');
+}
+
+function IndividualSponsorList({ sponsors }: { sponsors: MarqueeSponsor[] }) {
+  if (sponsors.length === 0) return null;
+
+  return (
+    <ul className="mx-auto mt-10 flex max-w-3xl list-none flex-col items-center gap-8 p-0">
+      {sponsors.map((sponsor) => {
+        const inner = sponsor.logo ? (
+          <img
+            src={sponsor.logo}
+            alt={sponsor.name}
+            className="h-16 w-auto max-w-[min(100%,320px)] object-contain md:h-20"
+          />
+        ) : (
+          <span className="font-tech text-2xl uppercase tracking-[0.14em] text-starlight md:text-3xl">
+            {sponsor.name}
+          </span>
+        );
+
+        return (
+          <li key={sponsor.name} className="flex w-full justify-center">
+            {isLinked(sponsor.url) ? (
+              <a
+                href={sponsor.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${sponsor.name}`}
+                className="inline-flex items-center justify-center transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-supernova"
+              >
+                {inner}
+              </a>
+            ) : (
+              inner
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
 interface SponsorMiddleProps {
   corporateSponsors: SponsorWithTier[];
+  marqueeSponsors: MarqueeSponsor[];
+  individualSponsors: MarqueeSponsor[];
 }
 
-export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps) {
+export default function SponsorMiddle({
+  corporateSponsors,
+  marqueeSponsors,
+  individualSponsors,
+}: SponsorMiddleProps) {
   return (
     <>
       {/* Sponsors Graphic SECTION */}
@@ -30,19 +80,8 @@ export default function SponsorMiddle({ corporateSponsors }: SponsorMiddleProps)
           </p>
         </div>
         <div className="max-w-7xl mx-auto px-6 text-center py-8">
-          <div
-            className="inline-block w-full max-w-4xl overflow-hidden border border-titanium/30"
-            style={{ clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
-          >
-            <Image
-              src={sponsorsGraphic}
-              alt="Sponsors graphic"
-              width={1000}
-              height={400}
-              className="w-full h-auto block"
-              priority
-            />
-          </div>
+          <SponsorLogoMarquee sponsors={marqueeSponsors} />
+          <IndividualSponsorList sponsors={individualSponsors} />
         </div>
       </section>
 

@@ -2,6 +2,8 @@ import { SponsorLanding } from '@/components/sponsors/SponsorLanding';
 import SponsorMiddle from '@/components/sponsors/SponsorMiddle';
 import { getSponsorsPageData } from '@/lib/content';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Sponsors - CMU MoonMiners',
   description: 'Our valued sponsors supporting lunar robotics research and development.',
@@ -13,7 +15,11 @@ export default async function SponsorsPage() {
   return (
     <div className="relative">
       <SponsorLanding />
-      <SponsorMiddle corporateSponsors={sponsorData.corporateSponsors} />
+      <SponsorMiddle
+        corporateSponsors={sponsorData.corporateSponsors}
+        marqueeSponsors={sponsorData.marqueeSponsors}
+        individualSponsors={sponsorData.individualSponsors}
+      />
     </div>
   );
 }

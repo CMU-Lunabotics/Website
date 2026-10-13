@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const DonatePage = () => {
   const donationLink =
-    'https://givenow.cmu.edu/campaigns/42968/donations/new?a=9031589&designation=planetaryroboticsfund&amt=';
+    'https://givenow.cmu.edu/campaigns/42968/donations/new';
 
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -69,6 +69,11 @@ const DonatePage = () => {
                 className="w-full h-14 px-5 bg-void/70 border border-titanium/40 text-starlight text-base outline-none transition-colors focus:border-supernova/70 placeholder:text-titanium"
               />
             </div>
+
+            <p className="mb-6 text-sm text-moon-dust leading-relaxed">
+              Designate Moon Miners by selecting &apos;Other&apos; and typing in &apos;Carnegie Mellon
+              Moon Miners&apos; in the entry.
+            </p>
 
             <button
               onClick={handleContinue}
