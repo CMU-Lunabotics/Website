@@ -105,7 +105,7 @@ export const Footer = () => {
             <h2 className="text-lg font-bold text-starlight">Get priority when you apply</h2>
             <p className="mt-1 text-sm text-moon-dust">
               Share your name and CMU email to join our interest list — the same list as{' '}
-              <span className="text-starlight/90">Apply</span> — for higher priority when we recruit.
+              <span className="text-starlight/90">Interest Form</span> — for higher priority when we recruit.
             </p>
             <MailingListForm />
           </div>

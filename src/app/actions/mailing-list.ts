@@ -3,9 +3,8 @@
 import { z } from 'zod';
 import {
   INTEREST_FORM_RESPONSE_URL,
-  INTEREST_FORM_ENTRY_FULL_NAME,
   buildInterestFormPrefillUrl,
-  getInterestFormEntryEmail,
+  buildInterestFormPostBody,
 } from '@/lib/google-interest-form';
 
 const cmuEmailSchema = z
@@ -35,16 +34,7 @@ export async function subscribeToMailingList(formData: FormData) {
   }
 
   const { fullName, email } = parsed.data;
-  const emailEntry = getInterestFormEntryEmail();
-
-  const body = new URLSearchParams();
-  if (emailEntry) {
-    body.set(`entry.${INTEREST_FORM_ENTRY_FULL_NAME}`, fullName);
-    body.set(`entry.${emailEntry}`, email);
-  } else {
-    // Until GOOGLE_INTEREST_FORM_ENTRY_EMAIL is set, store both in the name answer.
-    body.set(`entry.${INTEREST_FORM_ENTRY_FULL_NAME}`, `${fullName} (${email})`);
-  }
+  const body = buildInterestFormPostBody(fullName, email);
 
   try {
     const response = await fetch(INTEREST_FORM_RESPONSE_URL, {
