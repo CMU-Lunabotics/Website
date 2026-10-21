@@ -102,8 +102,11 @@ export const Footer = () => {
 
           {/* Newsletter — left column, row 2 */}
           <div className="w-full max-w-sm border border-titanium/30 bg-void/60 p-6 clip-corner-sm lg:col-start-1 lg:row-start-2">
-            <h2 className="text-lg font-bold text-starlight">Mailing List</h2>
-            <p className="mt-1 text-sm text-moon-dust">Stay informed on our mission.</p>
+            <h2 className="text-lg font-bold text-starlight">Get priority when you apply</h2>
+            <p className="mt-1 text-sm text-moon-dust">
+              Share your name and CMU email to join our interest list — the same list as{' '}
+              <span className="text-starlight/90">Apply</span> — for higher priority when we recruit.
+            </p>
             <MailingListForm />
           </div>
         </div>

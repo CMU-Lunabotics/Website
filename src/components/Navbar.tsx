@@ -49,7 +49,7 @@ export function Navbar() {
               );
             })}
             <a
-              href="https://forms.gle/YUJ8CbPqCUfKkdQo7"
+              href="https://forms.gle/QYnxBjSj4SBgrcvZA"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-titanium/50 text-starlight px-7 py-2.5 rounded-sm font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:border-supernova/70 hover:bg-supernova/10"
@@ -154,7 +154,7 @@ export function Navbar() {
               Donate
             </Link>
             <a
-              href="https://forms.gle/YUJ8CbPqCUfKkdQo7"
+              href="https://forms.gle/QYnxBjSj4SBgrcvZA"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
