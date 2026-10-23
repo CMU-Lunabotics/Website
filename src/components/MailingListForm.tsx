@@ -9,42 +9,60 @@ export function MailingListForm() {
   const [isPending, startTransition] = useTransition();
 
   function handleSubmit(formData: FormData) {
+    setStatus('idle');
+    setMessage('');
     startTransition(async () => {
       const result = await subscribeToMailingList(formData);
       if (result?.error) {
         setStatus('error');
         setMessage(result.error);
-      } else {
-        setStatus('success');
+        return;
       }
+
+      if (result?.usedFallback && result.openUrl) {
+        window.open(result.openUrl, '_blank', 'noopener,noreferrer');
+      }
+
+      setStatus('success');
     });
   }
 
   if (status === 'success') {
     return (
-      <p className="mt-4 text-sm text-starlight">
-        You&apos;re on the list. Welcome aboard! 🚀
+      <p className="mt-4 text-sm leading-relaxed text-starlight">
+        You&apos;re on the interest list — we&apos;ll reach out with next steps to apply.
       </p>
     );
   }
 
   return (
     <>
-      <form action={handleSubmit} className="mt-4 flex gap-3">
+      <form action={handleSubmit} className="mt-4 flex flex-col gap-3">
         <input
-          type="email"
-          name="email"
+          type="text"
+          name="fullName"
           required
-          placeholder="Email address"
-          className="h-10 w-full min-w-0 flex-1 border border-titanium/40 bg-transparent px-3.5 text-sm text-starlight placeholder:text-titanium outline-none transition-colors focus:border-supernova/70"
+          autoComplete="name"
+          placeholder="Full name"
+          className="h-10 w-full border border-titanium/40 bg-transparent px-3.5 text-sm text-starlight placeholder:text-titanium outline-none transition-colors focus:border-supernova/70"
         />
-        <button
-          type="submit"
-          disabled={isPending}
-          className="h-10 shrink-0 bg-tartan px-5 text-sm font-bold uppercase tracking-wider text-starlight transition-colors hover:bg-supernova disabled:opacity-60"
-        >
-          {isPending ? '...' : 'Join'}
-        </button>
+        <div className="flex gap-3">
+          <input
+            type="email"
+            name="email"
+            required
+            autoComplete="email"
+            placeholder="CMU email"
+            className="h-10 w-full min-w-0 flex-1 border border-titanium/40 bg-transparent px-3.5 text-sm text-starlight placeholder:text-titanium outline-none transition-colors focus:border-supernova/70"
+          />
+          <button
+            type="submit"
+            disabled={isPending}
+            className="h-10 shrink-0 bg-tartan px-5 text-sm font-bold uppercase tracking-wider text-starlight transition-colors hover:bg-supernova disabled:opacity-60"
+          >
+            {isPending ? '...' : 'Join'}
+          </button>
+        </div>
       </form>
       {status === 'error' && (
         <p className="mt-2 text-xs text-supernova">{message}</p>

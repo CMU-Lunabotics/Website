@@ -1,48 +1,65 @@
-'use server'
+'use server';
 
-import { z } from 'zod'
-import type { SupabaseClient } from '@supabase/supabase-js'
-import { supabase } from '@/lib/supabase'
-import { createAdminClient } from '@/lib/supabase-admin'
+import { z } from 'zod';
+import {
+  INTEREST_FORM_RESPONSE_URL,
+  buildInterestFormPrefillUrl,
+  buildInterestFormPostBody,
+} from '@/lib/google-interest-form';
 
-// Saves the email into the Supabase `mailing_list` table.
-// Run scripts/mailing-list.sql once in the Supabase SQL editor to create it.
+const cmuEmailSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .email('Enter a valid email address.')
+  .refine(
+    (value) => value.endsWith('@andrew.cmu.edu') || value.endsWith('@cmu.edu'),
+    'Use your CMU email (@andrew.cmu.edu or @cmu.edu).'
+  );
+
+const signupSchema = z.object({
+  fullName: z.string().trim().min(2, 'Enter your full name.'),
+  email: cmuEmailSchema,
+});
+
 export async function subscribeToMailingList(formData: FormData) {
-  const email = ((formData.get('email') as string) ?? '').trim().toLowerCase()
-  const parsed = z.string().email().safeParse(email)
+  const parsed = signupSchema.safeParse({
+    fullName: formData.get('fullName'),
+    email: formData.get('email'),
+  });
+
   if (!parsed.success) {
-    return { error: 'Enter a valid email address.' }
+    const first = parsed.error.issues[0]?.message;
+    return { error: first ?? 'Check your name and email.' };
   }
 
-  // Prefer the service client (bypasses RLS); fall back to the public client,
-  // which works if the anon insert policy from scripts/mailing-list.sql exists.
-  // Cast: mailing_list is created by scripts/mailing-list.sql and is not in the
-  // generated database.types.ts yet.
-  const client = (createAdminClient() ?? supabase) as unknown as SupabaseClient
-  let { error } = await client.from('mailing_list').insert({
-    email: parsed.data,
-    source: 'website-footer',
-  })
+  const { fullName, email } = parsed.data;
+  const body = buildInterestFormPostBody(fullName, email);
 
-  // Retry without the optional `source` column in case the table predates it.
-  if (error?.code === 'PGRST204') {
-    ;({ error } = await client.from('mailing_list').insert({ email: parsed.data }))
+  try {
+    const response = await fetch(INTEREST_FORM_RESPONSE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+      redirect: 'manual',
+    });
+
+    const ok =
+      response.status === 200 ||
+      response.status === 302 ||
+      response.status === 303 ||
+      response.status === 0;
+
+    if (ok) {
+      return { success: true as const };
+    }
+  } catch {
+    // fall through to prefill fallback
   }
 
-  if (error) {
-    if (error.code === '23505') {
-      // Unique violation — already subscribed; treat as success.
-      return { success: true }
-    }
-    if (error.code === '42P01' || error.code === 'PGRST205') {
-      return { error: 'Mailing list is not set up yet (missing mailing_list table).' }
-    }
-    if (error.code === '42501') {
-      // RLS blocks anon inserts and no service key is configured.
-      return { error: 'Mailing list is not fully set up yet — run scripts/mailing-list.sql or add SUPABASE_SERVICE_ROLE_KEY.' }
-    }
-    return { error: 'Could not save your email. Please try again later.' }
-  }
-
-  return { success: true }
+  return {
+    success: true as const,
+    openUrl: buildInterestFormPrefillUrl(fullName, email),
+    usedFallback: true as const,
+  };
 }
