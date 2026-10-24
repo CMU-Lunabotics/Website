@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { getStorageUrl } from '@/lib/supabase';
 import { ArrowRight } from 'lucide-react';
@@ -15,6 +15,7 @@ interface HeroProps {
 }
 
 export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps) {
+  const reduceMotion = useReducedMotion();
   const headlineParts = headline.split(/(?<=win\.)/i);
 
   return (
@@ -53,9 +54,9 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-6">
           {/* Text content */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 0.5 }}
             className="max-w-3xl flex-1 text-starlight text-left font-display"
           >
             <p className="eyebrow mb-5 flex items-center gap-3">
@@ -96,9 +97,9 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
 
           {/* Arena action photo — rounded frame with cosmic overlay details */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={reduceMotion ? false : { opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 0.7 }}
             className="relative w-full lg:w-[56%] flex-shrink-0"
           >
             {/* Soft glow behind the card */}

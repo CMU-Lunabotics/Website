@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import { getUpdates } from '@/lib/content';
 import { getStorageUrl } from '@/lib/supabase';
+import { seasonKey } from '@/lib/seasons';
 import { UpdatesPageContent } from '@/components/UpdatesPageContent';
 
 export const metadata = {
-  title: 'Team Updates - CMU MoonMiners',
+  title: 'Updates',
   description: 'Stay up to date with our current milestones, goals, and accomplishments',
 };
 
@@ -14,18 +15,11 @@ export const dynamic = 'force-dynamic';
 export default async function UpdatesPage() {
   const updates = await getUpdates();
 
-  // Sort updates by date (newest first)
-  const sortedUpdates = [...updates].sort((a, b) =>
-    new Date(b.date).getTime() - new Date(a.date).getTime()
+  const sortedUpdates = [...updates].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  // Featured update: admin-selected, or fall back to newest
-  const featuredUpdate = sortedUpdates.find((u) => u.featured) || sortedUpdates[0];
-  // Remaining updates for the grid
-  const remainingUpdates = sortedUpdates.filter((u) => u !== featuredUpdate);
-
-  // Extract unique categories
-  const categories = Array.from(new Set(sortedUpdates.map((u) => u.category)));
+  const seasons = Array.from(new Set(sortedUpdates.map((update) => seasonKey(update.date)))).sort();
 
   return (
     <section className="relative">
@@ -98,11 +92,7 @@ export default async function UpdatesPage() {
           </div>
         </div>
 
-        <UpdatesPageContent
-          updates={remainingUpdates}
-          featuredUpdate={featuredUpdate}
-          categories={categories}
-        />
+        <UpdatesPageContent updates={sortedUpdates} seasons={seasons} />
       </div>
     </section>
   );

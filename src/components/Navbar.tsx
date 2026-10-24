@@ -52,13 +52,13 @@ export function Navbar() {
               href="https://forms.gle/QYnxBjSj4SBgrcvZA"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-titanium/50 text-starlight px-7 py-2.5 rounded-sm font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:border-supernova/70 hover:bg-supernova/10"
+              className="border border-titanium/50 text-starlight px-7 py-2.5 rounded-none font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:border-supernova/70 hover:bg-supernova/10"
             >
               Interest Form
             </a>
             <Link
               href="/donate"
-              className="bg-tartan text-starlight px-7 py-2.5 rounded-sm font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:bg-supernova glow-supernova-hover"
+              className="bg-tartan text-starlight px-7 py-2.5 rounded-none font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:bg-supernova glow-supernova-hover"
             >
               Donate
             </Link>
@@ -149,7 +149,7 @@ export function Navbar() {
             <Link
               href="/donate"
               onClick={() => setMenuOpen(false)}
-              className="mt-2 inline-flex items-center justify-center bg-tartan text-starlight px-8 py-4 rounded-sm font-black text-sm uppercase tracking-[0.2em] hover:bg-supernova transition-all glow-supernova"
+              className="mt-2 inline-flex items-center justify-center bg-tartan text-starlight px-8 py-4 rounded-none font-black text-sm uppercase tracking-[0.2em] hover:bg-supernova transition-all glow-supernova"
             >
               Donate
             </Link>
@@ -158,7 +158,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="inline-flex items-center justify-center border border-titanium/50 text-starlight px-8 py-4 rounded-sm font-black text-sm uppercase tracking-[0.2em] hover:border-supernova/70 hover:bg-supernova/10 transition-all"
+              className="inline-flex items-center justify-center border border-titanium/50 text-starlight px-8 py-4 rounded-none font-black text-sm uppercase tracking-[0.2em] hover:border-supernova/70 hover:bg-supernova/10 transition-all"
             >
               Interest Form
             </a>

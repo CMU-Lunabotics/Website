@@ -4,10 +4,10 @@ import { HomeMission } from '@/components/HomeMission';
 import { HomeBento } from '@/components/HomeBento';
 import { OperationalMilestones } from '@/components/OperationalMilestones';
 import { Section } from '@/components/Section';
-import { HomeSponsors } from '@/components/HomeSponsors';
-import { UpdateCard } from '@/components/UpdateCard'; // Only keep one!
+import { UpdateCard } from '@/components/UpdateCard';
 import { Button } from '@/components/ui/button';
-import { getSiteConfig, getUpdates, getSponsors } from '@/lib/content';
+import { SponsorLogoMarquee } from '@/components/sponsors/SponsorLogoMarquee';
+import { getSiteConfig, getUpdates, getMembers, getSponsorsPageData } from '@/lib/content';
 import { getStorageUrl } from '@/lib/supabase';
 import { ArrowRight } from 'lucide-react';
 
@@ -15,11 +15,13 @@ import { ArrowRight } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const [siteConfig, updates, sponsors] = await Promise.all([
+  const [siteConfig, updates, members, sponsorData] = await Promise.all([
     getSiteConfig(),
     getUpdates(),
-    getSponsors(),
+    getMembers(),
+    getSponsorsPageData(),
   ]);
+  const memberCount = new Set(members.map((member) => member.name)).size;
 
   const latestUpdates = [...updates]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -52,7 +54,7 @@ export default async function Home() {
           updatesDescription={siteConfig.bento.updatesDescription}
           updatesCta={siteConfig.bento.updatesCta}
           updatesHref={siteConfig.bento.updatesHref}
-          membersStat={siteConfig.bento.membersStat}
+          membersStat={`${memberCount} members`}
           membersDescription={siteConfig.bento.membersDescription}
           roverStat={siteConfig.bento.roverStat}
           roverDescription={siteConfig.bento.roverDescription}
@@ -69,12 +71,18 @@ export default async function Home() {
         />
       )}
 
-      {/* <div className="py-12 md:py-20">
-        <HomeSponsors sponsors={sponsors} />
-      </div> */}
+      <section className="relative px-6 py-16 lg:px-12">
+        <p className="eyebrow mb-8 flex items-center justify-center gap-3">
+          <span className="inline-block h-px w-10 bg-tartan" aria-hidden />
+          Trusted by
+        </p>
+        <div className="flex justify-center">
+          <SponsorLogoMarquee sponsors={sponsorData.marqueeSponsors} />
+        </div>
+      </section>
 
       <Section
-        title="Recent Highlights"
+        title="Mission Log"
         titleClassName="text-left"
         className="text-starlight bg-transparent pt-12 md:pt-16"
       >

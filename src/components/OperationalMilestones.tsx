@@ -109,7 +109,7 @@ export function OperationalMilestones({ title, subtitle, milestones }: Operation
     [sorted, n]
   );
 
-  // "We are here": interpolated between the surrounding milestones by date
+  // "Today": interpolated between the surrounding milestones by date
   const marker = useMemo(() => {
     if (now === null || n === 0) return null;
     const times = sorted.map((m) => parseDate(m.date));
@@ -249,7 +249,7 @@ export function OperationalMilestones({ title, subtitle, milestones }: Operation
                 </>
               )}
 
-              {/* "We are here" glowing marker with orbiting planets */}
+              {/* "Today" glowing marker with orbiting planets */}
               {marker && (
                 <>
                   <circle cx={marker.x} cy={marker.y} r={14} fill="url(#om-white-glow)" />
@@ -316,7 +316,7 @@ export function OperationalMilestones({ title, subtitle, milestones }: Operation
               );
             })}
 
-            {/* "We are here" label — rendered last so it paints above milestone labels */}
+            {/* "Today" label — rendered last so it paints above milestone labels */}
             {marker && (
               <div
                 className="absolute z-10 -translate-x-1/2 border border-[#F5F1E8] bg-[#F5F1E8] px-3 py-0.5 whitespace-nowrap pointer-events-none"
@@ -325,7 +325,7 @@ export function OperationalMilestones({ title, subtitle, milestones }: Operation
                   top: `${((Math.min(marker.y + 66, VB_H - 30)) / VB_H) * 100}%`,
                 }}
               >
-                <span className="text-[14px] font-display text-[#090A12]">We are here</span>
+                <span className="text-[14px] font-display text-[#090A12]">Today</span>
               </div>
             )}
           </div>
@@ -361,7 +361,7 @@ export function OperationalMilestones({ title, subtitle, milestones }: Operation
                     <div className="relative mb-6">
                       <div className="absolute left-[-22px] top-0.5 w-4 h-4 rounded-full bg-gradient-to-br from-supernova to-tartan shadow-[0_0_10px_rgba(240,68,85,0.6)]" />
                       <p className="text-sm font-[var(--font-noto)] text-[#F5F1E8] font-medium">
-                        We are here
+                        Today
                       </p>
                     </div>
                   )}

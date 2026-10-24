@@ -258,12 +258,28 @@
   animation-play-state: paused;
 }
 
+.sponsor-marquee-static {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .star-twinkle {
     animation: none;
   }
+  .sponsor-marquee-viewport {
+    overflow: visible;
+  }
   .sponsor-marquee-track {
-    animation: none;
+    display: none;
+  }
+  .sponsor-marquee-static {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .sponsor-marquee-static-cell {
+    width: 33.333%;
+    min-width: 140px;
   }
 }
 

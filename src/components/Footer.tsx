@@ -23,7 +23,7 @@ const LINK_COLUMNS = [
     title: 'Updates',
     links: [
       { label: 'News', href: '/updates' },
-      { label: 'Submit an Update', href: '/login' },
+      { label: 'Submit an Update', href: '/updates/post' },
     ],
   },
 ];
@@ -67,7 +67,7 @@ export const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-sm border border-titanium/30 text-moon-dust transition-colors hover:border-supernova/60 hover:text-starlight"
+                  className="flex h-9 w-9 cursor-pointer items-center justify-center border border-titanium/30 text-moon-dust transition-colors hover:border-supernova/60 hover:text-starlight"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -76,7 +76,7 @@ export const Footer = () => {
           </div>
 
           {/* Instagram embed — middle column, spans both rows */}
-          <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 flex items-start justify-center">
+          <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 flex min-h-[420px] items-start justify-center">
             <InstagramProfileEmbed className="w-full max-w-[400px]" />
           </div>
 
@@ -104,8 +104,7 @@ export const Footer = () => {
           <div className="w-full max-w-sm border border-titanium/30 bg-void/60 p-6 clip-corner-sm lg:col-start-1 lg:row-start-2">
             <h2 className="text-lg font-bold text-starlight">Get priority when you apply</h2>
             <p className="mt-1 text-sm text-moon-dust">
-              Share your name and CMU email to join our interest list — the same list as{' '}
-              <span className="text-starlight/90">Interest Form</span> — for higher priority when we recruit.
+              Share your name and CMU email to join the Interest Form list for higher priority when we recruit.
             </p>
             <MailingListForm />
           </div>

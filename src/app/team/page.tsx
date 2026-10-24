@@ -9,7 +9,7 @@ import { getMembers, getTeamInfo, getMentors } from '@/lib/content';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Team - CMU MoonMiners',
+  title: 'Team',
   description: 'Meet the interdisciplinary team building autonomous lunar excavation robots for NASA Lunabotics.',
 };
 
