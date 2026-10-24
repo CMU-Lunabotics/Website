@@ -70,6 +70,11 @@ const DonatePage = () => {
               />
             </div>
 
+            <ul className="mb-6 list-disc space-y-2 pl-5 text-sm leading-relaxed text-moon-dust">
+              <li>Rover hardware and field testing</li>
+              <li>Travel to Kennedy Space Center</li>
+              <li>Outreach that brings more students into the build</li>
+            </ul>
             <p className="mb-6 text-sm text-moon-dust leading-relaxed">
               Designate Moon Miners by selecting &apos;Other&apos; and typing in &apos;Carnegie Mellon
               Moon Miners&apos; in the entry.

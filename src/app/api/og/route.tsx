@@ -41,7 +41,7 @@ export async function GET() {
           </div>
           <div>
             <h1 style={{ fontSize: '48px', fontWeight: 'bold', margin: 0 }}>
-              MoonMiners
+              Moon Miners
             </h1>
             <p style={{ fontSize: '20px', margin: 0, opacity: 0.8 }}>
               NASA Lunabotics

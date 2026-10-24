@@ -60,7 +60,7 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
             This mission is made possible by the organizations and individuals that support our
             team and believe in the impact of our work.
           </p>
-          <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-sm hover:bg-supernova transition-all duration-300 font-semibold">
+          <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-none hover:bg-supernova transition-all duration-300 font-semibold">
             Become a Sponsor
           </button>
         </div>
@@ -193,7 +193,7 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
             <p className="text-base text-starlight/85 leading-[22px] mb-4">
               Setting the standard for student-led lunar robotics, building field-ready systems.
             </p>
-            <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-sm hover:bg-supernova transition-all duration-300 font-semibold">
+            <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-none hover:bg-supernova transition-all duration-300 font-semibold">
               Donate to support us
             </button>
           </div>
@@ -217,7 +217,7 @@ export function SponsorMobile({ corporateSponsors, individualDonors }: SponsorMo
             <p className="text-base text-moon-dust leading-[22px] mb-4">
               An interdisciplinary team across engineering, business, computer science and more.
             </p>
-            <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-sm hover:bg-supernova transition-all duration-300 font-semibold">
+            <button className="bg-tartan text-starlight px-4 py-2 text-base rounded-none hover:bg-supernova transition-all duration-300 font-semibold">
               View our sponsorship deck
             </button>
           </div>

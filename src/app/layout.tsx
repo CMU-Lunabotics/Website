@@ -29,13 +29,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${audiowide.variable} ${notoDisplay.variable}`}>
       <body className="bg-void text-starlight antialiased flex flex-col min-h-screen font-[var(--font-noto)]">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[10050] focus:bg-tartan focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:uppercase focus:tracking-wider focus:text-starlight"
+        >
+          Skip to content
+        </a>
         <Starfield />
 
         <header className="relative z-[9999]">
           <Navbar />
         </header>
 
-        <main className="flex-grow relative z-[1]">
+        <main id="main" className="flex-grow relative z-[1]">
           {children}
         </main>
 

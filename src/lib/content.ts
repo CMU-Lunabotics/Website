@@ -348,7 +348,7 @@ export async function getSponsors(): Promise<Sponsors> {
         email: ctaRow.cta_email!,
       }
     : {
-        headline: 'Support CMU MoonMiners',
+        headline: 'Support CMU Moon Miners',
         copy: 'Help us push lunar robotics forward. Contact us for our sponsorship prospectus.',
         email: 'moonminers@andrew.cmu.edu',
       };
@@ -372,7 +372,7 @@ export async function getSponsorsPageData(): Promise<SponsorsPageData> {
       marqueeSponsors: emptySponsors.companies,
       individualSponsors: emptySponsors.people,
       callToAction: {
-        headline: 'Support CMU MoonMiners',
+        headline: 'Support CMU Moon Miners',
         copy: 'Help us push lunar robotics forward. Contact us for our sponsorship prospectus.',
         email: 'moonminers@andrew.cmu.edu',
       },
@@ -408,7 +408,7 @@ export async function getSponsorsPageData(): Promise<SponsorsPageData> {
         email: ctaRow.cta_email!,
       }
     : {
-        headline: 'Support CMU MoonMiners',
+        headline: 'Support CMU Moon Miners',
         copy: 'Help us push lunar robotics forward. Contact us for our sponsorship prospectus.',
         email: 'moonminers@andrew.cmu.edu',
       };
@@ -492,6 +492,7 @@ export const UpdateSchema = z.object({
   content: z.string(),
   tags: z.array(z.string()),
   featured: z.boolean(),
+  detailedView: z.boolean().default(false),
   link: z.string().url().or(z.literal('')).optional(),
   linkLabel: z.string().optional(),
   links: z.array(z.object({
@@ -502,6 +503,11 @@ export const UpdateSchema = z.object({
 });
 
 export type Update = z.infer<typeof UpdateSchema>;
+
+function readDetailedView(row: { detailed_view?: boolean | null; content?: string | null }) {
+  if (typeof row.detailed_view === 'boolean') return row.detailed_view;
+  return Boolean(row.content && row.content.trim());
+}
 
 export async function getUpdates(): Promise<Update[]> {
   const { data, error } = await supabase
@@ -526,6 +532,7 @@ export async function getUpdates(): Promise<Update[]> {
       content: row.content || '',
       tags: (row.tags as string[]) || [],
       featured: row.featured ?? false,
+      detailedView: readDetailedView(row),
       link: firstLink?.url || '',
       linkLabel: firstLink?.label || '',
       links: links,
@@ -560,6 +567,7 @@ export async function getUpdateBySlug(slug: string): Promise<Update | null> {
     content: row.content || '',
     tags: (row.tags as string[]) || [],
     featured: row.featured ?? false,
+    detailedView: readDetailedView(row),
     link: firstLink?.url || '',
     linkLabel: firstLink?.label || '',
     links: links,

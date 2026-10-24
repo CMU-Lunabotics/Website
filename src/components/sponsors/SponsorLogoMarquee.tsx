@@ -61,6 +61,13 @@ export function SponsorLogoMarquee({ sponsors }: SponsorLogoMarqueeProps) {
       className="sponsor-marquee-viewport inline-block w-full max-w-4xl overflow-hidden border border-titanium/30"
       style={{ clipPath: CLIP }}
     >
+      <div className="sponsor-marquee-static">
+        {sponsors.map((sponsor) => (
+          <div key={sponsor.name} className="sponsor-marquee-static-cell">
+            <LogoCell sponsor={sponsor} />
+          </div>
+        ))}
+      </div>
       <div
         className="sponsor-marquee-track flex"
         style={{ width: `${((n * 2) / 3) * 100}%` }}

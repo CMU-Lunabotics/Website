@@ -1,5 +1,5 @@
 {
-  "teamName": "CMU MoonMiners",
+  "teamName": "CMU Moon Miners",
   "tagline": "Autonomous lunar excavation for NASA Lunabotics.",
   "contactEmail": "moonminers@cmu.edu",
   "location": "Carnegie Mellon University, Pittsburgh, PA",
@@ -12,7 +12,7 @@
   "hero": {
     "headline": "Born to win.\nBuilt to prove it.",
     "subhead": "We are an ambitious, interdisciplinary team of students across engineering, design, and business, united by a shared passion for advancing space technology.",
-    "ctaPrimary": {"label": "Learn More", "href": "/team"},
+    "ctaPrimary": {"label": "Learn More", "href": "/about"},
     "ctaSecondary": {"label": "Meet the Team", "href": "/team"},
     "heroImage": "hero/titlepagemoon.jpg",
     "video": null
@@ -20,7 +20,7 @@
   "mission": {
     "title": "Our Mission",
     "body": "CMU MoonMiners seeks to set the standard for student-led large industry-like builds in space. We build ready systems with marginal risk on an extremely aggressive timeline, laying the groundwork for a landing rover robotic program at Carnegie Mellon.",
-    "cta": {"label": "Meet the team", "href": "/team"},
+    "cta": {"label": "Meet the Team", "href": "/team"},
     "image": "home/mission-photo.jpg"
   },
   "bento": {

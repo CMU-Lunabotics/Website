@@ -5,7 +5,7 @@ import { getSponsorsPageData } from '@/lib/content';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Sponsors - CMU MoonMiners',
+  title: 'Sponsors',
   description: 'Our valued sponsors supporting lunar robotics research and development.',
 };
 

@@ -152,10 +152,23 @@ export default function SponsorMiddle({
                         <path d="M12 2 L14 9 L21 10 L16 14 L17 21 L12 17 L7 21 L8 14 L3 10 L10 9 Z" fill="#F04455" opacity="0.95" />
                       </svg>
                     </div> */}
-                    <h3 className="text-4xl md:text-5xl font-semibold text-starlight leading-tight mb-4">What We Can Offer</h3>
-                    <p className="text-moon-dust text-base md:text-lg leading-relaxed max-w-2xl mb-6">
-                      Our sponsorship tiers offer a range of strategic benefits, from brand visibility via logo placement and newsletters to exclusive recruiting access, prominent features in our documentary and more.
-                    </p>
+                    <h3 className="text-4xl md:text-5xl font-semibold text-starlight leading-tight mb-6">What We Can Offer</h3>
+                    <div className="mb-6 grid gap-4 sm:grid-cols-3">
+                      {[
+                        { title: 'Visibility', body: 'Logo placement, newsletters, and a place in the season’s story.' },
+                        { title: 'Recruiting', body: 'Time with students who design, build, and ship a field robot.' },
+                        { title: 'In-kind', body: 'Parts, software, and shop time that go straight onto the rover.' },
+                      ].map((item) => (
+                        <div
+                          key={item.title}
+                          className="border border-dotted border-titanium/40 bg-void/40 p-4"
+                          style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px))' }}
+                        >
+                          <p className="text-sm font-bold uppercase tracking-[0.16em] text-starlight">{item.title}</p>
+                          <p className="mt-2 text-sm leading-relaxed text-moon-dust">{item.body}</p>
+                        </div>
+                      ))}
+                    </div>
                     <Link href="mailto:moonminers@cmu.edu" className="inline-block border border-titanium/50 text-starlight px-6 py-3 rounded-none bg-transparent hover:border-supernova/70 hover:bg-supernova/10 transition-all duration-200">
                       Contact Us →
                     </Link>
