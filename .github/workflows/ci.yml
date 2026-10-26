@@ -13,6 +13,7 @@ jobs:
       NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+      UPDATES_PASSWORD: ${{ secrets.UPDATES_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4

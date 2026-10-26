@@ -145,6 +145,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://hypejatlztjwwyyznnwd.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<from dashboard>
 NEXT_PUBLIC_SITE_URL=http://localhost:3000  # Update for production
 ADMIN_PASSWORD=<set in Vercel/deployment>
+UPDATES_PASSWORD=<set in Vercel Preview + Production; repo secret alone is not enough — use `.github/workflows/sync-vercel-env.yml` with VERCEL_TOKEN, or paste the same value in Vercel → Project → Environment Variables>
 SUBMIT_SHARED_PASSWORD=<shared team password for /login>
 SUPABASE_SERVICE_ROLE_KEY=<Supabase dashboard → Settings → API; server-only, needed for update submissions>
 ```

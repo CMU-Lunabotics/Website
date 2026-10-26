@@ -35,7 +35,10 @@ export async function loginWithUpdatesPassword(formData: FormData) {
   const password = String(formData.get('password') ?? '')
   const expected = process.env.UPDATES_PASSWORD
   if (!expected) {
-    return { error: 'Posting is not configured. Set UPDATES_PASSWORD.' }
+    return {
+      error:
+        'Posting is not configured on this deployment. Add UPDATES_PASSWORD in Vercel (Preview and Production), or add VERCEL_TOKEN to GitHub Actions secrets so the sync workflow can copy UPDATES_PASSWORD from repo secrets.',
+    }
   }
   if (password !== expected) {
     return { error: 'Incorrect password.' }
