@@ -3,6 +3,8 @@ import { getUpdates } from '@/lib/content';
 import { getStorageUrl } from '@/lib/supabase';
 import { seasonKey } from '@/lib/seasons';
 import { UpdatesPageContent } from '@/components/UpdatesPageContent';
+import { HeroBandScrim } from '@/components/HeroBandScrim';
+import { HeroIntro, heroHeadingClass, heroSubheadClass } from '@/components/HeroIntro';
 
 export const metadata = {
   title: 'Updates',
@@ -24,7 +26,7 @@ export default async function UpdatesPage() {
   return (
     <section className="relative">
       <div className="w-full relative">
-        <div className="relative min-h-[100svh] lg:min-h-[110vh] flex flex-col lg:block overflow-hidden pt-0 lg:pt-28 lg:pb-28">
+        <div className="hero-band">
           {/* Plum glow */}
           <div
             className="absolute inset-0 z-0 pointer-events-none"
@@ -49,47 +51,47 @@ export default async function UpdatesPage() {
             </div>
           </div>
 
+          <div
+            className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-void/70 via-void/25 to-transparent"
+            aria-hidden
+          />
+
           {/* Hero artwork — excavation subsystem render */}
-          <div className="relative lg:absolute lg:inset-y-0 lg:left-[28%] lg:right-0 z-[1] w-full h-[140vw] lg:h-auto flex-shrink-0 pointer-events-none">
+          <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-[1] lg:left-[28%]">
             {/* Mobile image */}
             <Image
               src={getStorageUrl('updates/updatesbgmobile.png')}
               alt=""
               fill
-              className="object-cover object-top lg:hidden"
+              className="object-cover object-center lg:hidden"
               priority
               sizes="100vw"
               aria-hidden
             />
-            {/* Desktop image */}
+            {/* Desktop image — cover crops the top and bottom to the shared hero height */}
             <Image
               src={getStorageUrl('updates/updates-bg.png')}
               alt=""
               fill
-              className="hidden lg:block object-contain object-right object-center"
+              className="hidden object-cover object-center lg:block"
               priority
-              sizes="60vw"
+              sizes="72vw"
               aria-hidden
             />
           </div>
 
-          {/* TEXT SECTION */}
-          <div className="relative lg:absolute lg:bottom-[20%] lg:left-0 z-10 w-full px-6 lg:pl-12 mt-auto pt-0 pb-10 lg:pt-0 lg:pb-0">
-            <div className="max-w-2xl">
-              <div className="text-starlight text-left font-display">
-                <p className="eyebrow mb-5 flex items-center gap-3">
-                  <span className="inline-block h-px w-10 bg-tartan" aria-hidden />
-                  Mission Log
-                </p>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] font-display">
-                  News &amp; Updates
-                </h1>
-                <p className="mt-4 text-base lg:text-lg font-medium text-moon-dust leading-relaxed">
-                  Stay up to date with our current milestones, goals and accomplishments
-                </p>
-              </div>
-            </div>
-          </div>
+          <HeroBandScrim />
+
+          <HeroIntro>
+            <p className="eyebrow mb-5 flex min-h-5 items-center gap-3">
+              <span className="inline-block h-px w-10 bg-tartan" aria-hidden />
+              Mission Log
+            </p>
+            <h1 className={heroHeadingClass}>News &amp; Updates</h1>
+            <p className={heroSubheadClass}>
+              Stay up to date with our current milestones, goals and accomplishments
+            </p>
+          </HeroIntro>
         </div>
 
         <UpdatesPageContent updates={sortedUpdates} seasons={seasons} />

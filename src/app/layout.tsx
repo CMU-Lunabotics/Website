@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { PageFade } from '@/components/PageFade';
 import { Starfield } from '@/components/Starfield';
 import './globals.css';
 import { Audiowide, Noto_Sans_Display } from 'next/font/google';
@@ -41,11 +42,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
         </header>
 
-        <main id="main" className="flex-grow relative z-[1]">
-          {children}
-        </main>
-
-        <Footer />
+        <PageFade>
+          <main id="main" className="relative z-[1] flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </PageFade>
       </body>
     </html>
   );

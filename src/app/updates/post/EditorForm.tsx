@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { getStorageUrl } from '@/lib/supabase'
-import { saveUpdate, uploadUpdateImage, type EditorPost } from './actions'
+import { deleteUpdate, saveUpdate, uploadUpdateImage, type EditorPost } from './actions'
 
 function slugify(value: string): string {
   return value
@@ -33,6 +33,7 @@ export function EditorForm({ post }: { post?: EditorPost }) {
   const [detailedView, setDetailedView] = useState(post?.detailedView ?? false)
   const [error, setError] = useState('')
   const [saved, setSaved] = useState(false)
+  const [confirmDelete, setConfirmDelete] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [isPending, startTransition] = useTransition()
 
@@ -201,13 +202,58 @@ export function EditorForm({ post }: { post?: EditorPost }) {
         <p role="status" className="text-sm text-starlight">Saved.</p>
       )}
 
-      <button
-        type="submit"
-        disabled={isPending || uploading}
-        className="h-12 cursor-pointer bg-tartan px-8 text-sm font-semibold uppercase tracking-wider text-starlight transition-colors hover:bg-supernova disabled:opacity-60"
-      >
-        {isPending ? 'Saving…' : 'Save'}
-      </button>
+      <div className="flex flex-wrap items-center gap-3">
+        <button
+          type="submit"
+          disabled={isPending || uploading}
+          className="h-12 cursor-pointer bg-tartan px-8 text-sm font-semibold uppercase tracking-wider text-starlight transition-colors hover:bg-supernova disabled:opacity-60"
+        >
+          {isPending ? 'Saving…' : 'Save'}
+        </button>
+        {editing && post && (
+          confirmDelete ? (
+            <>
+              <button
+                type="button"
+                disabled={isPending}
+                onClick={() => {
+                  setError('')
+                  startTransition(async () => {
+                    const result = await deleteUpdate(post.slug)
+                    if (result?.error) {
+                      setError(result.error)
+                      setConfirmDelete(false)
+                    }
+                  })
+                }}
+                className="h-12 cursor-pointer border border-supernova px-5 text-sm font-semibold uppercase tracking-wider text-supernova transition-colors hover:bg-supernova/10 disabled:opacity-60"
+              >
+                {isPending ? 'Deleting…' : 'Delete this post'}
+              </button>
+              <button
+                type="button"
+                disabled={isPending}
+                onClick={() => setConfirmDelete(false)}
+                className="h-12 cursor-pointer px-3 text-sm text-moon-dust hover:text-starlight disabled:opacity-60"
+              >
+                Cancel
+              </button>
+            </>
+          ) : (
+            <button
+              type="button"
+              disabled={isPending || uploading}
+              onClick={() => setConfirmDelete(true)}
+              className="h-12 cursor-pointer border border-titanium/50 px-5 text-sm font-semibold uppercase tracking-wider text-moon-dust transition-colors hover:border-supernova/70 hover:text-starlight disabled:opacity-60"
+            >
+              Delete
+            </button>
+          )
+        )}
+      </div>
+      {confirmDelete && (
+        <p className="text-sm text-moon-dust">This removes the post from the site. It cannot be undone.</p>
+      )}
     </form>
   )
 }

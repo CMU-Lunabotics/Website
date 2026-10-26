@@ -155,6 +155,53 @@ export async function saveUpdate(formData: FormData) {
   return { success: true, slug }
 }
 
+function storageObjectPath(value: string): string | null {
+  const trimmed = value.trim()
+  if (!trimmed) return null
+  if (trimmed.startsWith('updates/')) return trimmed
+  const marker = '/media/'
+  const index = trimmed.indexOf(marker)
+  if (index === -1) return null
+  const path = trimmed.slice(index + marker.length).split('?')[0]
+  return path.startsWith('updates/') ? path : null
+}
+
+export async function deleteUpdate(slug: string) {
+  const allowed = await verifyUpdatesSession()
+  if (!allowed) return { error: 'Unauthorized' }
+
+  const clean = slug.trim()
+  if (!clean) return { error: 'Missing post.' }
+
+  const supabase = createAdminClient()
+  if (!supabase) return { error: 'Server is missing SUPABASE_SERVICE_ROLE_KEY.' }
+
+  const { data, error: readError } = await supabase
+    .from('updates')
+    .select('images')
+    .eq('slug', clean)
+    .maybeSingle()
+
+  if (readError) return { error: 'Failed to delete: ' + readError.message }
+  if (!data) return { error: 'Post not found.' }
+
+  const { error } = await supabase.from('updates').delete().eq('slug', clean)
+  if (error) return { error: 'Failed to delete: ' + error.message }
+
+  const paths = ((data.images as string[] | null) || [])
+    .map(storageObjectPath)
+    .filter((path): path is string => Boolean(path))
+  if (paths.length > 0) {
+    await supabase.storage.from('media').remove(paths)
+  }
+
+  revalidatePath('/updates')
+  revalidatePath(`/updates/${clean}`)
+  revalidatePath('/')
+  revalidatePath('/updates/post')
+  redirect('/updates/post')
+}
+
 export async function uploadUpdateImage(formData: FormData) {
   const allowed = await verifyUpdatesSession()
   if (!allowed) return { error: 'Unauthorized' }

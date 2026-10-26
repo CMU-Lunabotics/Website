@@ -25,10 +25,10 @@ const supabase = createClient(url, key);
 const buffer = fs.readFileSync(input);
 const { error } = await supabase.storage
   .from('media')
-  .upload('mentors/timothy-angert.jpg', buffer, { contentType: 'image/jpeg', upsert: true });
+  .upload('mentors/timothy-angert.jpeg', buffer, { contentType: 'image/jpeg', upsert: true });
 
 if (error) {
   console.error(error.message);
   process.exit(1);
 }
-console.log('Uploaded mentors/timothy-angert.jpg');
+console.log('Uploaded mentors/timothy-angert.jpeg');

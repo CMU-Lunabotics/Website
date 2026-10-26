@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { HeroBandScrim } from '@/components/HeroBandScrim';
+import { HeroIntro, heroHeadingClass, heroSubheadClass } from '@/components/HeroIntro';
 import { getStorageUrl } from '@/lib/supabase';
 import { ArrowRight } from 'lucide-react';
 
@@ -19,7 +21,7 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
   const headlineParts = headline.split(/(?<=win\.)/i);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-20 lg:pt-32 lg:pb-24">
+    <section className="hero-band">
       {/* Supernova / plum glow behind the tracks */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
@@ -50,31 +52,21 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
         </div>
       </div>
 
-      <div className="relative z-10 w-full px-6 lg:px-12">
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-6">
-          {/* Text content */}
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={reduceMotion ? { duration: 0 } : { duration: 0.5 }}
-            className="max-w-3xl flex-1 text-starlight text-left font-display"
-          >
-            <p className="eyebrow mb-5 flex items-center gap-3">
+      <HeroBandScrim />
+
+      <HeroIntro>
+            <p className="eyebrow mb-5 flex min-h-5 items-center gap-3">
               <span className="inline-block h-px w-10 bg-tartan" aria-hidden />
               NASA Lunabotics · 2026
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] font-display">
+            <h1 className={heroHeadingClass}>
               <span>{headlineParts[0].trim()}</span>
               <br />
               <span className="text-cosmic-gradient">
                 {headlineParts.slice(1).join('').trim()}
               </span>
             </h1>
-            {subhead && (
-              <p className="mt-6 text-lg font-medium text-moon-dust leading-relaxed">
-                {subhead}
-              </p>
-            )}
+            {subhead && <p className={heroSubheadClass}>{subhead}</p>}
             <div className="mt-10 flex flex-wrap gap-4">
               <Button asChild size="lg" className="h-12 px-7 text-base font-semibold rounded-none">
                 <Link href={ctaPrimary.href}>
@@ -93,14 +85,14 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
                 </Button>
               )}
             </div>
-          </motion.div>
+      </HeroIntro>
 
           {/* Arena action photo — rounded frame with cosmic overlay details */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={reduceMotion ? { duration: 0 } : { duration: 0.7 }}
-            className="relative w-full lg:w-[56%] flex-shrink-0"
+            className="relative z-[1] mx-6 mb-16 w-auto lg:absolute lg:right-12 lg:top-1/2 lg:mb-0 lg:w-[44%] lg:-translate-y-1/2"
           >
             {/* Soft glow behind the card */}
             <div
@@ -168,8 +160,6 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
               </div>
             </div>
           </motion.div>
-        </div>
-      </div>
     </section>
   );
 }

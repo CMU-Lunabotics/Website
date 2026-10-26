@@ -181,6 +181,48 @@
     color: #F04455;
   }
 
+  /* Same headline slot on every tab, under the fixed nav. */
+  /* Shared hero frame. The team photo is the shortest background;
+     taller art (Updates, About) crops to this so the next section
+     starts at the same place on every tab. */
+  .hero-band {
+    position: relative;
+    overflow: hidden;
+    min-height: 100svh;
+  }
+  @media (min-width: 1024px) {
+    .hero-band {
+      height: 85vh;
+      min-height: 36rem;
+    }
+  }
+
+  .hero-copy-anchor {
+    position: relative;
+    z-index: 10;
+    width: min(100% - 3rem, 42rem);
+    margin-top: calc(88px + 4vh);
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding-bottom: 4rem;
+  }
+  .hero-copy-anchor.hero-copy-lower {
+    margin-top: 46vh;
+  }
+  @media (min-width: 1024px) {
+    .hero-copy-anchor {
+      position: absolute;
+      top: clamp(9.5rem, 30vh, 18rem);
+      left: 3rem;
+      margin: 0;
+      padding: 0;
+      width: min(40rem, 42vw);
+    }
+    .hero-copy-anchor.hero-copy-lower {
+      margin-top: 0;
+    }
+  }
+
   /* Signature cosmic gradient: Event Horizon → Deep Space → Cosmic Plum → Tartan Red */
   .bg-cosmic-gradient {
     background-image: linear-gradient(135deg, #090A12 0%, #151426 35%, #33204F 70%, #C41230 100%);

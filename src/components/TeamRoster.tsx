@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown, Mail } from 'lucide-react';
 import { Member } from '@/lib/content';
 
@@ -72,17 +72,8 @@ interface TeamRosterProps {
 const PROJECT_LEAD = { name: 'Luqman Zaceria', email: 'lzaceria@andrew.cmu.edu' };
 
 export function TeamRoster({ members }: TeamRosterProps) {
-  const [query, setQuery] = useState('');
   const [open, setOpen] = useState<Set<string>>(new Set(['Avionics']));
-
-  const filtered = useMemo(() => {
-    const needle = query.trim().toLowerCase();
-    if (!needle) return members;
-    return members.filter((member) => member.name.toLowerCase().includes(needle));
-  }, [members, query]);
-
-  const groups = groupBySubteam(filtered);
-  const searching = query.trim().length > 0;
+  const groups = groupBySubteam(members);
 
   const toggle = (team: string) =>
     setOpen((prev) => {
@@ -108,22 +99,10 @@ export function TeamRoster({ members }: TeamRosterProps) {
         </span>
       </p>
 
-      <label className="mb-6 block">
-        <span className="sr-only">Filter roster by name</span>
-        <input
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Filter by name"
-          className="h-10 w-full max-w-sm border border-titanium/40 bg-transparent px-3.5 text-sm text-starlight outline-none transition-colors placeholder:text-titanium focus:border-supernova/70"
-        />
-      </label>
-
       <div className="grid grid-cols-1 gap-2 lg:grid-cols-5 lg:gap-6">
         {SUBTEAM_ORDER.map((team) => {
           const list = groups[team];
-          if (searching && list.length === 0) return null;
-          const isOpen = searching || open.has(team);
+          const isOpen = open.has(team);
           const panelId = `roster-${team.toLowerCase()}`;
           return (
             <section key={team}>
@@ -154,10 +133,6 @@ export function TeamRoster({ members }: TeamRosterProps) {
           );
         })}
       </div>
-
-      {searching && filtered.length === 0 && (
-        <p className="mt-6 text-sm text-moon-dust">No one matches that name.</p>
-      )}
     </>
   );
 }
