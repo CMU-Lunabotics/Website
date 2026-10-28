@@ -4,7 +4,7 @@ import { Container } from '@/components/Container';
 
 export function AboutOrigin() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="pb-20 pt-16 lg:pb-28">
       <Container className="px-6 lg:px-12">
         {/* Header */}
         <div className="mb-10">

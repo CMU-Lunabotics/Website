@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 import { getUpdateBySlug } from '@/lib/content';
+import { formatUpdateDate } from '@/lib/seasons';
 
 interface UpdatePageProps {
   params: Promise<{ slug: string }>;
@@ -11,9 +12,9 @@ interface UpdatePageProps {
 export async function generateMetadata({ params }: UpdatePageProps) {
   const { slug } = await params;
   const update = await getUpdateBySlug(slug);
-  if (!update) return {};
+  if (!update?.detailedView) return {};
   return {
-    title: `${update.title} - CMU MoonMiners`,
+    title: update.title,
     description: update.summary,
   };
 }
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: UpdatePageProps) {
 export default async function UpdateDetailPage({ params }: UpdatePageProps) {
   const { slug } = await params;
   const update = await getUpdateBySlug(slug);
-  if (!update) notFound();
+  if (!update || !update.detailedView) notFound();
 
   return (
     <article className="relative pt-32 pb-20 lg:pb-28">
@@ -35,27 +36,13 @@ export default async function UpdateDetailPage({ params }: UpdatePageProps) {
           All updates
         </Link>
 
-        {/* Category pills */}
-        <div className="flex flex-wrap gap-2 mb-5">
-          <span className="font-display font-semibold text-sm px-3 py-1 rounded-full bg-tartan text-starlight">
-            {update.team ? update.team : 'All'}
-          </span>
-          <span className="font-display font-semibold text-sm px-4 py-1 rounded-full border border-titanium/50 text-moon-dust">
-            {update.category}
-          </span>
-        </div>
-
         {/* Title + date */}
         <h1 className="text-4xl sm:text-5xl font-display font-semibold text-starlight leading-tight">
           {update.title}
         </h1>
         <div className="mt-4 flex items-center text-sm text-moon-dust">
           <Calendar className="mr-1.5 h-3.5 w-3.5" />
-          {new Date(update.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
+          {formatUpdateDate(update.date)}
         </div>
 
         {/* Summary lede */}
@@ -112,19 +99,6 @@ export default async function UpdateDetailPage({ params }: UpdatePageProps) {
           </div>
         )}
 
-        {/* Tags */}
-        {update.tags.length > 0 && (
-          <div className="mt-10 flex flex-wrap gap-2">
-            {update.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-plum/40 text-moon-dust"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
     </article>
   );

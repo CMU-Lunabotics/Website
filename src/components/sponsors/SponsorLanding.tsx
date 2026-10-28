@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { HeroBandScrim } from '@/components/HeroBandScrim';
+import { HeroIntro, heroHeadingClass, heroSubheadClass } from '@/components/HeroIntro';
 import { getStorageUrl } from '@/lib/supabase';
 
 const headerImage = getStorageUrl('sponsors/header.png');
@@ -9,14 +11,14 @@ const headerImage = getStorageUrl('sponsors/header.png');
 export function SponsorLanding() {
   return (
     <>
-      <section className="relative w-full min-h-[640px] md:min-h-[900px] overflow-hidden">
+      <section className="hero-band w-full">
         <Image
           src={headerImage}
           alt="Wireframe render of a rover drive module"
           fill
           priority
           className="object-cover opacity-90"
-          style={{ objectPosition: 'center top' }}
+          style={{ objectPosition: 'center center' }}
         />
         {/* Cosmic glow + fade to page background */}
         <div
@@ -27,26 +29,22 @@ export function SponsorLanding() {
           }}
           aria-hidden
         />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-void to-transparent pointer-events-none" aria-hidden />
+        <HeroBandScrim />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-64 md:pt-96 pb-16 md:pb-24 flex flex-col lg:flex-row justify-start">
-          <div className="max-w-xl text-left font-display">
-            <p className="eyebrow mb-5 flex items-center gap-3">
+        <HeroIntro>
+            <p className="eyebrow mb-5 flex min-h-5 items-center gap-3">
               <span className="inline-block h-px w-10 bg-tartan" aria-hidden />
               Partner With Us
             </p>
-            <h1 className="text-starlight text-5xl md:text-6xl font-semibold mb-6 font-display">
-              Sponsors
-            </h1>
-            <p className="text-moon-dust text-lg md:text-xl font-medium leading-relaxed mb-8">
+            <h1 className={heroHeadingClass}>Sponsors</h1>
+            <p className={heroSubheadClass}>
               This mission is made possible by the organizations and individuals that support
               our team and believe in the impact of our work.
             </p>
-            <Button asChild size="lg" className="h-12 px-8 text-lg rounded-none font-semibold">
+            <Button asChild size="lg" className="mt-10 h-12 px-8 text-lg rounded-none font-semibold">
               <Link href="/donate">Support Us →</Link>
             </Button>
-          </div>
-        </div>
+        </HeroIntro>
       </section>
     </>
   );

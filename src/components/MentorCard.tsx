@@ -7,7 +7,7 @@ interface MentorCardProps {
   mentor: Mentor;
 }
 
-const DEFAULT_ADVISOR_PHOTO = "mentors/timothy-angert.jpg";
+const DEFAULT_ADVISOR_PHOTO = "mentors/timothy-angert.jpeg";
 
 export function MentorCard({ mentor }: MentorCardProps) {
   const photoSrc = mentor.photo || getStorageUrl(DEFAULT_ADVISOR_PHOTO);

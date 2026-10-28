@@ -4,30 +4,6 @@ import { Logo } from '@/components/Logo';
 import { MailingListForm } from '@/components/MailingListForm';
 import { InstagramProfileEmbed } from '@/components/about/InstagramProfileEmbed';
 
-const LINK_COLUMNS = [
-  {
-    title: 'Team',
-    links: [
-      { label: 'Our Story', href: '/about' },
-      { label: 'Our Team', href: '/team' },
-    ],
-  },
-  {
-    title: 'Sponsors',
-    links: [
-      { label: 'Partner', href: '/sponsors' },
-      { label: 'Donate', href: '/donate' },
-    ],
-  },
-  {
-    title: 'Updates',
-    links: [
-      { label: 'News', href: '/updates' },
-      { label: 'Submit an Update', href: '/login' },
-    ],
-  },
-];
-
 const SOCIALS = [
   { label: 'Instagram', href: 'https://www.instagram.com/cmumoonminers', Icon: Instagram },
   { label: 'YouTube', href: 'https://www.youtube.com/@cmumoonminers', Icon: Youtube },
@@ -47,67 +23,44 @@ export const Footer = () => {
         aria-hidden
       />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-12 py-14">
-        {/* Top: brand + instagram + links */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {/* Brand — left column, row 1 */}
-          <div className="max-w-xs lg:col-start-1 lg:row-start-1">
-            <Link href="/" aria-label="Moon Miners home">
-              <Logo size="md" />
-            </Link>
-            <p className="mt-4 text-sm leading-relaxed text-moon-dust">
-              Carnegie Mellon University&apos;s student team building autonomous lunar
-              excavation robotics for the NASA Lunabotics Challenge.
-            </p>
-            <div className="mt-5 flex items-center gap-3">
-              {SOCIALS.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-sm border border-titanium/30 text-moon-dust transition-colors hover:border-supernova/60 hover:text-starlight"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+      <div className="mx-auto max-w-7xl px-6 py-14 lg:px-12">
+        <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-2 lg:gap-20">
+          <div className="flex flex-col gap-10">
+            <div className="max-w-md">
+              <Link href="/" aria-label="Moon Miners home">
+                <Logo size="md" />
+              </Link>
+              <p className="mt-4 text-sm leading-relaxed text-moon-dust">
+                Carnegie Mellon University&apos;s student team building autonomous lunar
+                excavation robotics for the NASA Lunabotics Challenge.
+              </p>
+              <div className="mt-5 flex items-center gap-3">
+                {SOCIALS.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex h-9 w-9 cursor-pointer items-center justify-center border border-titanium/30 text-moon-dust transition-colors hover:border-supernova/60 hover:text-starlight"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="w-full max-w-md border border-titanium/30 bg-void/60 p-6 clip-corner-sm">
+              <h2 className="text-lg font-bold text-starlight">Get priority when you apply</h2>
+              <p className="mt-1 text-sm text-moon-dust">
+                Share your name and CMU email to join the Interest Form list for higher priority when we recruit.
+              </p>
+              <MailingListForm />
             </div>
           </div>
 
-          {/* Instagram embed — middle column, spans both rows */}
-          <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 flex items-start justify-center">
+          <div className="flex min-h-[420px] items-start justify-center lg:justify-end">
             <InstagramProfileEmbed className="w-full max-w-[400px]" />
-          </div>
-
-          {/* Link columns — right column, spans both rows, stacked vertically */}
-          <div className="flex flex-col gap-8 lg:col-start-3 lg:row-start-1 lg:row-span-2">
-            {LINK_COLUMNS.map((col) => (
-              <div key={col.title} className="flex flex-col gap-2">
-                <h3 className="mb-1 text-sm font-bold uppercase tracking-[0.2em] text-starlight">
-                  {col.title}
-                </h3>
-                {col.links.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="text-sm text-moon-dust transition-colors hover:text-supernova"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          {/* Newsletter — left column, row 2 */}
-          <div className="w-full max-w-sm border border-titanium/30 bg-void/60 p-6 clip-corner-sm lg:col-start-1 lg:row-start-2">
-            <h2 className="text-lg font-bold text-starlight">Get priority when you apply</h2>
-            <p className="mt-1 text-sm text-moon-dust">
-              Share your name and CMU email to join our interest list — the same list as{' '}
-              <span className="text-starlight/90">Interest Form</span> — for higher priority when we recruit.
-            </p>
-            <MailingListForm />
           </div>
         </div>
 

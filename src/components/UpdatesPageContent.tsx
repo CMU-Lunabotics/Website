@@ -1,133 +1,63 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
-import { Calendar } from 'lucide-react';
 import { Update } from '@/lib/content';
+import { seasonKey, seasonLabel } from '@/lib/seasons';
 import { UpdateCard } from './UpdateCard';
-import { getStorageUrl } from '@/lib/supabase';
 import { cn } from '@/lib/utils';
 
 interface UpdatesPageContentProps {
   updates: Update[];
-  featuredUpdate: Update;
-  categories: string[];
+  seasons: string[];
 }
 
-export function UpdatesPageContent({ updates, featuredUpdate, categories }: UpdatesPageContentProps) {
-  const [activeCategory, setActiveCategory] = useState('All');
+export function UpdatesPageContent({ updates, seasons }: UpdatesPageContentProps) {
+  const newest = seasons[seasons.length - 1] ?? '';
+  const [activeSeason, setActiveSeason] = useState(newest);
 
-  const filteredUpdates = activeCategory === 'All'
-    ? updates
-    : updates.filter((u) => u.category === activeCategory);
-
-  const featuredImage = featuredUpdate.images?.[0] || getStorageUrl('team/team-2026.JPG');
+  const visible = updates.filter((update) => seasonKey(update.date) === activeSeason);
 
   return (
     <div className="relative z-10">
-      {/* Featured Update Card */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
-        <div
-          className="relative w-full h-[320px] md:h-[500px] lg:h-[550px] border border-titanium/40 overflow-hidden group"
-          style={{ clipPath: 'polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%)' }}
-        >
-          {/* Background image */}
-          <Image
-            src={featuredImage}
-            alt={featuredUpdate.title}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
-
-          {/* Dark gradient overlay */}
-          <div
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(0deg, #090A12 19.88%, rgba(9, 10, 18, 0.00) 67.32%)' }}
-          />
-
-          {/* Content overlay at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 p-5 md:p-10">
-
-            {/* Category tags row */}
-            <div className="flex items-center gap-3 mb-3">
-              {featuredUpdate.category && (
-                <span className="text-xs md:text-sm px-3 md:px-4 py-1 md:py-1.5 rounded-full bg-tartan text-starlight font-medium">
-                  {featuredUpdate.category}
-                </span>
-              )}
-              <div className="flex items-center text-xs md:text-sm text-moon-dust">
-                <Calendar className="mr-1.5 h-3 w-3 md:h-3.5 md:w-3.5" />
-                {new Date(featuredUpdate.date).toLocaleDateString('en-US', {
-                  month: 'short',
-                  day: 'numeric',
-                  year: 'numeric',
-                })}
-              </div>
-            </div>
-
-            {/* Title */}
-            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-starlight leading-tight max-w-3xl mb-2">
-              {featuredUpdate.title}
-            </h2>
-
-            {/* Summary */}
-            <p className="text-moon-dust text-xs md:text-base leading-relaxed max-w-3xl line-clamp-2 mb-3">
-              {featuredUpdate.summary}
-            </p>
-
-            {/* Bottom tags */}
-            <div className="flex flex-wrap gap-2">
-              {featuredUpdate.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[10px] md:text-sm px-2.5 md:px-4 py-0.5 md:py-1.5 rounded-full bg-plum/50 border border-titanium/30 text-starlight/85"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+      <div className="mx-auto max-w-7xl px-4 pb-10 pt-16 sm:px-6 lg:px-8">
+        {seasons.length > 0 ? (
+          <div className="flex flex-nowrap gap-2 overflow-x-auto scrollbar-hide" role="tablist" aria-label="Seasons">
+            {seasons.map((season) => (
+              <button
+                key={season}
+                type="button"
+                role="tab"
+                aria-selected={activeSeason === season}
+                onClick={() => setActiveSeason(season)}
+                className={cn(
+                  'flex-shrink-0 cursor-pointer whitespace-nowrap px-4 py-2 text-xs font-medium transition-colors md:text-sm',
+                  activeSeason === season
+                    ? 'bg-tartan text-starlight'
+                    : 'border border-titanium/50 text-moon-dust hover:border-supernova/70 hover:text-starlight'
+                )}
+              >
+                {seasonLabel(season)}
+              </button>
+            ))}
           </div>
-        </div>
+        ) : null}
       </div>
 
-      {/* Category Filter Tabs */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-10">
-        <div className="flex flex-nowrap overflow-x-auto gap-2 scrollbar-hide">
-          {[...new Set(['All', ...categories, 'Outreach'])].map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={cn(
-                'px-4 py-2 text-xs md:text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0',
-                activeCategory === category
-                  ? 'bg-tartan text-starlight'
-                  : 'border border-titanium/50 text-moon-dust hover:border-supernova/70 hover:text-starlight'
-              )}
-            >
-              {category === 'All' ? 'All tags' : category}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Updates Grid */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredUpdates.map((update) => (
-            <UpdateCard key={update.id} update={update} />
-          ))}
-        </div>
-
-        {filteredUpdates.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-moon-dust text-lg">No updates found for this category.</p>
+      <div className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+        {visible.length > 0 ? (
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {visible.map((update) => (
+              <UpdateCard key={update.id} update={update} />
+            ))}
           </div>
+        ) : (
+          <p className="py-16 text-center text-lg text-moon-dust">
+            {activeSeason
+              ? `No posts in ${seasonLabel(activeSeason)} yet.`
+              : 'No posts yet.'}
+          </p>
         )}
       </div>
-
-      {/* TODO: Re-enable featured update modal */}
     </div>
   );
 }

@@ -297,6 +297,7 @@ export type Database = {
           content: string | null
           created_at: string | null
           date: string
+          detailed_view: boolean
           featured: boolean
           id: string
           images: Json | null
@@ -315,6 +316,7 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           date: string
+          detailed_view?: boolean
           featured?: boolean
           id?: string
           images?: Json | null
@@ -333,6 +335,7 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           date?: string
+          detailed_view?: boolean
           featured?: boolean
           id?: string
           images?: Json | null

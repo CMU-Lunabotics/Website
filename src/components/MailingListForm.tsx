@@ -29,7 +29,7 @@ export function MailingListForm() {
 
   if (status === 'success') {
     return (
-      <p className="mt-4 text-sm leading-relaxed text-starlight">
+      <p role="status" className="mt-4 text-sm leading-relaxed text-starlight">
         You&apos;re on the interest list — we&apos;ll reach out with next steps to apply.
       </p>
     );
@@ -65,7 +65,7 @@ export function MailingListForm() {
         </div>
       </form>
       {status === 'error' && (
-        <p className="mt-2 text-xs text-supernova">{message}</p>
+        <p role="alert" className="mt-2 text-xs text-supernova">{message}</p>
       )}
     </>
   );

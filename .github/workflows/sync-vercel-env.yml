@@ -1,0 +1,26 @@
+# GitHub repo secrets are not available to Vercel serverless runtimes.
+# This workflow copies UPDATES_PASSWORD into the Vercel project so /updates/post works on Preview and Production.
+#
+# One-time setup: add VERCEL_TOKEN (Vercel → Account Settings → Tokens) to GitHub Actions secrets.
+# UPDATES_PASSWORD should already exist as a repo secret.
+
+name: Sync Vercel env
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, mod-1]
+  pull_request:
+    branches: [main]
+
+jobs:
+  sync-updates-password:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync UPDATES_PASSWORD to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          UPDATES_PASSWORD: ${{ secrets.UPDATES_PASSWORD }}
+        run: node scripts/sync-updates-password-vercel.mjs
