@@ -105,59 +105,17 @@ export function Hero({ headline, subhead, ctaPrimary, ctaSecondary }: HeroProps)
             />
 
             <div
-              className="relative w-full aspect-[4/3] overflow-hidden border border-titanium/40"
+              className="relative w-full aspect-video overflow-hidden border border-titanium/40 bg-void"
               style={{ clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px))' }}
             >
-              <Image
-                src="/images/rover-digging-arena.jpg"
-                alt="The rover digging regolith in the Lunabotics competition arena"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 56vw"
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src="https://www.youtube.com/embed/DUWANREGrFE?autoplay=1&mute=1&playsinline=1&rel=0"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
               />
-
-              {/* Cosmic wash + depth fade */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(150deg, rgba(51,32,79,0.45) 0%, rgba(196,18,48,0.15) 60%, rgba(51,32,79,0.3) 100%)',
-                  mixBlendMode: 'soft-light',
-                }}
-                aria-hidden
-              />
-              <div
-                className="absolute inset-0 pointer-events-none bg-gradient-to-t from-void/50 via-transparent to-void/40"
-                aria-hidden
-              />
-
-              {/* Space details on top */}
-              <div className="absolute inset-0 pointer-events-none" aria-hidden>
-                {/* Orbit rings, upper right */}
-                <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full border border-dashed border-starlight/30" />
-                <div className="absolute -top-2 right-8 w-20 h-20 rounded-full border border-starlight/20" />
-                {/* Glowing planet dot riding the big ring */}
-                <div
-                  className="absolute top-8 right-40 w-3 h-3 rounded-full"
-                  style={{
-                    background: 'linear-gradient(180deg, #F04455 0%, #33204F 100%)',
-                    boxShadow: '0 0 12px rgba(240,68,85,0.8)',
-                  }}
-                />
-                {/* Small moon, lower left */}
-                <div
-                  className="absolute bottom-10 left-8 w-2 h-2 rounded-full bg-moon-dust/80"
-                  style={{ boxShadow: '0 0 8px rgba(185,181,199,0.6)' }}
-                />
-                {/* Star specks */}
-                <div className="absolute top-[18%] left-[12%] w-1 h-1 rounded-full bg-starlight/90" />
-                <div className="absolute top-[9%] left-[38%] w-[3px] h-[3px] rounded-full bg-starlight/60" />
-                <div className="absolute top-[30%] right-[14%] w-[3px] h-[3px] rounded-full bg-starlight/70" />
-                <div className="absolute bottom-[18%] right-[26%] w-1 h-1 rounded-full bg-starlight/80" />
-                <div className="absolute bottom-[30%] left-[22%] w-[3px] h-[3px] rounded-full bg-starlight/50" />
-                <div className="absolute top-[55%] left-[6%] w-[3px] h-[3px] rounded-full bg-starlight/60" />
-              </div>
             </div>
           </motion.div>
     </section>

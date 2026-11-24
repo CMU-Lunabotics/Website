@@ -16,7 +16,6 @@ export default async function SponsorsPage() {
     <div className="relative">
       <SponsorLanding />
       <SponsorMiddle
-        corporateSponsors={sponsorData.corporateSponsors}
         marqueeSponsors={sponsorData.marqueeSponsors}
         individualSponsors={sponsorData.individualSponsors}
       />

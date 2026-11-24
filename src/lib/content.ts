@@ -189,16 +189,16 @@ const COMPANY_PRIORITY: CompanyPriority[] = [
 /** People listed under the marquee, in the order they used to appear among the logos. */
 const PERSON_PRIORITY: PersonPriority[] = [
   {
-    name: 'Clint Kelley',
-    aliases: ['Dr. Clinton W. Kelly III', 'Clinton W. Kelly III', 'Clint Kelly'],
-    logo: '/images/sponsors/people/clint-kelley.png',
+    name: 'Clint Kelly',
+    aliases: ['Dr. Clinton W. Kelly III', 'Clinton W. Kelly III', 'Clint Kelley'],
+    logo: '',
   },
   {
     name: 'Red Whittaker',
     aliases: ['Prof. Red Whittaker', 'William Whittaker'],
-    logo: '/images/sponsors/people/red-whittaker.png',
+    logo: '',
   },
-  { name: 'Wenshan Wang', aliases: [], logo: '/images/sponsors/people/wenshan-wang.png' },
+  { name: 'Wenshan Wang', aliases: [], logo: '' },
   {
     name: 'Howie Choset',
     aliases: ['Prof. Howie Choset', 'Howie Choset'],
