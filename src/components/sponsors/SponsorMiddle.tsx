@@ -20,14 +20,8 @@ function isLinked(url: string | undefined): boolean {
   return Boolean(url && url.trim() !== '' && url !== '#');
 }
 
-/** White artwork that disappears on the light gray cards. */
-const BLACK_LOGO_NAMES = new Set([
-  'Shield AI',
-  'Clint Kelly',
-  'Red Whittaker',
-  'Wenshan Wang',
-  'Howie Choset',
-]);
+/** White company artwork that disappears on the light gray cards. */
+const BLACK_LOGO_NAMES = new Set(['Shield AI']);
 
 /**
  * Dark stars in the exact wallpaper positions.
@@ -57,12 +51,18 @@ function TileStarfield() {
   );
 }
 
-function SponsorTile({ sponsor }: { sponsor: MarqueeSponsor }) {
+function SponsorTile({
+  sponsor,
+  showCaption = true,
+}: {
+  sponsor: MarqueeSponsor;
+  showCaption?: boolean;
+}) {
   const card = (
     <>
       <div
-        className="relative flex h-40 w-full items-center justify-center overflow-hidden border border-black/15 bg-[#C1BEBA] p-6 transition-colors group-hover:border-supernova/50 md:h-44"
-        style={{ clipPath: 'inset(0)' }}
+        className="relative flex h-40 w-full items-center justify-center overflow-hidden rounded-2xl border border-black/15 bg-[#C1BEBA] p-6 transition-colors group-hover:border-supernova/50 md:h-44"
+        style={{ clipPath: 'inset(0 round 1rem)' }}
       >
         <TileStarfield />
         {sponsor.logo ? (
@@ -76,12 +76,16 @@ function SponsorTile({ sponsor }: { sponsor: MarqueeSponsor }) {
             />
           </div>
         ) : (
-          <span className="relative z-10 text-sm text-void">{sponsor.name}</span>
+          <span className="relative z-10 px-2 text-center font-[var(--font-noto)] text-2xl font-semibold tracking-tight text-void whitespace-nowrap sm:text-3xl md:text-4xl">
+            {sponsor.name}
+          </span>
         )}
       </div>
-      <p className="mt-3 text-center text-base font-medium text-starlight transition-colors group-hover:text-supernova md:text-lg">
-        {sponsor.name}
-      </p>
+      {showCaption && (
+        <p className="mt-3 text-center text-base font-medium text-starlight transition-colors group-hover:text-supernova md:text-lg">
+          {sponsor.name}
+        </p>
+      )}
     </>
   );
 
@@ -105,16 +109,29 @@ function SponsorTile({ sponsor }: { sponsor: MarqueeSponsor }) {
   );
 }
 
-function SponsorCardGrid({ sponsors }: { sponsors: MarqueeSponsor[] }) {
+function SponsorCardGrid({
+  sponsors,
+  showCaption = true,
+  columns = 3,
+}: {
+  sponsors: MarqueeSponsor[];
+  showCaption?: boolean;
+  columns?: 3 | 4;
+}) {
   if (sponsors.length === 0) {
     return <p className="text-moon-dust/60">Sponsors coming soon.</p>;
   }
 
+  const gridClass =
+    columns === 4
+      ? 'grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-4'
+      : 'grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3';
+
   return (
-    <ul className="grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className={gridClass}>
       {sponsors.map((sponsor) => (
         <li key={sponsor.name}>
-          <SponsorTile sponsor={sponsor} />
+          <SponsorTile sponsor={sponsor} showCaption={showCaption} />
         </li>
       ))}
     </ul>
@@ -143,7 +160,7 @@ export default function SponsorMiddle({
               <h3 className="mb-6 mt-16 text-left text-2xl font-semibold text-supernova md:text-3xl">
                 Individual Sponsors
               </h3>
-              <SponsorCardGrid sponsors={individualSponsors} />
+              <SponsorCardGrid sponsors={individualSponsors} showCaption={false} columns={4} />
             </>
           )}
         </div>
